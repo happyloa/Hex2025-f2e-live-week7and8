@@ -43,7 +43,6 @@ export default <Partial<Config>>{
           {
             lineHeight: "1.2",
             fontWeight: "700",
-            letterSpacing: "2px",
           },
         ],
         h1: [
@@ -51,7 +50,6 @@ export default <Partial<Config>>{
           {
             lineHeight: "1.2",
             fontWeight: "700",
-            letterSpacing: "2px",
           },
         ],
         h2: [
@@ -59,7 +57,6 @@ export default <Partial<Config>>{
           {
             lineHeight: "1.2",
             fontWeight: "700",
-            letterSpacing: "2px",
           },
         ],
         h3: [
@@ -67,7 +64,6 @@ export default <Partial<Config>>{
           {
             lineHeight: "1.2",
             fontWeight: "700",
-            letterSpacing: "2px",
           },
         ],
         h4: [
@@ -75,7 +71,6 @@ export default <Partial<Config>>{
           {
             lineHeight: "1.2",
             fontWeight: "700",
-            letterSpacing: "2px",
           },
         ],
         h5: [
@@ -83,7 +78,6 @@ export default <Partial<Config>>{
           {
             lineHeight: "1.2",
             fontWeight: "700",
-            letterSpacing: "2px",
           },
         ],
         h6: [
@@ -91,7 +85,6 @@ export default <Partial<Config>>{
           {
             lineHeight: "1.2",
             fontWeight: "700",
-            letterSpacing: "2px",
           },
         ],
         title: [
@@ -99,7 +92,6 @@ export default <Partial<Config>>{
           {
             lineHeight: "1.5",
             fontWeight: "700",
-            letterSpacing: "2px",
           },
         ],
         subtitle: [
@@ -107,7 +99,6 @@ export default <Partial<Config>>{
           {
             lineHeight: "1.5",
             fontWeight: "700",
-            letterSpacing: "2px",
           },
         ],
         body: [
@@ -115,7 +106,6 @@ export default <Partial<Config>>{
           {
             lineHeight: "1.5",
             fontWeight: "400",
-            letterSpacing: "2px",
           },
         ],
         body2: [
@@ -123,7 +113,6 @@ export default <Partial<Config>>{
           {
             lineHeight: "1.5",
             fontWeight: "400",
-            letterSpacing: "2px",
           },
         ],
         tiny: [
@@ -131,7 +120,6 @@ export default <Partial<Config>>{
           {
             lineHeight: "1.5",
             fontWeight: "400",
-            letterSpacing: "2px",
           },
         ],
       },
