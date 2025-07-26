@@ -1,0 +1,25 @@
+/* 客製化 checkbox 樣式 */
+.custom-checkbox {
+  appearance: none;
+  -webkit-appearance: none;
+  background-color: #ffffff;
+  border: 1px solid #ececec;
+  border-radius: 4px;
+  width: 24px;
+  height: 24px;
+  position: relative;
+  cursor: pointer;
+  vertical-align: middle;
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s;
+}
+
+.custom-checkbox:checked {
+  background-color: #4a3830; /* primary 色 */
+  border-color: #4a3830;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 15 10' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 4.905 5.203 9 14 1' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 65%;
+}
