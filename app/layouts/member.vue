@@ -1,6 +1,12 @@
 <template>
-  <section class="relative bg-[#F4F4F4] px-3">
-    <div class="max-w-container mx-auto py-10 md:py-[120px]">
+  <section class="relative overflow-x-hidden bg-[#F4F4F4] px-3">
+    <!-- 裝飾線條 -->
+    <img
+      src="/images/my-account/bg-line.svg"
+      alt="裝飾線條"
+      class="absolute left-1/2 top-[324px] z-0 hidden -translate-x-1/2 md:block"
+    />
+    <div class="max-w-container relative z-10 mx-auto py-10 md:py-[120px]">
       <!-- Hero -->
       <div
         class="relative h-[200px] rounded-3xl bg-[url('/images/my-account/hero.webp')] bg-cover bg-center md:h-[480px]"
