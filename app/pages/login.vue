@@ -84,7 +84,7 @@ const showPassword = ref(false);
   >
     立即登入
   </button>
-  <p class="flex gap-2">
+  <p class="text-neutral-80 flex gap-2">
     沒有 ZOBAA 帳號嗎？
     <NuxtLink to="/register" class="text-primary font-semibold underline">
       立即註冊
