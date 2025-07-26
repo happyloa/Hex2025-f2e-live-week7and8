@@ -20,7 +20,7 @@ const showPassword = ref(false);
 <template>
   <!-- 欄位 -->
   <div class="text-body text-neutral-80 space-y-4">
-    <h2 class="text-title">或使用 ZOBAA 帳號登入</h2>
+    <h2 class="text-title text-black">或使用 ZOBAA 帳號登入</h2>
     <!-- 電子信箱 -->
     <div>
       <label for="email" class="mb-2 flex gap-1"
