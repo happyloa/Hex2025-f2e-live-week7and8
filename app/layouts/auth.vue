@@ -1,7 +1,9 @@
 <template>
   <section class="flex">
     <!-- 輪播裝飾 -->
-    <aside class="hidden w-[640px] shrink-0 py-10 pl-10 xl:block">
+    <aside
+      class="hidden w-[640px] shrink-0 content-center py-10 pl-10 xl:block"
+    >
       <ClientOnly>
         <swiper-container
           :slides-per-view="1"
@@ -23,7 +25,7 @@
       </ClientOnly>
     </aside>
     <main
-      class="flex-1 content-center justify-items-center px-6 pb-[90px] pt-[60px] text-black lg:py-[151px]"
+      class="flex-1 content-center justify-items-center px-6 pb-[90px] pt-[60px] text-black xl:py-0"
     >
       <div class="w-full max-w-[604px] space-y-6 md:space-y-10">
         <h1 class="md:text-h1 text-h3">
