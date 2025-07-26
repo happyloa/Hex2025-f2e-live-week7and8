@@ -1,5 +1,5 @@
 <template>
-  <section class="bg-[#F4F4F4] px-3">
+  <section class="relative bg-[#F4F4F4] px-3">
     <div class="max-w-container mx-auto py-10 md:py-[120px]">
       <!-- Hero -->
       <div
@@ -33,7 +33,7 @@
           <img
             src="/images/my-account/avatar-1.webp"
             alt="Jessica"
-            class="border-primary max-w-[120px] rounded-full border-4 md:max-w-40"
+            class="border-primary max-w-[120px] rounded-full border-2 md:max-w-40 md:border-4"
           />
           <button
             type="button"
@@ -60,7 +60,7 @@
       </div>
       <!-- 會員頁面選單 -->
       <nav
-        class="shadow-section text-title mb-4 whitespace-nowrap rounded-3xl bg-white py-4 text-black md:mb-6"
+        class="shadow-section text-title mb-4 whitespace-nowrap rounded-2xl bg-white py-4 text-black md:mb-6 md:rounded-3xl"
       >
         <ul class="border-neutral-40 grid grid-cols-3 divide-x">
           <li class="px-6 py-3">
