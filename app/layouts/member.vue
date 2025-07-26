@@ -62,13 +62,13 @@
       <nav
         class="shadow-section text-title mb-4 whitespace-nowrap rounded-3xl bg-white py-4 text-black md:mb-6"
       >
-        <ul class="grid grid-cols-3">
+        <ul class="border-neutral-40 grid grid-cols-3 divide-x">
           <li class="px-6 py-3">
             <NuxtLink to="/my-account" class="border-primary-40 border-b-4 pb-2"
               >我的帳號
             </NuxtLink>
           </li>
-          <li class="border-neutral-40 border-x px-6 py-3">
+          <li class="px-6 py-3">
             <NuxtLink
               to="/my-account"
               class="hover:border-primary-40 border-b-4 border-transparent pb-2 transition"
