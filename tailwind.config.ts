@@ -127,6 +127,7 @@ export default <Partial<Config>>{
         container: "1296px",
       },
       boxShadow: {
+        button: "0 4px 12px 0 #00000026",
         card: "0 4px 40px 0 #0000001A",
         section: "0 8px 80px 0 #00000014",
       },
