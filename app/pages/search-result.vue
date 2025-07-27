@@ -81,6 +81,13 @@
       </ul>
     </div>
   </section>
+  <!-- 大阪 TOP 10! -->
+  <section class="px-3 py-10 md:py-20">
+    <div class="mx-auto max-w-container">
+      <h2 class="mb-5 text-h3 md:mb-10 md:text-h1">大阪 TOP 10!</h2>
+      <CommonAttractionsCarousel />
+    </div>
+  </section>
   <!-- 旅人攻略 -->
   <section class="bg-primary-10 px-3 py-10 md:py-[120px]">
     <div class="mx-auto max-w-container space-y-5 md:space-y-20">
