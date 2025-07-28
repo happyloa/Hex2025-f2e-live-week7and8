@@ -1,3 +1,10 @@
+<script setup>
+useSeoMeta({
+  title: "購物車 | 2025 切版直播班 - 旅遊網站 W7&W8",
+  ogTitle: "購物車 | 2025 切版直播班 - 旅遊網站 W7&W8",
+});
+</script>
+
 <template>
   <!-- 其他旅人也買了 -->
   <section class="bg-neutral-15 py-10 pl-3 md:py-[120px] lg:px-3">
