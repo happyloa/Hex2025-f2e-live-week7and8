@@ -19,7 +19,7 @@ const showPassword = ref(false);
 
 <template>
   <!-- 欄位 -->
-  <div class="text-body text-neutral-80 space-y-4">
+  <div class="space-y-4 text-body text-neutral-80">
     <h2 class="text-title text-black">或使用 ZOBAA 帳號登入</h2>
     <!-- 電子信箱 -->
     <div>
@@ -32,7 +32,7 @@ const showPassword = ref(false);
         name="email"
         id="email"
         placeholder="請輸入電子信箱"
-        class="placeholder:text-neutral-60 border-neutral-40 w-full rounded-xl border p-4 focus:outline-none"
+        class="w-full rounded-xl border border-neutral-40 p-4 placeholder:text-neutral-60 focus:outline-none"
       />
     </div>
     <!-- 密碼、記住帳號、忘記密碼 -->
@@ -47,7 +47,7 @@ const showPassword = ref(false);
           name="password"
           id="password"
           placeholder="請輸入密碼"
-          class="placeholder:text-neutral-60 border-neutral-40 mb-2 w-full rounded-xl border p-4 pr-12 focus:outline-none"
+          class="mb-2 w-full rounded-xl border border-neutral-40 p-4 pr-12 placeholder:text-neutral-60 focus:outline-none"
         />
         <img
           v-if="password"
@@ -75,18 +75,18 @@ const showPassword = ref(false);
   <!-- 登入按鈕 -->
   <button
     type="button"
-    class="text-title w-full rounded-xl p-4 text-center transition"
+    class="w-full rounded-xl p-4 text-center text-title transition"
     :class="
       !email || !password
-        ? 'bg-neutral-40 text-neutral-60 pointer-events-none'
-        : 'bg-primary hover:bg-primary-120 text-white'
+        ? 'pointer-events-none bg-neutral-40 text-neutral-60'
+        : 'bg-primary text-white hover:bg-primary-120'
     "
   >
     立即登入
   </button>
-  <p class="text-neutral-80 space-x-2">
+  <p class="space-x-2 text-neutral-80">
     沒有 ZOBAA 帳號嗎？
-    <NuxtLink to="/register" class="text-primary font-semibold underline">
+    <NuxtLink to="/register" class="font-semibold text-primary underline">
       立即註冊
     </NuxtLink>
   </p>

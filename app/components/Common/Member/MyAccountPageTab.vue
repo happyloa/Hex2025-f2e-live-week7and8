@@ -1,5 +1,5 @@
 <template>
-  <nav class="border-neutral-40 text-title mb-6 border-b">
+  <nav class="mb-6 border-b border-neutral-40 text-title">
     <ul class="flex gap-8">
       <li>
         <NuxtLink
@@ -12,7 +12,7 @@
           "
           >個人資訊
           <hr
-            class="border-primary absolute bottom-0 left-1/2 w-1/2 -translate-x-1/2 rounded-full border-2 transition group-hover:opacity-100"
+            class="absolute bottom-0 left-1/2 w-1/2 -translate-x-1/2 rounded-full border-2 border-primary transition group-hover:opacity-100"
             :class="$route.path === '/my-account' ? 'opacity-100' : 'opacity-0'"
           />
         </NuxtLink>
@@ -28,7 +28,7 @@
           "
           >常用旅客
           <hr
-            class="border-primary absolute bottom-0 left-1/2 w-1/2 -translate-x-1/2 rounded-full border-2 transition group-hover:opacity-100"
+            class="absolute bottom-0 left-1/2 w-1/2 -translate-x-1/2 rounded-full border-2 border-primary transition group-hover:opacity-100"
             :class="
               $route.path === '/my-account/saved-info'
                 ? 'opacity-100'

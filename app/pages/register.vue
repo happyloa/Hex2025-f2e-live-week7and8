@@ -17,7 +17,7 @@ const showPassword = ref(false);
 
 <template>
   <!-- 欄位 -->
-  <div class="text-body text-neutral-80 space-y-4">
+  <div class="space-y-4 text-body text-neutral-80">
     <h2 class="text-title text-black">或使用 ZOBAA 帳號註冊</h2>
     <!-- 電子信箱 -->
     <div>
@@ -30,7 +30,7 @@ const showPassword = ref(false);
         name="email"
         id="email"
         placeholder="請輸入電子信箱"
-        class="placeholder:text-neutral-60 border-neutral-40 w-full rounded-xl border p-4 focus:outline-none"
+        class="w-full rounded-xl border border-neutral-40 p-4 placeholder:text-neutral-60 focus:outline-none"
       />
     </div>
     <!-- 密碼 -->
@@ -45,7 +45,7 @@ const showPassword = ref(false);
           name="password"
           id="password"
           placeholder="請輸入密碼"
-          class="placeholder:text-neutral-60 border-neutral-40 mb-2 w-full rounded-xl border p-4 pr-12 focus:outline-none"
+          class="mb-2 w-full rounded-xl border border-neutral-40 p-4 pr-12 placeholder:text-neutral-60 focus:outline-none"
         />
         <img
           v-if="password"
@@ -68,7 +68,7 @@ const showPassword = ref(false);
           name="passwordAgain"
           id="passwordAgain"
           placeholder="請再輸入一次密碼"
-          class="placeholder:text-neutral-60 border-neutral-40 mb-2 w-full rounded-xl border p-4 pr-12 focus:outline-none"
+          class="mb-2 w-full rounded-xl border border-neutral-40 p-4 pr-12 placeholder:text-neutral-60 focus:outline-none"
         />
         <img
           v-if="password"
@@ -84,25 +84,25 @@ const showPassword = ref(false);
   <div>
     <button
       type="button"
-      class="text-title mb-4 w-full rounded-xl p-4 text-center transition"
+      class="mb-4 w-full rounded-xl p-4 text-center text-title transition"
       :class="
         !email || !password || !passwordAgain
-          ? 'bg-neutral-40 text-neutral-60 pointer-events-none'
-          : 'bg-primary hover:bg-primary-120 text-white'
+          ? 'pointer-events-none bg-neutral-40 text-neutral-60'
+          : 'bg-primary text-white hover:bg-primary-120'
       "
     >
       立即註冊
     </button>
-    <p class="text-body2 text-neutral-80 space-x-1">
+    <p class="space-x-1 text-body2 text-neutral-80">
       建立帳號即表示您同意我們的
       <NuxtLink to="#" class="underline">服務條款</NuxtLink>
       及
       <NuxtLink to="#" class="underline">隱私權政策</NuxtLink>
     </p>
   </div>
-  <p class="text-neutral-80 space-x-2">
+  <p class="space-x-2 text-neutral-80">
     已經有 ZOBAA 帳號了嗎？
-    <NuxtLink to="/login" class="text-primary font-semibold underline">
+    <NuxtLink to="/login" class="font-semibold text-primary underline">
       立即登入
     </NuxtLink>
   </p>
