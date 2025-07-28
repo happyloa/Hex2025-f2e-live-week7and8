@@ -223,14 +223,14 @@ const goTo = (idx) => {
     </div>
   </section>
   <!-- 大阪 TOP 10! -->
-  <section class="px-3 py-10 md:py-20">
+  <section class="pl-3 py-10 md:py-20">
     <div class="mx-auto max-w-container">
       <h2 class="mb-5 text-h3 md:mb-10 md:text-h1">大阪 TOP 10!</h2>
       <CommonAttractionsCarousel />
     </div>
   </section>
   <!-- 來自 ZOBAA 的大阪推薦 -->
-  <section class="px-3 py-10 md:py-20">
+  <section class="pl-3 py-10 md:py-20">
     <div class="mx-auto max-w-container">
       <h2 class="mb-5 text-h3 md:mb-10 md:text-h1">
         來自 ZOBAA 的<br class="block md:hidden" />大阪推薦
