@@ -8,7 +8,9 @@
       <ul class="grid grid-cols-2 gap-4 md:grid-cols-4 md:gap-6">
         <!-- 分類1 -->
         <li>
-          <article class="rounded-2xl border border-neutral-40 md:rounded-3xl">
+          <article
+            class="rounded-2xl border border-neutral-40 transition hover:shadow-card md:rounded-3xl"
+          >
             <div
               class="justify-items-center rounded-t-2xl bg-primary-10 py-5 md:rounded-t-3xl"
             >
@@ -26,7 +28,9 @@
         </li>
         <!-- 分類2 -->
         <li>
-          <article class="rounded-2xl border border-neutral-40 md:rounded-3xl">
+          <article
+            class="rounded-2xl border border-neutral-40 transition hover:shadow-card md:rounded-3xl"
+          >
             <div
               class="justify-items-center rounded-t-2xl bg-primary-10 py-5 md:rounded-t-3xl"
             >
@@ -44,7 +48,9 @@
         </li>
         <!-- 分類3 -->
         <li>
-          <article class="rounded-2xl border border-neutral-40 md:rounded-3xl">
+          <article
+            class="rounded-2xl border border-neutral-40 transition hover:shadow-card md:rounded-3xl"
+          >
             <div
               class="justify-items-center rounded-t-2xl bg-primary-10 py-5 md:rounded-t-3xl"
             >
@@ -62,7 +68,9 @@
         </li>
         <!-- 分類4 -->
         <li>
-          <article class="rounded-2xl border border-neutral-40 md:rounded-3xl">
+          <article
+            class="rounded-2xl border border-neutral-40 transition hover:shadow-card md:rounded-3xl"
+          >
             <div
               class="justify-items-center rounded-t-2xl bg-primary-10 py-5 md:rounded-t-3xl"
             >
