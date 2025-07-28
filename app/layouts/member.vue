@@ -1,19 +1,19 @@
 <template>
-  <section class="relative overflow-x-hidden bg-[#F4F4F4] px-3">
+  <section class="bg-neutral-15 relative overflow-x-hidden px-3">
     <!-- 裝飾線條 -->
     <img
       src="/images/my-account/bg-line.svg"
       alt="裝飾線條"
       class="absolute left-1/2 top-[324px] z-0 hidden -translate-x-1/2 md:block"
     />
-    <div class="max-w-container relative z-10 mx-auto py-10 md:py-[120px]">
+    <div class="relative z-10 mx-auto max-w-container py-10 md:py-[120px]">
       <!-- Hero -->
       <div
         class="relative h-[200px] rounded-3xl bg-[url('/images/my-account/hero.webp')] bg-cover bg-center md:h-[480px]"
       >
         <!-- 更換封面 -->
         <span
-          class="hover:text-primary-40 absolute bottom-8 right-8 hidden cursor-pointer items-center gap-2 text-white transition md:flex"
+          class="absolute bottom-8 right-8 hidden cursor-pointer items-center gap-2 text-white transition hover:text-primary-40 md:flex"
         >
           <svg
             width="24"
@@ -39,11 +39,11 @@
           <img
             src="/images/my-account/avatar-1.webp"
             alt="Jessica"
-            class="border-primary max-w-[120px] rounded-full border-2 md:max-w-40 md:border-4"
+            class="max-w-[120px] rounded-full border-2 border-primary md:max-w-40 md:border-4"
           />
           <button
             type="button"
-            class="bg-primary hover:bg-primary-40 hover:text-primary absolute bottom-0 right-0 rounded-full p-2 text-white transition md:bottom-1 md:right-1"
+            class="absolute bottom-0 right-0 rounded-full bg-primary p-2 text-white transition hover:bg-primary-40 hover:text-primary md:bottom-1 md:right-1"
           >
             <svg
               width="24"
@@ -61,30 +61,30 @@
             </svg>
           </button>
         </div>
-        <h3 class="md:text-h5 text-h6">Jessica Yen</h3>
+        <h3 class="text-h6 md:text-h5">Jessica Yen</h3>
         <p>jessica.yen@gmail.com</p>
       </div>
       <!-- 會員頁面選單 -->
       <nav
-        class="shadow-section text-title mb-4 whitespace-nowrap rounded-2xl bg-white py-4 text-black md:mb-6 md:rounded-3xl"
+        class="mb-4 whitespace-nowrap rounded-2xl bg-white py-4 text-title text-black shadow-section md:mb-6 md:rounded-3xl"
       >
-        <ul class="border-neutral-40 grid grid-cols-3 divide-x">
+        <ul class="grid grid-cols-3 divide-x border-neutral-40">
           <li class="px-6 py-3">
-            <NuxtLink to="/my-account" class="border-primary-40 border-b-4 pb-2"
+            <NuxtLink to="/my-account" class="border-b-4 border-primary-40 pb-2"
               >我的帳號
             </NuxtLink>
           </li>
           <li class="px-6 py-3">
             <NuxtLink
               to="/my-account"
-              class="hover:border-primary-40 border-b-4 border-transparent pb-2 transition"
+              class="border-b-4 border-transparent pb-2 transition hover:border-primary-40"
               >訂單管理
             </NuxtLink>
           </li>
           <li class="px-6 py-3">
             <NuxtLink
               to="/my-account"
-              class="hover:border-primary-40 border-b-4 border-transparent pb-2 transition"
+              class="border-b-4 border-transparent pb-2 transition hover:border-primary-40"
               >我的收藏
             </NuxtLink>
           </li>
