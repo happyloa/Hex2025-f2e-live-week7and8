@@ -88,6 +88,72 @@
       <CommonAttractionsCarousel />
     </div>
   </section>
+  <!-- 來自 ZOBAA 的大阪推薦 -->
+  <section class="px-3 py-10 md:py-20">
+    <div class="mx-auto max-w-container">
+      <h2 class="mb-5 text-h3 md:mb-10 md:text-h1">
+        來自 ZOBAA 的<br class="block md:hidden" />大阪推薦
+      </h2>
+      <!-- 景點分類選單 -->
+      <nav
+        class="mb-5 overflow-x-auto border-b border-neutral-40 text-title md:mb-10"
+      >
+        <ul class="flex gap-8 whitespace-nowrap">
+          <li>
+            <NuxtLink
+              to="#"
+              class="group relative block py-4 text-title text-primary"
+              >觀光行程
+              <hr
+                class="absolute bottom-0 left-1/2 w-1/2 -translate-x-1/2 rounded-full border-2 border-primary opacity-100 transition"
+              />
+            </NuxtLink>
+          </li>
+          <li>
+            <NuxtLink
+              to="#"
+              class="group relative block py-4 text-body text-neutral-80"
+              >景點門票
+              <hr
+                class="absolute bottom-0 left-1/2 w-1/2 -translate-x-1/2 rounded-full border-2 border-primary opacity-0 transition group-hover:opacity-100"
+              />
+            </NuxtLink>
+          </li>
+          <li>
+            <NuxtLink
+              to="#"
+              class="group relative block py-4 text-body text-neutral-80"
+              >交通優惠
+              <hr
+                class="absolute bottom-0 left-1/2 w-1/2 -translate-x-1/2 rounded-full border-2 border-primary opacity-0 transition group-hover:opacity-100"
+              />
+            </NuxtLink>
+          </li>
+          <li>
+            <NuxtLink
+              to="#"
+              class="group relative block py-4 text-body text-neutral-80"
+              >美食餐廳
+              <hr
+                class="absolute bottom-0 left-1/2 w-1/2 -translate-x-1/2 rounded-full border-2 border-primary opacity-0 transition group-hover:opacity-100"
+              />
+            </NuxtLink>
+          </li>
+          <li>
+            <NuxtLink
+              to="#"
+              class="group relative block py-4 text-body text-neutral-80"
+              >本月優惠
+              <hr
+                class="absolute bottom-0 left-1/2 w-1/2 -translate-x-1/2 rounded-full border-2 border-primary opacity-0 transition group-hover:opacity-100"
+              />
+            </NuxtLink>
+          </li>
+        </ul>
+      </nav>
+      <CommonAttractionsCarousel />
+    </div>
+  </section>
   <!-- 旅人攻略 -->
   <section class="bg-primary-10 px-3 py-10 md:py-[120px]">
     <div class="mx-auto max-w-container space-y-5 md:space-y-20">
