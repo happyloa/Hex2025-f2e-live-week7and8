@@ -136,7 +136,7 @@ const goTo = (idx) => {
   <section class="px-3 py-10 md:py-20">
     <div class="mx-auto max-w-container">
       <h2 class="mb-5 text-h3 md:mb-10 md:text-h1">
-        想怎麼玩大阪？熱門分類快速選！
+        想怎麼玩大阪？<br class="block md:hidden" />熱門分類快速選！
       </h2>
       <ul class="grid grid-cols-2 gap-4 md:grid-cols-4 md:gap-6">
         <!-- 分類1 -->
