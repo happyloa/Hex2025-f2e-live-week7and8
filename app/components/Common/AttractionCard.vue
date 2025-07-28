@@ -78,13 +78,13 @@ const {
 </script>
 
 <template>
-  <article class="group">
+  <article class="group cursor-pointer">
     <!-- 景點圖片 -->
     <div class="relative mb-4 overflow-hidden rounded-[20px]">
       <img
         :src="img"
         :alt="name"
-        class="rounded-[20px] transition group-hover:scale-105"
+        class="rounded-[20px] transition group-hover:scale-110"
       />
       <!-- 收藏按鈕 -->
       <button
@@ -95,7 +95,7 @@ const {
       </button>
     </div>
     <!-- 景點名稱 -->
-    <h3 class="mb-2 text-title text-black">
+    <h3 class="mb-2 text-title text-black transition group-hover:text-primary">
       {{ name }}
     </h3>
     <!-- 景點標籤 -->
