@@ -178,7 +178,7 @@
         <!-- 攻略卡片1 -->
         <li>
           <article
-            class="flex flex-col gap-4 rounded-[32px] bg-white p-4 md:flex-row md:gap-8 md:p-8"
+            class="group flex flex-col gap-4 rounded-[32px] bg-white p-4 md:flex-row md:gap-8 md:p-8"
           >
             <img
               src="/images/search-result/guide-1.webp"
@@ -200,11 +200,15 @@
                 </li>
               </ul>
               <!-- 標題 -->
-              <h3 class="mb-2 text-h4 text-black md:text-h2">
+              <h3
+                class="mb-2 text-h4 text-black transition group-hover:text-primary md:text-h2"
+              >
                 空堀商店街的散步節奏
               </h3>
               <!-- 簡短描述 -->
-              <p class="mb-10 text-neutral-80">
+              <p
+                class="mb-10 text-neutral-80 transition group-hover:text-primary-60"
+              >
                 離開熱鬧難波，走進空堀這座時間凍結的老街，每家店都像一段回憶：木造喫茶、手工小物、安靜的巷弄轉角。這裡沒有觀光氣氛，只有城市最真實的日常樣貌...
               </p>
               <!-- 查看按鈕 -->
@@ -234,7 +238,7 @@
         <!-- 攻略卡片2 -->
         <li>
           <article
-            class="flex flex-col gap-4 rounded-[32px] bg-white p-4 md:flex-row md:gap-8 md:p-8"
+            class="group flex flex-col gap-4 rounded-[32px] bg-white p-4 md:flex-row md:gap-8 md:p-8"
           >
             <img
               src="/images/search-result/guide-2.webp"
@@ -256,11 +260,15 @@
                 </li>
               </ul>
               <!-- 標題 -->
-              <h3 class="mb-2 text-h4 text-black md:text-h2">
+              <h3
+                class="mb-2 text-h4 text-black transition group-hover:text-primary md:text-h2"
+              >
                 深夜的章魚燒與便利商店啤酒
               </h3>
               <!-- 簡短描述 -->
-              <p class="mb-10 text-neutral-80">
+              <p
+                class="mb-10 text-neutral-80 transition group-hover:text-primary-60"
+              >
                 難波站邊的小巷，有開到凌晨的章魚燒老店。坐在路邊配一罐便利商店啤酒，看路人談天、喝醉、笑鬧，這種庶民感才是我最懷念的大阪味道。
               </p>
               <!-- 查看按鈕 -->
@@ -290,7 +298,7 @@
         <!-- 攻略卡片3 -->
         <li>
           <article
-            class="flex flex-col gap-4 rounded-[32px] bg-white p-4 md:flex-row md:gap-8 md:p-8"
+            class="group flex flex-col gap-4 rounded-[32px] bg-white p-4 md:flex-row md:gap-8 md:p-8"
           >
             <img
               src="/images/search-result/guide-3.webp"
@@ -312,11 +320,15 @@
                 </li>
               </ul>
               <!-- 標題 -->
-              <h3 class="mb-2 text-h4 text-black md:text-h2">
+              <h3
+                class="mb-2 text-h4 text-black transition group-hover:text-primary md:text-h2"
+              >
                 一個人在中之島圖書館待一整天
               </h3>
               <!-- 簡短描述 -->
-              <p class="mb-10 text-neutral-80">
+              <p
+                class="mb-10 text-neutral-80 transition group-hover:text-primary-60"
+              >
                 陰天的中之島很安靜，我選擇在百年圖書館裡消磨一整天。閱讀、打盹、寫明信片，從高聳書架與拱形窗邊找到片刻的呼吸空間。不趕行程的日子，才最像我想要的旅途。
               </p>
               <!-- 查看按鈕 -->
@@ -346,7 +358,7 @@
         <!-- 攻略卡片4 -->
         <li>
           <article
-            class="flex flex-col gap-4 rounded-[32px] bg-white p-4 md:flex-row md:gap-8 md:p-8"
+            class="group flex flex-col gap-4 rounded-[32px] bg-white p-4 md:flex-row md:gap-8 md:p-8"
           >
             <img
               src="/images/search-result/guide-4.webp"
@@ -368,11 +380,15 @@
                 </li>
               </ul>
               <!-- 標題 -->
-              <h3 class="mb-2 text-h4 text-black md:text-h2">
+              <h3
+                class="mb-2 text-h4 text-black transition group-hover:text-primary md:text-h2"
+              >
                 跟著在地人玩「新世界」
               </h3>
               <!-- 簡短描述 -->
-              <p class="mb-10 text-neutral-80">
+              <p
+                class="mb-10 text-neutral-80 transition group-hover:text-primary-60"
+              >
                 走進「新世界」，才發現大阪有多狂、有多生活。串炸店裡全是吆喝聲、立吞店排滿上班族，還有拍不完的霓虹與搞笑招牌。這一區又亂又熱鬧，但真實又迷人。
               </p>
               <!-- 查看按鈕 -->
