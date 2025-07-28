@@ -1,6 +1,6 @@
 <template>
   <div
-    class="text-primary text-body2 md:text-body selection:bg-primary-120 selection:text-primary-10"
+    class="text-body2 text-primary selection:bg-primary-120 selection:text-primary-10 md:text-body"
   >
     <NuxtLayout>
       <NuxtRouteAnnouncer />
