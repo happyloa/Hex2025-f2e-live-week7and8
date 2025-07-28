@@ -3,9 +3,135 @@ useSeoMeta({
   title: "搜尋結果 - 大阪 | 2025 切版直播班 - 旅遊網站 W7&W8",
   ogTitle: "搜尋結果 - 大阪 | 2025 切版直播班 - 旅遊網站 W7&W8",
 });
+
+const slides = [
+  "/images/search-result/osaka-1.webp",
+  "/images/search-result/osaka-2.webp",
+  "/images/search-result/osaka-3.webp",
+  "/images/search-result/osaka-4.webp",
+  "/images/search-result/osaka-5.webp",
+];
+
+const osakaImgSwiper = ref(null);
+const activeIndex = ref(0);
+
+const onSlideChange = (e) => {
+  // e.detail[0] 就是 Swiper instance
+  const [inst] = e.detail;
+  activeIndex.value = inst.realIndex; // loop 模式下要看 realIndex
+};
+
+/** 點點點擊 → 跳到指定張（用 element.swiper 呼叫方法） */
+const goTo = (idx) => {
+  osakaImgSwiper.value?.swiper?.slideToLoop(idx);
+};
 </script>
 
 <template>
+  <!-- 搜尋結果 hero -->
+  <section class="px-3 py-10 md:py-20">
+    <div class="mx-auto max-w-container">
+      <!-- 麵包屑 -->
+      <nav class="mb-10 hidden items-center gap-3 md:flex">
+        <NuxtLink to="/">首頁</NuxtLink>
+        <span class="text-body2 text-neutral-60">/</span>
+        <NuxtLink to="/">日本</NuxtLink>
+        <span class="text-body2 text-neutral-60">/</span>
+        <NuxtLink to="/">關西</NuxtLink>
+        <span class="text-body2 text-neutral-60">/</span>
+        <span class="text-neutral-60">大阪</span>
+      </nav>
+      <!-- 主要標題 -->
+      <h1 class="mb-2 text-h3 text-black md:text-h1">大阪</h1>
+      <!-- 介紹 -->
+      <p class="mb-6 text-neutral-80">
+        大阪，一座融合傳統與現代的城市，擁有豐富的歷史文化、熱鬧的購物街區與世界知名的美食天堂。從氣派的大阪城到霓虹閃爍的道頓堀，每一處都充滿驚喜。無論是第一次造訪，還是再次回味，大阪總能用它的熱情與魅力，讓你留下難忘回憶。
+      </p>
+      <!-- 圖片 -->
+      <div class="relative rounded-2xl md:rounded-3xl">
+        <!-- 查看更多按鈕 -->
+        <button
+          type="button"
+          class="absolute bottom-3 right-3 z-10 rounded-xl border border-primary bg-white px-8 py-4 text-title transition hover:bg-primary hover:text-white lg:bottom-8 lg:right-8"
+        >
+          查看更多
+        </button>
+        <!-- 電腦版圖片 -->
+        <div class="hidden gap-2 xl:flex">
+          <img
+            src="/images/search-result/osaka-1.webp"
+            alt="大阪圖片1"
+            class="max-w-[720px] rounded-l-3xl"
+          />
+          <div class="grid grid-cols-2 gap-2">
+            <img
+              src="/images/search-result/osaka-2.webp"
+              alt="大阪圖片2"
+              class="h-full object-cover"
+            />
+            <img
+              src="/images/search-result/osaka-3.webp"
+              alt="大阪圖片3"
+              class="h-full rounded-tr-3xl object-cover"
+            />
+            <img
+              src="/images/search-result/osaka-4.webp"
+              alt="大阪圖片4"
+              class="h-full object-cover"
+            />
+            <img
+              src="/images/search-result/osaka-5.webp"
+              alt="大阪圖片5"
+              class="h-full rounded-br-3xl object-cover"
+            />
+          </div>
+        </div>
+        <!-- 手機版圖片 -->
+        <ClientOnly>
+          <div class="relative block xl:hidden">
+            <swiper-container
+              ref="osakaImgSwiper"
+              :breakpoints="{
+                576: {
+                  slidesPerView: 2.2,
+                },
+                0: {
+                  slidesPerView: 1,
+                },
+              }"
+              space-between="8"
+              :autoplay="{
+                delay: 5000,
+              }"
+              :loop="true"
+              @swiperslidechange="onSlideChange"
+            >
+              <swiper-slide v-for="(img, idx) in slides" :key="idx">
+                <img
+                  :src="img"
+                  :alt="`大阪圖片${idx + 1}`"
+                  class="aspect-[1.458/1] rounded-2xl object-cover"
+                />
+              </swiper-slide>
+            </swiper-container>
+            <!-- 自製點點 -->
+            <div class="absolute bottom-3 left-3 z-10 flex gap-1">
+              <button
+                v-for="(img, i) in slides"
+                :key="img"
+                type="button"
+                @click="goTo(i)"
+                class="h-2 rounded-full"
+                :class="activeIndex === i ? 'w-6 bg-primary' : 'w-2 bg-white'"
+                :aria-pressed="activeIndex === i"
+                :aria-label="`跳至第 ${i + 1} 張`"
+              ></button>
+            </div>
+          </div>
+        </ClientOnly>
+      </div>
+    </div>
+  </section>
   <!-- 熱門分類 -->
   <section class="px-3 py-10 md:py-20">
     <div class="mx-auto max-w-container">
