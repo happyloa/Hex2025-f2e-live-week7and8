@@ -16,6 +16,7 @@ export default <Partial<Config>>{
           "80": "#4B4B4B",
           "60": "#909090",
           "40": "#ECECEC",
+          "15": "#F4F4F4",
           "10": "#F9F9F9",
         },
         success: {
