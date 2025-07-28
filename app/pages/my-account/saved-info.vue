@@ -11,23 +11,23 @@ definePageMeta({
 
 <template>
   <main
-    class="shadow-section rounded-2xl bg-white px-4 pb-4 pt-8 text-black md:rounded-3xl md:px-8 md:pb-8 md:pt-16"
+    class="rounded-2xl bg-white px-4 pb-4 pt-8 text-black shadow-section md:rounded-3xl md:px-8 md:pb-8 md:pt-16"
   >
-    <h1 class="md:text-h1 text-h3 mb-10">我的帳號</h1>
+    <h1 class="mb-10 text-h3 md:text-h1">我的帳號</h1>
     <CommonMemberMyAccountPageTab />
     <!-- 常用旅客 -->
     <section class="mb-10">
       <ul class="space-y-6 md:space-y-3">
         <li>
           <article
-            class="border-neutral-40 hover:bg-primary-10 group flex flex-wrap items-center justify-between gap-4 rounded-[20px] border p-4 transition md:p-6"
+            class="group flex flex-wrap items-center justify-between gap-4 rounded-[20px] border border-neutral-40 p-4 transition hover:bg-primary-10 md:p-6"
           >
             <!-- 旅客資訊 -->
             <div class="flex items-center gap-2">
               <img
                 src="/images/my-account/avatar-1.webp"
                 alt="Jessica Yen"
-                class="border-primary size-10 rounded-full border"
+                class="size-10 rounded-full border border-primary"
               />
               <h2 class="text-h6">Jessica Yen</h2>
             </div>
@@ -35,7 +35,7 @@ definePageMeta({
             <div class="flex items-center gap-2 whitespace-nowrap">
               <button
                 type="button"
-                class="border-primary text-primary hover:bg-primary text-title flex items-center justify-center gap-1 rounded-xl border bg-white px-8 py-4 transition hover:text-white group-hover:opacity-100 md:opacity-0"
+                class="flex items-center justify-center gap-1 rounded-xl border border-primary bg-white px-8 py-4 text-title text-primary transition hover:bg-primary hover:text-white group-hover:opacity-100 md:opacity-0"
               >
                 <svg
                   width="24"
@@ -55,7 +55,7 @@ definePageMeta({
               </button>
               <button
                 type="button"
-                class="border-primary text-primary hover:bg-primary text-title flex items-center justify-center gap-1 rounded-xl border bg-white px-8 py-4 transition hover:text-white group-hover:opacity-100 md:opacity-0"
+                class="flex items-center justify-center gap-1 rounded-xl border border-primary bg-white px-8 py-4 text-title text-primary transition hover:bg-primary hover:text-white group-hover:opacity-100 md:opacity-0"
               >
                 <svg
                   width="24"
@@ -78,14 +78,14 @@ definePageMeta({
         </li>
         <li>
           <article
-            class="border-neutral-40 hover:bg-primary-10 group flex flex-wrap items-center justify-between gap-4 rounded-[20px] border p-4 transition md:p-6"
+            class="group flex flex-wrap items-center justify-between gap-4 rounded-[20px] border border-neutral-40 p-4 transition hover:bg-primary-10 md:p-6"
           >
             <!-- 旅客資訊 -->
             <div class="flex items-center gap-2">
               <img
                 src="/images/my-account/avatar-2.webp"
                 alt="Jenny Lin"
-                class="border-primary size-10 rounded-full border"
+                class="size-10 rounded-full border border-primary object-cover"
               />
               <div>
                 <h2 class="text-h6 md:mb-2">Jenny Lin</h2>
@@ -153,7 +153,7 @@ definePageMeta({
             <div class="flex items-center gap-2 whitespace-nowrap">
               <button
                 type="button"
-                class="border-primary text-primary hover:bg-primary text-title flex items-center justify-center gap-1 rounded-xl border bg-white px-8 py-4 transition hover:text-white group-hover:opacity-100 md:opacity-0"
+                class="flex items-center justify-center gap-1 rounded-xl border border-primary bg-white px-8 py-4 text-title text-primary transition hover:bg-primary hover:text-white group-hover:opacity-100 md:opacity-0"
               >
                 <svg
                   width="24"
@@ -173,7 +173,7 @@ definePageMeta({
               </button>
               <button
                 type="button"
-                class="border-primary text-primary hover:bg-primary text-title flex items-center justify-center gap-1 rounded-xl border bg-white px-8 py-4 transition hover:text-white group-hover:opacity-100 md:opacity-0"
+                class="flex items-center justify-center gap-1 rounded-xl border border-primary bg-white px-8 py-4 text-title text-primary transition hover:bg-primary hover:text-white group-hover:opacity-100 md:opacity-0"
               >
                 <svg
                   width="24"
@@ -198,7 +198,7 @@ definePageMeta({
     </section>
     <button
       type="button"
-      class="border-primary text-primary hover:bg-primary text-title flex w-full items-center justify-center gap-1 rounded-xl border px-8 py-4 transition hover:text-white md:ml-auto md:w-fit"
+      class="flex w-full items-center justify-center gap-1 rounded-xl border border-primary px-8 py-4 text-title text-primary transition hover:bg-primary hover:text-white md:ml-auto md:w-fit"
     >
       <svg
         width="24"
