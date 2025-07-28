@@ -1,7 +1,7 @@
 <template>
-  <footer class="bg-[#282828] px-3 py-20 lg:py-[100px]">
+  <footer class="bg-black px-3 py-20 lg:py-[100px]">
     <div
-      class="text-body mx-auto flex max-w-[1280px] flex-col justify-between gap-10 text-white lg:flex-row lg:items-center"
+      class="mx-auto flex max-w-[1280px] flex-col justify-between gap-10 text-body text-white lg:flex-row lg:items-center"
     >
       <nav class="space-y-10 lg:space-y-8">
         <NuxtLink to="/">
@@ -13,22 +13,22 @@
         </NuxtLink>
         <ul class="flex flex-col gap-4 lg:flex-row lg:gap-8">
           <li>
-            <NuxtLink to="#" class="hover:text-primary-40 transition"
+            <NuxtLink to="#" class="transition hover:text-primary-40"
               >常見問題
             </NuxtLink>
           </li>
           <li>
-            <NuxtLink to="#" class="hover:text-primary-40 transition"
+            <NuxtLink to="#" class="transition hover:text-primary-40"
               >關於我們
             </NuxtLink>
           </li>
           <li>
-            <NuxtLink to="#" class="hover:text-primary-40 transition"
+            <NuxtLink to="#" class="transition hover:text-primary-40"
               >隱私權政策
             </NuxtLink>
           </li>
           <li>
-            <NuxtLink to="#" class="hover:text-primary-40 transition"
+            <NuxtLink to="#" class="transition hover:text-primary-40"
               >使用者條款
             </NuxtLink>
           </li>
@@ -41,7 +41,7 @@
             <a
               href="#"
               target="_blank"
-              class="hover:border-primary-40 hover:text-primary-40 block rounded-full border border-white p-3 text-white transition"
+              class="block rounded-full border border-white p-3 text-white transition hover:border-primary-40 hover:text-primary-40"
             >
               <svg
                 width="18"
@@ -64,7 +64,7 @@
             <a
               href="#"
               target="_blank"
-              class="hover:border-primary-40 hover:text-primary-40 block rounded-full border border-white px-2.5 py-3 text-white transition"
+              class="block rounded-full border border-white px-2.5 py-3 text-white transition hover:border-primary-40 hover:text-primary-40"
             >
               <svg
                 width="20"
@@ -87,7 +87,7 @@
             <a
               href="#"
               target="_blank"
-              class="hover:border-primary-40 hover:text-primary-40 block rounded-full border border-white px-4 py-3 text-white transition"
+              class="block rounded-full border border-white px-4 py-3 text-white transition hover:border-primary-40 hover:text-primary-40"
             >
               <svg
                 width="9"
