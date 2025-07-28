@@ -106,7 +106,7 @@
             </a>
           </li>
         </ul>
-        <p class="text-body-2 text-[#D4D4D4]">
+        <p class="text-body2 text-[#D4D4D4]">
           copyright © 2025 ZOBAA 旅遊網站 All Rights Reserved.
         </p>
       </div>
