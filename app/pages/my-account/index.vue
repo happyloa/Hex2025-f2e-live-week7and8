@@ -11,42 +11,42 @@ definePageMeta({
 
 <template>
   <main
-    class="shadow-section rounded-2xl bg-white px-4 pb-4 pt-8 text-black md:rounded-3xl md:px-8 md:pb-8 md:pt-16"
+    class="rounded-2xl bg-white px-4 pb-4 pt-8 text-black shadow-section md:rounded-3xl md:px-8 md:pb-8 md:pt-16"
   >
-    <h1 class="md:text-h1 text-h3 mb-10">我的帳號</h1>
+    <h1 class="mb-10 text-h3 md:text-h1">我的帳號</h1>
     <CommonMemberMyAccountPageTab />
     <!-- 會員資訊 -->
     <section class="mb-10 space-y-6">
       <div class="space-y-2">
         <h2 class="text-neutral-80">姓名</h2>
-        <p class="text-title md:text-h6 text-black">Jessica Yen</p>
+        <p class="text-title text-black md:text-h6">Jessica Yen</p>
       </div>
       <div class="space-y-2">
         <h2 class="text-neutral-80">電子信箱</h2>
-        <p class="text-title md:text-h6 text-black">jessica.yen@gmail.com</p>
+        <p class="text-title text-black md:text-h6">jessica.yen@gmail.com</p>
       </div>
       <div class="space-y-2">
         <h2 class="text-neutral-80">密碼</h2>
-        <p class="text-title md:text-h6 text-black">************</p>
+        <p class="text-title text-black md:text-h6">************</p>
       </div>
       <div class="space-y-2">
         <h2 class="text-neutral-80">聯絡電話</h2>
-        <p class="text-title md:text-h6 text-black">+886 912-345-678</p>
+        <p class="text-title text-black md:text-h6">+886 912-345-678</p>
       </div>
       <div class="space-y-2">
         <h2 class="text-neutral-80">地址</h2>
-        <p class="text-title md:text-h6 text-black">
+        <p class="text-title text-black md:text-h6">
           台北市士林區幸福路193號5樓之1
         </p>
       </div>
       <div class="space-y-2">
         <h2 class="text-neutral-80">生日</h2>
-        <p class="text-title md:text-h6 text-black">1995-09-20</p>
+        <p class="text-title text-black md:text-h6">1995-09-20</p>
       </div>
     </section>
     <button
       type="button"
-      class="border-primary text-primary hover:bg-primary text-title flex w-full items-center justify-center gap-1 rounded-xl border px-8 py-4 transition hover:text-white md:ml-auto md:w-fit"
+      class="flex w-full items-center justify-center gap-1 rounded-xl border border-primary px-8 py-4 text-title text-primary transition hover:bg-primary hover:text-white md:ml-auto md:w-fit"
     >
       <svg
         width="24"
