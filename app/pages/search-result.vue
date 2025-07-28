@@ -1,3 +1,10 @@
+<script setup>
+useSeoMeta({
+  title: "搜尋結果 - 大阪 | 2025 切版直播班 - 旅遊網站 W7&W8",
+  ogTitle: "搜尋結果 - 大阪 | 2025 切版直播班 - 旅遊網站 W7&W8",
+});
+</script>
+
 <template>
   <!-- 熱門分類 -->
   <section class="px-3 py-10 md:py-20">
