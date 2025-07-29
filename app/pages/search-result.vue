@@ -29,7 +29,7 @@ const goTo = (idx) => {
 
 <template>
   <!-- 搜尋結果 hero -->
-  <section class="px-3 py-10 md:py-20">
+  <main class="px-3 py-10 md:py-20">
     <div class="mx-auto max-w-container">
       <!-- 麵包屑 -->
       <nav class="mb-10 hidden items-center gap-3 md:flex">
@@ -131,7 +131,7 @@ const goTo = (idx) => {
         </ClientOnly>
       </div>
     </div>
-  </section>
+  </main>
   <!-- 熱門分類 -->
   <section class="px-3 py-10 md:py-20">
     <div class="mx-auto max-w-container">
