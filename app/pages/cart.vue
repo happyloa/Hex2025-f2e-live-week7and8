@@ -6,6 +6,19 @@ useSeoMeta({
 </script>
 
 <template>
+  <!-- 還沒有商品 -->
+  <section class="bg-neutral-15 px-3 py-20">
+    <div class="mx-auto justify-items-center space-y-6 text-center">
+      <img src="/images/cart/empty.svg" alt="沒有商品" />
+      <p class="text-title text-neutral-80">購物車還沒有商品，立即逛逛！</p>
+      <NuxtLink
+        to="/product-info"
+        class="block w-full max-w-[229px] rounded-xl bg-primary p-4 text-center text-title text-white transition hover:bg-primary-120 md:max-w-[258px]"
+      >
+        看看其他行程
+      </NuxtLink>
+    </div>
+  </section>
   <!-- 其他旅人也買了 -->
   <section class="bg-neutral-15 py-10 pl-3 md:py-[120px] lg:px-3">
     <div class="mx-auto max-w-container">
