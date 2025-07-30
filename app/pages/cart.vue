@@ -366,7 +366,7 @@ const showDetail = ref(false);
     <transition name="backdrop">
       <div
         v-if="showDetail"
-        class="fixed inset-0 z-10 bg-[#00000066]"
+        class="fixed inset-0 z-10 block bg-[#00000066] lg:hidden"
         @click="showDetail = false"
       ></div>
     </transition>
@@ -375,7 +375,7 @@ const showDetail = ref(false);
     <transition name="offcanvas">
       <div
         v-if="showDetail"
-        class="fixed bottom-20 left-0 right-0 z-20 rounded-t-xl bg-white shadow-normal"
+        class="fixed bottom-20 left-0 right-0 z-20 block rounded-t-xl bg-white shadow-normal lg:hidden"
         role="dialog"
         aria-modal="true"
       >
