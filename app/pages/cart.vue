@@ -310,6 +310,7 @@ const showDetail = ref(false);
       <CommonAttractionsCarousel />
     </div>
   </section>
+  <!-- 行動版總計與明細開關 -->
   <aside
     class="sticky bottom-0 z-30 flex items-center justify-between border-t border-neutral-40 bg-white px-4 py-3 lg:hidden"
   >
