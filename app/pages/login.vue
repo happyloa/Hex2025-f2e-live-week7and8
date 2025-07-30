@@ -1,6 +1,4 @@
 <script setup>
-import { NuxtLink } from "#components";
-
 useSeoMeta({
   title: "登入 | 2025 切版直播班 - 旅遊網站 W7&W8",
   ogTitle: "登入 | 2025 切版直播班 - 旅遊網站 W7&W8",
