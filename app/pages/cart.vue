@@ -4,9 +4,14 @@ useSeoMeta({
   ogTitle: "購物車 | 2025 切版直播班 - 旅遊網站 W7&W8",
 });
 
+// ===== 路由與頁面參數 =====
 const route = useRoute();
 
-// 商品列表
+// ===== 狀態：購物車商品列表 =====
+/**
+ * products：購物車中的所有商品，每個商品包含
+ * id、名稱、描述、圖片、單價、數量、是否被選取
+ */
 const products = ref([
   {
     id: 1,
@@ -37,7 +42,11 @@ const products = ref([
   },
 ]);
 
-// 計算是否全選
+// ===== 計算屬性：選取狀態與操作 =====
+/**
+ * selectAll：全選/全不選的計算屬性，checkbox 雙向綁定
+ * 勾選時全選所有商品，反之全不選
+ */
 const selectAll = computed({
   get: () =>
     products.value.length > 0 && products.value.every((p) => p.selected),
@@ -46,46 +55,73 @@ const selectAll = computed({
   },
 });
 
-// 選取商品數
+// 目前被勾選的商品數量
 const selectedCount = computed(
   () => products.value.filter((p) => p.selected).length,
 );
 
-// 刪除選中商品
+// ===== 商品操作函式 =====
+/**
+ * 刪除所有被勾選的商品
+ */
 function deleteSelected() {
   products.value = products.value.filter((p) => !p.selected);
 }
 
-// 個別刪除
+/**
+ * 刪除單一商品
+ * @param {number} idx - 商品在 products 的索引
+ */
 function deleteOne(idx) {
   products.value.splice(idx, 1);
 }
 
-// 數量調整
+/**
+ * 增加指定商品的數量
+ * @param {number} idx - 商品在 products 的索引
+ */
 function incQty(idx) {
   products.value[idx].quantity++;
 }
+
+/**
+ * 減少指定商品的數量（最小為 1）
+ * @param {number} idx - 商品在 products 的索引
+ */
 function decQty(idx) {
   if (products.value[idx].quantity > 1) products.value[idx].quantity--;
 }
 
-// 商品小計、總計
+// ===== 金額計算 =====
+/**
+ * subTotal：只加總有勾選商品的金額
+ */
 const subTotal = computed(() => {
-  // 只加總有勾選的商品
   return products.value
     .filter((p) => p.selected)
     .reduce((sum, p) => sum + p.price * p.quantity, 0);
 });
+
+// 目前折扣（僅有選中商品時才給折扣）
 const discount = computed(() => (selectedCount.value > 0 ? 100 : 0));
+
+// 總計金額 = 小計 - 折扣
 const total = computed(() => subTotal.value - discount.value);
 
-// 判斷有沒有商品
+// ===== UI 顯示控制 =====
+
+/**
+ * hasItems：判斷購物車是否還有商品（含未勾選）
+ */
 const hasItems = computed(() => products.value.length > 0);
 
-// 判斷網址參數有無 hasItems
+/**
+ * urlHasItems：判斷網址參數有無 hasItems
+ * 用於單純切版時強制顯示「有商品」區塊
+ */
 const urlHasItems = computed(() => "hasItems" in route.query);
 
-// Off Canvas 明細相關
+// 控制 Off Canvas (明細) 顯示狀態
 const showDetail = ref(false);
 </script>
 
