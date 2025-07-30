@@ -130,6 +130,7 @@ export default <Partial<Config>>{
       boxShadow: {
         button: "0 4px 12px 0 #00000026",
         card: "0 4px 40px 0 #0000001A",
+        normal: "0 25px 50px -12px #0000001F",
         section: "0 8px 80px 0 #00000014",
       },
     },
