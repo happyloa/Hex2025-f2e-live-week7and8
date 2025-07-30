@@ -380,7 +380,9 @@ const showDetail = ref(false);
         aria-modal="true"
       >
         <!-- 標題/關閉按鈕 -->
-        <div class="flex items-center justify-between p-4">
+        <div
+          class="flex items-center justify-between border-b border-neutral-40 p-4"
+        >
           <h2 class="text-subtitle text-black">費用明細</h2>
           <button @click="showDetail = false" aria-label="關閉明細">
             <svg
