@@ -312,6 +312,7 @@ const showDetail = ref(false);
   </section>
   <!-- 行動版總計與明細開關 -->
   <aside
+    v-if="hasItems && urlHasItems"
     class="sticky bottom-0 z-30 flex items-center justify-between border-t border-neutral-40 bg-white px-4 py-3 lg:hidden"
   >
     <!-- 展開明細、總計 -->
