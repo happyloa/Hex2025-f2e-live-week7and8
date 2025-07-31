@@ -75,6 +75,7 @@ onBeforeUnmount(() => {
               type="text"
               placeholder="搜尋景點、地點或城市"
               class="rounded-lg border border-neutral-40 py-2.5 pl-10 pr-3 placeholder:text-body placeholder:text-neutral-60 focus:outline-none lg:w-[400px]"
+              @keydown.enter="search && $router.push('/search-result')"
             />
           </div>
         </nav>
@@ -153,6 +154,7 @@ onBeforeUnmount(() => {
               autofocus
               placeholder="搜尋景點、地點或城市"
               class="w-full rounded-lg border border-neutral-40 py-2 pl-10 pr-3 placeholder:text-body placeholder:text-neutral-60 focus:outline-none"
+              @keydown.enter="search && $router.push('/search-result')"
             />
           </div>
           <!-- 關閉搜尋按鈕 -->
