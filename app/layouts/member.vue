@@ -1,5 +1,5 @@
 <template>
-  <section class="bg-neutral-15 relative overflow-x-hidden px-3">
+  <section class="relative overflow-x-hidden px-3">
     <!-- 裝飾線條 -->
     <img
       src="/images/my-account/bg-line.svg"
