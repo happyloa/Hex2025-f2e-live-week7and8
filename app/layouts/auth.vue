@@ -40,13 +40,13 @@
         <!-- 第三方登入 -->
         <ul class="space-y-2 md:space-y-4">
           <li
-            class="relative cursor-pointer rounded-xl border border-neutral-40 bg-white p-4 text-center text-body text-neutral-80 transition hover:bg-neutral-40"
+            class="text-neutral relative cursor-pointer rounded-xl border border-neutral-40 bg-white p-4 text-center text-body transition hover:bg-neutral-40"
           >
             <img src="/icons/google.svg" alt="Google 登入" class="absolute" />
             使用 Google 帳號登入
           </li>
           <li
-            class="relative cursor-pointer rounded-xl border border-neutral-40 bg-white p-4 text-center text-body text-neutral-80 transition hover:bg-neutral-40"
+            class="text-neutral relative cursor-pointer rounded-xl border border-neutral-40 bg-white p-4 text-center text-body transition hover:bg-neutral-40"
           >
             <img
               src="/icons/facebook.svg"
@@ -56,7 +56,7 @@
             使用 Facebook 帳號登入
           </li>
           <li
-            class="relative cursor-pointer rounded-xl border border-neutral-40 bg-white p-4 text-center text-body text-neutral-80 transition hover:bg-neutral-40"
+            class="text-neutral relative cursor-pointer rounded-xl border border-neutral-40 bg-white p-4 text-center text-body transition hover:bg-neutral-40"
           >
             <img src="/icons/apple.svg" alt="Apple 登入" class="absolute" />
             使用 Apple 帳號登入

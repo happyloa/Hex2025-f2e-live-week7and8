@@ -13,7 +13,7 @@ export default <Partial<Config>>{
           "10": "#F3EEEC",
         },
         neutral: {
-          "80": "#4B4B4B",
+          DEFAULT: "#4B4B4B",
           "60": "#909090",
           "40": "#ECECEC",
           "15": "#F4F4F4",

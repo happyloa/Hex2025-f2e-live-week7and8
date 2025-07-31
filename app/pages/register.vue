@@ -17,7 +17,7 @@ const showPassword = ref(false);
 
 <template>
   <!-- 欄位 -->
-  <div class="space-y-4 text-body text-neutral-80">
+  <div class="text-neutral space-y-4 text-body">
     <h2 class="text-title text-black">或使用 ZOBAA 帳號註冊</h2>
     <!-- 電子信箱 -->
     <div>
@@ -93,14 +93,14 @@ const showPassword = ref(false);
     >
       立即註冊
     </button>
-    <p class="space-x-1 text-body2 text-neutral-80">
+    <p class="text-neutral space-x-1 text-body2">
       建立帳號即表示您同意我們的
       <NuxtLink to="#" class="underline">服務條款</NuxtLink>
       及
       <NuxtLink to="#" class="underline">隱私權政策</NuxtLink>
     </p>
   </div>
-  <p class="space-x-2 text-neutral-80">
+  <p class="text-neutral space-x-2">
     已經有 ZOBAA 帳號了嗎？
     <NuxtLink to="/login" class="font-semibold text-primary underline">
       立即登入

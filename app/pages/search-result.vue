@@ -44,7 +44,7 @@ const goTo = (idx) => {
       <!-- 主要標題 -->
       <h1 class="mb-2 text-h3 text-black md:text-h1">大阪</h1>
       <!-- 介紹 -->
-      <p class="mb-6 text-neutral-80">
+      <p class="text-neutral mb-6">
         大阪，一座融合傳統與現代的城市，擁有豐富的歷史文化、熱鬧的購物街區與世界知名的美食天堂。從氣派的大阪城到霓虹閃爍的道頓堀，每一處都充滿驚喜。無論是第一次造訪，還是再次回味，大阪總能用它的熱情與魅力，讓你留下難忘回憶。
       </p>
       <!-- 圖片 -->
@@ -155,7 +155,7 @@ const goTo = (idx) => {
             </div>
             <footer class="p-4 md:p-6">
               <h3 class="mb-2 text-title text-black md:text-h6">交通優惠</h3>
-              <p class="text-neutral-80">20+ 種選擇</p>
+              <p class="text-neutral">20+ 種選擇</p>
             </footer>
           </article>
         </li>
@@ -175,7 +175,7 @@ const goTo = (idx) => {
             </div>
             <footer class="p-4 md:p-6">
               <h3 class="mb-2 text-title text-black md:text-h6">一日遊</h3>
-              <p class="text-neutral-80">50+ 種選擇</p>
+              <p class="text-neutral">50+ 種選擇</p>
             </footer>
           </article>
         </li>
@@ -195,7 +195,7 @@ const goTo = (idx) => {
             </div>
             <footer class="p-4 md:p-6">
               <h3 class="mb-2 text-title text-black md:text-h6">景點門票</h3>
-              <p class="text-neutral-80">70+ 種選擇</p>
+              <p class="text-neutral">70+ 種選擇</p>
             </footer>
           </article>
         </li>
@@ -215,7 +215,7 @@ const goTo = (idx) => {
             </div>
             <footer class="p-4 md:p-6">
               <h3 class="mb-2 text-title text-black md:text-h6">美食餐廳</h3>
-              <p class="text-neutral-80">80+ 種選擇</p>
+              <p class="text-neutral">80+ 種選擇</p>
             </footer>
           </article>
         </li>
@@ -253,7 +253,7 @@ const goTo = (idx) => {
           <li>
             <NuxtLink
               to="#"
-              class="group relative block py-4 text-body text-neutral-80"
+              class="text-neutral group relative block py-4 text-body"
               >景點門票
               <hr
                 class="absolute bottom-0 left-1/2 w-1/2 -translate-x-1/2 rounded-full border-2 border-primary opacity-0 transition group-hover:opacity-100"
@@ -263,7 +263,7 @@ const goTo = (idx) => {
           <li>
             <NuxtLink
               to="#"
-              class="group relative block py-4 text-body text-neutral-80"
+              class="text-neutral group relative block py-4 text-body"
               >交通優惠
               <hr
                 class="absolute bottom-0 left-1/2 w-1/2 -translate-x-1/2 rounded-full border-2 border-primary opacity-0 transition group-hover:opacity-100"
@@ -273,7 +273,7 @@ const goTo = (idx) => {
           <li>
             <NuxtLink
               to="#"
-              class="group relative block py-4 text-body text-neutral-80"
+              class="text-neutral group relative block py-4 text-body"
               >美食餐廳
               <hr
                 class="absolute bottom-0 left-1/2 w-1/2 -translate-x-1/2 rounded-full border-2 border-primary opacity-0 transition group-hover:opacity-100"
@@ -283,7 +283,7 @@ const goTo = (idx) => {
           <li>
             <NuxtLink
               to="#"
-              class="group relative block py-4 text-body text-neutral-80"
+              class="text-neutral group relative block py-4 text-body"
               >本月優惠
               <hr
                 class="absolute bottom-0 left-1/2 w-1/2 -translate-x-1/2 rounded-full border-2 border-primary opacity-0 transition group-hover:opacity-100"
@@ -340,7 +340,7 @@ const goTo = (idx) => {
               </h3>
               <!-- 簡短描述 -->
               <p
-                class="mb-10 text-neutral-80 transition group-hover:text-primary-60"
+                class="text-neutral mb-10 transition group-hover:text-primary-60"
               >
                 離開熱鬧難波，走進空堀這座時間凍結的老街，每家店都像一段回憶：木造喫茶、手工小物、安靜的巷弄轉角。這裡沒有觀光氣氛，只有城市最真實的日常樣貌...
               </p>
@@ -400,7 +400,7 @@ const goTo = (idx) => {
               </h3>
               <!-- 簡短描述 -->
               <p
-                class="mb-10 text-neutral-80 transition group-hover:text-primary-60"
+                class="text-neutral mb-10 transition group-hover:text-primary-60"
               >
                 難波站邊的小巷，有開到凌晨的章魚燒老店。坐在路邊配一罐便利商店啤酒，看路人談天、喝醉、笑鬧，這種庶民感才是我最懷念的大阪味道。
               </p>
@@ -460,7 +460,7 @@ const goTo = (idx) => {
               </h3>
               <!-- 簡短描述 -->
               <p
-                class="mb-10 text-neutral-80 transition group-hover:text-primary-60"
+                class="text-neutral mb-10 transition group-hover:text-primary-60"
               >
                 陰天的中之島很安靜，我選擇在百年圖書館裡消磨一整天。閱讀、打盹、寫明信片，從高聳書架與拱形窗邊找到片刻的呼吸空間。不趕行程的日子，才最像我想要的旅途。
               </p>
@@ -520,7 +520,7 @@ const goTo = (idx) => {
               </h3>
               <!-- 簡短描述 -->
               <p
-                class="mb-10 text-neutral-80 transition group-hover:text-primary-60"
+                class="text-neutral mb-10 transition group-hover:text-primary-60"
               >
                 走進「新世界」，才發現大阪有多狂、有多生活。串炸店裡全是吆喝聲、立吞店排滿上班族，還有拍不完的霓虹與搞笑招牌。這一區又亂又熱鬧，但真實又迷人。
               </p>
