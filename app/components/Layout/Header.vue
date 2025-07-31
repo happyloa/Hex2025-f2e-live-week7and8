@@ -42,6 +42,9 @@ onBeforeUnmount(() => {
     window.removeEventListener("scroll", handleScroll);
   }
 });
+
+// 控制 Off Canvas (行動版選單) 顯示狀態
+const showMobileNav = ref(false);
 </script>
 
 <template>
@@ -115,11 +118,12 @@ onBeforeUnmount(() => {
           >
             登入 / 註冊
           </NuxtLink>
-          <!-- 漢堡，只有md以下 -->
+          <!-- 漢堡，只有md以下顯示 -->
           <button
             type="button"
             class="block p-2 text-neutral transition hover:text-black md:hidden"
-            aria-label="開啟主選單"
+            aria-label="開啟 Off canvas 選單"
+            @click="showMobileNav = true"
           >
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
               <path
@@ -175,4 +179,59 @@ onBeforeUnmount(() => {
       </template>
     </div>
   </header>
+  <!-- Backdrop：淡入淡出 -->
+  <transition name="backdrop">
+    <div
+      v-if="showMobileNav"
+      class="fixed inset-0 z-40 block bg-[#00000066] md:hidden"
+      @click="showMobileNav = false"
+    ></div>
+  </transition>
+
+  <!-- Off Canvas：由右往左滑入 -->
+  <transition name="offcanvas">
+    <nav
+      v-if="showMobileNav"
+      class="fixed bottom-0 right-0 top-0 z-50 block w-5/6 bg-white px-6 pb-6 pt-16 md:hidden"
+      role="dialog"
+      aria-modal="true"
+    >
+      <!-- 關閉 Off Canvas 按鈕 -->
+      <button
+        type="button"
+        class="absolute right-6 top-6"
+        @click="showMobileNav = false"
+        aria-label="關閉 Off Canvas"
+      >
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <path
+            d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
+            fill="currentColor"
+          />
+        </svg>
+      </button>
+    </nav>
+  </transition>
 </template>
+
+<style scoped>
+/* Backdrop：淡入淡出 */
+.backdrop-enter-active,
+.backdrop-leave-active {
+  transition: opacity 0.2s ease;
+}
+.backdrop-enter-from,
+.backdrop-leave-to {
+  opacity: 0;
+}
+
+/* Off Canvas：自右而左滑入 */
+.offcanvas-enter-active,
+.offcanvas-leave-active {
+  transition: transform 0.28s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+.offcanvas-enter-from,
+.offcanvas-leave-to {
+  transform: translateX(100%);
+}
+</style>
