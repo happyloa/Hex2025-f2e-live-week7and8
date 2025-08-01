@@ -11,7 +11,7 @@ const openMobileSearch = ref(false);
 const scrolled = ref(false);
 
 // ===== 是否為首頁（只有首頁需切換 header 樣式）=====
-const isHome = computed(() => route.path === "/");
+const isHome = computed(() => route.path === "/" || route.path === "");
 
 // ===== 計算要套用的 header class =====
 const headerClass = computed(() => {
@@ -31,20 +31,43 @@ function handleScroll() {
   scrolled.value = window.scrollY > 10;
 }
 
+// 控制 Off Canvas (行動版選單) 顯示狀態
+const showMobileNav = ref(false);
+
 onMounted(() => {
+  // 1. 首頁才需要 scroll 監聽
   if (isHome.value) {
     window.addEventListener("scroll", handleScroll, { passive: true });
   }
-});
 
-onBeforeUnmount(() => {
-  if (isHome.value) {
-    window.removeEventListener("scroll", handleScroll);
-  }
-});
+  // 2. resize 偵測（處理行動搜尋和 offcanvas 關閉）
+  const handleResize = () => {
+    if (window.innerWidth >= 640 && openMobileSearch.value) {
+      openMobileSearch.value = false;
+    }
+    if (window.innerWidth >= 768 && showMobileNav.value) {
+      showMobileNav.value = false;
+    }
+  };
+  window.addEventListener("resize", handleResize);
 
-// 控制 Off Canvas (行動版選單) 顯示狀態
-const showMobileNav = ref(false);
+  // 3. 路由切換時自動 reset
+  watch(
+    () => route.path,
+    () => {
+      openMobileSearch.value = false;
+      showMobileNav.value = false;
+    },
+  );
+
+  // 4. 記得離開時清掉 event listener
+  onBeforeUnmount(() => {
+    if (isHome.value) {
+      window.removeEventListener("scroll", handleScroll);
+    }
+    window.removeEventListener("resize", handleResize);
+  });
+});
 </script>
 
 <template>
