@@ -139,7 +139,7 @@ const showDetail = ref(false);
         >
           <label
             for="selectAll"
-            class="text-neutral flex items-center gap-2 text-body"
+            class="flex items-center gap-2 text-body text-neutral"
           >
             <input
               v-model="selectAll"
@@ -186,7 +186,7 @@ const showDetail = ref(false);
                       :alt="p.name"
                       class="aspect-square size-[132px] rounded-2xl object-cover"
                     />
-                    <div class="text-neutral text-body">
+                    <div class="text-body text-neutral">
                       <h2 class="mb-2 text-h6 text-black">{{ p.name }}</h2>
                       <p class="mb-2">{{ p.desc }}</p>
                       <p>兌換期內皆適用</p>
@@ -224,7 +224,7 @@ const showDetail = ref(false);
               >
                 <!-- 兩個操作按鈕 -->
                 <div
-                  class="text-neutral flex items-center gap-6 text-body underline lg:gap-10"
+                  class="flex items-center gap-6 text-body text-neutral underline lg:gap-10"
                 >
                   <button
                     type="button"
@@ -247,12 +247,12 @@ const showDetail = ref(false);
         </ul>
       </main>
       <aside
-        class="col-span-1 hidden space-y-8 self-start rounded-[20px] bg-white p-6 shadow-normal lg:block"
+        class="sticky top-[100px] col-span-1 hidden space-y-8 self-start rounded-[20px] bg-white p-6 shadow-normal lg:block"
       >
         <h1 class="text-h5 text-black">費用明細</h1>
-        <ul class="text-neutral space-y-3 text-body">
+        <ul class="space-y-3 text-body text-neutral">
           <li class="flex items-center justify-between">
-            商品小計<span class="text-neutral text-title"
+            商品小計<span class="text-title text-neutral"
               >NT$ {{ subTotal }}</span
             >
           </li>
@@ -264,7 +264,7 @@ const showDetail = ref(false);
         </ul>
         <hr class="border-neutral-40" />
         <div class="flex items-end justify-between">
-          <h2 class="text-neutral text-body">總計</h2>
+          <h2 class="text-body text-neutral">總計</h2>
           <p class="text-h3 text-black">NT$ {{ total }}</p>
         </div>
         <NuxtLink
@@ -280,7 +280,7 @@ const showDetail = ref(false);
   <section v-else class="bg-neutral-15 px-3 py-20">
     <div class="mx-auto justify-items-center space-y-6 text-center">
       <img src="/images/cart/empty.svg" alt="沒有商品" />
-      <p class="text-neutral text-title">購物車還沒有商品，立即逛逛！</p>
+      <p class="text-title text-neutral">購物車還沒有商品，立即逛逛！</p>
       <NuxtLink
         to="/product-info"
         class="block w-full max-w-[229px] rounded-xl bg-primary p-4 text-center text-title text-white transition hover:bg-primary-120 md:max-w-[258px]"
@@ -317,7 +317,7 @@ const showDetail = ref(false);
   >
     <!-- 展開明細、總計 -->
     <div @click="showDetail = !showDetail">
-      <span class="text-neutral mb-1 flex items-center gap-1 text-tiny">
+      <span class="mb-1 flex items-center gap-1 text-tiny text-neutral">
         展開明細
         <!-- 展開箭頭 -->
         <svg
@@ -404,7 +404,7 @@ const showDetail = ref(false);
         </div>
         <!-- 明細內容 -->
         <div class="px-4 py-6">
-          <ul class="text-neutral space-y-3 text-body2">
+          <ul class="space-y-3 text-body2 text-neutral">
             <li class="flex items-center justify-between">
               商品小計<span class="text-subtitle">NT$ {{ subTotal }}</span>
             </li>
@@ -418,7 +418,7 @@ const showDetail = ref(false);
           <hr class="my-4 border-neutral-40" />
 
           <div class="flex items-end justify-between">
-            <h2 class="text-neutral text-body2">總計</h2>
+            <h2 class="text-body2 text-neutral">總計</h2>
             <p class="text-h6 text-black">NT$ {{ total }}</p>
           </div>
         </div>
