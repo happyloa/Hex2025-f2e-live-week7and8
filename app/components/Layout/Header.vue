@@ -1,6 +1,8 @@
 <script setup>
 const route = useRoute();
 
+const isLoggedIn = ref(false);
+
 // ===== 搜尋欄位 =====
 const search = ref("");
 
@@ -35,12 +37,15 @@ function handleScroll() {
 const showMobileNav = ref(false);
 
 onMounted(() => {
-  // 1. 首頁才需要 scroll 監聽
+  // 1. 取 sessionStorage isLoggedIn 值
+  isLoggedIn.value = sessionStorage.getItem("isLoggedIn") === "true";
+
+  // 2. 首頁才需要 scroll 監聽
   if (isHome.value) {
     window.addEventListener("scroll", handleScroll, { passive: true });
   }
 
-  // 2. resize 偵測（處理行動搜尋和 offcanvas 關閉）
+  // 3. resize 偵測（處理行動搜尋和 offcanvas 關閉）
   const handleResize = () => {
     if (window.innerWidth >= 640 && openMobileSearch.value) {
       openMobileSearch.value = false;
@@ -51,7 +56,7 @@ onMounted(() => {
   };
   window.addEventListener("resize", handleResize);
 
-  // 3. 路由切換時自動 reset
+  // 4. 路由切換時自動 reset
   watch(
     () => route.path,
     () => {
@@ -60,7 +65,7 @@ onMounted(() => {
     },
   );
 
-  // 4. 記得離開時清掉 event listener
+  // 5. 離開時清掉 event listener
   onBeforeUnmount(() => {
     if (isHome.value) {
       window.removeEventListener("scroll", handleScroll);
@@ -123,11 +128,19 @@ onMounted(() => {
           </button>
           <!-- 購物車icon、md以上登入，sm以下漢堡 -->
           <NuxtLink
-            to="/cart"
+            :to="isLoggedIn ? '/cart?hasItems' : '/cart'"
             type="button"
-            class="block px-3 py-2 text-neutral transition hover:text-black"
+            class="relative block px-3 py-2 text-neutral transition hover:text-black"
             aria-label="購物車"
           >
+            <!-- 有商品時的紅點裝飾 -->
+            <div
+              v-if="isLoggedIn"
+              class="absolute right-2 top-1 size-4 rounded-full bg-danger text-center text-tiny text-white"
+            >
+              2
+            </div>
+            <!-- 購物車 icon -->
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
               <path
                 d="M8.002 22q-.825 0-1.413-.587A1.93 1.93 0 0 1 6.001 20q0-.825.588-1.413A1.93 1.93 0 0 1 8.002 18q.825 0 1.412.587.588.588.588 1.413t-.588 1.413A1.93 1.93 0 0 1 8.002 22m10.003 0q-.825 0-1.413-.587A1.93 1.93 0 0 1 16.004 20q0-.825.588-1.413A1.93 1.93 0 0 1 18.005 18q.825 0 1.413.587.587.588.587 1.413t-.587 1.413a1.93 1.93 0 0 1-1.413.587M7.152 6l2.4 5h7.002l2.751-5zm-.95-2h14.754q.675 0 .925.5t-.025 1.05l-3.551 6.4a2.04 2.04 0 0 1-.725.775q-.45.275-1.026.275H9.102l-1.1 2h12.003v2H8.002q-1.125 0-1.7-.988-.575-.987-.05-1.962l1.35-2.45L4 4H2V2h3.251z"
@@ -135,7 +148,22 @@ onMounted(() => {
               />
             </svg>
           </NuxtLink>
+          <!-- 已登入狀態：使用者頭像&名稱 -->
           <NuxtLink
+            v-if="isLoggedIn"
+            to="/my-account"
+            class="hidden items-center gap-2 md:flex"
+          >
+            <img
+              src="/images/my-account/avatar-1.webp"
+              alt="Jessica"
+              class="size-8 rounded-full"
+            />
+            <p class="text-title">Jessica</p>
+          </NuxtLink>
+          <!-- 未登入狀態：前往登入或註冊 -->
+          <NuxtLink
+            v-else
             to="/login"
             class="hidden rounded-xl bg-primary px-8 py-4 text-center text-title text-white transition hover:bg-primary-120 md:block"
           >
