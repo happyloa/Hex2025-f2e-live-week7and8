@@ -1,9 +1,150 @@
 <script setup>
+// 建立 ref 綁定到 swiper-container
+const journeySwiper = ref(null);
+// 用 useSwiper 取得 API
+const swiper = useSwiper(journeySwiper);
+
 // 跑馬燈的速度，單位：秒，數值越小越快
 const marqueeSpeed = 20;
 </script>
 
 <template>
+  <!-- 搜尋墨爾本嗎？ -->
+  <section class="py-10 pl-3 md:py-[120px] lg:px-3">
+    <div class="mx-auto max-w-container">
+      <h2 class="relative mb-10 text-h3 md:mb-20 md:text-display">
+        <!-- 裝飾井字號 -->
+        <img
+          src="/images/home/bg-pound-sign.svg"
+          alt="裝飾井字號"
+          class="absolute -left-2 -top-5 z-0 size-[52px] md:-left-12 md:-top-12 md:size-[120px]"
+        />
+        <span class="relative z-10"> 搜尋墨爾本嗎？<br />來點行程參考！ </span>
+      </h2>
+      <ClientOnly>
+        <div class="relative">
+          <!-- 往前一張 -->
+          <button
+            @click="swiper.prev()"
+            class="absolute -left-20 top-1/2 hidden -translate-y-1/2 rounded-xl p-4 shadow-button 2xl:block"
+          >
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="m12 20 1.41-1.41L7.83 13H20v-2H7.83l5.58-5.59L12 4l-8 8z"
+                fill="currentColor"
+              />
+            </svg>
+          </button>
+          <!-- 往後一張 -->
+          <button
+            @click="swiper.next()"
+            class="absolute -right-20 top-1/2 hidden -translate-y-1/2 rounded-xl p-4 shadow-button 2xl:block"
+          >
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <g clip-path="url(#a)">
+                <path
+                  d="m12 4-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"
+                  fill="currentColor"
+                />
+              </g>
+            </svg>
+          </button>
+          <swiper-container
+            ref="journeySwiper"
+            :breakpoints="{
+              1024: {
+                slidesPerView: 4,
+              },
+              640: {
+                slidesPerView: 2.2,
+              },
+              0: {
+                slidesPerView: 1.175,
+              },
+            }"
+            space-between="24"
+            :autoplay="{
+              delay: 5000,
+            }"
+            :loop="true"
+          >
+            <swiper-slide>
+              <CommonAttractionCard
+                img="/images/home/journey-1.webp"
+                name="【獨家優惠】布萊頓彩色小屋＋森林蒸汽火車一日遊"
+                :tags="['即買即用', '5 天前可免費取消']"
+                ratingScore="4.2"
+                ratingCount="333"
+                alreadyBuy="500"
+                originalPrice="NT$ 5,220"
+                discountPrice="NT$ 4,220"
+              />
+            </swiper-slide>
+            <swiper-slide>
+              <CommonAttractionCard
+                img="/images/home/journey-2.webp"
+                name="無尾熊動物園＋企鵝歸巢雙享之旅"
+                :tags="['即買即用', '7 天前可免費取消']"
+                ratingScore="4.2"
+                ratingCount="333"
+                alreadyBuy="500"
+                originalPrice="NT$ 4,920"
+                discountPrice="NT$ 3,890"
+              />
+            </swiper-slide>
+            <swiper-slide>
+              <CommonAttractionCard
+                img="/images/home/journey-3.webp"
+                name="大洋路經典一日遊｜中文導覽！體驗澳洲最夢幻的海岸線"
+                :tags="['中文導覽', '5 天前可免費取消']"
+                ratingScore="4.2"
+                ratingCount="333"
+                alreadyBuy="500"
+                originalPrice="NT$ 4,500"
+                discountPrice="NT$ 3,690"
+              />
+            </swiper-slide>
+            <swiper-slide>
+              <CommonAttractionCard
+                img="/images/home/journey-4.webp"
+                name="墨爾本市區導覽｜壁畫巷＋隱藏咖啡廳之旅，體驗本地咖啡文化、隱藏小巷拍照"
+                :tags="['專業導覽', '3 天前可免費取消']"
+                ratingScore="4.2"
+                ratingCount="333"
+                alreadyBuy="500"
+                originalPrice="NT$ 2,480"
+                discountPrice="NT$ 1,280"
+              />
+            </swiper-slide>
+            <swiper-slide>
+              <CommonAttractionCard
+                img="/images/home/journey-5.webp"
+                name="大洋路經典一日遊｜中文導覽！體驗澳洲最夢幻的海岸線"
+                :tags="['中文導覽', '5 天前可免費取消']"
+                ratingScore="4.2"
+                ratingCount="333"
+                alreadyBuy="500"
+                originalPrice="NT$ 4,500"
+                discountPrice="NT$ 3,690"
+              />
+            </swiper-slide>
+          </swiper-container>
+        </div>
+      </ClientOnly>
+    </div>
+  </section>
   <!-- 跑馬燈 -->
   <section class="overflow-hidden whitespace-nowrap">
     <div
