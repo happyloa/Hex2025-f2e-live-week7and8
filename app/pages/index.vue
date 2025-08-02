@@ -1,7 +1,9 @@
 <script setup>
 // 建立 ref 綁定到 swiper-container
+const mapSwiper = ref(null);
 const journeySwiper = ref(null);
 // 用 useSwiper 取得 API
+const swiper2 = useSwiper(mapSwiper);
 const swiper = useSwiper(journeySwiper);
 
 // 跑馬燈的速度，單位：秒，數值越小越快
@@ -9,6 +11,198 @@ const marqueeSpeed = 20;
 </script>
 
 <template>
+  <!-- 上方斜線裝飾 -->
+  <div class="up-deco | h-20 bg-primary-10"></div>
+  <!-- 靈感地圖 -->
+  <section class="overflow-x-hidden bg-primary-10 py-10 md:py-[120px]">
+    <div class="mx-auto max-w-container">
+      <!-- 標題、簡介 -->
+      <div
+        class="flex flex-col justify-between gap-6 px-4 lg:flex-row lg:items-center"
+      >
+        <!-- 標題、裝飾、tab -->
+        <div class="flex-1">
+          <h2 class="relative mb-6 text-h3 md:max-w-[469px] md:text-display">
+            <img
+              src="/images/home/deco-text-1.svg"
+              alt="裝飾圖片"
+              class="absolute -top-12 left-[133px] z-10 w-[130px] md:-right-8 md:left-auto md:w-[172px]"
+            />
+            <span class="mb-2 block">今年旅行的</span><span>靈感地圖</span>
+          </h2>
+          <!-- tab -->
+          <ul
+            class="flex items-center gap-2 overflow-x-auto whitespace-nowrap text-title"
+          >
+            <li
+              class="cursor-pointer rounded-lg bg-primary px-4 py-2 text-white"
+            >
+              全部
+            </li>
+            <li
+              class="cursor-pointer rounded-lg bg-white px-4 py-2 transition hover:bg-primary hover:text-white"
+            >
+              亞洲
+            </li>
+            <li
+              class="cursor-pointer rounded-lg bg-white px-4 py-2 transition hover:bg-primary hover:text-white"
+            >
+              歐洲
+            </li>
+            <li
+              class="cursor-pointer rounded-lg bg-white px-4 py-2 transition hover:bg-primary hover:text-white"
+            >
+              美洲
+            </li>
+            <li
+              class="cursor-pointer rounded-lg bg-white px-4 py-2 transition hover:bg-primary hover:text-white"
+            >
+              大洋洲
+            </li>
+            <li
+              class="cursor-pointer rounded-lg bg-white px-4 py-2 transition hover:bg-primary hover:text-white"
+            >
+              非洲
+            </li>
+          </ul>
+        </div>
+        <!-- 簡介、電腦版輪播按鈕 -->
+        <div>
+          <p class="text-start text-subtitle lg:mb-6 lg:text-right lg:text-h6">
+            <span class="block lg:mb-2">
+              來自旅人搜尋、收藏與討論最多的目的地排行榜，
+            </span>
+            <span>一場風格與故事感兼具的靈感旅行，就從這裡開始。</span>
+          </p>
+          <!-- 電腦版輪播按鈕 -->
+          <div class="hidden justify-end gap-2 lg:flex">
+            <!-- 往前一張 -->
+            <button
+              type="button"
+              class="rounded-xl bg-white p-4 transition hover:bg-primary hover:text-white"
+              @click="swiper2.prev()"
+            >
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="m12 20 1.41-1.41L7.83 13H20v-2H7.83l5.58-5.59L12 4l-8 8z"
+                  fill="currentColor"
+                />
+              </svg>
+            </button>
+            <!-- 往後一張 -->
+            <button
+              type="button"
+              class="rounded-xl bg-white p-4 transition hover:bg-primary hover:text-white"
+              @click="swiper2.next()"
+            >
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <g clip-path="url(#a)">
+                  <path
+                    d="m12 4-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"
+                    fill="currentColor"
+                  />
+                </g>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+      <ClientOnly>
+        <swiper-container
+          class="pl-4 xl:w-screen xl:px-0"
+          ref="mapSwiper"
+          :breakpoints="{
+            1536: {
+              slidesPerView: 2.5,
+            },
+            1280: {
+              slidesPerView: 1.8,
+            },
+            768: {
+              slidesPerView: 1.4,
+            },
+            0: {
+              slidesPerView: 1.1,
+            },
+          }"
+          :autoplay="{
+            delay: 5000,
+          }"
+          :loop="true"
+        >
+          <swiper-slide class="pr-4 pt-10 md:pr-6 md:pt-20">
+            <CommonHomeMapCard
+              number="1"
+              img="/images/home/map-1.webp"
+              :tags="['亞洲', '日本京都']"
+              name="走進四季交織的文化時光"
+              desc="穿過紅葉與古寺的交錯，感受從櫻花盛開到秋楓染紅的日式浪漫。"
+              suggestion="賞楓最佳時間是 11 月中旬，推薦清水寺和南禪寺一帶 🍁"
+              cta="立即探索魅力古都"
+            />
+          </swiper-slide>
+          <swiper-slide class="pr-4 pt-10 md:pr-6 md:pt-20">
+            <CommonHomeMapCard
+              number="2"
+              img="/images/home/map-2.webp"
+              :tags="['亞洲', '南韓首爾']"
+              name="從街邊美食到韓劇場景"
+              desc="白天在弘大小巷探店，夜晚登上南山塔俯瞰整座城市的閃爍。"
+              suggestion="弘大周邊週五傍晚最熱鬧，小吃與街頭藝人齊發✨"
+              cta="感受韓系風格日常"
+            />
+          </swiper-slide>
+          <swiper-slide class="pr-4 pt-10 md:pr-6 md:pt-20">
+            <CommonHomeMapCard
+              number="3"
+              img="/images/home/map-3.webp"
+              :tags="['歐洲', '法國巴黎']"
+              name="在藝術與咖啡香中迷路"
+              desc="穿梭左岸書店與畫廊，任由麵包香與建築細節擁抱你的步伐。"
+              suggestion="走進瑪黑區，最容易與巴黎風格不期而遇 ☕️"
+              cta="開啟我的巴黎報險"
+            />
+          </swiper-slide>
+          <swiper-slide class="pr-4 pt-10 md:pr-6 md:pt-20">
+            <CommonHomeMapCard
+              number="4"
+              img="/images/home/map-4.webp"
+              :tags="['大洋洲', '澳洲雪梨']"
+              name="城市與大自然的交會"
+              desc="清晨在海灘做瑜珈，午後漫步歌劇院，享受城市的節奏與野性的呼喚。"
+              suggestion="別錯過傍晚在雪梨港看日落＋欣賞歌劇院夜燈 ✨"
+              cta="現在就飛向南半球"
+            />
+          </swiper-slide>
+          <swiper-slide class="pr-4 pt-10 md:pr-6 md:pt-20">
+            <CommonHomeMapCard
+              number="5"
+              img="/images/home/map-5.webp"
+              :tags="['非洲', '埃及開羅']"
+              name="穿越千年時光的沙漠冒險"
+              desc="乘著駱駝走過古老遺跡，抬頭仰望太陽神的光芒，在歷史與傳說之間迷失。"
+              suggestion="建議早上 8 點前到吉薩金字塔，避開人潮與烈日 ☀️"
+              cta="揭開古文明的面紗"
+            />
+          </swiper-slide>
+        </swiper-container>
+      </ClientOnly>
+    </div>
+  </section>
+  <!-- 下方斜線裝飾 -->
+  <div class="down-deco | h-20 bg-primary-10"></div>
   <!-- 搜尋墨爾本嗎？ -->
   <section class="py-10 pl-3 md:py-[120px] lg:px-3">
     <div class="mx-auto max-w-container">
@@ -279,6 +473,15 @@ const marqueeSpeed = 20;
 </template>
 
 <style scoped>
+/* 上方斜線裝飾 */
+.up-deco {
+  clip-path: polygon(0 80%, 100% 0, 100% 100%, 0 100%);
+}
+/* 下方斜線裝飾 */
+.down-deco {
+  clip-path: polygon(0 0, 100% 0, 100% 20%, 0 100%);
+}
+
 .marquee {
   /* 跑馬燈動畫，移動寬度需看內容長度 */
   animation: marquee var(--marquee-duration, 10s) linear infinite;
