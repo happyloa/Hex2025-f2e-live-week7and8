@@ -1,5 +1,6 @@
 <script setup>
 const route = useRoute();
+const router = useRouter();
 
 const isLoggedIn = ref(false);
 
@@ -36,7 +37,17 @@ function handleScroll() {
 // 控制 Off Canvas (行動版選單) 顯示狀態
 const showMobileNav = ref(false);
 
-onMounted(() => {
+// 登出
+function logout() {
+  sessionStorage.setItem("isLoggedIn", "false");
+  isLoggedIn.value = false;
+  showMobileNav.value = false; // 可選：登出後自動關掉側邊選單
+  router.push("/login");
+}
+
+onMounted(async () => {
+  await nextTick();
+
   // 1. 取 sessionStorage isLoggedIn 值
   isLoggedIn.value = sessionStorage.getItem("isLoggedIn") === "true";
 
@@ -261,6 +272,115 @@ onMounted(() => {
           />
         </svg>
       </button>
+      <!-- 已登入狀態 -->
+      <div v-if="isLoggedIn" class="flex h-full flex-col gap-4">
+        <!-- 使用者頭像、名稱、連結 -->
+        <NuxtLink to="/my-account" class="flex items-center gap-2">
+          <img
+            src="/images/my-account/avatar-1.webp"
+            alt="Jessica"
+            class="size-8 rounded-full"
+          />
+          <div>
+            <p class="text-title">Jessica</p>
+            <p class="text-neutral-80 text-body">jessica.yen@gamil.com</p>
+          </div>
+        </NuxtLink>
+        <!-- 選單分隔線 -->
+        <hr class="border-neutral-40" />
+        <!-- 選單 -->
+        <ul>
+          <li>
+            <NuxtLink
+              to="/my-account"
+              class="flex items-center gap-2 py-3 text-neutral transition hover:text-black"
+            >
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M17 4H7a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Z"
+                  stroke="currentColor"
+                  stroke-width="2"
+                />
+                <path
+                  d="M9 9h6m-6 4h6m-6 4h4"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                />
+              </svg>
+              訂單管理
+            </NuxtLink>
+          </li>
+          <li>
+            <NuxtLink
+              to="/my-account"
+              class="flex items-center gap-2 py-3 text-neutral transition hover:text-black"
+            >
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M12 20.325q-.35 0-.712-.125a1.7 1.7 0 0 1-.638-.4l-1.725-1.575a69 69 0 0 1-4.788-4.812Q1.999 11.026 2 8.15 2 5.8 3.575 4.225T7.5 2.65q1.325 0 2.5.562t2 1.538a5.95 5.95 0 0 1 2-1.537 5.7 5.7 0 0 1 2.5-.563q2.35 0 3.925 1.575T22 8.15q0 2.875-2.125 5.275a60 60 0 0 1-4.825 4.825l-1.7 1.55a1.65 1.65 0 0 1-.637.4 2.2 2.2 0 0 1-.713.125M11.05 6.75q-.725-1.024-1.55-1.563t-2-.537q-1.5 0-2.5 1t-1 2.5q0 1.3.925 2.763a19 19 0 0 0 2.213 2.837 39 39 0 0 0 2.65 2.575Q11.15 17.525 12 18.3q.85-.775 2.213-1.975t2.65-2.575a19 19 0 0 0 2.212-2.837Q20 9.45 20 8.15q0-1.5-1-2.5t-2.5-1q-1.175 0-2 .538-.825.539-1.55 1.562a1.14 1.14 0 0 1-.95.5 1.14 1.14 0 0 1-.95-.5"
+                  fill="currentColor"
+                />
+              </svg>
+              我的收藏
+            </NuxtLink>
+          </li>
+          <li>
+            <NuxtLink
+              to="/my-account"
+              class="flex items-center gap-2 py-3 text-neutral transition hover:text-black"
+            >
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M19.9 12.66a1 1 0 0 1 0-1.32l1.28-1.44a1 1 0 0 0 .12-1.17l-2-3.46a1 1 0 0 0-1.07-.48l-1.88.38a1 1 0 0 1-1.15-.66l-.61-1.83a1 1 0 0 0-.95-.68h-4a1 1 0 0 0-1 .68l-.56 1.83a1 1 0 0 1-1.15.66L5 4.79a1 1 0 0 0-1 .48L2 8.73a1 1 0 0 0 .1 1.17l1.27 1.44a1 1 0 0 1 0 1.32L2.1 14.1a1 1 0 0 0-.1 1.17l2 3.46a1 1 0 0 0 1.07.48l1.88-.38a1 1 0 0 1 1.15.66l.61 1.83a1 1 0 0 0 1 .68h4a1 1 0 0 0 .95-.68l.61-1.83a1 1 0 0 1 1.15-.66l1.88.38a1 1 0 0 0 1.07-.48l2-3.46a1 1 0 0 0-.12-1.17zM18.41 14l.8.9-1.28 2.22-1.18-.24a3 3 0 0 0-3.45 2L12.92 20h-2.56L10 18.86a3 3 0 0 0-3.45-2l-1.18.24-1.3-2.21.8-.9a3 3 0 0 0 0-4l-.8-.9 1.28-2.2 1.18.24a3 3 0 0 0 3.45-2L10.36 4h2.56l.38 1.14a3 3 0 0 0 3.45 2l1.18-.24 1.28 2.22-.8.9a3 3 0 0 0 0 3.98m-6.77-6a4 4 0 1 0 0 8 4 4 0 0 0 0-8m0 6a2 2 0 1 1 0-4 2 2 0 0 1 0 4"
+                  fill="currentColor"
+                />
+              </svg>
+              帳號設定
+            </NuxtLink>
+          </li>
+        </ul>
+        <!-- 登出 -->
+        <button
+          type="button"
+          class="mt-auto flex items-center gap-2 py-3 text-neutral transition hover:text-black"
+          @click="logout"
+        >
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M20.15 13H8v-2h12.15L18.6 9.45 20 8l4 4-4 4-1.4-1.45zM15 9V5H5v14h10v-4h2v4q0 .824-.587 1.413A1.93 1.93 0 0 1 15 21H5q-.824 0-1.412-.587A1.93 1.93 0 0 1 3 19V5q0-.824.587-1.412A1.93 1.93 0 0 1 5 3h10q.824 0 1.413.587Q17 4.176 17 5v4z"
+              fill="currentColor"
+            />
+          </svg>
+          登出
+        </button>
+      </div>
+      <!-- 未登入狀態 -->
+      <div v-else>未登入</div>
     </nav>
   </transition>
 </template>
