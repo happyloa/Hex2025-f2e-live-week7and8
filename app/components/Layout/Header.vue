@@ -1,24 +1,19 @@
 <script setup>
+// ---------- 路由相關 ----------
 const route = useRoute();
 const router = useRouter();
 
-const isLoggedIn = ref(false);
+// ---------- 狀態管理 ----------
+const isLoggedIn = ref(false); // 使用者登入狀態
+const search = ref(""); // 搜尋欄內容
+const openMobileSearch = ref(false); // 行動搜尋模式開關
+const scrolled = ref(false); // 首頁捲動狀態
+const showMobileNav = ref(false); // 行動版側邊選單開關
 
-// ===== 搜尋欄位 =====
-const search = ref("");
-
-// ===== 行動版是否進入搜尋模式（隱藏 Logo、購物車 icon、漢堡選單） =====
-const openMobileSearch = ref(false);
-
-// ===== 狀態：是否捲動過（首頁才需偵測） =====
-const scrolled = ref(false);
-
-// ===== 是否為首頁（只有首頁需切換 header 樣式）=====
-const isHome = computed(() => route.path === "/" || route.path === "");
-
-// ===== 計算要套用的 header class =====
+// ---------- 計算屬性 ----------
+const isHome = computed(() => route.path === "/" || route.path === ""); // 是否為首頁
 const headerClass = computed(() => {
-  // 首頁：透明（預設），滑動後變白底＋blur＋border
+  // 根據狀態動態設定 header 樣式
   if (isHome.value) {
     return scrolled.value
       ? "bg-[#FFFFFFB8] backdrop-blur-sm border-b-[0.5px] border-neutral-40"
@@ -28,46 +23,36 @@ const headerClass = computed(() => {
   return "bg-[#FFFFFFB8] backdrop-blur-sm border-b-[0.5px] border-neutral-40";
 });
 
-// ===== 只在首頁時監聽捲動事件 =====
+// ---------- 功能函式 ----------
 function handleScroll() {
-  // 當頁面 Y 軸捲動 > 10px 時就啟用白底
   scrolled.value = window.scrollY > 10;
 }
 
-// 控制 Off Canvas (行動版選單) 顯示狀態
-const showMobileNav = ref(false);
-
-// 登出
 function logout() {
   sessionStorage.setItem("isLoggedIn", "false");
   isLoggedIn.value = false;
-  showMobileNav.value = false; // 可選：登出後自動關掉側邊選單
+  showMobileNav.value = false;
   router.push("/login");
 }
 
+// ---------- 生命週期 ----------
 onMounted(async () => {
   await nextTick();
-
-  // 1. 取 sessionStorage isLoggedIn 值
+  // 初始化登入狀態
   isLoggedIn.value = sessionStorage.getItem("isLoggedIn") === "true";
-
-  // 2. 首頁才需要 scroll 監聽
+  // 首頁才監聽捲動
   if (isHome.value) {
     window.addEventListener("scroll", handleScroll, { passive: true });
   }
-
-  // 3. resize 偵測（處理行動搜尋和 offcanvas 關閉）
+  // 監聽視窗 resize，超過斷點自動關掉行動搜尋和側欄
   const handleResize = () => {
-    if (window.innerWidth >= 640 && openMobileSearch.value) {
+    if (window.innerWidth >= 640 && openMobileSearch.value)
       openMobileSearch.value = false;
-    }
-    if (window.innerWidth >= 768 && showMobileNav.value) {
+    if (window.innerWidth >= 768 && showMobileNav.value)
       showMobileNav.value = false;
-    }
   };
   window.addEventListener("resize", handleResize);
-
-  // 4. 路由切換時自動 reset
+  // 路由切換自動 reset UI
   watch(
     () => route.path,
     () => {
@@ -75,12 +60,9 @@ onMounted(async () => {
       showMobileNav.value = false;
     },
   );
-
-  // 5. 離開時清掉 event listener
+  // 離開時清除事件監聽
   onBeforeUnmount(() => {
-    if (isHome.value) {
-      window.removeEventListener("scroll", handleScroll);
-    }
+    if (isHome.value) window.removeEventListener("scroll", handleScroll);
     window.removeEventListener("resize", handleResize);
   });
 });
