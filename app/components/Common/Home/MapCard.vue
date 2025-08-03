@@ -75,7 +75,7 @@ const { number, img, name, tags, desc, suggestion, cta } = toRefs(props);
       <img
         :src="img"
         :alt="name"
-        class="h-[200px] w-full rounded-2xl object-cover transition group-hover:scale-110 2xl:h-[412px] 2xl:w-[300px]"
+        class="h-[200px] w-full rounded-2xl object-cover transition group-hover:scale-110 2xl:h-[412px]"
       />
     </div>
     <!-- 標籤、標題、描述、建議、CTA -->
@@ -92,9 +92,13 @@ const { number, img, name, tags, desc, suggestion, cta } = toRefs(props);
           </li>
         </ul>
         <!-- 標題 -->
-        <h3 class="text-h3 text-black 2xl:text-h1">{{ name }}</h3>
+        <h3
+          class="text-h3 text-black transition group-hover:text-primary 2xl:text-h1"
+        >
+          {{ name }}
+        </h3>
         <!-- 描述 -->
-        <p class="text-neutral">
+        <p class="text-neutral transition group-hover:text-primary-60">
           {{ desc }}
         </p>
       </div>
