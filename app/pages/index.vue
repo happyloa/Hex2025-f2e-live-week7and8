@@ -1,4 +1,6 @@
 <script setup>
+const router = useRouter();
+
 // 建立 ref 綁定到 swiper-container
 const mapSwiper = ref(null);
 const journeySwiper = ref(null);
@@ -6,11 +8,72 @@ const journeySwiper = ref(null);
 const swiper2 = useSwiper(mapSwiper);
 const swiper = useSwiper(journeySwiper);
 
+const search = ref(""); // 搜尋欄內容
+function handleSearch() {
+  if (search.value.trim() !== "") {
+    router.push("/search-result");
+  }
+}
+
 // 跑馬燈的速度，單位：秒，數值越小越快
 const marqueeSpeed = 20;
 </script>
 
 <template>
+  <!-- hero -->
+  <section
+    class="h-[480px] bg-[url('/images/home/hero-bg.webp')] bg-cover bg-[70%_center] px-3 pt-12 lg:-mt-[88px] lg:h-[1080px] lg:bg-center lg:pt-[300px] xl:pl-[22%]"
+  >
+    <div class="max-w-[880px]">
+      <p
+        class="mb-3 w-fit rounded-lg bg-primary-10 p-2 text-title lg:rounded-2xl lg:p-4 lg:text-h6"
+      >
+        ZOBAA 旅行推薦平台
+      </p>
+      <h1 class="mb-2 text-h3 lg:mb-6 lg:text-display">
+        用旅行，<br class="block lg:hidden" />收藏世界的樣子
+      </h1>
+      <p class="mb-6 text-subtitle text-primary-80 lg:mb-10 lg:text-h6">
+        ZOBAA
+        整合熱門景點推薦、即時優惠、獨家行程，從比價到訂購，一次完成你的完美出遊計畫。
+      </p>
+      <!-- 搜尋框 -->
+      <div
+        class="flex max-w-[720px] items-center justify-between gap-3 rounded-2xl border border-neutral-40 bg-white p-2"
+      >
+        <!-- 搜尋框與放大鏡 icon -->
+        <div class="flex flex-1 items-center gap-2">
+          <!-- 放大鏡 icon -->
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path
+              d="m19.6 21-6.3-6.3q-.75.6-1.725.95T9.5 16q-2.725 0-4.612-1.887T3 9.5t1.888-4.612T9.5 3t4.613 1.888T16 9.5a6.1 6.1 0 0 1-1.3 3.8l6.3 6.3zM9.5 14q1.875 0 3.188-1.312Q14 11.375 14 9.5t-1.312-3.187T9.5 5 6.313 6.313 5 9.5t1.313 3.188T9.5 14"
+              fill="currentColor"
+              class="text-neutral"
+            />
+          </svg>
+          <input
+            v-model="search"
+            type="text"
+            placeholder="搜尋景點、地點或城市"
+            name="search"
+            id="search"
+            class="w-full text-h6 font-normal placeholder:text-h6 placeholder:font-normal placeholder:text-neutral-60 focus:outline-none"
+          />
+        </div>
+        <button
+          type="button"
+          class="shrink-0 rounded-xl bg-primary px-4 py-3 text-center text-title text-white transition hover:bg-primary-120"
+          @click="handleSearch"
+        >
+          開始探索旅程
+        </button>
+      </div>
+    </div>
+  </section>
+  <!-- 你的專屬推薦 -->
+  <section class="bg-[#221F1E] px-3 pb-[88px] pt-10 md:py-[120px]">
+    <div class="mx-auto max-w-container"></div>
+  </section>
   <!-- 上方斜線裝飾 -->
   <div class="up-deco | h-20 bg-primary-10"></div>
   <!-- 靈感地圖 -->
