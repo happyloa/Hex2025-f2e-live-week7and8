@@ -114,32 +114,26 @@ const marqueeSpeed = 20;
         <li>
           <NuxtLink
             to="/product-info"
-            class="group relative block h-full w-[270px] content-end rounded-[32px] bg-[url('/images/home/recommend-1.webp')] bg-cover bg-center p-8 text-white transition-all hover:w-[416px]"
+            class="group relative block h-full w-[270px] content-end overflow-y-hidden rounded-[32px] bg-[url('/images/home/recommend-1.webp')] bg-cover bg-center p-8 text-white transition-all duration-500 hover:w-[416px]"
           >
-            <!-- 漸層遮罩層 -->
+            <!-- 漸層遮罩 -->
             <div
               class="pointer-events-none absolute inset-0 z-0 rounded-[32px] bg-gradient-to-t from-[#221F1E99] to-transparent"
             ></div>
             <!-- 內容 -->
             <div class="relative z-10">
               <h3 class="mb-2 text-h2">峇里島渡假漫遊</h3>
-              <p class="mb-6">
+              <p class="group-hover:mb-6">
                 精選五星級海灘度假村，專屬私人管家服務，讓您徹底放鬆身心。
               </p>
-              <!-- 電腦版按鈕 -->
+              <!-- 電腦版按鈕，預設隱藏，hover 卡片時出現 -->
               <button
                 type="button"
-                class="flex w-full items-center justify-between gap-2 rounded-full bg-white px-5 py-4 text-title text-black transition group-hover:bg-black group-hover:text-white"
+                class="absolute bottom-0 flex w-full translate-y-10 items-center justify-between gap-2 rounded-full bg-white px-5 py-4 text-title text-black opacity-0 transition-all group-hover:static group-hover:translate-y-0 group-hover:opacity-100"
               >
                 訂購行程
                 <!-- 裝飾 icon -->
-                <svg
-                  width="32"
-                  height="32"
-                  viewBox="0 0 32 32"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
                   <rect width="32" height="32" rx="16" fill="#fff" />
                   <g clip-path="url(#a)">
                     <path
