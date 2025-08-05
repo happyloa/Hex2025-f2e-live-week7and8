@@ -86,11 +86,11 @@ const marqueeSpeed = 20;
     </div>
   </section>
   <!-- 你的專屬推薦 -->
-  <section class="bg-[#221F1E] px-3 pb-[88px] pt-10 md:py-[120px]">
+  <section class="bg-[#221F1E] pb-[88px] pt-10 md:py-[120px]">
     <div class="mx-auto max-w-container">
       <!-- 標題、推薦文字 -->
       <div
-        class="mb-10 flex flex-col justify-between gap-6 text-white md:mb-20 md:flex-row md:items-center"
+        class="mb-10 flex flex-col justify-between gap-6 px-3 text-white md:mb-20 md:flex-row md:items-center"
       >
         <h2 class="text-h3 md:text-display">你的<br />專屬推薦</h2>
         <div>
@@ -125,7 +125,7 @@ const marqueeSpeed = 20;
         </div>
       </div>
       <!-- 電腦版懸停卡片 -->
-      <ul class="hidden h-[600px] justify-between xl:flex">
+      <ul class="hidden h-[600px] justify-between px-3 xl:flex">
         <li
           v-for="(item, i) in 4"
           :key="i"
