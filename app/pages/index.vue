@@ -74,6 +74,105 @@ const marqueeSpeed = 20;
   <section class="bg-[#221F1E] px-3 pb-[88px] pt-10 md:py-[120px]">
     <div class="mx-auto max-w-container"></div>
   </section>
+  <!-- 踏上旅程的第一站 -->
+  <section
+    class="overflow-x-hidden bg-contain bg-center bg-no-repeat px-3 py-10 md:bg-[url('/images/home/deco-bg.svg')] md:py-[120px]"
+  >
+    <div
+      class="relative mx-auto flex max-w-container flex-col-reverse justify-between gap-10 md:flex-row md:items-center"
+    >
+      <!-- 裝飾文字 -->
+      <img
+        src="/images/home/deco-text.svg"
+        alt="裝飾文字"
+        class="absolute -left-[232px] bottom-60 hidden xl:block"
+      />
+      <!-- 圖片容器 -->
+      <div class="lg:max-w-[716px]">
+        <div
+          class="mb-4 flex flex-col gap-4 pr-0 sm:flex-row md:mb-5 md:gap-6 md:pr-10 lg:pr-20"
+        >
+          <!-- 卡片1 -->
+          <article
+            class="group rounded-2xl border border-neutral-40 md:rounded-3xl"
+          >
+            <div class="overflow-hidden rounded-t-2xl md:rounded-t-3xl">
+              <img
+                src="/images/home/intro-1.webp"
+                alt="ZOBAA 專屬推薦行程"
+                class="w-full transition group-hover:scale-110"
+              />
+            </div>
+            <footer class="rounded-b-2xl bg-white p-6 md:rounded-b-3xl">
+              <h3 class="mb-2 text-h6 text-black">ZOBAA 專屬推薦行程</h3>
+              <p class="text-body text-neutral">嚴選深度行程，豐富旅行靈感</p>
+            </footer>
+          </article>
+          <!-- 卡片2 -->
+          <article
+            class="group rounded-2xl border border-neutral-40 md:rounded-3xl"
+          >
+            <div class="overflow-hidden rounded-t-2xl md:rounded-t-3xl">
+              <img
+                src="/images/home/intro-2.webp"
+                alt="旅人攻略集合"
+                class="w-full transition group-hover:scale-110"
+              />
+            </div>
+            <footer class="rounded-b-2xl bg-white p-6 md:rounded-b-3xl">
+              <h3 class="mb-2 text-h6 text-black">旅人攻略集合</h3>
+              <p class="text-body text-neutral">景點、交通、私房景點一次掌握</p>
+            </footer>
+          </article>
+        </div>
+        <div
+          class="flex flex-col gap-4 pl-0 sm:flex-row md:gap-6 md:pl-10 lg:pl-20"
+        >
+          <!-- 卡片3 -->
+          <article
+            class="group rounded-2xl border border-neutral-40 md:rounded-3xl"
+          >
+            <div class="overflow-hidden rounded-t-2xl md:rounded-t-3xl">
+              <img
+                src="/images/home/intro-3.webp"
+                alt="優惠機票、酒店"
+                class="w-full transition group-hover:scale-110"
+              />
+            </div>
+            <footer class="rounded-b-2xl bg-white p-6 md:rounded-b-3xl">
+              <h3 class="mb-2 text-h6 text-black">優惠機票、酒店</h3>
+              <p class="text-body text-neutral">即時比價，聰明出發不踩雷</p>
+            </footer>
+          </article>
+          <!-- 卡片4 -->
+          <article
+            class="group rounded-2xl border border-neutral-40 md:rounded-3xl"
+          >
+            <div class="overflow-hidden rounded-t-2xl md:rounded-t-3xl">
+              <img
+                src="/images/home/intro-4.webp"
+                alt="銀行專屬優惠"
+                class="w-full transition group-hover:scale-110"
+              />
+            </div>
+            <footer class="rounded-b-2xl bg-white p-6 md:rounded-b-3xl">
+              <h3 class="mb-2 text-h6 text-black">銀行專屬優惠</h3>
+              <p class="text-body text-neutral">使用指定卡別享受獨家旅遊好康</p>
+            </footer>
+          </article>
+        </div>
+      </div>
+      <!-- 標題容器 -->
+      <div class="shrink-0">
+        <h2 class="mb-6 text-h3 lg:text-display">
+          ZOBAA!<br />踏上旅程的<br />第一站
+        </h2>
+        <p class="text-h6 text-primary-60">
+          探索最熱門的旅遊主題，<br />從旅人必備攻略到獨家優惠，<br />全都為你精挑細選。
+        </p>
+      </div>
+    </div>
+  </section>
   <!-- 上方斜線裝飾 -->
   <div class="up-deco | h-20 bg-primary-10"></div>
   <!-- 靈感地圖 -->
