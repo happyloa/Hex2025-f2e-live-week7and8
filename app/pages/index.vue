@@ -99,7 +99,7 @@ const marqueeSpeed = 20;
     </div>
   </section>
   <!-- 你的專屬推薦 -->
-  <section class="bg-[#221F1E] pb-[88px] pt-10 md:py-[120px]">
+  <section class="bg-[#221F1E] py-10 md:py-[120px]">
     <div class="mx-auto max-w-container">
       <!-- 標題、推薦文字 -->
       <div
