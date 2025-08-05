@@ -109,6 +109,51 @@ const marqueeSpeed = 20;
           </NuxtLink>
         </div>
       </div>
+      <!-- 電腦版懸停卡片 -->
+      <ul class="hidden h-[600px] gap-6 xl:flex">
+        <li>
+          <NuxtLink
+            to="/product-info"
+            class="group relative block h-full w-[270px] content-end rounded-[32px] bg-[url('/images/home/recommend-1.webp')] bg-cover bg-center p-8 text-white transition-all hover:w-[416px]"
+          >
+            <!-- 漸層遮罩層 -->
+            <div
+              class="pointer-events-none absolute inset-0 z-0 rounded-[32px] bg-gradient-to-t from-[#221F1E99] to-transparent"
+            ></div>
+            <!-- 內容 -->
+            <div class="relative z-10">
+              <h3 class="mb-2 text-h2">峇里島渡假漫遊</h3>
+              <p class="mb-6">
+                精選五星級海灘度假村，專屬私人管家服務，讓您徹底放鬆身心。
+              </p>
+              <!-- 電腦版按鈕 -->
+              <button
+                type="button"
+                class="flex w-full items-center justify-between gap-2 rounded-full bg-white px-5 py-4 text-title text-black transition group-hover:bg-black group-hover:text-white"
+              >
+                訂購行程
+                <!-- 裝飾 icon -->
+                <svg
+                  width="32"
+                  height="32"
+                  viewBox="0 0 32 32"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <rect width="32" height="32" rx="16" fill="#fff" />
+                  <g clip-path="url(#a)">
+                    <path
+                      d="m16 8-1.41 1.41L20.17 15H8v2h12.17l-5.58 5.59L16 24l8-8z"
+                      fill="#000"
+                    />
+                  </g>
+                </svg>
+              </button>
+            </div>
+          </NuxtLink>
+        </li>
+      </ul>
+      <!-- 手機版卡片輪播 -->
     </div>
   </section>
   <!-- 踏上旅程的第一站 -->
