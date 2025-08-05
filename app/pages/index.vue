@@ -30,6 +30,19 @@ function handleMouseLeave() {
   }, 300);
 }
 
+const journeyActiveIndex = ref(0);
+
+// Swiper slide 變換時同步 index
+function onJourneySlideChange(e) {
+  const [inst] = e.detail;
+  journeyActiveIndex.value = inst.realIndex;
+}
+
+// 點點點擊 → 跳到指定張
+function goToJourney(idx) {
+  journeySwiper.value?.swiper?.slideToLoop(idx);
+}
+
 // 跑馬燈的速度，單位：秒，數值越小越快
 const marqueeSpeed = 20;
 </script>
@@ -190,6 +203,97 @@ const marqueeSpeed = 20;
         </li>
       </ul>
       <!-- 手機版卡片輪播 -->
+      <ClientOnly>
+        <swiper-container
+          ref="journeySwiper"
+          class="mb-10 block h-[400px] xl:hidden"
+          :breakpoints="{
+            640: {
+              slidesPerView: 2.2,
+            },
+            0: {
+              slidesPerView: 1.3,
+            },
+          }"
+          spaceBetween="4"
+          :autoplay="{
+            delay: 5000,
+          }"
+          :loop="true"
+          @swiperslidechange="onJourneySlideChange"
+        >
+          <swiper-slide v-for="(item, i) in 4" :key="i" class="pl-3">
+            <NuxtLink
+              to="/product-info"
+              class="group relative block h-full content-end rounded-3xl bg-cover bg-center p-4 text-white"
+              :style="`background-image: url(/images/home/recommend-${i + 1}.webp)`"
+            >
+              <!-- 遮罩 -->
+              <div
+                class="pointer-events-none absolute inset-0 z-0 rounded-3xl bg-gradient-to-t from-[#221F1E99] to-transparent"
+              ></div>
+              <div class="relative z-10">
+                <h3 class="mb-2 text-h4">
+                  {{
+                    [
+                      "峇里島渡假漫遊",
+                      "日本深度賞櫻計畫",
+                      "紐西蘭雪山探險",
+                      "摩洛哥迷幻之旅",
+                    ][i]
+                  }}
+                </h3>
+                <p class="mb-6 text-body2">
+                  {{
+                    [
+                      "精選五星級海灘度假村，專屬私人管家服務，讓您徹底放鬆身心。",
+                      "春季限定，東京、京都、大阪賞櫻之旅，體驗日本文化的精髓。",
+                      "探索南島壯麗的自然風光，體驗各種極限運動和戶外活動。",
+                      "漫步沙漠與古城之間，探索千年文化與色彩繽紛的市集風情。",
+                    ][i]
+                  }}
+                </p>
+                <!-- 按鈕 -->
+                <button
+                  type="button"
+                  class="flex w-full items-center justify-between gap-2 rounded-full bg-white px-5 py-4 text-title text-black"
+                >
+                  訂購行程
+                  <!-- 裝飾 icon -->
+                  <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                    <rect width="32" height="32" rx="16" fill="#fff" />
+                    <g clip-path="url(#a)">
+                      <path
+                        d="m16 8-1.41 1.41L20.17 15H8v2h12.17l-5.58 5.59L16 24l8-8z"
+                        fill="#000"
+                      />
+                    </g>
+                  </svg>
+                </button>
+              </div>
+            </NuxtLink>
+          </swiper-slide>
+        </swiper-container>
+        <!-- 自製點點 -->
+        <div class="block xl:hidden">
+          <div class="flex justify-center gap-1">
+            <button
+              v-for="i in 4"
+              :key="i"
+              type="button"
+              @click="goToJourney(i - 1)"
+              class="h-2 rounded-full transition-all duration-300"
+              :class="
+                journeyActiveIndex === i - 1
+                  ? 'w-6 bg-primary-40'
+                  : 'w-2 bg-neutral-40'
+              "
+              :aria-pressed="journeyActiveIndex === i - 1"
+              :aria-label="`跳至第 ${i} 張`"
+            ></button>
+          </div>
+        </div>
+      </ClientOnly>
     </div>
   </section>
   <!-- 踏上旅程的第一站 -->
