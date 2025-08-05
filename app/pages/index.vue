@@ -146,6 +146,111 @@ const marqueeSpeed = 20;
             </div>
           </NuxtLink>
         </li>
+        <li>
+          <NuxtLink
+            to="/product-info"
+            class="group relative block h-full w-[270px] content-end overflow-y-hidden rounded-[32px] bg-[url('/images/home/recommend-2.webp')] bg-cover bg-center p-8 text-white transition-all duration-500 hover:w-[416px]"
+          >
+            <!-- 漸層遮罩 -->
+            <div
+              class="pointer-events-none absolute inset-0 z-0 rounded-[32px] bg-gradient-to-t from-[#221F1E99] to-transparent"
+            ></div>
+            <!-- 內容 -->
+            <div class="relative z-10">
+              <h3 class="mb-2 text-h2">日本深度賞櫻計畫</h3>
+              <p class="group-hover:mb-6">
+                春季限定，東京、京都、大阪賞櫻之旅，體驗日本文化的精髓。
+              </p>
+              <!-- 電腦版按鈕，預設隱藏，hover 卡片時出現 -->
+              <button
+                type="button"
+                class="absolute bottom-0 flex w-full translate-y-10 items-center justify-between gap-2 rounded-full bg-white px-5 py-4 text-title text-black opacity-0 transition-all group-hover:static group-hover:translate-y-0 group-hover:opacity-100"
+              >
+                訂購行程
+                <!-- 裝飾 icon -->
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                  <rect width="32" height="32" rx="16" fill="#fff" />
+                  <g clip-path="url(#a)">
+                    <path
+                      d="m16 8-1.41 1.41L20.17 15H8v2h12.17l-5.58 5.59L16 24l8-8z"
+                      fill="#000"
+                    />
+                  </g>
+                </svg>
+              </button>
+            </div>
+          </NuxtLink>
+        </li>
+        <li>
+          <NuxtLink
+            to="/product-info"
+            class="group relative block h-full w-[270px] content-end overflow-y-hidden rounded-[32px] bg-[url('/images/home/recommend-3.webp')] bg-cover bg-center p-8 text-white transition-all duration-500 hover:w-[416px]"
+          >
+            <!-- 漸層遮罩 -->
+            <div
+              class="pointer-events-none absolute inset-0 z-0 rounded-[32px] bg-gradient-to-t from-[#221F1E99] to-transparent"
+            ></div>
+            <!-- 內容 -->
+            <div class="relative z-10">
+              <h3 class="mb-2 text-h2">紐西蘭雪山探險</h3>
+              <p class="group-hover:mb-6">
+                探索南島壯麗的自然風光，體驗各種極限運動和戶外活動。
+              </p>
+              <!-- 電腦版按鈕，預設隱藏，hover 卡片時出現 -->
+              <button
+                type="button"
+                class="absolute bottom-0 flex w-full translate-y-10 items-center justify-between gap-2 rounded-full bg-white px-5 py-4 text-title text-black opacity-0 transition-all group-hover:static group-hover:translate-y-0 group-hover:opacity-100"
+              >
+                訂購行程
+                <!-- 裝飾 icon -->
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                  <rect width="32" height="32" rx="16" fill="#fff" />
+                  <g clip-path="url(#a)">
+                    <path
+                      d="m16 8-1.41 1.41L20.17 15H8v2h12.17l-5.58 5.59L16 24l8-8z"
+                      fill="#000"
+                    />
+                  </g>
+                </svg>
+              </button>
+            </div>
+          </NuxtLink>
+        </li>
+        <li>
+          <NuxtLink
+            to="/product-info"
+            class="group relative block h-full w-[270px] content-end overflow-y-hidden rounded-[32px] bg-[url('/images/home/recommend-4.webp')] bg-cover bg-center p-8 text-white transition-all duration-500 hover:w-[416px]"
+          >
+            <!-- 漸層遮罩 -->
+            <div
+              class="pointer-events-none absolute inset-0 z-0 rounded-[32px] bg-gradient-to-t from-[#221F1E99] to-transparent"
+            ></div>
+            <!-- 內容 -->
+            <div class="relative z-10">
+              <h3 class="mb-2 text-h2">摩洛哥迷幻之旅</h3>
+              <p class="group-hover:mb-6">
+                漫步沙漠與古城之間，探索千年文化與色彩繽紛的市集風情。
+              </p>
+              <!-- 電腦版按鈕，預設隱藏，hover 卡片時出現 -->
+              <button
+                type="button"
+                class="absolute bottom-0 flex w-full translate-y-10 items-center justify-between gap-2 rounded-full bg-white px-5 py-4 text-title text-black opacity-0 transition-all group-hover:static group-hover:translate-y-0 group-hover:opacity-100"
+              >
+                訂購行程
+                <!-- 裝飾 icon -->
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                  <rect width="32" height="32" rx="16" fill="#fff" />
+                  <g clip-path="url(#a)">
+                    <path
+                      d="m16 8-1.41 1.41L20.17 15H8v2h12.17l-5.58 5.59L16 24l8-8z"
+                      fill="#000"
+                    />
+                  </g>
+                </svg>
+              </button>
+            </div>
+          </NuxtLink>
+        </li>
       </ul>
       <!-- 手機版卡片輪播 -->
     </div>
