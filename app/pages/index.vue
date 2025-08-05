@@ -15,6 +15,21 @@ function handleSearch() {
   }
 }
 
+const activeIndex = ref(0); // 預設第一張卡片（峇里島渡假漫遊）大
+let hoverTimeout = null;
+
+function handleMouseEnter(i) {
+  // 清除離開時的延遲
+  clearTimeout(hoverTimeout);
+  activeIndex.value = i;
+}
+function handleMouseLeave() {
+  // 滑鼠離開時，0.3秒後恢復第一張
+  hoverTimeout = setTimeout(() => {
+    activeIndex.value = 0;
+  }, 300);
+}
+
 // 跑馬燈的速度，單位：秒，數值越小越快
 const marqueeSpeed = 20;
 </script>
@@ -110,131 +125,53 @@ const marqueeSpeed = 20;
         </div>
       </div>
       <!-- 電腦版懸停卡片 -->
-      <ul class="hidden h-[600px] gap-6 xl:flex">
-        <li>
+      <ul class="hidden h-[600px] justify-between xl:flex">
+        <li
+          v-for="(item, i) in 4"
+          :key="i"
+          @mouseenter="handleMouseEnter(i)"
+          @mouseleave="handleMouseLeave"
+        >
           <NuxtLink
             to="/product-info"
-            class="group relative block h-full w-[270px] content-end overflow-y-hidden rounded-[32px] bg-[url('/images/home/recommend-1.webp')] bg-cover bg-center p-8 text-white transition-all duration-500 hover:w-[416px]"
+            class="group relative block h-full content-end overflow-y-hidden rounded-[32px] bg-cover bg-center p-8 text-white transition-all duration-500"
+            :class="activeIndex === i ? 'w-[416px]' : 'w-[270px]'"
+            :style="`background-image: url(/images/home/recommend-${i + 1}.webp)`"
           >
-            <!-- 漸層遮罩 -->
+            <!-- 遮罩 -->
             <div
               class="pointer-events-none absolute inset-0 z-0 rounded-[32px] bg-gradient-to-t from-[#221F1E99] to-transparent"
             ></div>
-            <!-- 內容 -->
             <div class="relative z-10">
-              <h3 class="mb-2 text-h2">峇里島渡假漫遊</h3>
-              <p class="group-hover:mb-6">
-                精選五星級海灘度假村，專屬私人管家服務，讓您徹底放鬆身心。
+              <h3 class="mb-2 text-h2">
+                {{
+                  [
+                    "峇里島渡假漫遊",
+                    "日本深度賞櫻計畫",
+                    "紐西蘭雪山探險",
+                    "摩洛哥迷幻之旅",
+                  ][i]
+                }}
+              </h3>
+              <p :class="activeIndex === i ? 'mb-6' : 'group-hover:mb-6'">
+                {{
+                  [
+                    "精選五星級海灘度假村，專屬私人管家服務，讓您徹底放鬆身心。",
+                    "春季限定，東京、京都、大阪賞櫻之旅，體驗日本文化的精髓。",
+                    "探索南島壯麗的自然風光，體驗各種極限運動和戶外活動。",
+                    "漫步沙漠與古城之間，探索千年文化與色彩繽紛的市集風情。",
+                  ][i]
+                }}
               </p>
-              <!-- 電腦版按鈕，預設隱藏，hover 卡片時出現 -->
+              <!-- 按鈕 -->
               <button
                 type="button"
-                class="absolute bottom-0 flex w-full translate-y-10 items-center justify-between gap-2 rounded-full bg-white px-5 py-4 text-title text-black opacity-0 transition-all group-hover:static group-hover:translate-y-0 group-hover:opacity-100"
-              >
-                訂購行程
-                <!-- 裝飾 icon -->
-                <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-                  <rect width="32" height="32" rx="16" fill="#fff" />
-                  <g clip-path="url(#a)">
-                    <path
-                      d="m16 8-1.41 1.41L20.17 15H8v2h12.17l-5.58 5.59L16 24l8-8z"
-                      fill="#000"
-                    />
-                  </g>
-                </svg>
-              </button>
-            </div>
-          </NuxtLink>
-        </li>
-        <li>
-          <NuxtLink
-            to="/product-info"
-            class="group relative block h-full w-[270px] content-end overflow-y-hidden rounded-[32px] bg-[url('/images/home/recommend-2.webp')] bg-cover bg-center p-8 text-white transition-all duration-500 hover:w-[416px]"
-          >
-            <!-- 漸層遮罩 -->
-            <div
-              class="pointer-events-none absolute inset-0 z-0 rounded-[32px] bg-gradient-to-t from-[#221F1E99] to-transparent"
-            ></div>
-            <!-- 內容 -->
-            <div class="relative z-10">
-              <h3 class="mb-2 text-h2">日本深度賞櫻計畫</h3>
-              <p class="group-hover:mb-6">
-                春季限定，東京、京都、大阪賞櫻之旅，體驗日本文化的精髓。
-              </p>
-              <!-- 電腦版按鈕，預設隱藏，hover 卡片時出現 -->
-              <button
-                type="button"
-                class="absolute bottom-0 flex w-full translate-y-10 items-center justify-between gap-2 rounded-full bg-white px-5 py-4 text-title text-black opacity-0 transition-all group-hover:static group-hover:translate-y-0 group-hover:opacity-100"
-              >
-                訂購行程
-                <!-- 裝飾 icon -->
-                <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-                  <rect width="32" height="32" rx="16" fill="#fff" />
-                  <g clip-path="url(#a)">
-                    <path
-                      d="m16 8-1.41 1.41L20.17 15H8v2h12.17l-5.58 5.59L16 24l8-8z"
-                      fill="#000"
-                    />
-                  </g>
-                </svg>
-              </button>
-            </div>
-          </NuxtLink>
-        </li>
-        <li>
-          <NuxtLink
-            to="/product-info"
-            class="group relative block h-full w-[270px] content-end overflow-y-hidden rounded-[32px] bg-[url('/images/home/recommend-3.webp')] bg-cover bg-center p-8 text-white transition-all duration-500 hover:w-[416px]"
-          >
-            <!-- 漸層遮罩 -->
-            <div
-              class="pointer-events-none absolute inset-0 z-0 rounded-[32px] bg-gradient-to-t from-[#221F1E99] to-transparent"
-            ></div>
-            <!-- 內容 -->
-            <div class="relative z-10">
-              <h3 class="mb-2 text-h2">紐西蘭雪山探險</h3>
-              <p class="group-hover:mb-6">
-                探索南島壯麗的自然風光，體驗各種極限運動和戶外活動。
-              </p>
-              <!-- 電腦版按鈕，預設隱藏，hover 卡片時出現 -->
-              <button
-                type="button"
-                class="absolute bottom-0 flex w-full translate-y-10 items-center justify-between gap-2 rounded-full bg-white px-5 py-4 text-title text-black opacity-0 transition-all group-hover:static group-hover:translate-y-0 group-hover:opacity-100"
-              >
-                訂購行程
-                <!-- 裝飾 icon -->
-                <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-                  <rect width="32" height="32" rx="16" fill="#fff" />
-                  <g clip-path="url(#a)">
-                    <path
-                      d="m16 8-1.41 1.41L20.17 15H8v2h12.17l-5.58 5.59L16 24l8-8z"
-                      fill="#000"
-                    />
-                  </g>
-                </svg>
-              </button>
-            </div>
-          </NuxtLink>
-        </li>
-        <li>
-          <NuxtLink
-            to="/product-info"
-            class="group relative block h-full w-[270px] content-end overflow-y-hidden rounded-[32px] bg-[url('/images/home/recommend-4.webp')] bg-cover bg-center p-8 text-white transition-all duration-500 hover:w-[416px]"
-          >
-            <!-- 漸層遮罩 -->
-            <div
-              class="pointer-events-none absolute inset-0 z-0 rounded-[32px] bg-gradient-to-t from-[#221F1E99] to-transparent"
-            ></div>
-            <!-- 內容 -->
-            <div class="relative z-10">
-              <h3 class="mb-2 text-h2">摩洛哥迷幻之旅</h3>
-              <p class="group-hover:mb-6">
-                漫步沙漠與古城之間，探索千年文化與色彩繽紛的市集風情。
-              </p>
-              <!-- 電腦版按鈕，預設隱藏，hover 卡片時出現 -->
-              <button
-                type="button"
-                class="absolute bottom-0 flex w-full translate-y-10 items-center justify-between gap-2 rounded-full bg-white px-5 py-4 text-title text-black opacity-0 transition-all group-hover:static group-hover:translate-y-0 group-hover:opacity-100"
+                class="bottom-0 flex w-full items-center justify-between gap-2 rounded-full bg-white px-5 py-4 text-title text-black transition-all"
+                :class="
+                  activeIndex === i
+                    ? ''
+                    : 'absolute translate-y-10 opacity-0 group-hover:static group-hover:translate-y-0 group-hover:opacity-100'
+                "
               >
                 訂購行程
                 <!-- 裝飾 icon -->
