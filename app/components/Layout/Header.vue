@@ -27,6 +27,20 @@ const headerClass = computed(() => {
 function handleScroll() {
   scrolled.value = window.scrollY > 10;
 }
+function addScrollListener() {
+  window.addEventListener("scroll", handleScroll, { passive: true });
+}
+function removeScrollListener() {
+  window.removeEventListener("scroll", handleScroll);
+}
+
+// 監聽視窗 resize，超過斷點自動關掉行動搜尋和側欄
+const handleResize = () => {
+  if (window.innerWidth >= 640 && openMobileSearch.value)
+    openMobileSearch.value = false;
+  if (window.innerWidth >= 768 && showMobileNav.value)
+    showMobileNav.value = false;
+};
 
 function logout() {
   sessionStorage.setItem("isLoggedIn", "false");
@@ -42,29 +56,31 @@ onMounted(async () => {
   isLoggedIn.value = sessionStorage.getItem("isLoggedIn") === "true";
   // 首頁才監聽捲動
   if (isHome.value) {
-    window.addEventListener("scroll", handleScroll, { passive: true });
+    addScrollListener();
+    handleScroll(); // 一進來就同步一次狀態
   }
-  // 監聽視窗 resize，超過斷點自動關掉行動搜尋和側欄
-  const handleResize = () => {
-    if (window.innerWidth >= 640 && openMobileSearch.value)
-      openMobileSearch.value = false;
-    if (window.innerWidth >= 768 && showMobileNav.value)
-      showMobileNav.value = false;
-  };
+
   window.addEventListener("resize", handleResize);
   // 路由切換自動 reset UI
   watch(
     () => route.path,
-    () => {
+    (newPath, oldPath) => {
+      removeScrollListener();
+      scrolled.value = false;
+      if (newPath === "/" || newPath === "") {
+        addScrollListener();
+        handleScroll();
+      }
       openMobileSearch.value = false;
       showMobileNav.value = false;
     },
   );
-  // 離開時清除事件監聽
-  onBeforeUnmount(() => {
-    if (isHome.value) window.removeEventListener("scroll", handleScroll);
-    window.removeEventListener("resize", handleResize);
-  });
+});
+
+// 離開時清除事件監聽
+onBeforeUnmount(() => {
+  removeScrollListener();
+  window.removeEventListener("resize", handleResize);
 });
 </script>
 
