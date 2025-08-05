@@ -72,7 +72,44 @@ const marqueeSpeed = 20;
   </section>
   <!-- 你的專屬推薦 -->
   <section class="bg-[#221F1E] px-3 pb-[88px] pt-10 md:py-[120px]">
-    <div class="mx-auto max-w-container"></div>
+    <div class="mx-auto max-w-container">
+      <!-- 標題、推薦文字 -->
+      <div
+        class="mb-10 flex flex-col justify-between gap-6 text-white md:mb-20 md:flex-row md:items-center"
+      >
+        <h2 class="text-h3 md:text-display">你的<br />專屬推薦</h2>
+        <div>
+          <p
+            class="mb-3 space-y-1 text-subtitle md:mb-6 md:space-y-2 md:text-h6"
+          >
+            <span class="block">來看我們的精選推薦行程，滿意度高達 99.2%</span>
+            <span class="block">給自己一個難忘的旅遊行程吧！</span>
+          </p>
+          <NuxtLink
+            to="/product-info"
+            class="flex items-center gap-2 text-subtitle transition hover:text-primary-40 md:text-title"
+          >
+            查看全部行程
+            <!-- 裝飾箭頭 -->
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              class="size-4 md:size-6"
+            >
+              <g clip-path="url(#a)">
+                <path
+                  d="m12 4-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"
+                  fill="currentColor"
+                />
+              </g>
+            </svg>
+          </NuxtLink>
+        </div>
+      </div>
+    </div>
   </section>
   <!-- 踏上旅程的第一站 -->
   <section
