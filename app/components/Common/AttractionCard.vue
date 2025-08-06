@@ -114,10 +114,8 @@ const {
     >
       <span class="flex items-center gap-1 border-r border-neutral-40 pr-3">
         <img src="/icons/star.svg" alt="評論星星" />
-        <span class="flex gap-1">
-          <span class="text-neutral">{{ ratingScore }}</span>
-          <span class="text-neutral-60">({{ ratingCount }})</span>
-        </span>
+        <span class="text-neutral">{{ ratingScore }}</span>
+        <span class="text-neutral-60">({{ ratingCount }})</span>
       </span>
       <span class="text-neutral">{{ alreadyBuy }}+ 個已訂購</span>
     </div>
