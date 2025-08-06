@@ -378,7 +378,50 @@ onBeforeUnmount(() => {
         </button>
       </div>
       <!-- 未登入狀態 -->
-      <div v-else>未登入</div>
+      <div v-else class="flex h-full flex-col">
+        <!-- 未登入頭像 -->
+        <NuxtLink to="/login" class="mb-4 flex items-center gap-2">
+          <div class="rounded-full bg-primary-40 p-1">
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M16 9a4 4 0 1 1-8 0 4 4 0 0 1 8 0m-2 0a2 2 0 1 1-4 0 2 2 0 0 1 4 0"
+                fill="#F3EEEC"
+              />
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M12 1C5.925 1 1 5.925 1 12s4.925 11 11 11 11-4.925 11-11S18.075 1 12 1M3 12c0 2.09.713 4.014 1.908 5.542A8.99 8.99 0 0 1 12.065 14a8.98 8.98 0 0 1 7.092 3.458A9.001 9.001 0 1 0 3 12m9 9a8.96 8.96 0 0 1-5.672-2.012A6.99 6.99 0 0 1 12.065 16a6.99 6.99 0 0 1 5.689 2.92A8.96 8.96 0 0 1 12 21"
+                fill="#F3EEEC"
+              />
+            </svg>
+          </div>
+          <div>
+            <p class="text-title">訪客</p>
+            <p class="text-neutral-80 text-body">未登入</p>
+          </div>
+        </NuxtLink>
+        <!-- 選單分隔線 -->
+        <hr class="mb-6 border-neutral-40" />
+        <h3 class="mb-1 text-h6">歡迎來到 ZOBAA</h3>
+        <p class="text-neutral-80 text-body">
+          加入會員即可立即訂購、收藏行程，並享相關優惠好禮。
+        </p>
+        <!-- 前往登入或註冊 -->
+        <NuxtLink
+          to="/login"
+          class="mt-auto rounded-xl bg-primary p-4 text-center text-title text-white transition hover:bg-primary-120"
+        >
+          登入 / 註冊
+        </NuxtLink>
+      </div>
     </nav>
   </transition>
 </template>
