@@ -243,4 +243,58 @@ const goTo = (idx) => {
   </section>
   <!-- 選擇方案 -->
   <section id="plans" class="bg-primary-10 px-3 py-10 md:py-[120px]"></section>
+  <!-- 商品說明、如何使用、旅人評論 -->
+  <section class="px-3 py-10 lg:py-[120px]">
+    <div class="mx-auto flex max-w-container justify-between gap-[140px]">
+      <!-- 商品說明、如何使用、旅人評論容器 -->
+      <div class="flex-1 space-y-10">
+        <!-- 如何使用 -->
+        <div class="border-y border-neutral-40 py-10">
+          <h2 id="how-to-use" class="mb-6 flex items-center gap-2 text-h3">
+            <img src="/icons/title-hash.svg" alt="井字裝飾" />如何使用
+          </h2>
+          <h3 class="mb-2 text-title text-black">憑證使用方式</h3>
+          <p class="text-body text-neutral">
+            現場請出示 QR code<br />
+            請至阿倍野 HARUKAS 300 展望台 16 樓櫃檯出示電子憑證。
+          </p>
+        </div>
+        <!-- 旅人評論 -->
+        <div>
+          <h2 id="reviews" class="mb-10 flex items-center gap-2 text-h3">
+            <img src="/icons/title-hash.svg" alt="井字裝飾" />旅人評論
+          </h2>
+          <ul>
+            <li><article></article></li>
+          </ul>
+        </div>
+      </div>
+      <!-- 側邊選單 -->
+      <nav class="sticky top-[100px] hidden self-start lg:block">
+        <ul class="space-y-6">
+          <li>
+            <a
+              href="#product-info"
+              class="border-l-4 border-transparent pl-4 text-body text-neutral-60 transition hover:border-primary hover:text-title hover:text-primary"
+              >商品說明
+            </a>
+          </li>
+          <li>
+            <a
+              href="#how-to-use"
+              class="border-l-4 border-transparent pl-4 text-body text-neutral-60 transition hover:border-primary hover:text-title hover:text-primary"
+              >如何使用
+            </a>
+          </li>
+          <li>
+            <a
+              href="#reviews"
+              class="border-l-4 border-transparent pl-4 text-body text-neutral-60 transition hover:border-primary hover:text-title hover:text-primary"
+              >旅人評論
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </section>
 </template>
