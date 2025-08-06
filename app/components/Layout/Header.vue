@@ -281,7 +281,7 @@ onBeforeUnmount(() => {
           />
           <div>
             <p class="text-title">Jessica</p>
-            <p class="text-neutral-80 text-body">jessica.yen@gamil.com</p>
+            <p class="text-body text-neutral">jessica.yen@gamil.com</p>
           </div>
         </NuxtLink>
         <!-- 選單分隔線 -->
@@ -405,13 +405,13 @@ onBeforeUnmount(() => {
           </div>
           <div>
             <p class="text-title">訪客</p>
-            <p class="text-neutral-80 text-body">未登入</p>
+            <p class="text-body text-neutral">未登入</p>
           </div>
         </NuxtLink>
         <!-- 選單分隔線 -->
         <hr class="mb-6 border-neutral-40" />
         <h3 class="mb-1 text-h6">歡迎來到 ZOBAA</h3>
-        <p class="text-neutral-80 text-body">
+        <p class="text-body text-neutral">
           加入會員即可立即訂購、收藏行程，並享相關優惠好禮。
         </p>
         <!-- 前往登入或註冊 -->
