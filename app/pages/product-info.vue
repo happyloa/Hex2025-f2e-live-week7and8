@@ -23,6 +23,34 @@ const onSlideChange = (e) => {
 const goTo = (idx) => {
   harukas300ImgSwiper.value?.swiper?.slideToLoop(idx);
 };
+
+const sectionIds = ["product-info", "how-to-use", "reviews"];
+const activeSection = ref(sectionIds[0]);
+
+function onScroll() {
+  const offset = 120; // 距離頁面頂端 120px 就 active
+  let current = sectionIds[0];
+
+  for (const id of sectionIds) {
+    const el = document.getElementById(id);
+    if (!el) continue;
+    const rect = el.getBoundingClientRect();
+    // top <= 100 表示 heading 已經進入 offset 區塊
+    if (rect.top - offset <= 0) {
+      current = id;
+    }
+  }
+  activeSection.value = current;
+}
+
+onMounted(() => {
+  window.addEventListener("scroll", onScroll, { passive: true });
+  // 頁面載入時先判斷
+  onScroll();
+});
+onBeforeUnmount(() => {
+  window.removeEventListener("scroll", onScroll);
+});
 </script>
 
 <template>
@@ -248,6 +276,12 @@ const goTo = (idx) => {
     <div class="mx-auto flex max-w-container justify-between gap-[140px]">
       <!-- 商品說明、如何使用、旅人評論容器 -->
       <div class="flex-1 space-y-10">
+        <!-- 商品說明 -->
+        <div>
+          <h2 id="product-info" class="mb-6 flex items-center gap-2 text-h3">
+            <img src="/icons/title-hash.svg" alt="井字裝飾" />商品說明
+          </h2>
+        </div>
         <!-- 如何使用 -->
         <div class="border-y border-neutral-40 py-10">
           <h2 id="how-to-use" class="mb-6 flex items-center gap-2 text-h3">
@@ -264,33 +298,174 @@ const goTo = (idx) => {
           <h2 id="reviews" class="mb-10 flex items-center gap-2 text-h3">
             <img src="/icons/title-hash.svg" alt="井字裝飾" />旅人評論
           </h2>
-          <ul>
-            <li><article></article></li>
+          <ul class="space-y-4 lg:space-y-6">
+            <li>
+              <article
+                class="flex flex-col gap-6 rounded-[20px] p-4 shadow-card md:flex-row md:p-8"
+              >
+                <img
+                  src="/images/site/avatar-1.webp"
+                  alt="無聊工程師 Brian"
+                  class="size-[60px] rounded-full"
+                />
+                <!-- 稱呼、評價、日期、評論內容 -->
+                <div class="flex-1 text-body text-black">
+                  <h3 class="mb-1">無聊工程師 Brian</h3>
+                  <span
+                    class="mb-4 flex items-center gap-2 text-body2 text-neutral"
+                  >
+                    <!-- 星星容器 -->
+                    <div class="flex gap-1">
+                      <img src="/icons/review-star.svg" alt="評論星星" />
+                      <img src="/icons/review-star.svg" alt="評論星星" />
+                      <img src="/icons/review-star.svg" alt="評論星星" />
+                      <img src="/icons/review-star.svg" alt="評論星星" />
+                      <img src="/icons/review-star.svg" alt="評論星星" />
+                    </div>
+                    2025-03-24
+                  </span>
+                  <blockquote class="rounded-2xl bg-neutral-10 p-4">
+                    <h4 class="mb-3 text-title">覺得自己像在當鋼鐵人</h4>
+                    <p class="text-neutral">
+                      本來只是想吹吹冷氣看風景，結果一站上去我竟然以為自己是要起飛的鋼鐵人。<br />
+                      全大阪通通收服底，還順便看到前女友住在哪一層，讚。
+                    </p>
+                  </blockquote>
+                </div>
+              </article>
+            </li>
+            <li>
+              <article
+                class="flex flex-col gap-6 rounded-[20px] p-4 shadow-card md:flex-row md:p-8"
+              >
+                <img
+                  src="/images/site/avatar-2.webp"
+                  alt="愛旅遊的林阿姨"
+                  class="size-[60px] rounded-full"
+                />
+                <!-- 稱呼、評價、日期、評論內容 -->
+                <div class="flex-1 text-body text-black">
+                  <h3 class="mb-1">愛旅遊的林阿姨</h3>
+                  <span
+                    class="mb-4 flex items-center gap-2 text-body2 text-neutral"
+                  >
+                    <!-- 星星容器 -->
+                    <div class="flex gap-1">
+                      <img src="/icons/review-star.svg" alt="評論星星" />
+                      <img src="/icons/review-star.svg" alt="評論星星" />
+                      <img src="/icons/review-star.svg" alt="評論星星" />
+                      <img src="/icons/review-star.svg" alt="評論星星" />
+                      <img src="/icons/review-star.svg" alt="評論星星" />
+                    </div>
+                    2025-01-30
+                  </span>
+                  <blockquote class="rounded-2xl bg-neutral-10 p-4">
+                    <h4 class="mb-3 text-title">退休生活安排得剛剛好</h4>
+                    <p class="text-neutral">
+                      以前只有年輕人在打卡，這次我也來插旗！<br />
+                      從 58 樓看風景、60 樓走一圈，還順便在 Sky Garden
+                      吃個甜點，人生沒這麼輕鬆啦！<br />
+                      還有退稅服務耶～貼心！
+                    </p>
+                  </blockquote>
+                </div>
+              </article>
+            </li>
+            <li>
+              <article
+                class="flex flex-col gap-6 rounded-[20px] p-4 shadow-card md:flex-row md:p-8"
+              >
+                <img
+                  src="/images/site/avatar-3.webp"
+                  alt="財富對折師阿哲"
+                  class="size-[60px] rounded-full"
+                />
+                <!-- 稱呼、評價、日期、評論內容 -->
+                <div class="flex-1 text-body text-black">
+                  <h3 class="mb-1">財富對折師阿哲</h3>
+                  <span
+                    class="mb-4 flex items-center gap-2 text-body2 text-neutral"
+                  >
+                    <!-- 星星容器 -->
+                    <div class="flex gap-1">
+                      <img src="/icons/review-star.svg" alt="評論星星" />
+                      <img src="/icons/review-star.svg" alt="評論星星" />
+                      <img src="/icons/review-star.svg" alt="評論星星" />
+                      <img src="/icons/review-star.svg" alt="評論星星" />
+                      <img src="/icons/review-star.svg" alt="評論星星" />
+                    </div>
+                    2024-05-29
+                  </span>
+                  <blockquote class="rounded-2xl bg-neutral-10 p-4">
+                    <h4 class="mb-3 text-title">
+                      第一次帶女友出國，股票先不看了
+                    </h4>
+                    <p class="text-neutral">
+                      想不到第一次出國就被女友說「太會安排了吧❤️」<br />
+                      看完夜景還能順便退稅、吃飯、買禮物，一張票搞定，男人就該這樣做事！
+                    </p>
+                  </blockquote>
+                </div>
+              </article>
+            </li>
+            <li>
+              <article
+                class="flex flex-col gap-6 rounded-[20px] p-4 shadow-card md:flex-row md:p-8"
+              >
+                <img
+                  src="/images/site/avatar-4.webp"
+                  alt="麗莎｜帶你玩遍全世界"
+                  class="size-[60px] rounded-full"
+                />
+                <!-- 稱呼、評價、日期、評論內容 -->
+                <div class="flex-1 text-body text-black">
+                  <h3 class="mb-1">麗莎｜帶你玩遍全世界</h3>
+                  <span
+                    class="mb-4 flex items-center gap-2 text-body2 text-neutral"
+                  >
+                    <!-- 星星容器 -->
+                    <div class="flex gap-1">
+                      <img src="/icons/review-star.svg" alt="評論星星" />
+                      <img src="/icons/review-star.svg" alt="評論星星" />
+                      <img src="/icons/review-star.svg" alt="評論星星" />
+                      <img src="/icons/review-star.svg" alt="評論星星" />
+                      <img src="/icons/review-star.svg" alt="評論星星" />
+                    </div>
+                    2024-04-23
+                  </span>
+                  <blockquote class="rounded-2xl bg-neutral-10 p-4">
+                    <h4 class="mb-3 text-title">IG狂打卡模式啟動</h4>
+                    <p class="text-neutral">
+                      光那個透明玻璃窗我就拍了 30 張，爽度不同凡響<br />
+                      夕陽照下來直接幫我自動磨皮濾鏡，根本不用修圖！
+                    </p>
+                  </blockquote>
+                </div>
+              </article>
+            </li>
           </ul>
         </div>
       </div>
       <!-- 側邊選單 -->
       <nav class="sticky top-[100px] hidden self-start lg:block">
         <ul class="space-y-6">
-          <li>
+          <li v-for="id in sectionIds" :key="id">
             <a
-              href="#product-info"
-              class="border-l-4 border-transparent pl-4 text-body text-neutral-60 transition hover:border-primary hover:text-title hover:text-primary"
-              >商品說明
-            </a>
-          </li>
-          <li>
-            <a
-              href="#how-to-use"
-              class="border-l-4 border-transparent pl-4 text-body text-neutral-60 transition hover:border-primary hover:text-title hover:text-primary"
-              >如何使用
-            </a>
-          </li>
-          <li>
-            <a
-              href="#reviews"
-              class="border-l-4 border-transparent pl-4 text-body text-neutral-60 transition hover:border-primary hover:text-title hover:text-primary"
-              >旅人評論
+              :href="`#${id}`"
+              :class="[
+                'border-l-4 pl-4 text-body transition hover:border-primary hover:text-title hover:text-primary',
+                activeSection === id
+                  ? 'border-primary text-title text-primary'
+                  : 'border-transparent text-neutral-60',
+              ]"
+            >
+              {{
+                id === "product-info"
+                  ? "商品說明"
+                  : id === "how-to-use"
+                    ? "如何使用"
+                    : "旅人評論"
+              }}
             </a>
           </li>
         </ul>
