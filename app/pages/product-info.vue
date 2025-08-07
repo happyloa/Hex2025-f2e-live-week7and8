@@ -24,6 +24,8 @@ const goTo = (idx) => {
   harukas300ImgSwiper.value?.swiper?.slideToLoop(idx);
 };
 
+const showMore = ref(false); // 展開更多
+
 const sectionIds = ["product-info", "how-to-use", "reviews"];
 const activeSection = ref(sectionIds[0]);
 
@@ -277,10 +279,66 @@ onBeforeUnmount(() => {
       <!-- 商品說明、如何使用、旅人評論容器 -->
       <div class="flex-1 space-y-10">
         <!-- 商品說明 -->
-        <div>
-          <h2 id="product-info" class="mb-6 flex items-center gap-2 text-h3">
+        <div
+          class="relative z-0 text-body text-neutral"
+          :class="
+            showMore
+              ? ''
+              : 'max-h-[518px] overflow-y-hidden pb-14 lg:max-h-full'
+          "
+        >
+          <h2
+            id="product-info"
+            class="mb-6 flex items-center gap-2 text-h3 text-primary"
+          >
             <img src="/icons/title-hash.svg" alt="井字裝飾" />商品說明
           </h2>
+          <h3>－ 景點介紹 －</h3>
+          <ul class="mb-6 list-inside list-disc pl-2">
+            <li>
+              阿倍野 HARUKAS<br />
+              阿倍野 HARUKAS 是 2014 年 3 月 7
+              日正式開幕的大阪必去新地標，集結了商城、飯店、美術館與展望台等多元功能，欣賞美景之餘還可購物、享受美食。阿倍野
+              60 樓 360
+              度的空中迴廊，以落地鋼化玻璃包圍展望台四周，若天候條件較佳，還可將京都到六甲山脈、明石海峽大橋到淡路島、生駒山脈，以及關西國際機場等廣大景色一覽無遺。此外，特別推薦夜晚限定的燈光音樂秀，當燈光與音樂在夜晚的空中庭園與空中走廊之間交錯，絕對是一場難得的感官饗宴！
+            </li>
+          </ul>
+          <h3>－ 阿倍野美術館 展覽介紹 －</h3>
+          <ul class="mb-6 list-inside list-disc pl-2">
+            <li>
+              <a
+                href="https://www.aham.jp/exhibition/future/folon/"
+                target="_blank"
+                class="underline"
+                >幻想旅行導遊：尚-米歇爾·福隆</a
+              >
+            </li>
+            <li>展覽期間：2025年4月5日（六）～2025年6月22日（日）</li>
+            <li>
+              尚-米歇爾·福隆（Jean-Michel
+              Folon，1934-2005）是一位來自比利時的獨特藝術家。他的作品既詩意盎然又充滿幽默感，透過柔和的色彩與輕盈的筆觸，帶領觀眾踏上一場奇幻之旅，並傳遞對這個世界各種現象的深刻啟發，充滿豐富的情感與訊息。<br />
+              為了紀念福隆逝世20週年，以及他生前創立的「福隆基金會」成立25週年，本次展覽將展出約230件多樣的作品，包括繪畫、雕塑、海報等，向大家展現福隆溫暖且深邃的藝術魅力。
+            </li>
+          </ul>
+          <p class="mb-6">從 60 樓的觀景樓層，俯瞰 360 度充滿活力的大阪</p>
+          <img
+            src="/images/site/product-info.webp"
+            alt="從 60 樓的觀景樓層，俯瞰 360 度充滿活力的大阪"
+            class="rounded-2xl"
+          />
+          <!-- 展開更多漸層 -->
+          <div
+            v-if="!showMore"
+            class="absolute inset-x-0 bottom-0 z-10 flex h-[156px] flex-col items-center justify-end bg-gradient-to-t from-white from-40% to-[#FAFBFC00] lg:h-[256px]"
+          >
+            <button
+              type="button"
+              class="rounded-xl bg-primary px-[100px] py-4 text-center text-title text-white transition hover:bg-primary-120"
+              @click="showMore = true"
+            >
+              展開更多
+            </button>
+          </div>
         </div>
         <!-- 如何使用 -->
         <div class="border-y border-neutral-40 py-10">
