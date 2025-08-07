@@ -4,6 +4,15 @@ useSeoMeta({
   ogTitle: "商品介紹頁 | 2025 切版直播班 - 旅遊網站 W7&W8",
 });
 
+/* =====================================================================
+ * 1) 圖片輪播（Swiper）：資料、狀態與事件
+ * ---------------------------------------------------------------------
+ * - slides：輪播圖片來源
+ * - harukas300ImgSwiper：對 <swiper-container> 元素的 ref
+ * - activeIndex：目前顯示的實際索引（loop 模式下要用 realIndex）
+ * - onSlideChange：同步 activeIndex
+ * - goTo(idx)：點自製圓點 → 跳到指定張
+ * ===================================================================== */
 const slides = [
   "/images/site/harukas-1.webp",
   "/images/site/harukas-2.webp",
@@ -14,30 +23,42 @@ const harukas300ImgSwiper = ref(null);
 const activeIndex = ref(0);
 
 const onSlideChange = (e) => {
-  // e.detail[0] 就是 Swiper instance
+  // e.detail[0] 是 Swiper instance
   const [inst] = e.detail;
-  activeIndex.value = inst.realIndex; // loop 模式下要看 realIndex
+  activeIndex.value = inst.realIndex; // loop 模式下使用 realIndex
 };
 
 /** 點點點擊 → 跳到指定張（用 element.swiper 呼叫方法） */
 const goTo = (idx) => {
+  // ?. 防呆：DOM 還沒 mount 完成時不會拋錯
   harukas300ImgSwiper.value?.swiper?.slideToLoop(idx);
 };
 
-const showMore = ref(false); // 展開更多
+/* =====================================================================
+ * 2) 內容顯示開關：商品說明「展開更多」
+ * ===================================================================== */
+const showMore = ref(false);
 
+/* =====================================================================
+ * 3) Scroll Spy（側邊選單同步高亮）
+ * ---------------------------------------------------------------------
+ * - sectionIds：需要偵測的區塊 id（要與模板內 <h2 id="..."> 對應）
+ * - activeSection：目前在視窗中「經過頂部 offset」後最後一個 section
+ * - onScroll()：滾動時更新 activeSection
+ *   規則：heading top - offset <= 0 視為已「進入」視窗的偵測區
+ * ===================================================================== */
 const sectionIds = ["product-info", "how-to-use", "reviews"];
 const activeSection = ref(sectionIds[0]);
 
 function onScroll() {
-  const offset = 120; // 距離頁面頂端 120px 就 active
+  const offset = 120; // 距離頁面頂端 120px 時屬於 active
   let current = sectionIds[0];
 
   for (const id of sectionIds) {
     const el = document.getElementById(id);
     if (!el) continue;
     const rect = el.getBoundingClientRect();
-    // top <= 100 表示 heading 已經進入 offset 區塊
+    // 當標題已經「進入」 offset 區塊（頂部 <= 120px）就視為目前區塊
     if (rect.top - offset <= 0) {
       current = id;
     }
@@ -45,11 +66,18 @@ function onScroll() {
   activeSection.value = current;
 }
 
+/* =====================================================================
+ * 4) 生命週期：掛載/卸載
+ * ---------------------------------------------------------------------
+ * - 掛載時立刻判斷一次 activeSection，並綁定 scroll 事件（passive）
+ * - 離開時移除事件監聽
+ * ===================================================================== */
 onMounted(() => {
-  window.addEventListener("scroll", onScroll, { passive: true });
-  // 頁面載入時先判斷
+  // 首次進頁先算一次，避免一開始沒有高亮
   onScroll();
+  window.addEventListener("scroll", onScroll, { passive: true });
 });
+
 onBeforeUnmount(() => {
   window.removeEventListener("scroll", onScroll);
 });
