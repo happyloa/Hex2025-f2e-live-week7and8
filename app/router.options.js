@@ -8,7 +8,16 @@ export default {
       // 不要自動 scroll
       return false;
     }
-    // 其它路由維持預設（自動滾到頂）
+
+    // 有 hash（fragment）就滾動到對應 id
+    if (to.hash) {
+      return {
+        el: to.hash,
+        top: 100,
+      };
+    }
+
+    // 沒 hash 就滾到頂
     return { left: 0, top: 0 };
   },
 };
