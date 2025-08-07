@@ -17,7 +17,7 @@ const showPassword = ref(false);
 
 <template>
   <!-- 欄位 -->
-  <div class="text-neutral space-y-4 text-body">
+  <div class="space-y-4 text-body text-neutral">
     <h2 class="text-title text-black">或使用 ZOBAA 帳號登入</h2>
     <!-- 電子信箱 -->
     <div>
@@ -71,9 +71,9 @@ const showPassword = ref(false);
     </div>
   </div>
   <!-- 登入按鈕 -->
-  <button
-    type="button"
-    class="w-full rounded-xl p-4 text-center text-title transition"
+  <NuxtLink
+    to="/my-account"
+    class="block w-full rounded-xl p-4 text-center text-title transition"
     :class="
       !email || !password
         ? 'pointer-events-none bg-neutral-40 text-neutral-60'
@@ -81,8 +81,8 @@ const showPassword = ref(false);
     "
   >
     立即登入
-  </button>
-  <p class="text-neutral space-x-2">
+  </NuxtLink>
+  <p class="space-x-2 text-neutral">
     沒有 ZOBAA 帳號嗎？
     <NuxtLink to="/register" class="font-semibold text-primary underline">
       立即註冊
