@@ -4,7 +4,7 @@ const route = useRoute();
 const router = useRouter();
 
 // ---------- 狀態管理 ----------
-const isLoggedIn = ref(false); // 使用者登入狀態
+const { isLoggedIn } = useAuth(); // 使用者登入狀態
 const search = ref(""); // 搜尋欄內容
 const openMobileSearch = ref(false); // 行動搜尋模式開關
 const scrolled = ref(false); // 首頁捲動狀態
@@ -43,7 +43,6 @@ const handleResize = () => {
 };
 
 function logout() {
-  sessionStorage.setItem("isLoggedIn", "false");
   isLoggedIn.value = false;
   showMobileNav.value = false;
   router.push("/login");
@@ -52,8 +51,6 @@ function logout() {
 // ---------- 生命週期 ----------
 onMounted(async () => {
   await nextTick();
-  // 初始化登入狀態
-  isLoggedIn.value = sessionStorage.getItem("isLoggedIn") === "true";
   // 首頁才監聽捲動
   if (isHome.value) {
     addScrollListener();
