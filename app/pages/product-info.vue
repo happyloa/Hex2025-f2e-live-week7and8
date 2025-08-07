@@ -272,7 +272,41 @@ onBeforeUnmount(() => {
     </div>
   </section>
   <!-- 選擇方案 -->
-  <section id="plans" class="bg-primary-10 px-3 py-10 md:py-[120px]"></section>
+  <section id="plans" class="bg-primary-10 px-3 py-10 md:py-[120px]">
+    <div class="mx-auto max-w-container">
+      <h2 class="mb-6 flex items-center gap-2 text-h3">
+        <img src="/icons/title-hash.svg" alt="井字裝飾" />選擇方案
+      </h2>
+      <ul class="space-y-4 md:space-y-6">
+        <!-- 熱門選擇 -->
+        <li>
+          <article>
+            <h3
+              class="relative overflow-hidden rounded-t-2xl bg-primary p-4 text-h6 text-primary-10 md:rounded-t-[20px] md:p-6"
+            >
+              <!-- 井字號裝飾 -->
+              <svg
+                width="72"
+                height="48"
+                viewBox="0 0 72 48"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                class="absolute left-0 top-0"
+              >
+                <path
+                  d="m37.238 48 11.813-72H60.3L48.488 48zM5 30.14l1.863-11.25h56.25L61.25 30.14zM11.926 48l11.812-72h11.25L23.176 48zM9.113 5.11l1.899-11.25h56.25L65.363 5.11z"
+                  fill="#F3EEEC"
+                  fill-opacity=".2"
+                />
+              </svg>
+              熱門選擇
+            </h3>
+            <div class="bg-white p-4 md:p-6"></div>
+          </article>
+        </li>
+      </ul>
+    </div>
+  </section>
   <!-- 商品說明、如何使用、旅人評論 -->
   <section class="px-3 py-10 lg:py-[120px]">
     <div class="mx-auto flex max-w-container justify-between gap-[140px]">
