@@ -165,7 +165,7 @@ const price = 123456;
 </script>
 
 <template>
-  <p>NT$ {{ toThousand(price) }}</p>
+  <p>NT$ {{ toThousand(price) }}</p> <!-- 變成 123,456 -->
 </template>
 ```
 
