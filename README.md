@@ -122,6 +122,53 @@ export default defineNuxtPlugin(() => {
 });
 ```
 
+## 工具函式（Utils）
+
+位於 `app/utils`
+
+### `number.ts`
+
+提供與數字處理相關的工具函式。
+
+```ts
+// app/utils/number.ts
+
+/**
+ * 將數字轉換為千分位格式字串
+ * @param value - 要格式化的數字
+ * @returns 格式化後的字串，例如：123456 → "123,456"
+ */
+export const toThousand = (
+  value: number | string,
+  opts: Intl.NumberFormatOptions = {},
+) => {
+  // 先把字串裡的逗號拿掉再轉數字
+  const n =
+    typeof value === "string" ? Number(value.replace(/,/g, "")) : Number(value);
+
+  if (!Number.isFinite(n)) return String(value); // 非數字就原樣回傳
+
+  return new Intl.NumberFormat("en-US", {
+    maximumFractionDigits: 20, // 不裁小數位，保留原始精度
+    ...opts,
+  }).format(n);
+};
+```
+
+使用範例：
+
+```vue
+<script setup lang="ts">
+import { toThousand } from "@/utils/number";
+
+const price = 123456;
+</script>
+
+<template>
+  <p>NT$ {{ toThousand(price) }}</p>
+</template>
+```
+
 ## 靜態檔案
 
 位於 `public`
