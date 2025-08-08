@@ -240,7 +240,9 @@ const showDetail = ref(false);
                     刪除
                   </button>
                 </div>
-                <h3 class="text-h5 text-black">NT$ {{ p.price }}</h3>
+                <h3 class="text-h5 text-black">
+                  NT$ {{ toThousand(p.price) }}
+                </h3>
               </footer>
             </article>
           </li>
@@ -253,19 +255,19 @@ const showDetail = ref(false);
         <ul class="space-y-3 text-body text-neutral">
           <li class="flex items-center justify-between">
             商品小計<span class="text-title text-neutral"
-              >NT$ {{ subTotal }}</span
+              >NT$ {{ toThousand(subTotal) }}</span
             >
           </li>
           <li class="flex items-center justify-between">
             優惠折抵<span class="text-title text-primary-60"
-              >- {{ discount }}</span
+              >- {{ toThousand(discount) }}</span
             >
           </li>
         </ul>
         <hr class="border-neutral-40" />
         <div class="flex items-end justify-between">
           <h2 class="text-body text-neutral">總計</h2>
-          <p class="text-h3 text-black">NT$ {{ total }}</p>
+          <p class="text-h3 text-black">NT$ {{ toThousand(total) }}</p>
         </div>
         <NuxtLink
           to="#"
@@ -352,7 +354,7 @@ const showDetail = ref(false);
           </g>
         </svg>
       </span>
-      <h2 class="text-h6 text-black">NT$ {{ total }}</h2>
+      <h2 class="text-h6 text-black">NT$ {{ toThousand(total) }}</h2>
     </div>
     <NuxtLink
       to="#"
@@ -406,11 +408,13 @@ const showDetail = ref(false);
         <div class="px-4 py-6">
           <ul class="space-y-3 text-body2 text-neutral">
             <li class="flex items-center justify-between">
-              商品小計<span class="text-subtitle">NT$ {{ subTotal }}</span>
+              商品小計<span class="text-subtitle"
+                >NT$ {{ toThousand(subTotal) }}</span
+              >
             </li>
             <li class="flex items-center justify-between">
               優惠折抵<span class="text-subtitle text-primary-60"
-                >- {{ discount }}
+                >- {{ toThousand(discount) }}
               </span>
             </li>
           </ul>
@@ -419,7 +423,7 @@ const showDetail = ref(false);
 
           <div class="flex items-end justify-between">
             <h2 class="text-body2 text-neutral">總計</h2>
-            <p class="text-h6 text-black">NT$ {{ total }}</p>
+            <p class="text-h6 text-black">NT$ {{ toThousand(total) }}</p>
           </div>
         </div>
       </div>
