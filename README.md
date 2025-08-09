@@ -165,7 +165,8 @@ const price = 123456;
 </script>
 
 <template>
-  <p>NT$ {{ toThousand(price) }}</p> <!-- 變成 123,456 -->
+  <p>NT$ {{ toThousand(price) }}</p>
+  <!-- 變成 123,456 -->
 </template>
 ```
 
@@ -192,6 +193,7 @@ public
 - [Nuxt Tailwind](https://tailwindcss.nuxtjs.org/)
 - [Nuxt Swiper](https://nuxt.com/modules/swiper)
 - [TinyPNG](https://tinypng.com/)
+- [Adobe Photoshop](https://www.adobe.com/tw/products/photoshop.html)
 - [SVG Viewer](https://www.svgviewer.dev/)
 - [ChatGPT 5](https://openai.com/)
 
