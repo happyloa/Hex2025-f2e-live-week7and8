@@ -36,6 +36,8 @@ const goTo = (idx) => {
 
 const isObservationDeckSelected = ref(true);
 const observationDeckCount = ref(2);
+const isTrainTicketSelected = ref(false);
+const trainTicketCount = ref(2);
 
 /* =====================================================================
  * 2) 內容顯示開關：商品說明「展開更多」
@@ -396,6 +398,101 @@ onBeforeUnmount(() => {
                 <LayoutProductDetails
                   :open="isObservationDeckSelected"
                   v-model:count="observationDeckCount"
+                />
+              </ClientOnly>
+            </div>
+          </article>
+        </li>
+        <!-- 套裝行程 -->
+        <li>
+          <article>
+            <h3
+              class="relative overflow-hidden rounded-t-2xl bg-primary-60 p-4 text-h6 text-primary-10 md:rounded-t-[20px] md:p-6"
+            >
+              <!-- 井字號裝飾 -->
+              <svg
+                width="72"
+                height="48"
+                viewBox="0 0 72 48"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                class="absolute left-0 top-0"
+              >
+                <path
+                  d="m37.238 48 11.813-72H60.3L48.488 48zM5 30.14l1.863-11.25h56.25L61.25 30.14zM11.926 48l11.812-72h11.25L23.176 48zM9.113 5.11l1.899-11.25h56.25L65.363 5.11z"
+                  fill="#F3EEEC"
+                  fill-opacity=".2"
+                />
+              </svg>
+              套裝行程
+            </h3>
+            <!-- 卡片本身（整個白色區塊） -->
+            <div class="rounded-b-2xl bg-white p-4 md:rounded-b-[20px] md:p-6">
+              <!-- 圖片、名稱、標籤、簡介、價格、是否選擇 -->
+              <div class="flex flex-col justify-between gap-6 md:flex-row">
+                <!-- 圖片、名稱、標籤、簡介 -->
+                <div class="flex flex-col items-start gap-4 lg:flex-row">
+                  <img
+                    src="/images/site/site-1.webp"
+                    alt="【超值優惠】阿倍野展望台門票 HARUKAS 300 + HARUKA 關西機場→天王寺（單程票）"
+                    class="max-w-[200px] rounded-2xl"
+                  />
+                  <div class="text-body2 text-neutral">
+                    <h4 class="mb-4 text-h6 text-black">
+                      【超值優惠】阿倍野展望台門票 HARUKAS 300 + HARUKA
+                      關西機<br class="hidden md:block" />場→天王寺（單程票）
+                    </h4>
+                    <ul class="mb-8 flex flex-wrap gap-2">
+                      <li class="rounded-lg bg-neutral-40 px-2 py-1">
+                        立即確認
+                      </li>
+                      <li class="rounded-lg bg-neutral-40 px-2 py-1">
+                        有效期：60 天
+                      </li>
+                      <li class="rounded-lg bg-neutral-40 px-2 py-1">
+                        出示憑證入場
+                      </li>
+                      <li class="rounded-lg bg-neutral-40 px-2 py-1">
+                        兌換前可免費取消
+                      </li>
+                    </ul>
+                    <ul class="list-inside list-disc pl-2">
+                      <li>
+                        HARUKA
+                        關西機場→天王寺（單程票）相關訊息，請參考日本關西機場
+                        KIX 機場快線 HARUKA 車票。
+                      </li>
+                      <li>
+                        阿倍野展望台門票僅限使用一次，退場後無法再次入場。
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <!-- 價格、是否選擇 -->
+                <div
+                  class="flex items-start justify-between gap-6 whitespace-nowrap md:justify-start"
+                >
+                  <!-- 價格 -->
+                  <div>
+                    <h5 class="mb-1 text-h5 text-black">NT$ 522</h5>
+                    <p class="poppins | text-body text-neutral-60 line-through">
+                      NT$ 630
+                    </p>
+                  </div>
+                  <button
+                    type="button"
+                    class="rounded-xl border border-primary bg-white px-8 py-4 text-title transition hover:bg-primary hover:text-white"
+                    @click="isTrainTicketSelected = !isTrainTicketSelected"
+                  >
+                    {{ isTrainTicketSelected ? "取消選擇" : "選擇方案" }}
+                  </button>
+                </div>
+              </div>
+              <!-- 選取時出現的方案詳情、選擇日期及選項、選擇數量區塊 -->
+              <ClientOnly>
+                <LayoutProductDetails
+                  :open="isTrainTicketSelected"
+                  v-model:count="trainTicketCount"
                 />
               </ClientOnly>
             </div>
