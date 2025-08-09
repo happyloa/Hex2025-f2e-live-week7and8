@@ -123,6 +123,15 @@ const urlHasItems = computed(() => "hasItems" in route.query);
 
 // 控制 Off Canvas (明細) 顯示狀態
 const showDetail = ref(false);
+
+// 開啟 Off-Canvas 時鎖住背景滾動
+watch(showDetail, (open) => {
+  if (open) {
+    document.documentElement.style.overflow = "hidden";
+  } else {
+    document.documentElement.style.overflow = "";
+  }
+});
 </script>
 
 <template>
@@ -313,58 +322,57 @@ const showDetail = ref(false);
     </div>
   </section>
   <!-- 行動版總計與明細開關 -->
-  <aside
-    v-if="hasItems && urlHasItems"
-    class="sticky bottom-0 z-30 flex items-center justify-between border-t border-neutral-40 bg-white px-4 py-3 lg:hidden"
-  >
-    <!-- 展開明細、總計 -->
-    <div @click="showDetail = !showDetail">
-      <span class="mb-1 flex items-center gap-1 text-tiny text-neutral">
-        展開明細
-        <!-- 展開箭頭 -->
-        <svg
-          v-if="showDetail === false"
-          width="16"
-          height="16"
-          viewBox="0 0 16 16"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <g clip-path="url(#a)">
-            <path
-              d="M11.06 10.667 8 7.613l-3.06 3.054-.94-.94 4-4 4 4z"
-              fill="currentColor"
-            />
-          </g>
-        </svg>
-        <!-- 收合箭頭 -->
-        <svg
-          v-if="showDetail === true"
-          width="16"
-          height="16"
-          viewBox="0 0 16 16"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <g clip-path="url(#a)">
-            <path
-              d="M4.94 5.727 8 8.78l3.06-3.053.94.94-4 4-4-4z"
-              fill="currentColor"
-            />
-          </g>
-        </svg>
-      </span>
-      <h2 class="text-h6 text-black">NT$ {{ toThousand(total) }}</h2>
-    </div>
-    <NuxtLink
-      to="#"
-      class="block rounded-xl bg-primary px-8 py-4 text-center text-title text-white transition hover:bg-primary-120"
-    >
-      前往結賬
-    </NuxtLink>
-  </aside>
-  <!-- Teleport 避免被父層影響 -->
   <Teleport to="body">
+    <aside
+      v-if="hasItems && urlHasItems"
+      class="fixed inset-x-0 bottom-0 z-30 flex items-center justify-between border-t border-neutral-40 bg-white px-4 py-3 lg:hidden"
+    >
+      <!-- 展開明細、總計 -->
+      <div @click="showDetail = !showDetail">
+        <span class="mb-1 flex items-center gap-1 text-tiny text-neutral">
+          展開明細
+          <!-- 展開箭頭 -->
+          <svg
+            v-if="showDetail === false"
+            width="16"
+            height="16"
+            viewBox="0 0 16 16"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <g clip-path="url(#a)">
+              <path
+                d="M11.06 10.667 8 7.613l-3.06 3.054-.94-.94 4-4 4 4z"
+                fill="currentColor"
+              />
+            </g>
+          </svg>
+          <!-- 收合箭頭 -->
+          <svg
+            v-if="showDetail === true"
+            width="16"
+            height="16"
+            viewBox="0 0 16 16"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <g clip-path="url(#a)">
+              <path
+                d="M4.94 5.727 8 8.78l3.06-3.053.94.94-4 4-4-4z"
+                fill="currentColor"
+              />
+            </g>
+          </svg>
+        </span>
+        <h2 class="text-h6 text-black">NT$ {{ toThousand(total) }}</h2>
+      </div>
+      <NuxtLink
+        to="#"
+        class="block rounded-xl bg-primary px-8 py-4 text-center text-title text-white transition hover:bg-primary-120"
+      >
+        前往結賬
+      </NuxtLink>
+    </aside>
     <!-- Backdrop：淡入淡出 -->
     <transition name="backdrop">
       <div
