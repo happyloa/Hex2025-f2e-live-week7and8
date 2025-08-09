@@ -42,11 +42,21 @@ const handleResize = () => {
     showMobileNav.value = false;
 };
 
+// 登出功能
 function logout() {
   isLoggedIn.value = false;
   showMobileNav.value = false;
   router.push("/login");
 }
+
+// 開啟 Off-Canvas 時鎖住背景滾動
+watch(showMobileNav, (open) => {
+  if (open) {
+    document.documentElement.style.overflow = "hidden";
+  } else {
+    document.documentElement.style.overflow = "";
+  }
+});
 
 // ---------- 生命週期 ----------
 onMounted(async () => {
