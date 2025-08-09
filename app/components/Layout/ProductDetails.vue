@@ -101,13 +101,13 @@ function onAfterLeave(el) {
           class="flex flex-col gap-4 border-b border-neutral-40 p-4 md:flex-row md:gap-20"
         >
           <h5 class="w-[120px] shrink-0 text-title">費用不包含</h5>
-          <div class="flex gap-8 text-body">
+          <div class="flex flex-wrap gap-x-8 gap-y-2 text-body">
             <span class="flex gap-2"
-              ><img src="/icons/circle-x.svg" alt="X" />個人消費</span
-            >
+              ><img src="/icons/circle-x.svg" alt="X" />個人消費
+            </span>
             <span class="flex gap-2"
-              ><img src="/icons/circle-x.svg" alt="X" />以上未提及消費</span
-            >
+              ><img src="/icons/circle-x.svg" alt="X" />以上未提及消費
+            </span>
           </div>
         </li>
         <li
