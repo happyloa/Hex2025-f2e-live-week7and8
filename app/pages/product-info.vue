@@ -34,6 +34,8 @@ const goTo = (idx) => {
   harukas300ImgSwiper.value?.swiper?.slideToLoop(idx);
 };
 
+const isObservationDeckSelected = ref(true);
+
 /* =====================================================================
  * 2) 內容顯示開關：商品說明「展開更多」
  * ===================================================================== */
@@ -329,7 +331,135 @@ onBeforeUnmount(() => {
               </svg>
               熱門選擇
             </h3>
-            <div class="bg-white p-4 md:p-6"></div>
+            <!-- 卡片本身（整個白色區塊） -->
+            <div class="rounded-b-2xl bg-white p-4 md:rounded-b-[20px] md:p-6">
+              <!-- 圖片、名稱、標籤、簡介、價格、是否選擇 -->
+              <div
+                class="flex flex-col justify-between gap-6 md:flex-row"
+                :class="isObservationDeckSelected ? 'mb-6 md:mb-10' : 'mb-0'"
+              >
+                <!-- 圖片、名稱、標籤、簡介 -->
+                <div class="flex flex-col items-start gap-4 lg:flex-row">
+                  <img
+                    src="/images/site/harukas-2.webp"
+                    alt="海闊天空展望台門票"
+                    class="max-w-[200px] rounded-2xl"
+                  />
+                  <div class="text-body2 text-neutral">
+                    <h4 class="mb-4 text-h6 text-black">海闊天空展望台門票</h4>
+                    <ul class="mb-8 flex flex-wrap gap-2">
+                      <li class="rounded-lg bg-neutral-40 px-2 py-1">
+                        立即確認
+                      </li>
+                      <li class="rounded-lg bg-neutral-40 px-2 py-1">
+                        有效期：60 天
+                      </li>
+                      <li class="rounded-lg bg-neutral-40 px-2 py-1">
+                        出示憑證入場
+                      </li>
+                      <li class="rounded-lg bg-neutral-40 px-2 py-1">
+                        兌換前可免費取消
+                      </li>
+                    </ul>
+                    <ul class="list-inside list-disc pl-2">
+                      <li>
+                        阿倍野展望台門票僅限使用一次，退場後無法再次入場。
+                      </li>
+                      <li>
+                        出發前請再次確認設施是否正常營業，請參考官網。如遇臨時休館，恕不另行通知。
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <!-- 價格、是否選擇 -->
+                <div
+                  class="flex items-start justify-between gap-6 whitespace-nowrap md:justify-start"
+                >
+                  <!-- 價格 -->
+                  <div>
+                    <h5 class="mb-1 text-h5 text-black">NT$ 415</h5>
+                    <p class="poppins | text-body text-neutral-60 line-through">
+                      NT$ 520
+                    </p>
+                  </div>
+                  <button
+                    type="button"
+                    class="rounded-xl border border-primary bg-white px-8 py-4 text-title transition hover:bg-primary hover:text-white"
+                    @click="
+                      isObservationDeckSelected = !isObservationDeckSelected
+                    "
+                  >
+                    {{ isObservationDeckSelected ? "取消選擇" : "選擇方案" }}
+                  </button>
+                </div>
+              </div>
+              <!-- 選取時出現的方案詳情、選擇日期及選項、選擇數量區塊 -->
+              <ClientOnly v-if="isObservationDeckSelected">
+                <div
+                  class="border-t border-neutral-40 pt-6 text-black md:pt-10"
+                >
+                  <h4 class="mb-6 text-h6">方案詳情</h4>
+                  <ul class="rounded-2xl bg-neutral-10">
+                    <li
+                      class="flex flex-col gap-4 border-b border-neutral-40 p-4 md:flex-row md:gap-20"
+                    >
+                      <h5 class="w-[120px] shrink-0 text-title">關於此方案</h5>
+                      <span class="flex gap-2 text-body">
+                        <img src="/icons/circle-dollar.svg" alt="$" />免費取消！
+                      </span>
+                    </li>
+                    <li
+                      class="flex flex-col gap-4 border-b border-neutral-40 p-4 md:flex-row md:gap-20"
+                    >
+                      <h5 class="w-[120px] shrink-0 text-title">費用包含</h5>
+                      <span class="flex gap-2 text-body">
+                        <img
+                          src="/icons/green-circle-check.svg"
+                          alt="費用包含"
+                        />阿倍野展望台門票 HARUKAS 300
+                      </span>
+                    </li>
+                    <li
+                      class="flex flex-col gap-4 border-b border-neutral-40 p-4 md:flex-row md:gap-20"
+                    >
+                      <h5 class="w-[120px] shrink-0 text-title">費用不包含</h5>
+                      <div class="flex gap-8 text-body">
+                        <span class="flex gap-2">
+                          <img src="/icons/circle-x.svg" alt="X" />個人消費
+                        </span>
+                        <span class="flex gap-2">
+                          <img
+                            src="/icons/circle-x.svg"
+                            alt="X"
+                          />以上未提及消費
+                        </span>
+                      </div>
+                    </li>
+                    <li
+                      class="flex flex-col gap-4 border-b border-neutral-40 p-4 md:flex-row md:gap-20"
+                    >
+                      <h5 class="w-[120px] shrink-0 text-title">取消政策</h5>
+                      <p class="mdLtext-start text-justify text-body">
+                        由於站內商品來自全球各地，訂單取消時間將依該供應商所在時區判定。供應商需
+                        2-5
+                        個工作天進行取消流程，依照您購買的商品取消政策收取手續費，並於取消流程完成後14
+                        個工作天內退款。
+                      </p>
+                    </li>
+                    <li
+                      class="flex flex-col gap-4 border-b border-neutral-40 p-4 md:flex-row md:gap-20"
+                    >
+                      <h5 class="w-[120px] shrink-0 text-title">
+                        憑證兌換期限
+                      </h5>
+                      <p class="text-body">
+                        自開票日算起 60日 之內兌換有效，逾期無效
+                      </p>
+                    </li>
+                  </ul>
+                </div>
+              </ClientOnly>
+            </div>
           </article>
         </li>
       </ul>
