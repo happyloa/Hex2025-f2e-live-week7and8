@@ -473,13 +473,13 @@ function onAfterLeave(el) {
       <div class="flex flex-col justify-end gap-2 sm:flex-row sm:gap-6">
         <div>
           <h4
-            class="flex flex-row items-center text-body text-neutral sm:flex-col sm:items-end"
+            class="mb-0 flex flex-row items-center text-body text-neutral sm:mb-1 sm:flex-col sm:items-end"
           >
             總金額
           </h4>
           <p class="text-h5">NT$ 830</p>
         </div>
-        <div class="flex gap-2">
+        <div class="flex gap-2 whitespace-nowrap">
           <NuxtLink
             to="/cart?hasItems"
             class="w-full rounded-xl bg-primary-60 px-8 py-4 text-center text-title text-white transition hover:bg-primary sm:w-fit"
