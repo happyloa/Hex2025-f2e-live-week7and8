@@ -35,6 +35,7 @@ const goTo = (idx) => {
 };
 
 const isObservationDeckSelected = ref(true);
+const observationDeckCount = ref(2);
 
 /* =====================================================================
  * 2) 內容顯示開關：商品說明「展開更多」
@@ -399,7 +400,7 @@ onBeforeUnmount(() => {
                   class="border-t border-neutral-40 pt-6 text-black md:pt-10"
                 >
                   <h4 class="mb-6 text-h6">方案詳情</h4>
-                  <ul class="rounded-2xl bg-neutral-10">
+                  <ul class="mb-6 rounded-2xl bg-neutral-10 md:mb-10">
                     <li
                       class="flex flex-col gap-4 border-b border-neutral-40 p-4 md:flex-row md:gap-20"
                     >
@@ -447,7 +448,7 @@ onBeforeUnmount(() => {
                       </p>
                     </li>
                     <li
-                      class="flex flex-col gap-4 border-b border-neutral-40 p-4 md:flex-row md:gap-20"
+                      class="flex flex-col gap-4 rounded-b-2xl border-b border-neutral-40 p-4 md:flex-row md:gap-20"
                     >
                       <h5 class="w-[120px] shrink-0 text-title">
                         憑證兌換期限
@@ -457,6 +458,396 @@ onBeforeUnmount(() => {
                       </p>
                     </li>
                   </ul>
+                  <hr class="mb-6 border-neutral-40 md:mb-10" />
+                  <!-- 選擇日期及選項與選擇數量 -->
+                  <div
+                    class="mb-6 flex flex-col gap-10 md:mb-10 lg:flex-row lg:gap-20"
+                  >
+                    <!-- 選擇日期及選項 -->
+                    <div class="flex-1">
+                      <h4 class="mb-6 text-h6">選擇日期及選項</h4>
+                      <!-- 月曆 -->
+                      <div
+                        class="whitespace-nowrap rounded-[20px] border border-neutral-40"
+                      >
+                        <!-- 年月 -->
+                        <header
+                          class="flex items-center justify-between border-b border-neutral-40 px-4 py-3"
+                        >
+                          <h5 class="text-h6">2025 年 5 月</h5>
+                          <div class="flex">
+                            <button
+                              type="button"
+                              class="p-2 hover:bg-neutral-10"
+                            >
+                              <img
+                                src="/icons/prev-arrow.svg"
+                                alt="往前一個月"
+                              />
+                            </button>
+                            <button
+                              type="button"
+                              class="p-2 hover:bg-neutral-10"
+                            >
+                              <img
+                                src="/icons/next-arrow.svg"
+                                alt="往後一個月"
+                              />
+                            </button>
+                          </div>
+                        </header>
+                        <!-- 日期 -->
+                        <div
+                          class="grid grid-cols-7 place-items-center gap-y-4 p-4 text-body text-neutral-60"
+                        >
+                          <button
+                            type="button"
+                            class="size-11 rounded-lg text-neutral"
+                            disabled
+                          >
+                            日
+                          </button>
+                          <button
+                            type="button"
+                            class="size-11 rounded-lg text-neutral"
+                            disabled
+                          >
+                            一
+                          </button>
+                          <button
+                            type="button"
+                            class="size-11 rounded-lg text-neutral"
+                            disabled
+                          >
+                            二
+                          </button>
+                          <button
+                            type="button"
+                            class="size-11 rounded-lg text-neutral"
+                            disabled
+                          >
+                            三
+                          </button>
+                          <button
+                            type="button"
+                            class="size-11 rounded-lg text-neutral"
+                            disabled
+                          >
+                            四
+                          </button>
+                          <button
+                            type="button"
+                            class="size-11 rounded-lg text-neutral"
+                            disabled
+                          >
+                            五
+                          </button>
+                          <button
+                            type="button"
+                            class="size-11 rounded-lg text-neutral"
+                            disabled
+                          >
+                            六
+                          </button>
+                          <button type="button" class="size-11" disabled>
+                            &emsp;
+                          </button>
+                          <button type="button" class="size-11" disabled>
+                            &emsp;
+                          </button>
+                          <button type="button" class="size-11" disabled>
+                            &emsp;
+                          </button>
+                          <button type="button" class="size-11" disabled>
+                            &emsp;
+                          </button>
+                          <button
+                            type="button"
+                            class="poppins | size-11 rounded-lg line-through"
+                            disabled
+                          >
+                            1
+                          </button>
+                          <button
+                            type="button"
+                            class="poppins | size-11 rounded-lg line-through"
+                            disabled
+                          >
+                            2
+                          </button>
+                          <button
+                            type="button"
+                            class="poppins | size-11 rounded-lg line-through"
+                            disabled
+                          >
+                            3
+                          </button>
+                          <button
+                            type="button"
+                            class="poppins | size-11 rounded-lg line-through"
+                            disabled
+                          >
+                            4
+                          </button>
+                          <button
+                            type="button"
+                            class="poppins | size-11 rounded-lg line-through"
+                            disabled
+                          >
+                            5
+                          </button>
+                          <button
+                            type="button"
+                            class="poppins | size-11 rounded-lg line-through"
+                            disabled
+                          >
+                            6
+                          </button>
+                          <button
+                            type="button"
+                            class="poppins | size-11 rounded-lg line-through"
+                            disabled
+                          >
+                            7
+                          </button>
+                          <button
+                            type="button"
+                            class="size-11 rounded-lg text-title text-black transition hover:bg-primary-10"
+                          >
+                            8
+                          </button>
+                          <button
+                            type="button"
+                            class="poppins | size-11 rounded-lg line-through"
+                            disabled
+                          >
+                            9
+                          </button>
+                          <button
+                            type="button"
+                            class="poppins | size-11 rounded-lg line-through"
+                            disabled
+                          >
+                            10
+                          </button>
+                          <button
+                            type="button"
+                            class="poppins | size-11 rounded-lg line-through"
+                            disabled
+                          >
+                            11
+                          </button>
+                          <button
+                            type="button"
+                            class="size-11 rounded-lg text-title text-black transition hover:bg-primary-10"
+                          >
+                            12
+                          </button>
+                          <button
+                            type="button"
+                            class="size-11 rounded-lg text-title text-black transition hover:bg-primary-10"
+                          >
+                            13
+                          </button>
+                          <button
+                            type="button"
+                            class="poppins | size-11 rounded-lg line-through"
+                            disabled
+                          >
+                            14
+                          </button>
+                          <button
+                            type="button"
+                            class="size-11 rounded-lg text-title text-black transition hover:bg-primary-10"
+                          >
+                            15
+                          </button>
+                          <button
+                            type="button"
+                            class="poppins | size-11 rounded-lg line-through"
+                            disabled
+                          >
+                            16
+                          </button>
+                          <button
+                            type="button"
+                            class="poppins | size-11 rounded-lg line-through"
+                            disabled
+                          >
+                            17
+                          </button>
+                          <button
+                            type="button"
+                            class="poppins | size-11 rounded-lg line-through"
+                            disabled
+                          >
+                            18
+                          </button>
+                          <button
+                            type="button"
+                            class="poppins | size-11 rounded-lg line-through"
+                            disabled
+                          >
+                            19
+                          </button>
+                          <button
+                            type="button"
+                            class="size-11 rounded-lg text-title text-black transition hover:bg-primary-10"
+                          >
+                            20
+                          </button>
+                          <button
+                            type="button"
+                            class="size-11 rounded-lg text-title text-black transition hover:bg-primary-10"
+                          >
+                            21
+                          </button>
+                          <button
+                            type="button"
+                            class="poppins | size-11 rounded-lg line-through"
+                            disabled
+                          >
+                            22
+                          </button>
+                          <button
+                            type="button"
+                            class="poppins | size-11 rounded-lg line-through"
+                            disabled
+                          >
+                            23
+                          </button>
+                          <button
+                            type="button"
+                            class="poppins | size-11 rounded-lg line-through"
+                            disabled
+                          >
+                            24
+                          </button>
+                          <button
+                            type="button"
+                            class="poppins | size-11 rounded-lg line-through"
+                            disabled
+                          >
+                            25
+                          </button>
+                          <button
+                            type="button"
+                            class="poppins | size-11 rounded-lg line-through"
+                            disabled
+                          >
+                            26
+                          </button>
+                          <button
+                            type="button"
+                            class="poppins | size-11 rounded-lg line-through"
+                            disabled
+                          >
+                            27
+                          </button>
+                          <button
+                            type="button"
+                            class="poppins | size-11 rounded-lg line-through"
+                            disabled
+                          >
+                            28
+                          </button>
+                          <button
+                            type="button"
+                            class="poppins | size-11 rounded-lg line-through"
+                            disabled
+                          >
+                            29
+                          </button>
+                          <button
+                            type="button"
+                            class="poppins | size-11 rounded-lg line-through"
+                            disabled
+                          >
+                            30
+                          </button>
+                          <button
+                            type="button"
+                            class="poppins | size-11 rounded-lg line-through"
+                            disabled
+                          >
+                            31
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- 選擇數量 -->
+                    <div class="flex-1">
+                      <h4 class="mb-6 text-h6">選擇數量</h4>
+                      <div
+                        class="flex flex-col justify-between gap-4 sm:flex-row sm:items-center"
+                      >
+                        <p class="flex gap-2 text-body text-neutral">
+                          每張<span class="text-h6 text-black">NT$ 415</span>
+                        </p>
+                        <!-- 數量調整 -->
+                        <div class="flex items-center gap-4">
+                          <button
+                            type="button"
+                            class="rounded-full border border-neutral-40 bg-white p-4 transition hover:bg-neutral-40"
+                            @click="
+                              observationDeckCount > 1
+                                ? observationDeckCount--
+                                : observationDeckCount
+                            "
+                          >
+                            <svg width="24" height="24" viewBox="0 0 24 24">
+                              <path d="M19 13H5v-2h14z" fill="currentColor" />
+                            </svg>
+                          </button>
+                          <span class="w-[60px] text-center text-h6 text-black">
+                            {{ observationDeckCount }}
+                          </span>
+                          <button
+                            type="button"
+                            class="rounded-full border border-neutral-40 bg-white p-4 transition hover:bg-neutral-40"
+                            @click="observationDeckCount++"
+                          >
+                            <svg width="24" height="24" viewBox="0 0 24 24">
+                              <path
+                                d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6z"
+                                fill="currentColor"
+                              />
+                            </svg>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <hr class="mb-6 border-neutral-40 md:mb-10" />
+                  <!-- 總金額與購物車按鈕 -->
+                  <div
+                    class="flex flex-col justify-end gap-2 sm:flex-row sm:gap-6"
+                  >
+                    <!-- 總金額 -->
+                    <div>
+                      <h4
+                        class="flex flex-row items-center text-body text-neutral sm:flex-col sm:items-end"
+                      >
+                        總金額
+                      </h4>
+                      <p class="text-h5">NT$ 830</p>
+                    </div>
+                    <!-- 購物車按鈕 -->
+                    <div class="flex gap-2">
+                      <NuxtLink
+                        to="/cart?hasItems"
+                        class="w-full rounded-xl bg-primary-60 px-8 py-4 text-center text-title text-white transition hover:bg-primary sm:w-fit"
+                      >
+                        加入購物車
+                      </NuxtLink>
+                      <NuxtLink
+                        to="/cart?hasItems"
+                        class="w-full rounded-xl bg-primary px-8 py-4 text-center text-title text-white transition hover:bg-primary-120 sm:w-fit"
+                      >
+                        立即訂購
+                      </NuxtLink>
+                    </div>
+                  </div>
                 </div>
               </ClientOnly>
             </div>
