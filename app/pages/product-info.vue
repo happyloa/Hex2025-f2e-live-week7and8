@@ -38,6 +38,8 @@ const isObservationDeckSelected = ref(true);
 const observationDeckCount = ref(2);
 const isTrainTicketSelected = ref(false);
 const trainTicketCount = ref(2);
+const isTakoyakiSelected = ref(false);
+const takoyakiCount = ref(2);
 
 /* =====================================================================
  * 2) 內容顯示開關：商品說明「展開更多」
@@ -493,6 +495,82 @@ onBeforeUnmount(() => {
                 <LayoutProductDetails
                   :open="isTrainTicketSelected"
                   v-model:count="trainTicketCount"
+                />
+              </ClientOnly>
+            </div>
+          </article>
+        </li>
+        <!-- 一般卡片 -->
+        <li>
+          <article>
+            <!-- 卡片本身（整個白色區塊） -->
+            <div class="rounded-2xl bg-white p-4 md:rounded-[20px] md:p-6">
+              <!-- 圖片、名稱、標籤、簡介、價格、是否選擇 -->
+              <div class="flex flex-col justify-between gap-6 md:flex-row">
+                <!-- 圖片、名稱、標籤、簡介 -->
+                <div class="flex flex-col items-start gap-4 lg:flex-row">
+                  <img
+                    src="/images/site/site-2.webp"
+                    alt="阿倍野展望台門票 HARUKAS 300｜附章魚燒兌換劵"
+                    class="max-w-[200px] rounded-2xl"
+                  />
+                  <div class="text-body2 text-neutral">
+                    <h4 class="mb-4 text-h6 text-black">
+                      阿倍野展望台門票 HARUKAS 300｜附章魚燒兌換劵
+                    </h4>
+                    <ul class="mb-8 flex flex-wrap gap-2">
+                      <li class="rounded-lg bg-neutral-40 px-2 py-1">
+                        立即確認
+                      </li>
+                      <li class="rounded-lg bg-neutral-40 px-2 py-1">
+                        有效期：60 天
+                      </li>
+                      <li class="rounded-lg bg-neutral-40 px-2 py-1">
+                        出示憑證入場
+                      </li>
+                      <li class="rounded-lg bg-neutral-40 px-2 py-1">
+                        兌換前可免費取消
+                      </li>
+                    </ul>
+                    <ul class="list-inside list-disc pl-2">
+                      <li>
+                        請於使用當天前往阿倍野HARUKAS300展望台16樓服務台出示QRcodode掃碼領取展望台入場劵及章魚燒兌換劵。
+                      </li>
+                      <li>
+                        58樓餐廳不開放預訂座位及選位，使用當天有可能因用餐人數眾多而沒有位置，敬請見諒。
+                      </li>
+                      <li>
+                        工作人員會隨機選章魚燒提供給客人。無法自由選擇。敬請見諒。
+                      </li>
+                      <li>章魚燒請於指定出發日當天兌換，逾期無效。</li>
+                    </ul>
+                  </div>
+                </div>
+                <!-- 價格、是否選擇 -->
+                <div
+                  class="flex items-start justify-between gap-6 whitespace-nowrap md:justify-start"
+                >
+                  <!-- 價格 -->
+                  <div>
+                    <h5 class="mb-1 text-h5 text-black">NT$ 478</h5>
+                    <p class="poppins | text-body text-neutral-60 line-through">
+                      NT$ 630
+                    </p>
+                  </div>
+                  <button
+                    type="button"
+                    class="rounded-xl border border-primary bg-white px-8 py-4 text-title transition hover:bg-primary hover:text-white"
+                    @click="isTakoyakiSelected = !isTakoyakiSelected"
+                  >
+                    {{ isTakoyakiSelected ? "取消選擇" : "選擇方案" }}
+                  </button>
+                </div>
+              </div>
+              <!-- 選取時出現的方案詳情、選擇日期及選項、選擇數量區塊 -->
+              <ClientOnly>
+                <LayoutProductDetails
+                  :open="isTakoyakiSelected"
+                  v-model:count="takoyakiCount"
                 />
               </ClientOnly>
             </div>
