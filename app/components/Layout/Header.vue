@@ -61,11 +61,15 @@ watch(showMobileNav, (open) => {
 // 讀 product-info 設的全域狀態
 const showPageNav = useState("showPageNav", () => false);
 const scrollDir = useState("scrollDir", () => "down");
+const upRevealDelta = useState("upRevealDelta", () => 0);
 
 // 只要 Page Nav 開著且使用者正在往下捲，就把 Header 藏起來
-const showHeader = computed(
-  () => !(showPageNav.value && scrollDir.value === "down"),
-);
+const showHeader = computed(() => {
+  if (!showPageNav.value) return true; // 還沒到方案區，Header 照常顯示
+  if (scrollDir.value === "down") return false; // 方案區且向下捲 → 藏
+  // 方案區且向上捲：累積上滑 >= 80 才顯示
+  return upRevealDelta.value >= 80;
+});
 
 // ---------- 生命週期 ----------
 onMounted(async () => {

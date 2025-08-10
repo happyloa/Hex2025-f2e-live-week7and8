@@ -79,25 +79,40 @@ function onScroll() {
     }
   }
   activeSection.value = current;
+
+  const trigger = Math.max(0, plansTop - 80);
+  showPageNav.value = (window.scrollY || 0) >= trigger;
 }
 
 // ===== Page Nav 顯示與滾動方向（用全域 state 給 Header 用）=====
 const showPageNav = useState("showPageNav", () => false);
 const scrollDir = useState("scrollDir", () => "down"); // 'up' | 'down'
+const upRevealDelta = useState("upRevealDelta", () => 0);
 
 const lastY = ref(0);
+const dirChangeStartY = ref(0);
+let plansTop = 0; // #plans 頂端在整頁的 Y
 function onDirScroll() {
   const y = window.scrollY || 0;
   const delta = Math.abs(y - lastY.value);
   if (delta > 6) {
     // 去抖
-    scrollDir.value = y > lastY.value ? "down" : "up";
+    const newDir = y > lastY.value ? "down" : "up";
+    // 方向切換時重置起點
+    if (newDir !== scrollDir.value) {
+      dirChangeStartY.value = y;
+      upRevealDelta.value = 0;
+    }
+    scrollDir.value = newDir;
+    // 如果正在往上，更新已上滑距離
+    if (newDir === "up") {
+      upRevealDelta.value = Math.max(0, dirChangeStartY.value - y);
+    } else {
+      upRevealDelta.value = 0;
+    }
     lastY.value = y;
   }
 }
-
-// 進入「選擇方案」的門檻（sentinel）——離 #plans 標題前一點點
-const sentinel = ref(null);
 
 /* =====================================================================
  * 4) 生命週期：掛載/卸載
@@ -105,21 +120,15 @@ const sentinel = ref(null);
  * - 掛載時立刻判斷一次 activeSection，並綁定 scroll 事件（passive）
  * - 離開時移除事件監聽
  * ===================================================================== */
-let io; // 放外層好在 unmount 時清掉
+const measure = () => {
+  plansTop = document.getElementById("plans")?.offsetTop || 0;
+};
 
 onMounted(() => {
   window.addEventListener("scroll", onScroll, { passive: true });
   window.addEventListener("scroll", onDirScroll, { passive: true });
-
-  io = new IntersectionObserver(
-    ([entry]) => {
-      showPageNav.value = !entry.isIntersecting;
-    },
-    { root: null, rootMargin: "-80px 0px 0px 0px", threshold: 0 },
-  );
-
-  if (sentinel.value) io.observe(sentinel.value);
-
+  measure();
+  window.addEventListener("resize", measure, { passive: true });
   onScroll();
   onDirScroll();
 });
@@ -127,7 +136,7 @@ onMounted(() => {
 onBeforeUnmount(() => {
   window.removeEventListener("scroll", onScroll);
   window.removeEventListener("scroll", onDirScroll);
-  if (io) io.disconnect();
+  window.removeEventListener("resize", measure);
   showPageNav.value = false;
   scrollDir.value = "down";
 });
@@ -349,8 +358,6 @@ onBeforeUnmount(() => {
       </div>
     </div>
   </section>
-
-  <div ref="sentinel" class="h-0"></div>
   <!-- 滑動至＂選擇方案＂區塊時出現的 Page Nav -->
   <transition name="page-nav">
     <nav
@@ -642,7 +649,7 @@ onBeforeUnmount(() => {
                     </ul>
                     <ul class="list-inside list-disc pl-2">
                       <li>
-                        請於使用當天前往阿倍野HARUKAS300展望台16樓服務台出示QRcodode掃碼領取展望台入場劵及章魚燒兌換劵。
+                        請於使用當天前往阿倍野HARUKAS300展望台16樓服務台出示QRcode掃碼領取展望台入場劵及章魚燒兌換劵。
                       </li>
                       <li>
                         58樓餐廳不開放預訂座位及選位，使用當天有可能因用餐人數眾多而沒有位置，敬請見諒。
