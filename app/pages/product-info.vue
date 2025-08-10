@@ -82,8 +82,8 @@ function onScroll() {
   }
   activeSection.value = current;
 
-  // 觸發 Page Nav 顯示的臨界點（#plans 頂端 - 80）
-  const trigger = Math.max(0, plansTop - 80);
+  // 頂端捲過 #plans 的位置 + 100px 之後才顯示 Page Nav
+  const trigger = Math.max(0, plansTop + 100);
   showPageNav.value = (window.scrollY || 0) >= trigger;
 }
 
@@ -138,7 +138,8 @@ function onDirScroll() {
  * - onBeforeUnmount：解除監聽 + 重置共享狀態
  * ===================================================================== */
 const measure = () => {
-  plansTop = document.getElementById("plans")?.offsetTop || 0;
+  const el = document.getElementById("plans");
+  plansTop = el ? el.getBoundingClientRect().top + (window.scrollY || 0) : 0;
 };
 
 onMounted(() => {
