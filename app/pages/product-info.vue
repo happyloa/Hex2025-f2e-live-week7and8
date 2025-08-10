@@ -34,6 +34,7 @@ const goTo = (idx) => {
   harukas300ImgSwiper.value?.swiper?.slideToLoop(idx);
 };
 
+// 三張方案卡片的開合狀態、數量
 const isObservationDeckSelected = ref(true);
 const observationDeckCount = ref(2);
 const isTrainTicketSelected = ref(false);
