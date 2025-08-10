@@ -130,6 +130,16 @@ function onDirScroll() {
   }
 }
 
+// Page Nav 顯示條件：
+// - 還沒到 #plans：false（showPageNav 為 false）
+// - 在 #plans 之後且正在向下：true
+// - 在 #plans 之後且正在向上：上滑未滿 80px 時仍顯示，上滑 >= 80 才隱藏（交棒給 Header）
+const showPageNavBar = computed(() => {
+  if (!showPageNav.value) return false;
+  if (scrollDir.value === "down") return true;
+  return upRevealDelta.value < 80;
+});
+
 /* =====================================================================
  * 6) 生命週期：掛載/卸載
  * ---------------------------------------------------------------------
@@ -383,7 +393,7 @@ onBeforeUnmount(() => {
   <!-- 滑動至＂選擇方案＂區塊時出現的 Page Nav -->
   <transition name="page-nav">
     <nav
-      v-if="showPageNav && scrollDir === 'down'"
+      v-if="showPageNavBar"
       class="sticky top-0 z-40 border-b border-neutral-40 bg-white px-3"
     >
       <ul class="mx-auto flex max-w-[1280px] gap-8">
