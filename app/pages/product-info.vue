@@ -22,38 +22,42 @@ const slides = [
 const harukas300ImgSwiper = ref(null);
 const activeIndex = ref(0);
 
+/** Swiper 內建事件 → 同步目前實際索引（loop 用 realIndex） */
 const onSlideChange = (e) => {
-  // e.detail[0] 是 Swiper instance
-  const [inst] = e.detail;
+  const [inst] = e.detail; // e.detail[0] 是 Swiper instance
   activeIndex.value = inst.realIndex; // loop 模式下使用 realIndex
 };
 
-/** 點點點擊 → 跳到指定張（用 element.swiper 呼叫方法） */
+/** 自製點點 → 跳到指定張（透過 element.swiper 呼叫 API） */
 const goTo = (idx) => {
   // ?. 防呆：DOM 還沒 mount 完成時不會拋錯
   harukas300ImgSwiper.value?.swiper?.slideToLoop(idx);
 };
 
-// 三張方案卡片的開合狀態、數量
+/* =========================================================================
+ * 2) 方案卡片的選取狀態 & 數量（本頁僅管理 UI 狀態）
+ * ========================================================================= */
 const isObservationDeckSelected = ref(true);
 const observationDeckCount = ref(2);
+
 const isTrainTicketSelected = ref(false);
 const trainTicketCount = ref(2);
+
 const isTakoyakiSelected = ref(false);
 const takoyakiCount = ref(2);
 
 /* =====================================================================
- * 2) 內容顯示開關：商品說明「展開更多」
+ * 3) 商品說明：展開更多（內容顯示開關）
  * ===================================================================== */
 const showMore = ref(false);
 
 /* =====================================================================
- * 3) Scroll Spy（側邊選單同步高亮）
+ * 4) Scroll Spy（側邊選單同步高亮）
  * ---------------------------------------------------------------------
- * - sectionIds：需要偵測的區塊 id（要與模板內 <h2 id="..."> 對應）
+ * - sectionIds：頁面需監看的區塊
+ * - tocIds/tocLabels：側選單項目
  * - activeSection：目前在視窗中「經過頂部 offset」後最後一個 section
- * - onScroll()：滾動時更新 activeSection
- *   規則：heading top - offset <= 0 視為已「進入」視窗的偵測區
+ * - onScroll()：計算 activeSection + 控制 Page Nav 觸發點
  * ===================================================================== */
 const sectionIds = ["plans", "product-info", "how-to-use", "reviews"];
 
@@ -65,60 +69,73 @@ const tocLabels = {
 };
 const activeSection = ref(sectionIds[0]);
 
+/** 主要滾動監聽：更新 activeSection，並控制 Page Nav 進入/離開視窗時機 */
 function onScroll() {
-  const offset = 120; // 距離頁面頂端 120px 時屬於 active
+  const offset = 120; // heading 距離頂端 120px 內視為「進入」
   let current = sectionIds[0];
 
   for (const id of sectionIds) {
     const el = document.getElementById(id);
     if (!el) continue;
     const rect = el.getBoundingClientRect();
-    // 當標題已經「進入」 offset 區塊（頂部 <= 120px）就視為目前區塊
-    if (rect.top - offset <= 0) {
-      current = id;
-    }
+    if (rect.top - offset <= 0) current = id;
   }
   activeSection.value = current;
 
+  // 觸發 Page Nav 顯示的臨界點（#plans 頂端 - 80）
   const trigger = Math.max(0, plansTop - 80);
   showPageNav.value = (window.scrollY || 0) >= trigger;
 }
 
-// ===== Page Nav 顯示與滾動方向（用全域 state 給 Header 用）=====
+/* =========================================================================
+ * 5) Page Nav 顯示/隱藏 與 捲動方向（與 Header 共享的全域狀態）
+ * -------------------------------------------------------------------------
+ * - showPageNav：是否顯示頁首頁內導覽（由 onScroll 控制）
+ * - scrollDir：目前捲動方向 'up' | 'down'
+ * - upRevealDelta：向上滑已累積距離（Header 用）
+ * - onDirScroll()：偵測方向 & 更新距離
+ * ========================================================================= */
 const showPageNav = useState("showPageNav", () => false);
 const scrollDir = useState("scrollDir", () => "down"); // 'up' | 'down'
 const upRevealDelta = useState("upRevealDelta", () => 0);
 
-const lastY = ref(0);
-const dirChangeStartY = ref(0);
-let plansTop = 0; // #plans 頂端在整頁的 Y
+const lastY = ref(0); // 上一個 scrollY
+const dirChangeStartY = ref(0); // 方向切換時的起點 Y
+let plansTop = 0; // #plans 在整頁的 Y 座標（由 measure() 量測）
+
+/** 次要滾動監聽：偵測捲動方向與上滑距離 */
 function onDirScroll() {
   const y = window.scrollY || 0;
   const delta = Math.abs(y - lastY.value);
+
+  // 去抖：小於門檻不判定
   if (delta > 6) {
-    // 去抖
     const newDir = y > lastY.value ? "down" : "up";
-    // 方向切換時重置起點
+
+    // 方向切換：重置起點 & 歸零上滑距離
     if (newDir !== scrollDir.value) {
       dirChangeStartY.value = y;
       upRevealDelta.value = 0;
     }
     scrollDir.value = newDir;
-    // 如果正在往上，更新已上滑距離
+
+    // 僅在向上時累積上滑距離，向下則歸零
     if (newDir === "up") {
       upRevealDelta.value = Math.max(0, dirChangeStartY.value - y);
     } else {
       upRevealDelta.value = 0;
     }
+
     lastY.value = y;
   }
 }
 
 /* =====================================================================
- * 4) 生命週期：掛載/卸載
+ * 6) 生命週期：掛載/卸載
  * ---------------------------------------------------------------------
- * - 掛載時立刻判斷一次 activeSection，並綁定 scroll 事件（passive）
- * - 離開時移除事件監聽
+ * - measure()：量測 #plans 在文件中的 Y（resize 也需重量）
+ * - onMounted：初始量測 + 綁定 scroll/resize
+ * - onBeforeUnmount：解除監聽 + 重置共享狀態
  * ===================================================================== */
 const measure = () => {
   plansTop = document.getElementById("plans")?.offsetTop || 0;
@@ -129,6 +146,8 @@ onMounted(() => {
   window.addEventListener("scroll", onDirScroll, { passive: true });
   measure();
   window.addEventListener("resize", measure, { passive: true });
+
+  // 進場即同步一次狀態，避免初始錯位
   onScroll();
   onDirScroll();
 });
@@ -137,6 +156,8 @@ onBeforeUnmount(() => {
   window.removeEventListener("scroll", onScroll);
   window.removeEventListener("scroll", onDirScroll);
   window.removeEventListener("resize", measure);
+
+  // 離開頁面時將共享狀態回復預設，避免影響其他頁
   showPageNav.value = false;
   scrollDir.value = "down";
 });

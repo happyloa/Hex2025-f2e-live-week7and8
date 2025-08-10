@@ -10,6 +10,11 @@ const openMobileSearch = ref(false); // 行動搜尋模式開關
 const scrolled = ref(false); // 首頁捲動狀態
 const showMobileNav = ref(false); // 行動版側邊選單開關
 
+// ---------- 與 Page Nav 共享的全域狀態（由 product-info 控制） ----------
+const showPageNav = useState("showPageNav", () => false);
+const scrollDir = useState("scrollDir", () => "down");
+const upRevealDelta = useState("upRevealDelta", () => 0);
+
 // ---------- 計算屬性 ----------
 const isHome = computed(() => route.path === "/" || route.path === ""); // 是否為首頁
 const headerClass = computed(() => {
@@ -21,6 +26,14 @@ const headerClass = computed(() => {
   }
   // 其他頁面一律套用白底、blur、border
   return "bg-[#FFFFFFB8] backdrop-blur-sm border-b-[0.5px] border-neutral-40";
+});
+
+// 只要 Page Nav 開著且使用者正在往下捲，就把 Header 藏起來
+const showHeader = computed(() => {
+  if (!showPageNav.value) return true; // 還沒到方案區，Header 照常顯示
+  if (scrollDir.value === "down") return false; // 方案區且向下捲 → 藏
+  // 方案區且向上捲：累積上滑 >= 80 才顯示
+  return upRevealDelta.value >= 80;
 });
 
 // ---------- 功能函式 ----------
@@ -56,19 +69,6 @@ watch(showMobileNav, (open) => {
   } else {
     document.documentElement.style.overflow = "";
   }
-});
-
-// 讀 product-info 設的全域狀態
-const showPageNav = useState("showPageNav", () => false);
-const scrollDir = useState("scrollDir", () => "down");
-const upRevealDelta = useState("upRevealDelta", () => 0);
-
-// 只要 Page Nav 開著且使用者正在往下捲，就把 Header 藏起來
-const showHeader = computed(() => {
-  if (!showPageNav.value) return true; // 還沒到方案區，Header 照常顯示
-  if (scrollDir.value === "down") return false; // 方案區且向下捲 → 藏
-  // 方案區且向上捲：累積上滑 >= 80 才顯示
-  return upRevealDelta.value >= 80;
 });
 
 // ---------- 生命週期 ----------
