@@ -199,10 +199,9 @@ public
 
 ## 注意事項
 
-1. 模擬登入狀態機制
-   為了模擬未登入與已登入的切版效果，專案在每次載入網站時，會先在 sessionStorage 寫入一個 isLoggedIn 鍵，預設值為 false。
-   當使用者進入會員相關頁面（/my-account、/my-account/saved-info）時，該值會被更新為 true。
-   此狀態會影響導覽列上的顯示內容：
+1.  為了模擬未登入與已登入的切版效果，專案在每次載入網站時，會先在 sessionStorage 寫入一個 isLoggedIn 鍵，預設值為 false。
+    當使用者進入會員相關頁面（/my-account、/my-account/saved-info）時，該值會被更新為 true。
+    此狀態會影響導覽列上的顯示內容：
 
 - false → 顯示「登入／註冊」按鈕
 - true → 顯示使用者頭像與名稱
