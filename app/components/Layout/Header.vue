@@ -58,6 +58,15 @@ watch(showMobileNav, (open) => {
   }
 });
 
+// 讀 product-info 設的全域狀態
+const showPageNav = useState("showPageNav", () => false);
+const scrollDir = useState("scrollDir", () => "down");
+
+// 只要 Page Nav 開著且使用者正在往下捲，就把 Header 藏起來
+const showHeader = computed(
+  () => !(showPageNav.value && scrollDir.value === "down"),
+);
+
 // ---------- 生命週期 ----------
 onMounted(async () => {
   await nextTick();
@@ -92,7 +101,10 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <header class="sticky top-0 z-40 p-3 transition md:p-4" :class="headerClass">
+  <header
+    class="sticky top-0 z-40 p-3 transition-transform duration-200 md:p-4"
+    :class="[headerClass, showHeader ? 'translate-y-0' : '-translate-y-full']"
+  >
     <div class="mx-auto flex max-w-container items-center justify-between">
       <!-- 一般模式（行動、桌機） -->
       <template v-if="!openMobileSearch">

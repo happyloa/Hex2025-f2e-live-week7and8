@@ -55,7 +55,14 @@ const showMore = ref(false);
  * - onScroll()：滾動時更新 activeSection
  *   規則：heading top - offset <= 0 視為已「進入」視窗的偵測區
  * ===================================================================== */
-const sectionIds = ["product-info", "how-to-use", "reviews"];
+const sectionIds = ["plans", "product-info", "how-to-use", "reviews"];
+
+const tocIds = ["product-info", "how-to-use", "reviews"];
+const tocLabels = {
+  "product-info": "商品說明",
+  "how-to-use": "如何使用",
+  reviews: "旅人評論",
+};
 const activeSection = ref(sectionIds[0]);
 
 function onScroll() {
@@ -74,20 +81,55 @@ function onScroll() {
   activeSection.value = current;
 }
 
+// ===== Page Nav 顯示與滾動方向（用全域 state 給 Header 用）=====
+const showPageNav = useState("showPageNav", () => false);
+const scrollDir = useState("scrollDir", () => "down"); // 'up' | 'down'
+
+const lastY = ref(0);
+function onDirScroll() {
+  const y = window.scrollY || 0;
+  const delta = Math.abs(y - lastY.value);
+  if (delta > 6) {
+    // 去抖
+    scrollDir.value = y > lastY.value ? "down" : "up";
+    lastY.value = y;
+  }
+}
+
+// 進入「選擇方案」的門檻（sentinel）——離 #plans 標題前一點點
+const sentinel = ref(null);
+
 /* =====================================================================
  * 4) 生命週期：掛載/卸載
  * ---------------------------------------------------------------------
  * - 掛載時立刻判斷一次 activeSection，並綁定 scroll 事件（passive）
  * - 離開時移除事件監聽
  * ===================================================================== */
+let io; // 放外層好在 unmount 時清掉
+
 onMounted(() => {
-  // 首次進頁先算一次，避免一開始沒有高亮
-  onScroll();
   window.addEventListener("scroll", onScroll, { passive: true });
+  window.addEventListener("scroll", onDirScroll, { passive: true });
+
+  io = new IntersectionObserver(
+    ([entry]) => {
+      showPageNav.value = !entry.isIntersecting;
+    },
+    { root: null, rootMargin: "-80px 0px 0px 0px", threshold: 0 },
+  );
+
+  if (sentinel.value) io.observe(sentinel.value);
+
+  onScroll();
+  onDirScroll();
 });
 
 onBeforeUnmount(() => {
   window.removeEventListener("scroll", onScroll);
+  window.removeEventListener("scroll", onDirScroll);
+  if (io) io.disconnect();
+  showPageNav.value = false;
+  scrollDir.value = "down";
 });
 </script>
 
@@ -307,6 +349,71 @@ onBeforeUnmount(() => {
       </div>
     </div>
   </section>
+
+  <div ref="sentinel" class="h-0"></div>
+  <!-- 滑動至＂選擇方案＂區塊時出現的 Page Nav -->
+  <transition name="page-nav">
+    <nav
+      v-if="showPageNav && scrollDir === 'down'"
+      class="sticky top-0 z-40 border-b border-neutral-40 bg-white px-3"
+    >
+      <ul class="mx-auto flex max-w-[1280px] gap-8">
+        <li>
+          <a
+            href="#plans"
+            class="group relative block py-4 transition"
+            :class="
+              activeSection === 'plans'
+                ? 'text-title text-primary'
+                : 'text-body text-neutral'
+            "
+          >
+            方案選擇
+            <hr
+              class="absolute bottom-0 left-1/2 w-1/2 -translate-x-1/2 rounded-full border-2 border-primary transition"
+              :class="activeSection === 'plans' ? 'opacity-100' : 'opacity-0'"
+            />
+          </a>
+        </li>
+        <li>
+          <a
+            href="#product-info"
+            class="group relative block py-4 transition"
+            :class="
+              activeSection === 'product-info'
+                ? 'text-title text-primary'
+                : 'text-body text-neutral'
+            "
+          >
+            方案介紹
+            <hr
+              class="absolute bottom-0 left-1/2 w-1/2 -translate-x-1/2 rounded-full border-2 border-primary transition"
+              :class="
+                activeSection === 'product-info' ? 'opacity-100' : 'opacity-0'
+              "
+            />
+          </a>
+        </li>
+        <li>
+          <a
+            href="#reviews"
+            class="group relative block py-4 transition"
+            :class="
+              activeSection === 'reviews'
+                ? 'text-title text-primary'
+                : 'text-body text-neutral'
+            "
+          >
+            旅人評論
+            <hr
+              class="absolute bottom-0 left-1/2 w-1/2 -translate-x-1/2 rounded-full border-2 border-primary transition"
+              :class="activeSection === 'reviews' ? 'opacity-100' : 'opacity-0'"
+            />
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </transition>
   <!-- 選擇方案 -->
   <section id="plans" class="bg-primary-10 px-3 py-10 md:py-[120px]">
     <div class="mx-auto max-w-container">
@@ -814,7 +921,7 @@ onBeforeUnmount(() => {
       <!-- 側邊選單 -->
       <nav class="sticky top-[100px] hidden self-start lg:block">
         <ul class="space-y-6">
-          <li v-for="id in sectionIds" :key="id">
+          <li v-for="id in tocIds" :key="id">
             <a
               :href="`#${id}`"
               :class="[
@@ -824,13 +931,7 @@ onBeforeUnmount(() => {
                   : 'border-transparent text-neutral-60',
               ]"
             >
-              {{
-                id === "product-info"
-                  ? "商品說明"
-                  : id === "how-to-use"
-                    ? "如何使用"
-                    : "旅人評論"
-              }}
+              {{ tocLabels[id] }}
             </a>
           </li>
         </ul>
@@ -838,3 +939,18 @@ onBeforeUnmount(() => {
     </div>
   </section>
 </template>
+
+<style scoped>
+/* Page Nav 出現/收合動效 */
+.page-nav-enter-active,
+.page-nav-leave-active {
+  transition:
+    transform 0.22s ease,
+    opacity 0.22s ease;
+}
+.page-nav-enter-from,
+.page-nav-leave-to {
+  transform: translateY(-8px);
+  opacity: 0;
+}
+</style>
