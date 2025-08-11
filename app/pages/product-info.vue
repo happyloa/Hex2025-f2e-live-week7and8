@@ -82,9 +82,14 @@ function onScroll() {
   }
   activeSection.value = current;
 
-  // 頂端捲過 #plans 的位置 + 100px 之後才顯示 Page Nav
-  const trigger = Math.max(0, plansTop + 100);
-  showPageNav.value = (window.scrollY || 0) >= trigger;
+  // 當 #plans 的頂端已經越過視窗頂端 100px（rect.top <= -100）才顯示
+  const plansEl = document.getElementById("plans");
+  if (plansEl) {
+    const top = plansEl.getBoundingClientRect().top;
+    showPageNav.value = top <= -100;
+  } else {
+    showPageNav.value = false;
+  }
 }
 
 /* =========================================================================
@@ -101,7 +106,6 @@ const upRevealDelta = useState("upRevealDelta", () => 0);
 
 const lastY = ref(0); // 上一個 scrollY
 const dirChangeStartY = ref(0); // 方向切換時的起點 Y
-let plansTop = 0; // #plans 在整頁的 Y 座標（由 measure() 量測）
 
 /** 次要滾動監聽：偵測捲動方向與上滑距離 */
 function onDirScroll() {
@@ -143,22 +147,12 @@ const showPageNavBar = computed(() => {
 /* =====================================================================
  * 6) 生命週期：掛載/卸載
  * ---------------------------------------------------------------------
- * - measure()：量測 #plans 在文件中的 Y（resize 也需重量）
  * - onMounted：初始量測 + 綁定 scroll/resize
  * - onBeforeUnmount：解除監聽 + 重置共享狀態
  * ===================================================================== */
-const measure = () => {
-  const el = document.getElementById("plans");
-  plansTop = el ? el.getBoundingClientRect().top + (window.scrollY || 0) : 0;
-};
-
 onMounted(() => {
   window.addEventListener("scroll", onScroll, { passive: true });
   window.addEventListener("scroll", onDirScroll, { passive: true });
-  measure();
-  window.addEventListener("resize", measure, { passive: true });
-
-  // 進場即同步一次狀態，避免初始錯位
   onScroll();
   onDirScroll();
 });
@@ -166,7 +160,6 @@ onMounted(() => {
 onBeforeUnmount(() => {
   window.removeEventListener("scroll", onScroll);
   window.removeEventListener("scroll", onDirScroll);
-  window.removeEventListener("resize", measure);
 
   // 離開頁面時將共享狀態回復預設，避免影響其他頁
   showPageNav.value = false;
