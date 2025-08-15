@@ -207,3 +207,6 @@ public
 - true → 顯示使用者頭像與名稱
 
 2.  只要帶著＂?hasItems＂參數進到購物車頁面（/cart?hasItems）就會呈現有商品狀態的切版。
+
+## 2025/08/15 助教修改建議
+![](https://raw.githubusercontent.com/happyloa/Hex2025-f2e-live-week7and8/refs/heads/main/public/ta-advise.webp)
