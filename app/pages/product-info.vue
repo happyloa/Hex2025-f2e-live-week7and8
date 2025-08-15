@@ -372,7 +372,7 @@ onBeforeUnmount(() => {
           </span>
           <h2 class="mb-1 text-h3 text-black">NT$ 415</h2>
           <p class="poppins | text-neutral-60 line-through">NT$ 520</p>
-          <!-- 前往登入或註冊 -->
+          <!-- 選擇方案 -->
           <a
             href="#plans"
             class="mt-auto rounded-xl bg-primary p-4 text-center text-title text-white transition hover:bg-primary-120"
