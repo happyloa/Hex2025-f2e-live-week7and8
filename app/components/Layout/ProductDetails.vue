@@ -129,8 +129,6 @@ function onAfterLeave(el) {
         </li>
       </ul>
 
-      <hr class="mb-6 border-neutral-40 md:mb-10" />
-
       <!-- 選擇日期及選項與選擇數量 -->
       <div class="mb-6 flex flex-col gap-10 md:mb-10 lg:flex-row lg:gap-20">
         <!-- 選擇日期及選項 -->
