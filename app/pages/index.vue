@@ -16,6 +16,7 @@ function handleSearch() {
 }
 
 const activeIndex = ref(0); // 預設第一張卡片（峇里島渡假漫遊）大
+const mapActiveIndex = ref(0);
 let hoverTimeout = null;
 
 function handleMouseEnter(i) {
@@ -37,10 +38,17 @@ function onJourneySlideChange(e) {
   const [inst] = e.detail;
   journeyActiveIndex.value = inst.realIndex;
 }
+function onMapSlideChange(e) {
+  const [inst] = e.detail;
+  mapActiveIndex.value = inst.realIndex;
+}
 
 // 點點點擊 → 跳到指定張
 function goToJourney(idx) {
   journeySwiper.value?.swiper?.slideToLoop(idx);
+}
+function goToMap(idx) {
+  mapSwiper.value?.swiper?.slideToLoop(idx);
 }
 
 // 跑馬燈的速度，單位：秒，數值越小越快
@@ -510,7 +518,7 @@ const marqueeSpeed = 20;
       </div>
       <ClientOnly>
         <swiper-container
-          class="pl-4 xl:w-screen xl:px-0"
+          class="mb-10 pl-4 md:mb-0 xl:w-screen xl:px-0"
           ref="mapSwiper"
           :breakpoints="{
             1536: {
@@ -530,6 +538,7 @@ const marqueeSpeed = 20;
             delay: 5000,
           }"
           :loop="true"
+          @swiperslidechange="onMapSlideChange"
         >
           <swiper-slide class="pr-4 pt-10 md:pr-6 md:pt-20">
             <CommonHomeMapCard
@@ -587,6 +596,23 @@ const marqueeSpeed = 20;
             />
           </swiper-slide>
         </swiper-container>
+        <!-- 自製點點 -->
+        <div class="block md:hidden">
+          <div class="flex justify-center gap-1">
+            <button
+              v-for="i in 5"
+              :key="i"
+              type="button"
+              @click="goToMap(i - 1)"
+              class="h-2 rounded-full transition-all duration-300"
+              :class="
+                mapActiveIndex === i - 1 ? 'w-6 bg-primary' : 'w-2 bg-white'
+              "
+              :aria-pressed="mapActiveIndex === i - 1"
+              :aria-label="`跳至第 ${i} 張`"
+            ></button>
+          </div>
+        </div>
       </ClientOnly>
     </div>
   </section>
