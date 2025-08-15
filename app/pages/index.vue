@@ -86,7 +86,7 @@ const marqueeSpeed = 20;
           </svg>
           <input
             v-model="search"
-            type="text"
+            type="search"
             placeholder="搜尋景點、地點或城市"
             name="search"
             id="search"
