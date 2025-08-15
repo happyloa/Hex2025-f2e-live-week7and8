@@ -520,7 +520,9 @@ onBeforeUnmount(() => {
                   <!-- 價格 -->
                   <div>
                     <h5 class="mb-1 text-h5 text-black">NT$ 415</h5>
-                    <p class="poppins | text-body text-neutral-60 line-through">
+                    <p
+                      class="poppins | text-body text-neutral-60 line-through md:text-right"
+                    >
                       NT$ 520
                     </p>
                   </div>
@@ -617,7 +619,9 @@ onBeforeUnmount(() => {
                   <!-- 價格 -->
                   <div>
                     <h5 class="mb-1 text-h5 text-black">NT$ 522</h5>
-                    <p class="poppins | text-body text-neutral-60 line-through">
+                    <p
+                      class="poppins | text-body text-neutral-60 line-through md:text-right"
+                    >
                       NT$ 630
                     </p>
                   </div>
@@ -693,7 +697,9 @@ onBeforeUnmount(() => {
                   <!-- 價格 -->
                   <div>
                     <h5 class="mb-1 text-h5 text-black">NT$ 478</h5>
-                    <p class="poppins | text-body text-neutral-60 line-through">
+                    <p
+                      class="poppins | text-body text-neutral-60 line-through md:text-right"
+                    >
                       NT$ 630
                     </p>
                   </div>
