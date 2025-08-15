@@ -134,8 +134,8 @@ function onAfterLeave(el) {
         <!-- 選擇日期及選項 -->
         <div class="flex-1">
           <h4 class="mb-6 text-h6">選擇日期及選項</h4>
-          <div
-            class="whitespace-nowrap rounded-[20px] border border-neutral-40"
+          <time
+            class="block whitespace-nowrap rounded-[20px] border border-neutral-40"
           >
             <header
               class="flex items-center justify-between border-b border-neutral-40 px-4 py-3"
@@ -419,7 +419,7 @@ function onAfterLeave(el) {
                 31
               </button>
             </div>
-          </div>
+          </time>
         </div>
 
         <!-- 選擇數量（唯一動態：qty） -->
