@@ -105,6 +105,28 @@
               </svg>
             </a>
           </li>
+          <!-- 專案 repo 連結 -->
+          <li>
+            <a
+              href="https://github.com/happyloa/Hex2025-f2e-live-week7and8"
+              target="_blank"
+              class="block rounded-full border border-white p-3 text-white transition hover:border-primary-40 hover:text-primary-40"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+              >
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M12 .5C5.65.5.5 5.65.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.3.8-.6v-2.2c-3.2.7-3.9-1.5-3.9-1.5-.6-1.5-1.5-1.9-1.5-1.9-1.2-.8.1-.8.1-.8 1.3.1 2 1.4 2 1.4 1.2 2 3.1 1.4 3.9 1.1.1-.9.5-1.4.9-1.7-2.6-.3-5.3-1.3-5.3-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2a11.4 11.4 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.6.2 2.8.1 3.1.8.8 1.2 1.9 1.2 3.2 0 4.7-2.7 5.6-5.3 5.9.5.4.9 1.1.9 2.2v3.3c0 .3.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.65 18.35.5 12 .5z"
+                />
+              </svg>
+            </a>
+          </li>
         </ul>
         <p class="text-body2 text-[#D4D4D4]">
           copyright © 2025 ZOBAA 旅遊網站 All Rights Reserved.
