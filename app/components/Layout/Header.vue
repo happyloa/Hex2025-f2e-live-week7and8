@@ -106,7 +106,7 @@ onBeforeUnmount(() => {
 
 <template>
   <header
-    class="sticky top-0 z-40 p-3 transition-transform duration-200 md:p-4"
+    class="sticky top-0 z-40 p-3 transition duration-200 md:p-4"
     :class="[headerClass, showHeader ? 'translate-y-0' : '-translate-y-full']"
   >
     <div class="mx-auto flex max-w-container items-center justify-between">
