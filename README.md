@@ -9,7 +9,7 @@
 
 ## 使用技術
 
-- [Nuxt 4](https://nuxt.com/)（Vue 加強版）
+- [Nuxt 4.2](https://nuxt.com/)（Vue 加強版）
 - [Tailwind CSS](https://tailwindcss.com/)
 
 ## 開發環境設置

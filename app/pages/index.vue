@@ -53,6 +53,7 @@ function goToMap(idx) {
 
 // 跑馬燈的速度，單位：秒，數值越小越快
 const marqueeSpeed = 20;
+const marqueeItems = ["# ZOBAA", "# WHERETOGO", "# TODAY"];
 </script>
 
 <template>
@@ -755,17 +756,16 @@ const marqueeSpeed = 20;
     </div>
   </section>
   <!-- 跑馬燈 -->
-  <section class="overflow-hidden whitespace-nowrap">
-    <div
-      class="marquee | flex items-center gap-2 text-[32px] font-bold leading-[1.2] text-primary-10 md:gap-6 md:text-[130px]"
-      :style="`--marquee-duration: ${marqueeSpeed}s;`"
-    >
-      <span># ZOBAA</span>
-      <span># WHERETOGO</span>
-      <span># TODAY</span>
-      <span># ZOBAA</span>
-      <span># WHERETOGO</span>
-      <span># TODAY</span>
+  <section class="overflow-hidden">
+    <div class="marquee" :style="`--marquee-duration: ${marqueeSpeed}s;`">
+      <div
+        v-for="repeatIndex in 2"
+        :key="repeatIndex"
+        class="marquee__group text-[32px] font-bold leading-[1.2] text-primary-10 md:text-[130px]"
+        :aria-hidden="repeatIndex === 2 ? 'true' : null"
+      >
+        <span v-for="item in marqueeItems" :key="`${repeatIndex}-${item}`">{{ item }}</span>
+      </div>
     </div>
   </section>
   <!-- 為什麼選擇 ZOBAA ? -->
@@ -898,8 +898,26 @@ const marqueeSpeed = 20;
 }
 
 .marquee {
-  /* 跑馬燈動畫，移動寬度需看內容長度 */
+  display: flex;
+  width: max-content;
   animation: marquee var(--marquee-duration, 10s) linear infinite;
+}
+
+.marquee__group {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+
+.marquee__group span {
+  white-space: nowrap;
+}
+
+@media (min-width: 768px) {
+  .marquee__group {
+    gap: 1.5rem;
+  }
 }
 
 /* 關鍵動畫：從右到左移動 50% */
@@ -908,7 +926,7 @@ const marqueeSpeed = 20;
     transform: translateX(0);
   }
   100% {
-    transform: translateX(-100%);
+    transform: translateX(-50%);
   }
 }
 </style>
