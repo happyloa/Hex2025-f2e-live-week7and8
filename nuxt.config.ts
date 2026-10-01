@@ -1,3 +1,5 @@
+import tailwindcss from "@tailwindcss/vite";
+
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   compatibilityDate: "2025-07-15",
@@ -37,18 +39,12 @@ export default defineNuxtConfig({
       ],
     },
   },
-  modules: ["@nuxtjs/google-fonts", "@nuxtjs/tailwindcss", "nuxt-swiper"],
+  modules: ["nuxt-swiper"],
 
-  // Google Fonts 的相關配置
-  googleFonts: {
-    families: {
-      "Noto+Sans+TC": [400, 600, 700],
-      Poppins: [400],
-    },
-    download: true,
-    inject: true,
-    display: "swap",
+  // Tailwind CSS 4 使用 Vite 外掛
+  vite: {
+    plugins: [tailwindcss()],
   },
 
-  css: ["~/assets/css/fonts.css"],
+  css: ["~/assets/css/main.css"],
 });

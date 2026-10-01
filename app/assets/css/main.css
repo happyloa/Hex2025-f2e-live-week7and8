@@ -1,0 +1,15 @@
+@import "tailwindcss";
+@import "@fontsource/noto-sans-tc/400.css";
+@import "@fontsource/noto-sans-tc/600.css";
+@import "@fontsource/noto-sans-tc/700.css";
+@import "@fontsource/poppins/400.css";
+
+@config "../../../tailwind.config.ts";
+
+body {
+  font-family: "Noto Sans TC", sans-serif;
+}
+
+.poppins {
+  font-family: "Poppins", sans-serif;
+}

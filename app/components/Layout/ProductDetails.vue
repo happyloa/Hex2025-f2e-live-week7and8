@@ -29,38 +29,42 @@ const qty = computed({
 const DURATION = 280;
 const EASE = "cubic-bezier(0.22, 0.61, 0.36, 1)";
 
-function onEnter(el) {
-  el.style.height = "0px";
-  el.style.opacity = "0";
-  el.style.overflow = "hidden";
-  el.offsetHeight; // 觸發重排
-  el.style.transition = `height ${DURATION}ms ${EASE}, opacity ${DURATION}ms ease`;
-  el.style.height = el.scrollHeight + "px";
-  el.style.opacity = "1";
+function onEnter(el: Element) {
+  const target = el as HTMLElement;
+  target.style.height = "0px";
+  target.style.opacity = "0";
+  target.style.overflow = "hidden";
+  target.offsetHeight; // 觸發重排
+  target.style.transition = `height ${DURATION}ms ${EASE}, opacity ${DURATION}ms ease`;
+  target.style.height = target.scrollHeight + "px";
+  target.style.opacity = "1";
 }
 
-function onAfterEnter(el) {
-  el.style.transition = "";
-  el.style.height = "";
-  el.style.overflow = "";
-  el.style.opacity = "";
+function onAfterEnter(el: Element) {
+  const target = el as HTMLElement;
+  target.style.transition = "";
+  target.style.height = "";
+  target.style.overflow = "";
+  target.style.opacity = "";
 }
 
-function onLeave(el) {
-  el.style.overflow = "hidden";
-  el.style.height = el.scrollHeight + "px";
-  el.offsetHeight;
+function onLeave(el: Element) {
+  const target = el as HTMLElement;
+  target.style.overflow = "hidden";
+  target.style.height = target.scrollHeight + "px";
+  target.offsetHeight;
   const d = Math.max(0, DURATION - 40);
-  el.style.transition = `height ${d}ms ${EASE}, opacity ${d}ms ease`;
-  el.style.height = "0px";
-  el.style.opacity = "0";
+  target.style.transition = `height ${d}ms ${EASE}, opacity ${d}ms ease`;
+  target.style.height = "0px";
+  target.style.opacity = "0";
 }
 
-function onAfterLeave(el) {
-  el.style.transition = "";
-  el.style.height = "";
-  el.style.overflow = "";
-  el.style.opacity = "";
+function onAfterLeave(el: Element) {
+  const target = el as HTMLElement;
+  target.style.transition = "";
+  target.style.height = "";
+  target.style.overflow = "";
+  target.style.opacity = "";
 }
 </script>
 
