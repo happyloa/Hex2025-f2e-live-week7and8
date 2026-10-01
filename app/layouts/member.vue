@@ -1,6 +1,5 @@
 <script setup>
-// 進到使用這個 layout 的頁面時，自動把 sessionStorage.isLoggedIn 設成 'true'
-// 這樣做是為了模擬已登入狀態，因為只有登入以後才可能進到會員專屬頁面（個人資訊、常用旅客）
+// 進入會員頁面時，僅更新目前頁面的展示用登入狀態。
 const { isLoggedIn } = useAuth();
 onMounted(() => {
   isLoggedIn.value = true;
