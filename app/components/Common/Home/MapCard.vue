@@ -22,7 +22,7 @@ const props = defineProps({
    */
   tags: {
     type: Array,
-    default: ["標籤1", "標籤2"],
+    default: () => ["標籤1", "標籤2"],
   },
   /**
    * 靈感地圖名稱
@@ -75,6 +75,10 @@ const { number, img, name, tags, desc, suggestion, cta } = toRefs(props);
       <img
         :src="img"
         :alt="name"
+        loading="lazy"
+        decoding="async"
+        width="600"
+        height="824"
         class="h-[200px] w-full rounded-2xl object-cover transition group-hover:scale-110 2xl:h-[412px]"
       />
     </div>

@@ -1,5 +1,15 @@
 <script setup>
 const router = useRouter();
+useHead({
+  link: [
+    {
+      rel: "preload",
+      as: "image",
+      href: "/images/home/hero-bg.webp",
+      fetchpriority: "high",
+    },
+  ],
+});
 
 // 建立 ref 綁定到 swiper-container
 const mapSwiper = ref(null);
@@ -18,6 +28,7 @@ function handleSearch() {
 const activeIndex = ref(0); // 預設第一張卡片（峇里島渡假漫遊）大
 const mapActiveIndex = ref(0);
 let hoverTimeout = null;
+onBeforeUnmount(() => clearTimeout(hoverTimeout));
 
 function handleMouseEnter(i) {
   // 清除離開時的延遲
@@ -99,6 +110,8 @@ const marqueeItems = ["# ZOBAA", "# WHERETOGO", "# TODAY"];
             placeholder="搜尋景點、地點或城市"
             name="search"
             id="search"
+            aria-label="搜尋景點、地點或城市"
+            @keydown.enter="handleSearch"
             class="w-full text-h6 font-normal placeholder:text-h6 placeholder:font-normal placeholder:text-neutral-60 focus:outline-none"
           />
         </div>
@@ -319,6 +332,8 @@ const marqueeItems = ["# ZOBAA", "# WHERETOGO", "# TODAY"];
     >
       <!-- 裝飾文字 -->
       <img
+        loading="lazy"
+        decoding="async"
         src="/images/home/deco-text.svg"
         alt="裝飾文字"
         class="absolute -left-[232px] bottom-60 hidden xl:block"
@@ -334,6 +349,10 @@ const marqueeItems = ["# ZOBAA", "# WHERETOGO", "# TODAY"];
           >
             <div class="overflow-hidden rounded-t-2xl md:rounded-t-3xl">
               <img
+                loading="lazy"
+                decoding="async"
+                width="612"
+                height="480"
                 src="/images/home/intro-1.webp"
                 alt="ZOBAA 專屬推薦行程"
                 class="w-full transition group-hover:scale-110"
@@ -350,6 +369,10 @@ const marqueeItems = ["# ZOBAA", "# WHERETOGO", "# TODAY"];
           >
             <div class="overflow-hidden rounded-t-2xl md:rounded-t-3xl">
               <img
+                loading="lazy"
+                decoding="async"
+                width="612"
+                height="480"
                 src="/images/home/intro-2.webp"
                 alt="旅人攻略集合"
                 class="w-full transition group-hover:scale-110"
@@ -370,6 +393,10 @@ const marqueeItems = ["# ZOBAA", "# WHERETOGO", "# TODAY"];
           >
             <div class="overflow-hidden rounded-t-2xl md:rounded-t-3xl">
               <img
+                loading="lazy"
+                decoding="async"
+                width="612"
+                height="480"
                 src="/images/home/intro-3.webp"
                 alt="優惠機票、酒店"
                 class="w-full transition group-hover:scale-110"
@@ -386,6 +413,10 @@ const marqueeItems = ["# ZOBAA", "# WHERETOGO", "# TODAY"];
           >
             <div class="overflow-hidden rounded-t-2xl md:rounded-t-3xl">
               <img
+                loading="lazy"
+                decoding="async"
+                width="612"
+                height="480"
                 src="/images/home/intro-4.webp"
                 alt="銀行專屬優惠"
                 class="w-full transition group-hover:scale-110"
@@ -422,6 +453,8 @@ const marqueeItems = ["# ZOBAA", "# WHERETOGO", "# TODAY"];
         <div class="flex-1">
           <h2 class="relative mb-6 text-h3 md:max-w-[469px] md:text-display">
             <img
+              loading="lazy"
+              decoding="async"
               src="/images/home/deco-text-1.svg"
               alt="裝飾圖片"
               class="absolute -top-12 left-[133px] z-10 w-[130px] md:-right-8 md:left-auto md:w-[172px]"
@@ -625,6 +658,8 @@ const marqueeItems = ["# ZOBAA", "# WHERETOGO", "# TODAY"];
       <h2 class="relative mb-10 text-h3 md:mb-20 md:text-display">
         <!-- 裝飾井字號 -->
         <img
+          loading="lazy"
+          decoding="async"
           src="/images/home/bg-pound-sign.svg"
           alt="裝飾井字號"
           class="absolute -left-2 -top-5 z-0 size-[52px] md:-left-12 md:-top-12 md:size-[120px]"
@@ -764,7 +799,9 @@ const marqueeItems = ["# ZOBAA", "# WHERETOGO", "# TODAY"];
         class="marquee__group text-[32px] font-bold leading-[1.2] text-primary-10 md:text-[130px]"
         :aria-hidden="repeatIndex === 2 ? 'true' : null"
       >
-        <span v-for="item in marqueeItems" :key="`${repeatIndex}-${item}`">{{ item }}</span>
+        <span v-for="item in marqueeItems" :key="`${repeatIndex}-${item}`">{{
+          item
+        }}</span>
       </div>
     </div>
   </section>
@@ -774,18 +811,24 @@ const marqueeItems = ["# ZOBAA", "# WHERETOGO", "# TODAY"];
   >
     <!-- 裝飾圓圈1 -->
     <img
+      loading="lazy"
+      decoding="async"
       src="/images/home/bg-circle.svg"
       alt="裝飾圓圈1"
       class="absolute -left-[240px] -top-[360px] z-20 hidden size-[800px] xl:block"
     />
     <!-- 裝飾圓圈2 -->
     <img
+      loading="lazy"
+      decoding="async"
       src="/images/home/bg-circle.svg"
       alt="裝飾圓圈2"
       class="absolute -bottom-[480px] right-10 z-0 hidden xl:block"
     />
     <!-- 裝飾線條 -->
     <img
+      loading="lazy"
+      decoding="async"
       src="/images/home/bg-line.svg"
       alt="裝飾線條"
       class="absolute bottom-[295px] left-1/2 z-0 hidden w-full -translate-x-1/2 xl:block"
@@ -796,8 +839,14 @@ const marqueeItems = ["# ZOBAA", "# WHERETOGO", "# TODAY"];
         <source
           media="(max-width: 640px)"
           srcset="/images/home/card-mobile.webp"
+          width="351"
+          height="240"
         />
         <img
+          loading="lazy"
+          decoding="async"
+          width="2592"
+          height="1200"
           src="/images/home/card.webp"
           alt="把旅行變成生活的養分。"
           class="mb-2 w-full lg:mb-6"

@@ -39,6 +39,7 @@
           <!-- Line -->
           <li>
             <a
+              aria-label="LINE"
               href="#"
               target="_blank"
               class="block rounded-full border border-white p-3 text-white transition hover:border-primary-40 hover:text-primary-40"
@@ -62,6 +63,7 @@
           <!-- Youtube -->
           <li>
             <a
+              aria-label="YouTube"
               href="#"
               target="_blank"
               class="block rounded-full border border-white px-2.5 py-3 text-white transition hover:border-primary-40 hover:text-primary-40"
@@ -85,6 +87,7 @@
           <!-- Facebook -->
           <li>
             <a
+              aria-label="Facebook"
               href="#"
               target="_blank"
               class="block rounded-full border border-white px-4 py-3 text-white transition hover:border-primary-40 hover:text-primary-40"
@@ -108,6 +111,7 @@
           <!-- 專案 repo 連結 -->
           <li>
             <a
+              aria-label="GitHub 專案原始碼"
               href="https://github.com/happyloa/Hex2025-f2e-live-week7and8"
               target="_blank"
               class="block rounded-full border border-white p-3 text-white transition hover:border-primary-40 hover:text-primary-40"

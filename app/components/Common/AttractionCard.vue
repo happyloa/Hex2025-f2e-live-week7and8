@@ -22,7 +22,7 @@ const props = defineProps({
    */
   tags: {
     type: Array,
-    default: ["標籤1", "標籤2"],
+    default: () => ["標籤1", "標籤2"],
   },
   /**
    * 景點評價分數
@@ -84,6 +84,10 @@ const {
       <img
         :src="img"
         :alt="name"
+        loading="lazy"
+        decoding="async"
+        width="612"
+        height="424"
         class="rounded-[20px] transition group-hover:scale-110"
       />
       <!-- 收藏按鈕 -->

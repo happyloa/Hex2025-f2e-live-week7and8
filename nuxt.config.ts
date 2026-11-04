@@ -1,9 +1,16 @@
 import tailwindcss from "@tailwindcss/vite";
+import fontSubsets from "./build/font-subsets";
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   compatibilityDate: "2025-07-15",
   devtools: { enabled: true },
+  nitro: { compressPublicAssets: true },
+  experimental: {
+    defaults: {
+      nuxtLink: { prefetchOn: { visibility: false, interaction: true } },
+    },
+  },
 
   // 網站 meta 設定
   app: {
@@ -31,7 +38,7 @@ export default defineNuxtConfig({
         },
         { property: "og:type", content: "website" },
         { property: "og:locale", content: "zh_TW" },
-        { name: "twitter:card", content: "/ogImage.webp" },
+        { name: "twitter:card", content: "summary_large_image" },
         {
           name: "twitter:image",
           content: "/ogImage.webp",
@@ -39,7 +46,7 @@ export default defineNuxtConfig({
       ],
     },
   },
-  modules: ["nuxt-swiper"],
+  modules: [fontSubsets, "nuxt-swiper"],
 
   // Tailwind CSS 4 使用 Vite 外掛
   vite: {

@@ -9,14 +9,14 @@
 
 ## 使用技術
 
-- Nuxt 4.5.2、Vue 3
+- Nuxt 4、Vue 3（實際版本見 `package.json` 與 `package-lock.json`）
 - Tailwind CSS 4，透過 `@tailwindcss/vite` 整合；既有設計色票與字級定義於 `tailwind.config.ts`
 - Nuxt Swiper 2.0.2
-- Fontsource 提供 Noto Sans TC 與 Poppins 字型，不需在安裝時下載 Google Fonts
+- Fontsource 提供 Noto Sans TC 與 Poppins 字型，不需在安裝時下載 Google Fonts；建置時依頁面內容產生 Noto Sans TC 子集，其他字元仍可使用完整字型。
 
 ## 開始使用
 
-需要 Node.js 22.19+（22.x）、24.11+（24.x）或 26+，以及 npm。複製專案後執行：
+需要 Node.js 22.22.3+（22.x）、24.15+（24.x）或 26+，以及 npm。複製專案後執行：
 
 ```sh
 git clone https://github.com/happyloa/Hex2025-f2e-live-week7and8.git
@@ -32,8 +32,6 @@ npm run typecheck  # 檢查 TypeScript 與 Vue 型別
 npm run build      # 建立正式環境版本
 npm run preview    # 預覽正式環境版本
 ```
-
-可搭配 [Vue - Official](https://marketplace.visualstudio.com/items?itemName=Vue.volar) 與 [Tailwind CSS IntelliSense](https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss) 編輯。
 
 ## 頁面與目錄
 
