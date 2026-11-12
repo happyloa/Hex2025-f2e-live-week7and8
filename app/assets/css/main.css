@@ -1,7 +1,4 @@
 @import "tailwindcss";
-@import "@fontsource/noto-sans-tc/400.css";
-@import "@fontsource/noto-sans-tc/600.css";
-@import "@fontsource/noto-sans-tc/700.css";
 @import "@fontsource/poppins/400.css";
 
 @config "../../../tailwind.config.ts";
@@ -14,8 +11,13 @@
   }
 }
 
+/*
+ * Noto Sans TC Subset：建置時依頁面文字產生的子集（build/font-subsets.ts）
+ * Noto Sans TC：Fontsource 完整字型，只用於子集以外的字元（例如使用者輸入），
+ * 由 plugins/font-fallback.client.ts 延後載入
+ */
 body {
-  font-family: "Noto Sans TC", sans-serif;
+  font-family: "Noto Sans TC Subset", "Noto Sans TC", sans-serif;
 }
 
 .poppins {

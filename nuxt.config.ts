@@ -50,6 +50,8 @@ export default defineNuxtConfig({
     },
   },
   modules: [fontSubsets, "nuxt-swiper"],
+  // 不載入包含所有模組的 Swiper bundle，需要的模組在 plugins/swiper-modules.client.ts 安裝
+  swiper: { bundled: false },
 
   // Tailwind CSS 4 使用 Vite 外掛
   vite: {
