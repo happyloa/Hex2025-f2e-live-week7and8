@@ -90,7 +90,7 @@ function onAfterLeave(el: Element) {
         >
           <h5 class="w-[120px] shrink-0 text-title">關於此方案</h5>
           <span class="flex gap-2 text-body"
-            ><img src="/icons/circle-dollar.svg" alt="$" />免費取消！</span
+            ><img src="/icons/circle-dollar.svg" alt="" />免費取消！</span
           >
         </li>
         <li
@@ -98,10 +98,8 @@ function onAfterLeave(el: Element) {
         >
           <h5 class="w-[120px] shrink-0 text-title">費用包含</h5>
           <span class="flex gap-2 text-body"
-            ><img
-              src="/icons/green-circle-check.svg"
-              alt="費用包含"
-            />阿倍野展望台門票 HARUKAS 300</span
+            ><img src="/icons/green-circle-check.svg" alt="" />阿倍野展望台門票
+            HARUKAS 300</span
           >
         </li>
         <li
@@ -110,10 +108,10 @@ function onAfterLeave(el: Element) {
           <h5 class="w-[120px] shrink-0 text-title">費用不包含</h5>
           <div class="flex flex-wrap gap-x-8 gap-y-2 text-body">
             <span class="flex gap-2"
-              ><img src="/icons/circle-x.svg" alt="X" />個人消費
+              ><img src="/icons/circle-x.svg" alt="" />個人消費
             </span>
             <span class="flex gap-2"
-              ><img src="/icons/circle-x.svg" alt="X" />以上未提及消費
+              ><img src="/icons/circle-x.svg" alt="" />以上未提及消費
             </span>
           </div>
         </li>
@@ -141,13 +139,15 @@ function onAfterLeave(el: Element) {
         <!-- 選擇日期及選項 -->
         <div class="flex-1">
           <h4 class="mb-6 text-h6">選擇日期及選項</h4>
-          <time
-            class="block rounded-[20px] border border-neutral-40 whitespace-nowrap"
+          <div
+            class="rounded-[20px] border border-neutral-40 whitespace-nowrap"
           >
             <header
               class="flex items-center justify-between border-b border-neutral-40 px-4 py-3"
             >
-              <h5 class="text-h6">2025 年 5 月</h5>
+              <h5 class="text-h6">
+                <time datetime="2025-05">2025 年 5 月</time>
+              </h5>
               <div class="flex">
                 <button type="button" class="p-2 hover:bg-neutral-10">
                   <img src="/icons/prev-arrow.svg" alt="往前一個月" />
@@ -426,7 +426,7 @@ function onAfterLeave(el: Element) {
                 31
               </button>
             </div>
-          </time>
+          </div>
         </div>
 
         <!-- 選擇數量（唯一動態：qty） -->
@@ -481,7 +481,7 @@ function onAfterLeave(el: Element) {
         <div
           class="flex flex-row items-center justify-end gap-1 sm:flex-col sm:items-end"
         >
-          <h4 class="text-body text-neutral">總金額</h4>
+          <p class="text-body text-neutral">總金額</p>
           <p class="text-h5">NT$ {{ toThousand(total) }}</p>
         </div>
         <div class="flex gap-2 whitespace-nowrap">

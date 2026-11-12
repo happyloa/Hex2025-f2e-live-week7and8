@@ -135,6 +135,7 @@ watch(showDetail, (open) => {
 </script>
 
 <template>
+  <h1 class="sr-only">購物車</h1>
   <!-- 有商品 -->
   <section
     v-if="hasItems && urlHasItems"
@@ -179,6 +180,7 @@ watch(showDetail, (open) => {
                     type="checkbox"
                     class="custom-checkbox"
                     v-model="p.selected"
+                    :aria-label="`選取 ${p.name}`"
                   />
                 </div>
                 <!-- 商品內容、數量調整 -->
@@ -206,6 +208,7 @@ watch(showDetail, (open) => {
                     <button
                       type="button"
                       class="rounded-full border border-neutral-40 bg-white p-4 transition hover:bg-neutral-40"
+                      aria-label="減少數量"
                       @click="decQty(idx)"
                     >
                       <svg width="24" height="24" viewBox="0 0 24 24">
@@ -216,6 +219,7 @@ watch(showDetail, (open) => {
                     <button
                       type="button"
                       class="rounded-full border border-neutral-40 bg-white p-4 transition hover:bg-neutral-40"
+                      aria-label="增加數量"
                       @click="incQty(idx)"
                     >
                       <svg width="24" height="24" viewBox="0 0 24 24">
@@ -249,9 +253,9 @@ watch(showDetail, (open) => {
                     刪除
                   </button>
                 </div>
-                <h3 class="text-h5 text-black">
+                <p class="text-h5 text-black">
                   NT$ {{ toThousand(p.price * p.quantity) }}
-                </h3>
+                </p>
               </footer>
             </article>
           </li>
@@ -260,7 +264,7 @@ watch(showDetail, (open) => {
       <aside
         class="sticky top-[100px] col-span-1 hidden space-y-8 self-start rounded-[20px] bg-white p-6 shadow-normal lg:block"
       >
-        <h1 class="text-h5 text-black">費用明細</h1>
+        <h2 class="text-h5 text-black">費用明細</h2>
         <ul class="space-y-3 text-body text-neutral">
           <li class="flex items-center justify-between">
             商品小計<span class="text-title text-neutral"
@@ -275,7 +279,7 @@ watch(showDetail, (open) => {
         </ul>
         <hr class="border-neutral-40" />
         <div class="flex items-end justify-between">
-          <h2 class="text-body text-neutral">總計</h2>
+          <p class="text-body text-neutral">總計</p>
           <p class="text-h3 text-black">NT$ {{ toThousand(total) }}</p>
         </div>
         <NuxtLink
@@ -290,7 +294,7 @@ watch(showDetail, (open) => {
   <!-- 還沒有商品 -->
   <section v-else class="bg-neutral-15 px-3 py-20">
     <div class="mx-auto justify-items-center space-y-6 text-center">
-      <img src="/images/cart/empty.svg" alt="沒有商品" />
+      <img src="/images/cart/empty.svg" alt="" />
       <p class="text-title text-neutral">購物車還沒有商品，立即逛逛！</p>
       <NuxtLink
         to="/product-info"
@@ -328,7 +332,12 @@ watch(showDetail, (open) => {
       class="fixed inset-x-0 bottom-0 z-30 flex items-center justify-between border-t border-neutral-40 bg-white px-4 py-3 lg:hidden"
     >
       <!-- 展開明細、總計 -->
-      <div @click="showDetail = !showDetail">
+      <button
+        type="button"
+        class="text-left"
+        :aria-expanded="showDetail"
+        @click="showDetail = !showDetail"
+      >
         <span class="mb-1 flex items-center gap-1 text-tiny text-neutral">
           展開明細
           <!-- 展開箭頭 -->
@@ -340,12 +349,10 @@ watch(showDetail, (open) => {
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
           >
-            <g clip-path="url(#a)">
-              <path
-                d="M11.06 10.667 8 7.613l-3.06 3.054-.94-.94 4-4 4 4z"
-                fill="currentColor"
-              />
-            </g>
+            <path
+              d="M11.06 10.667 8 7.613l-3.06 3.054-.94-.94 4-4 4 4z"
+              fill="currentColor"
+            />
           </svg>
           <!-- 收合箭頭 -->
           <svg
@@ -356,16 +363,16 @@ watch(showDetail, (open) => {
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
           >
-            <g clip-path="url(#a)">
-              <path
-                d="M4.94 5.727 8 8.78l3.06-3.053.94.94-4 4-4-4z"
-                fill="currentColor"
-              />
-            </g>
+            <path
+              d="M4.94 5.727 8 8.78l3.06-3.053.94.94-4 4-4-4z"
+              fill="currentColor"
+            />
           </svg>
         </span>
-        <h2 class="text-h6 text-black">NT$ {{ toThousand(total) }}</h2>
-      </div>
+        <span class="block text-h6 text-black"
+          >NT$ {{ toThousand(total) }}</span
+        >
+      </button>
       <NuxtLink
         to="#"
         class="block rounded-xl bg-primary px-8 py-4 text-center text-title text-white transition hover:bg-primary-120"
@@ -395,7 +402,11 @@ watch(showDetail, (open) => {
           class="flex items-center justify-between border-b border-neutral-40 p-4"
         >
           <h2 class="text-subtitle text-black">費用明細</h2>
-          <button @click="showDetail = false" aria-label="關閉明細">
+          <button
+            type="button"
+            aria-label="關閉明細"
+            @click="showDetail = false"
+          >
             <svg
               width="24"
               height="24"
@@ -403,12 +414,10 @@ watch(showDetail, (open) => {
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
             >
-              <g clip-path="url(#a)">
-                <path
-                  d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
-                  fill="#000"
-                />
-              </g>
+              <path
+                d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
+                fill="#000"
+              />
             </svg>
           </button>
         </div>
@@ -430,7 +439,7 @@ watch(showDetail, (open) => {
           <hr class="my-4 border-neutral-40" />
 
           <div class="flex items-end justify-between">
-            <h2 class="text-body2 text-neutral">總計</h2>
+            <p class="text-body2 text-neutral">總計</p>
             <p class="text-h6 text-black">NT$ {{ toThousand(total) }}</p>
           </div>
         </div>

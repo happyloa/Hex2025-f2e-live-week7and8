@@ -115,7 +115,7 @@ const {
     <!-- 景點評價、訂購數量 -->
     <div class="mb-4 flex items-center gap-3 border-b border-neutral-40 pb-4">
       <span class="flex items-center gap-1 border-r border-neutral-40 pr-3">
-        <img src="/icons/star.svg" alt="評論星星" />
+        <img src="/icons/star.svg" alt="" />
         <span class="text-neutral">{{ ratingScore }}</span>
         <span class="text-neutral-60">({{ ratingCount }})</span>
       </span>
@@ -123,7 +123,7 @@ const {
     </div>
     <!-- 價錢 -->
     <div>
-      <h4 class="text-h6">{{ discountPrice }}</h4>
+      <p class="text-h6">{{ discountPrice }}</p>
       <p class="text-body2 text-[#808080] line-through">{{ originalPrice }}</p>
     </div>
   </article>

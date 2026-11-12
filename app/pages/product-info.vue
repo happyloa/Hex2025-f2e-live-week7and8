@@ -173,7 +173,7 @@ onBeforeUnmount(() => {
   <section class="md:px-3 md:py-20">
     <div class="mx-auto max-w-container">
       <!-- 麵包屑（只有電腦版有） -->
-      <nav class="mb-10 hidden items-center gap-3 md:flex">
+      <nav aria-label="麵包屑" class="mb-10 hidden items-center gap-3 md:flex">
         <NuxtLink to="/">首頁</NuxtLink>
         <span class="text-body2 text-neutral-60">/</span>
         <NuxtLink to="/">日本</NuxtLink>
@@ -182,7 +182,9 @@ onBeforeUnmount(() => {
         <span class="text-body2 text-neutral-60">/</span>
         <NuxtLink to="/search-result">大阪</NuxtLink>
         <span class="text-body2 text-neutral-60">/</span>
-        <span class="text-neutral-60">阿倍野Harukas300觀覽台</span>
+        <span class="text-neutral-60" aria-current="page"
+          >阿倍野Harukas300觀覽台</span
+        >
       </nav>
       <!-- 電腦版圖片 -->
       <div class="relative mb-6 hidden grid-cols-3 gap-2 rounded-3xl md:grid">
@@ -287,7 +289,7 @@ onBeforeUnmount(() => {
             <div class="flex flex-wrap items-center gap-3 text-black">
               <!-- 評價與數量 -->
               <span class="flex items-center gap-1">
-                <img src="/icons/star.svg" alt="評論星星" />
+                <img src="/icons/star.svg" alt="" />
                 <span class="text-title">4.8</span>
                 <span class="self-end text-neutral-60">(1029)</span>
               </span>
@@ -311,12 +313,10 @@ onBeforeUnmount(() => {
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
                 >
-                  <g clip-path="url(#a)">
-                    <path
-                      d="M8 2a4.667 4.667 0 0 0-4.667 4.667c0 1.908 1.188 3.748 2.492 5.174A17.3 17.3 0 0 0 8 13.84q.174-.135.41-.327a17 17 0 0 0 1.765-1.67c1.304-1.427 2.492-3.267 2.492-5.175A4.667 4.667 0 0 0 8 2m0 13.476-.378-.26-.002-.001-.004-.004-.013-.009-.05-.035-.18-.132a18.7 18.7 0 0 1-2.532-2.293C3.48 11.25 2 9.091 2 6.666a6 6 0 0 1 12 0c0 2.425-1.479 4.585-2.841 6.075a18.7 18.7 0 0 1-2.761 2.46l-.014.01-.004.003h-.001zM8 5.333A1.333 1.333 0 1 0 8 8a1.333 1.333 0 0 0 0-2.667M5.333 6.667a2.667 2.667 0 1 1 5.334 0 2.667 2.667 0 0 1-5.334 0"
-                      fill="#000"
-                    />
-                  </g>
+                  <path
+                    d="M8 2a4.667 4.667 0 0 0-4.667 4.667c0 1.908 1.188 3.748 2.492 5.174A17.3 17.3 0 0 0 8 13.84q.174-.135.41-.327a17 17 0 0 0 1.765-1.67c1.304-1.427 2.492-3.267 2.492-5.175A4.667 4.667 0 0 0 8 2m0 13.476-.378-.26-.002-.001-.004-.004-.013-.009-.05-.035-.18-.132a18.7 18.7 0 0 1-2.532-2.293C3.48 11.25 2 9.091 2 6.666a6 6 0 0 1 12 0c0 2.425-1.479 4.585-2.841 6.075a18.7 18.7 0 0 1-2.761 2.46l-.014.01-.004.003h-.001zM8 5.333A1.333 1.333 0 1 0 8 8a1.333 1.333 0 0 0 0-2.667M5.333 6.667a2.667 2.667 0 1 1 5.334 0 2.667 2.667 0 0 1-5.334 0"
+                    fill="#000"
+                  />
                 </svg>
                 阿倍野 HARUKAS 300 海闊天空展望台
               </a>
@@ -352,12 +352,10 @@ onBeforeUnmount(() => {
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
               >
-                <g clip-path="url(#a)">
-                  <path
-                    d="M8.59 16.59 13.17 12 8.59 7.41 10 6l6 6-6 6z"
-                    fill="currentColor"
-                  />
-                </g>
+                <path
+                  d="M8.59 16.59 13.17 12 8.59 7.41 10 6l6 6-6 6z"
+                  fill="currentColor"
+                />
               </svg>
             </a>
           </div>
@@ -369,7 +367,7 @@ onBeforeUnmount(() => {
             class="mb-4 inline-block self-start rounded-lg bg-danger-10 px-3 py-2 text-subtitle text-danger"
             >限定優惠 75 折
           </span>
-          <h2 class="mb-1 text-h3 text-black">NT$ 415</h2>
+          <p class="mb-1 text-h3 text-black">NT$ 415</p>
           <p class="poppins | text-neutral-60 line-through">NT$ 520</p>
           <!-- 選擇方案 -->
           <a
@@ -449,7 +447,7 @@ onBeforeUnmount(() => {
   <section id="plans" class="bg-primary-10 px-3 py-10 md:py-[120px]">
     <div class="mx-auto max-w-container">
       <h2 class="mb-6 flex items-center gap-2 text-h3">
-        <img src="/icons/title-hash.svg" alt="井字裝飾" />選擇方案
+        <img src="/icons/title-hash.svg" alt="" />選擇方案
       </h2>
       <ul class="space-y-4 md:space-y-6">
         <!-- 熱門選擇 -->
@@ -482,10 +480,10 @@ onBeforeUnmount(() => {
                 <!-- 圖片、名稱、標籤、簡介 -->
                 <div class="flex flex-col items-start gap-4 lg:flex-row">
                   <img
-                    loading="lazy"
-                    decoding="async"
                     src="/images/site/harukas-2.webp"
                     alt="海闊天空展望台門票"
+                    loading="lazy"
+                    decoding="async"
                     class="max-w-[200px] rounded-2xl"
                   />
                   <div class="text-body2 text-neutral">
@@ -520,7 +518,7 @@ onBeforeUnmount(() => {
                 >
                   <!-- 價格 -->
                   <div>
-                    <h5 class="mb-1 text-h5 text-black">NT$ 415</h5>
+                    <p class="mb-1 text-h5 text-black">NT$ 415</p>
                     <p
                       class="poppins | text-body text-neutral-60 line-through md:text-right"
                     >
@@ -581,10 +579,10 @@ onBeforeUnmount(() => {
               <div class="flex flex-col justify-between gap-6 md:flex-row">
                 <!-- 圖片、名稱、標籤、簡介 -->
                 <div class="flex flex-col items-start gap-4 lg:flex-row">
-                    loading="lazy"
-                    decoding="async"
                   <img
                     src="/images/site/site-1.webp"
+                    loading="lazy"
+                    decoding="async"
                     alt="【超值優惠】阿倍野展望台門票 HARUKAS 300 + HARUKA 關西機場→天王寺（單程票）"
                     class="max-w-[200px] rounded-2xl"
                   />
@@ -625,7 +623,7 @@ onBeforeUnmount(() => {
                 >
                   <!-- 價格 -->
                   <div>
-                    <h5 class="mb-1 text-h5 text-black">NT$ 522</h5>
+                    <p class="mb-1 text-h5 text-black">NT$ 522</p>
                     <p
                       class="poppins | text-body text-neutral-60 line-through md:text-right"
                     >
@@ -664,10 +662,10 @@ onBeforeUnmount(() => {
               <div class="flex flex-col justify-between gap-6 md:flex-row">
                 <!-- 圖片、名稱、標籤、簡介 -->
                 <div class="flex flex-col items-start gap-4 lg:flex-row">
-                    loading="lazy"
-                    decoding="async"
                   <img
                     src="/images/site/site-2.webp"
+                    loading="lazy"
+                    decoding="async"
                     alt="阿倍野展望台門票 HARUKAS 300｜附章魚燒兌換劵"
                     class="max-w-[200px] rounded-2xl"
                   />
@@ -709,7 +707,7 @@ onBeforeUnmount(() => {
                 >
                   <!-- 價格 -->
                   <div>
-                    <h5 class="mb-1 text-h5 text-black">NT$ 478</h5>
+                    <p class="mb-1 text-h5 text-black">NT$ 478</p>
                     <p
                       class="poppins | text-body text-neutral-60 line-through md:text-right"
                     >
@@ -758,7 +756,7 @@ onBeforeUnmount(() => {
             id="product-info"
             class="mb-6 flex items-center gap-2 text-h3 text-primary"
           >
-            <img src="/icons/title-hash.svg" alt="井字裝飾" />商品說明
+            <img src="/icons/title-hash.svg" alt="" />商品說明
           </h2>
           <h3>－ 景點介紹 －</h3>
           <ul class="mb-6 list-inside list-disc pl-2">
@@ -780,7 +778,10 @@ onBeforeUnmount(() => {
                 >幻想旅行導遊：尚-米歇爾·福隆</a
               >
             </li>
-            <li>展覽期間：2025年4月5日（六）～2025年6月22日（日）</li>
+            <li>
+              展覽期間：<time datetime="2025-04-05">2025年4月5日（六）</time
+              >～<time datetime="2025-06-22">2025年6月22日（日）</time>
+            </li>
             <li>
               尚-米歇爾·福隆（Jean-Michel
               Folon，1934-2005）是一位來自比利時的獨特藝術家。他的作品既詩意盎然又充滿幽默感，透過柔和的色彩與輕盈的筆觸，帶領觀眾踏上一場奇幻之旅，並傳遞對這個世界各種現象的深刻啟發，充滿豐富的情感與訊息。<br />
@@ -790,9 +791,9 @@ onBeforeUnmount(() => {
           <p class="mb-6">從 60 樓的觀景樓層，俯瞰 360 度充滿活力的大阪</p>
           <img
             src="/images/site/product-info.webp"
-            alt="從 60 樓的觀景樓層，俯瞰 360 度充滿活力的大阪"
             loading="lazy"
             decoding="async"
+            alt="從 60 樓的觀景樓層，俯瞰 360 度充滿活力的大阪"
             class="rounded-2xl"
           />
           <!-- 展開更多漸層 -->
@@ -812,7 +813,7 @@ onBeforeUnmount(() => {
         <!-- 如何使用 -->
         <div class="border-y border-neutral-40 py-10">
           <h2 id="how-to-use" class="mb-6 flex items-center gap-2 text-h3">
-            <img src="/icons/title-hash.svg" alt="井字裝飾" />如何使用
+            <img src="/icons/title-hash.svg" alt="" />如何使用
           </h2>
           <h3 class="mb-2 text-title text-black">憑證使用方式</h3>
           <p class="text-body text-neutral">
@@ -823,7 +824,7 @@ onBeforeUnmount(() => {
         <!-- 旅人評論 -->
         <div>
           <h2 id="reviews" class="mb-10 flex items-center gap-2 text-h3">
-            <img src="/icons/title-hash.svg" alt="井字裝飾" />旅人評論
+            <img src="/icons/title-hash.svg" alt="" />旅人評論
           </h2>
           <ul class="space-y-4 lg:space-y-6">
             <li>
@@ -832,27 +833,27 @@ onBeforeUnmount(() => {
               >
                 <img
                   src="/images/site/avatar-1.webp"
-                  alt="無聊工程師 Brian"
                   loading="lazy"
                   decoding="async"
+                  alt="無聊工程師 Brian"
                   class="size-[60px] rounded-full"
                 />
                 <!-- 稱呼、評價、日期、評論內容 -->
                 <div class="flex-1 text-body text-black">
                   <h3 class="mb-1">無聊工程師 Brian</h3>
-                  <span
+                  <div
                     class="mb-4 flex items-center gap-2 text-body2 text-neutral"
                   >
                     <!-- 星星容器 -->
-                    <div class="flex gap-1">
-                      <img src="/icons/review-star.svg" alt="評論星星" />
-                      <img src="/icons/review-star.svg" alt="評論星星" />
-                      <img src="/icons/review-star.svg" alt="評論星星" />
-                      <img src="/icons/review-star.svg" alt="評論星星" />
-                      <img src="/icons/review-star.svg" alt="評論星星" />
+                    <div class="flex gap-1" role="img" aria-label="5 顆星">
+                      <img src="/icons/review-star.svg" alt="" />
+                      <img src="/icons/review-star.svg" alt="" />
+                      <img src="/icons/review-star.svg" alt="" />
+                      <img src="/icons/review-star.svg" alt="" />
+                      <img src="/icons/review-star.svg" alt="" />
                     </div>
-                    2025-03-24
-                  </span>
+                    <time datetime="2025-03-24">2025-03-24</time>
+                  </div>
                   <blockquote class="rounded-2xl bg-neutral-10 p-4">
                     <h4 class="mb-3 text-title">覺得自己像在當鋼鐵人</h4>
                     <p class="text-neutral">
@@ -869,27 +870,27 @@ onBeforeUnmount(() => {
               >
                 <img
                   src="/images/site/avatar-2.webp"
-                  alt="愛旅遊的林阿姨"
                   loading="lazy"
                   decoding="async"
+                  alt="愛旅遊的林阿姨"
                   class="size-[60px] rounded-full"
                 />
                 <!-- 稱呼、評價、日期、評論內容 -->
                 <div class="flex-1 text-body text-black">
                   <h3 class="mb-1">愛旅遊的林阿姨</h3>
-                  <span
+                  <div
                     class="mb-4 flex items-center gap-2 text-body2 text-neutral"
                   >
                     <!-- 星星容器 -->
-                    <div class="flex gap-1">
-                      <img src="/icons/review-star.svg" alt="評論星星" />
-                      <img src="/icons/review-star.svg" alt="評論星星" />
-                      <img src="/icons/review-star.svg" alt="評論星星" />
-                      <img src="/icons/review-star.svg" alt="評論星星" />
-                      <img src="/icons/review-star.svg" alt="評論星星" />
+                    <div class="flex gap-1" role="img" aria-label="5 顆星">
+                      <img src="/icons/review-star.svg" alt="" />
+                      <img src="/icons/review-star.svg" alt="" />
+                      <img src="/icons/review-star.svg" alt="" />
+                      <img src="/icons/review-star.svg" alt="" />
+                      <img src="/icons/review-star.svg" alt="" />
                     </div>
-                    2025-01-30
-                  </span>
+                    <time datetime="2025-01-30">2025-01-30</time>
+                  </div>
                   <blockquote class="rounded-2xl bg-neutral-10 p-4">
                     <h4 class="mb-3 text-title">退休生活安排得剛剛好</h4>
                     <p class="text-neutral">
@@ -908,27 +909,27 @@ onBeforeUnmount(() => {
               >
                 <img
                   src="/images/site/avatar-3.webp"
-                  alt="財富對折師阿哲"
                   loading="lazy"
                   decoding="async"
+                  alt="財富對折師阿哲"
                   class="size-[60px] rounded-full"
                 />
                 <!-- 稱呼、評價、日期、評論內容 -->
                 <div class="flex-1 text-body text-black">
                   <h3 class="mb-1">財富對折師阿哲</h3>
-                  <span
+                  <div
                     class="mb-4 flex items-center gap-2 text-body2 text-neutral"
                   >
                     <!-- 星星容器 -->
-                    <div class="flex gap-1">
-                      <img src="/icons/review-star.svg" alt="評論星星" />
-                      <img src="/icons/review-star.svg" alt="評論星星" />
-                      <img src="/icons/review-star.svg" alt="評論星星" />
-                      <img src="/icons/review-star.svg" alt="評論星星" />
-                      <img src="/icons/review-star.svg" alt="評論星星" />
+                    <div class="flex gap-1" role="img" aria-label="5 顆星">
+                      <img src="/icons/review-star.svg" alt="" />
+                      <img src="/icons/review-star.svg" alt="" />
+                      <img src="/icons/review-star.svg" alt="" />
+                      <img src="/icons/review-star.svg" alt="" />
+                      <img src="/icons/review-star.svg" alt="" />
                     </div>
-                    2024-05-29
-                  </span>
+                    <time datetime="2024-05-29">2024-05-29</time>
+                  </div>
                   <blockquote class="rounded-2xl bg-neutral-10 p-4">
                     <h4 class="mb-3 text-title">
                       第一次帶女友出國，股票先不看了
@@ -947,27 +948,27 @@ onBeforeUnmount(() => {
               >
                 <img
                   src="/images/site/avatar-4.webp"
-                  alt="麗莎｜帶你玩遍全世界"
                   loading="lazy"
                   decoding="async"
+                  alt="麗莎｜帶你玩遍全世界"
                   class="size-[60px] rounded-full"
                 />
                 <!-- 稱呼、評價、日期、評論內容 -->
                 <div class="flex-1 text-body text-black">
                   <h3 class="mb-1">麗莎｜帶你玩遍全世界</h3>
-                  <span
+                  <div
                     class="mb-4 flex items-center gap-2 text-body2 text-neutral"
                   >
                     <!-- 星星容器 -->
-                    <div class="flex gap-1">
-                      <img src="/icons/review-star.svg" alt="評論星星" />
-                      <img src="/icons/review-star.svg" alt="評論星星" />
-                      <img src="/icons/review-star.svg" alt="評論星星" />
-                      <img src="/icons/review-star.svg" alt="評論星星" />
-                      <img src="/icons/review-star.svg" alt="評論星星" />
+                    <div class="flex gap-1" role="img" aria-label="5 顆星">
+                      <img src="/icons/review-star.svg" alt="" />
+                      <img src="/icons/review-star.svg" alt="" />
+                      <img src="/icons/review-star.svg" alt="" />
+                      <img src="/icons/review-star.svg" alt="" />
+                      <img src="/icons/review-star.svg" alt="" />
                     </div>
-                    2024-04-23
-                  </span>
+                    <time datetime="2024-04-23">2024-04-23</time>
+                  </div>
                   <blockquote class="rounded-2xl bg-neutral-10 p-4">
                     <h4 class="mb-3 text-title">IG狂打卡模式啟動</h4>
                     <p class="text-neutral">

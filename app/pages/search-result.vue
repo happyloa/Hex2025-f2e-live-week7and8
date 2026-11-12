@@ -32,14 +32,14 @@ const goTo = (idx) => {
   <main class="px-3 py-10 md:py-20">
     <div class="mx-auto max-w-container">
       <!-- 麵包屑 -->
-      <nav class="mb-10 hidden items-center gap-3 md:flex">
+      <nav aria-label="麵包屑" class="mb-10 hidden items-center gap-3 md:flex">
         <NuxtLink to="/">首頁</NuxtLink>
         <span class="text-body2 text-neutral-60">/</span>
         <NuxtLink to="/">日本</NuxtLink>
         <span class="text-body2 text-neutral-60">/</span>
         <NuxtLink to="/">關西</NuxtLink>
         <span class="text-body2 text-neutral-60">/</span>
-        <span class="text-neutral-60">大阪</span>
+        <span class="text-neutral-60" aria-current="page">大阪</span>
       </nav>
       <!-- 主要標題 -->
       <h1 class="mb-2 text-h3 text-black md:text-h1">大阪</h1>
@@ -359,12 +359,10 @@ const goTo = (idx) => {
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
                 >
-                  <g clip-path="url(#a)">
-                    <path
-                      d="m12 4-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"
-                      fill="currentColor"
-                    />
-                  </g>
+                  <path
+                    d="m12 4-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"
+                    fill="currentColor"
+                  />
                 </svg>
               </button>
             </div>
@@ -375,10 +373,10 @@ const goTo = (idx) => {
           <article
             class="group flex flex-col gap-4 rounded-[32px] bg-white p-4 md:flex-row md:gap-8 md:p-8"
           >
-              loading="lazy"
-              decoding="async"
             <img
               src="/images/search-result/guide-2.webp"
+              loading="lazy"
+              decoding="async"
               alt="旅人攻略2"
               class="h-[232px] rounded-2xl object-cover md:h-auto md:max-w-[480px]"
             />
@@ -421,12 +419,10 @@ const goTo = (idx) => {
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
                 >
-                  <g clip-path="url(#a)">
-                    <path
-                      d="m12 4-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"
-                      fill="currentColor"
-                    />
-                  </g>
+                  <path
+                    d="m12 4-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"
+                    fill="currentColor"
+                  />
                 </svg>
               </button>
             </div>
@@ -435,12 +431,12 @@ const goTo = (idx) => {
         <!-- 攻略卡片3 -->
         <li>
           <article
-              loading="lazy"
-              decoding="async"
             class="group flex flex-col gap-4 rounded-[32px] bg-white p-4 md:flex-row md:gap-8 md:p-8"
           >
             <img
               src="/images/search-result/guide-3.webp"
+              loading="lazy"
+              decoding="async"
               alt="旅人攻略3"
               class="h-[232px] rounded-2xl object-cover md:h-auto md:max-w-[480px]"
             />
@@ -483,26 +479,24 @@ const goTo = (idx) => {
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
                 >
-                  <g clip-path="url(#a)">
-                    <path
-                      d="m12 4-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"
-                      fill="currentColor"
-                    />
-                  </g>
+                  <path
+                    d="m12 4-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"
+                    fill="currentColor"
+                  />
                 </svg>
               </button>
             </div>
           </article>
         </li>
         <!-- 攻略卡片4 -->
-              loading="lazy"
-              decoding="async"
         <li>
           <article
             class="group flex flex-col gap-4 rounded-[32px] bg-white p-4 md:flex-row md:gap-8 md:p-8"
           >
             <img
               src="/images/search-result/guide-4.webp"
+              loading="lazy"
+              decoding="async"
               alt="旅人攻略4"
               class="h-[232px] rounded-2xl object-cover md:h-auto md:max-w-[480px]"
             />
@@ -545,12 +539,10 @@ const goTo = (idx) => {
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
                 >
-                  <g clip-path="url(#a)">
-                    <path
-                      d="m12 4-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"
-                      fill="currentColor"
-                    />
-                  </g>
+                  <path
+                    d="m12 4-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"
+                    fill="currentColor"
+                  />
                 </svg>
               </button>
             </div>

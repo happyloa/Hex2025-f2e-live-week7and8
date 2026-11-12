@@ -55,6 +55,11 @@ const handleResize = () => {
     showMobileNav.value = false;
 };
 
+// 搜尋：送出表單時才跳轉（中文輸入法選字的 Enter 不會誤觸）
+function submitSearch() {
+  if (search.value.trim()) router.push("/search-result");
+}
+
 // 登出功能
 function logout() {
   isLoggedIn.value = false;
@@ -116,10 +121,14 @@ onBeforeUnmount(() => {
         <nav class="flex flex-1 items-center gap-6">
           <!-- Logo（行動搜尋時隱藏）-->
           <NuxtLink to="/" class="shrink-0">
-            <img src="/primary-logo.svg" alt="Logo" class="w-[180px]" />
+            <img src="/primary-logo.svg" alt="ZOBAA 首頁" class="w-[180px]" />
           </NuxtLink>
           <!-- 桌機搜尋框，sm以下隱藏 -->
-          <div class="relative hidden sm:block">
+          <form
+            role="search"
+            class="relative hidden sm:block"
+            @submit.prevent="submitSearch"
+          >
             <!-- 裝飾搜尋 icon -->
             <svg
               width="24"
@@ -137,10 +146,10 @@ onBeforeUnmount(() => {
               v-model="search"
               type="search"
               placeholder="搜尋景點、地點或城市"
-              class="rounded-lg border border-neutral-40 py-2.5 pr-3 pl-10 placeholder:text-body placeholder:text-neutral-60 focus:outline-none lg:w-[400px]"
-              @keydown.enter="search && $router.push('/search-result')"
+              aria-label="搜尋景點、地點或城市"
+              class="rounded-lg border border-neutral-40 py-2.5 pr-3 pl-10 placeholder:text-body placeholder:text-neutral-60 focus:outline-hidden lg:w-[400px]"
             />
-          </div>
+          </form>
         </nav>
         <!-- 右：icon 區塊 -->
         <div class="flex shrink-0 items-center md:gap-4">
@@ -220,7 +229,11 @@ onBeforeUnmount(() => {
       <!-- 行動版搜尋模式 -->
       <template v-else>
         <div class="flex w-full items-center gap-1">
-          <div class="relative w-full">
+          <form
+            role="search"
+            class="relative w-full"
+            @submit.prevent="submitSearch"
+          >
             <!-- 裝飾搜尋 icon -->
             <svg
               width="24"
@@ -239,10 +252,10 @@ onBeforeUnmount(() => {
               type="search"
               autofocus
               placeholder="搜尋景點、地點或城市"
-              class="w-full rounded-lg border border-neutral-40 py-2 pr-3 pl-10 placeholder:text-body placeholder:text-neutral-60 focus:outline-none"
-              @keydown.enter="search && $router.push('/search-result')"
+              aria-label="搜尋景點、地點或城市"
+              class="w-full rounded-lg border border-neutral-40 py-2 pr-3 pl-10 placeholder:text-body placeholder:text-neutral-60 focus:outline-hidden"
             />
-          </div>
+          </form>
           <!-- 關閉搜尋按鈕 -->
           <button
             type="button"

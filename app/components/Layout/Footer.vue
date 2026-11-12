@@ -8,7 +8,7 @@
         <NuxtLink to="/" class="block w-fit">
           <img
             src="/white-logo.svg"
-            alt="白色 logo"
+            alt="ZOBAA 首頁"
             class="w-[192px] lg:w-[270px]"
           />
         </NuxtLink>
@@ -42,7 +42,6 @@
             <a
               aria-label="LINE"
               href="#"
-              target="_blank"
               class="block rounded-full border border-white p-3 text-white transition hover:border-primary-40 hover:text-primary-40"
             >
               <svg
@@ -66,7 +65,6 @@
             <a
               aria-label="YouTube"
               href="#"
-              target="_blank"
               class="block rounded-full border border-white px-2.5 py-3 text-white transition hover:border-primary-40 hover:text-primary-40"
             >
               <svg
@@ -90,7 +88,6 @@
             <a
               aria-label="Facebook"
               href="#"
-              target="_blank"
               class="block rounded-full border border-white px-4 py-3 text-white transition hover:border-primary-40 hover:text-primary-40"
             >
               <svg
@@ -115,6 +112,7 @@
               aria-label="GitHub 專案原始碼"
               href="https://github.com/happyloa/Hex2025-f2e-live-week7and8"
               target="_blank"
+              rel="noopener noreferrer"
               class="block rounded-full border border-white p-3 text-white transition hover:border-primary-40 hover:text-primary-40"
             >
               <svg

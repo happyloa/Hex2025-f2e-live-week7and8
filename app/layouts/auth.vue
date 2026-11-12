@@ -13,13 +13,13 @@
           :loop="true"
         >
           <swiper-slide>
-            <img src="/images/auth/cover-1.webp" alt="裝飾圖片1" />
+            <img src="/images/auth/cover-1.webp" alt="" />
           </swiper-slide>
           <swiper-slide>
-            <img src="/images/auth/cover-2.webp" alt="裝飾圖片2" />
+            <img src="/images/auth/cover-2.webp" alt="" />
           </swiper-slide>
           <swiper-slide>
-            <img src="/images/auth/cover-3.webp" alt="裝飾圖片3" />
+            <img src="/images/auth/cover-3.webp" alt="" />
           </swiper-slide>
         </swiper-container>
       </ClientOnly>
@@ -39,27 +39,44 @@
         </h1>
         <!-- 第三方登入 -->
         <ul class="space-y-2 md:space-y-4">
-          <li
-            class="relative cursor-pointer rounded-xl border border-neutral-40 bg-white p-4 text-center text-body text-neutral transition hover:bg-neutral-40"
-          >
-            <img src="/icons/google.svg" alt="Google 登入" class="absolute" />
-            使用 Google 帳號登入
+          <li>
+            <button
+              type="button"
+              class="relative block w-full cursor-pointer rounded-xl border border-neutral-40 bg-white p-4 text-center text-body text-neutral transition hover:bg-neutral-40"
+            >
+              <img
+                src="/icons/google.svg"
+                alt=""
+                class="absolute top-4 left-4"
+              />
+              使用 Google 帳號登入
+            </button>
           </li>
-          <li
-            class="relative cursor-pointer rounded-xl border border-neutral-40 bg-white p-4 text-center text-body text-neutral transition hover:bg-neutral-40"
-          >
-            <img
-              src="/icons/facebook.svg"
-              alt="Facebook 登入"
-              class="absolute"
-            />
-            使用 Facebook 帳號登入
+          <li>
+            <button
+              type="button"
+              class="relative block w-full cursor-pointer rounded-xl border border-neutral-40 bg-white p-4 text-center text-body text-neutral transition hover:bg-neutral-40"
+            >
+              <img
+                src="/icons/facebook.svg"
+                alt=""
+                class="absolute top-4 left-4"
+              />
+              使用 Facebook 帳號登入
+            </button>
           </li>
-          <li
-            class="relative cursor-pointer rounded-xl border border-neutral-40 bg-white p-4 text-center text-body text-neutral transition hover:bg-neutral-40"
-          >
-            <img src="/icons/apple.svg" alt="Apple 登入" class="absolute" />
-            使用 Apple 帳號登入
+          <li>
+            <button
+              type="button"
+              class="relative block w-full cursor-pointer rounded-xl border border-neutral-40 bg-white p-4 text-center text-body text-neutral transition hover:bg-neutral-40"
+            >
+              <img
+                src="/icons/apple.svg"
+                alt=""
+                class="absolute top-4 left-4"
+              />
+              使用 Apple 帳號登入
+            </button>
           </li>
         </ul>
         <!-- 登入/註冊頁面內容插槽 -->

@@ -111,8 +111,10 @@ const marqueeItems = ["# ZOBAA", "# WHERETOGO", "# TODAY"];
         整合熱門景點推薦、即時優惠、獨家行程，從比價到訂購，一次完成你的完美出遊計畫。
       </p>
       <!-- 搜尋框 -->
-      <div
+      <form
+        role="search"
         class="flex max-w-[720px] items-center justify-between gap-3 rounded-2xl border border-neutral-40 bg-white p-2"
+        @submit.prevent="handleSearch"
       >
         <!-- 搜尋框與放大鏡 icon -->
         <div class="flex flex-1 items-center gap-2">
@@ -136,18 +138,16 @@ const marqueeItems = ["# ZOBAA", "# WHERETOGO", "# TODAY"];
             name="search"
             id="search"
             aria-label="搜尋景點、地點或城市"
-            @keydown.enter="handleSearch"
-            class="w-full text-h6 font-normal placeholder:text-h6 placeholder:font-normal placeholder:text-neutral-60 focus:outline-none"
+            class="w-full text-h6 font-normal placeholder:text-h6 placeholder:font-normal placeholder:text-neutral-60 focus:outline-hidden"
           />
         </div>
         <button
-          type="button"
+          type="submit"
           class="shrink-0 rounded-xl bg-primary px-4 py-3 text-center text-title text-white transition hover:bg-primary-120"
-          @click="handleSearch"
         >
           開始探索旅程
         </button>
-      </div>
+      </form>
     </div>
   </section>
   <!-- 你的專屬推薦 -->
@@ -179,12 +179,10 @@ const marqueeItems = ["# ZOBAA", "# WHERETOGO", "# TODAY"];
               xmlns="http://www.w3.org/2000/svg"
               class="size-4 md:size-6"
             >
-              <g clip-path="url(#a)">
-                <path
-                  d="m12 4-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"
-                  fill="currentColor"
-                />
-              </g>
+              <path
+                d="m12 4-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"
+                fill="currentColor"
+              />
             </svg>
           </NuxtLink>
         </div>
@@ -324,7 +322,7 @@ const marqueeItems = ["# ZOBAA", "# WHERETOGO", "# TODAY"];
         loading="lazy"
         decoding="async"
         src="/images/home/deco-text.svg"
-        alt="裝飾文字"
+        alt=""
         class="absolute bottom-60 -left-[232px] hidden xl:block"
       />
       <!-- 圖片容器 -->
@@ -445,7 +443,7 @@ const marqueeItems = ["# ZOBAA", "# WHERETOGO", "# TODAY"];
               loading="lazy"
               decoding="async"
               src="/images/home/deco-text-1.svg"
-              alt="裝飾圖片"
+              alt=""
               class="absolute -top-12 left-[133px] z-10 w-[130px] md:-right-8 md:left-auto md:w-[172px]"
             />
             <span class="mb-2 block">今年旅行的</span><span>靈感地圖</span>
@@ -530,12 +528,10 @@ const marqueeItems = ["# ZOBAA", "# WHERETOGO", "# TODAY"];
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
               >
-                <g clip-path="url(#a)">
-                  <path
-                    d="m12 4-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"
-                    fill="currentColor"
-                  />
-                </g>
+                <path
+                  d="m12 4-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"
+                  fill="currentColor"
+                />
               </svg>
             </button>
           </div>
@@ -652,7 +648,7 @@ const marqueeItems = ["# ZOBAA", "# WHERETOGO", "# TODAY"];
           loading="lazy"
           decoding="async"
           src="/images/home/bg-pound-sign.svg"
-          alt="裝飾井字號"
+          alt=""
           class="absolute -top-5 -left-2 z-0 size-[52px] md:-top-12 md:-left-12 md:size-[120px]"
         />
         <span class="relative z-10"> 搜尋墨爾本嗎？<br />來點行程參考！ </span>
@@ -693,12 +689,10 @@ const marqueeItems = ["# ZOBAA", "# WHERETOGO", "# TODAY"];
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
             >
-              <g clip-path="url(#a)">
-                <path
-                  d="m12 4-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"
-                  fill="currentColor"
-                />
-              </g>
+              <path
+                d="m12 4-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"
+                fill="currentColor"
+              />
             </svg>
           </button>
           <swiper-container
@@ -809,7 +803,7 @@ const marqueeItems = ["# ZOBAA", "# WHERETOGO", "# TODAY"];
       loading="lazy"
       decoding="async"
       src="/images/home/bg-circle.svg"
-      alt="裝飾圓圈1"
+      alt=""
       class="absolute -top-[360px] -left-[240px] z-20 hidden size-[800px] xl:block"
     />
     <!-- 裝飾圓圈2 -->
@@ -817,7 +811,7 @@ const marqueeItems = ["# ZOBAA", "# WHERETOGO", "# TODAY"];
       loading="lazy"
       decoding="async"
       src="/images/home/bg-circle.svg"
-      alt="裝飾圓圈2"
+      alt=""
       class="absolute right-10 -bottom-[480px] z-0 hidden xl:block"
     />
     <!-- 裝飾線條 -->
@@ -825,7 +819,7 @@ const marqueeItems = ["# ZOBAA", "# WHERETOGO", "# TODAY"];
       loading="lazy"
       decoding="async"
       src="/images/home/bg-line.svg"
-      alt="裝飾線條"
+      alt=""
       class="absolute bottom-[295px] left-1/2 z-0 hidden w-full -translate-x-1/2 xl:block"
     />
     <div class="relative z-10 mx-auto max-w-container">
@@ -874,12 +868,10 @@ const marqueeItems = ["# ZOBAA", "# WHERETOGO", "# TODAY"];
               class="transition group-hover:translate-x-2"
             >
               <rect width="32" height="32" rx="16" fill="#fff" />
-              <g clip-path="url(#a)">
-                <path
-                  d="m16 8-1.41 1.41L20.17 15H8v2h12.17l-5.58 5.59L16 24l8-8z"
-                  fill="#000"
-                />
-              </g>
+              <path
+                d="m16 8-1.41 1.41L20.17 15H8v2h12.17l-5.58 5.59L16 24l8-8z"
+                fill="#000"
+              />
             </svg>
           </NuxtLink>
         </div>
@@ -918,12 +910,10 @@ const marqueeItems = ["# ZOBAA", "# WHERETOGO", "# TODAY"];
             class="transition group-hover:translate-x-2"
           >
             <rect width="32" height="32" rx="16" fill="#fff" />
-            <g clip-path="url(#a)">
-              <path
-                d="m16 8-1.41 1.41L20.17 15H8v2h12.17l-5.58 5.59L16 24l8-8z"
-                fill="#000"
-              />
-            </g>
+            <path
+              d="m16 8-1.41 1.41L20.17 15H8v2h12.17l-5.58 5.59L16 24l8-8z"
+              fill="#000"
+            />
           </svg>
         </NuxtLink>
       </div>

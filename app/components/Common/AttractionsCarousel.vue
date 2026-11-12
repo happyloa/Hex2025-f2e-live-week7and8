@@ -12,6 +12,7 @@ const swiper = useSwiper(attractionSwiper);
       <button
         type="button"
         class="absolute top-1/2 -left-20 hidden -translate-y-1/2 rounded-xl p-4 shadow-button 2xl:block"
+        aria-label="上一張"
         @click="swiper.prev()"
       >
         <svg
@@ -31,6 +32,7 @@ const swiper = useSwiper(attractionSwiper);
       <button
         type="button"
         class="absolute top-1/2 -right-20 hidden -translate-y-1/2 rounded-xl p-4 shadow-button 2xl:block"
+        aria-label="下一張"
         @click="swiper.next()"
       >
         <svg
@@ -40,12 +42,10 @@ const swiper = useSwiper(attractionSwiper);
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
         >
-          <g clip-path="url(#a)">
-            <path
-              d="m12 4-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"
-              fill="currentColor"
-            />
-          </g>
+          <path
+            d="m12 4-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"
+            fill="currentColor"
+          />
         </svg>
       </button>
       <swiper-container

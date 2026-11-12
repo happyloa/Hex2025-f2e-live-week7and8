@@ -11,7 +11,7 @@ onMounted(() => {
     <!-- 裝飾線條 -->
     <img
       src="/images/my-account/bg-line.svg"
-      alt="裝飾線條"
+      alt=""
       class="absolute top-[324px] left-1/2 z-0 hidden -translate-x-1/2 md:block"
     />
     <div class="relative z-10 mx-auto max-w-container py-10 md:py-[120px]">
@@ -30,12 +30,10 @@ onMounted(() => {
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
           >
-            <g clip-path="url(#a)">
-              <path
-                d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75zM20.71 7.04a.996.996 0 0 0 0-1.41l-2.34-2.34a.996.996 0 0 0-1.41 0l-1.83 1.83 3.75 3.75z"
-                fill="currentColor"
-              />
-            </g>
+            <path
+              d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75zM20.71 7.04a.996.996 0 0 0 0-1.41l-2.34-2.34a.996.996 0 0 0-1.41 0l-1.83 1.83 3.75 3.75z"
+              fill="currentColor"
+            />
           </svg>
           更換封面
         </span>
@@ -60,16 +58,14 @@ onMounted(() => {
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
             >
-              <g clip-path="url(#a)">
-                <path
-                  d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75zM20.71 7.04a.996.996 0 0 0 0-1.41l-2.34-2.34a.996.996 0 0 0-1.41 0l-1.83 1.83 3.75 3.75z"
-                  fill="currentColor"
-                />
-              </g>
+              <path
+                d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75zM20.71 7.04a.996.996 0 0 0 0-1.41l-2.34-2.34a.996.996 0 0 0-1.41 0l-1.83 1.83 3.75 3.75z"
+                fill="currentColor"
+              />
             </svg>
           </button>
         </div>
-        <h3 class="text-h6 md:text-h5">Jessica Yen</h3>
+        <p class="text-h6 md:text-h5">Jessica Yen</p>
         <p>jessica.yen@gmail.com</p>
       </div>
       <!-- 會員頁面選單 -->

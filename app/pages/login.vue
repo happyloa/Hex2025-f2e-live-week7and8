@@ -13,75 +13,96 @@ const password = ref("");
 const rememberMe = ref(false);
 
 const showPassword = ref(false);
+
+// 展示用：欄位填寫完成後直接進入會員頁面
+function login() {
+  navigateTo("/my-account");
+}
 </script>
 
 <template>
-  <!-- 欄位 -->
-  <div class="space-y-4 text-body text-neutral">
-    <h2 class="text-title text-black">或使用 ZOBAA 帳號登入</h2>
-    <!-- 電子信箱 -->
-    <div>
-      <label for="email" class="mb-2 flex gap-1"
-        >電子信箱<span class="text-danger">*</span>
-      </label>
-      <input
-        v-model="email"
-        type="email"
-        name="email"
-        id="email"
-        placeholder="請輸入電子信箱"
-        class="w-full rounded-xl border border-neutral-40 p-4 placeholder:text-neutral-60 focus:outline-none"
-      />
-    </div>
-    <!-- 密碼、記住帳號、忘記密碼 -->
-    <div>
-      <label for="password" class="mb-2 flex gap-1"
-        >密碼<span class="text-danger">*</span>
-      </label>
-      <div class="relative">
+  <form class="space-y-6 md:space-y-10" @submit.prevent="login">
+    <!-- 欄位 -->
+    <div class="space-y-4 text-body text-neutral">
+      <h2 class="text-title text-black">或使用 ZOBAA 帳號登入</h2>
+      <!-- 電子信箱 -->
+      <div>
+        <label for="email" class="mb-2 flex gap-1"
+          >電子信箱<span class="text-danger">*</span>
+        </label>
         <input
-          v-model="password"
-          :type="showPassword ? 'text' : 'password'"
-          name="password"
-          id="password"
-          placeholder="請輸入密碼"
-          class="mb-2 w-full rounded-xl border border-neutral-40 p-4 pr-12 placeholder:text-neutral-60 focus:outline-none"
-        />
-        <img
-          v-if="password"
-          :src="showPassword ? '/icons/eye-open.svg' : '/icons/eye-close.svg'"
-          :alt="showPassword ? '顯示密碼' : '隱藏密碼'"
-          class="absolute top-1/2 right-4 size-5 -translate-y-1/2 cursor-pointer"
-          @click="showPassword = !showPassword"
+          v-model="email"
+          type="email"
+          name="email"
+          id="email"
+          autocomplete="email"
+          required
+          placeholder="請輸入電子信箱"
+          class="w-full rounded-xl border border-neutral-40 p-4 placeholder:text-neutral-60 focus:outline-hidden"
         />
       </div>
-      <div class="flex items-center justify-between">
-        <div class="flex gap-2">
+      <!-- 密碼、記住帳號、忘記密碼 -->
+      <div>
+        <label for="password" class="mb-2 flex gap-1"
+          >密碼<span class="text-danger">*</span>
+        </label>
+        <div class="relative">
           <input
-            v-model="rememberMe"
-            type="checkbox"
-            name="rememberMe"
-            id="rememberMe"
-            class="custom-checkbox"
+            v-model="password"
+            :type="showPassword ? 'text' : 'password'"
+            name="password"
+            id="password"
+            autocomplete="current-password"
+            required
+            placeholder="請輸入密碼"
+            class="mb-2 w-full rounded-xl border border-neutral-40 p-4 pr-12 placeholder:text-neutral-60 focus:outline-hidden"
           />
-          <label for="rememberMe">記住帳號</label>
+          <button
+            v-if="password"
+            type="button"
+            class="absolute top-1/2 right-4 -translate-y-1/2 cursor-pointer"
+            :aria-label="showPassword ? '隱藏密碼' : '顯示密碼'"
+            :aria-pressed="showPassword"
+            @click="showPassword = !showPassword"
+          >
+            <img
+              :src="
+                showPassword ? '/icons/eye-open.svg' : '/icons/eye-close.svg'
+              "
+              alt=""
+              class="size-5"
+            />
+          </button>
         </div>
-        <button type="button" class="hover:underline">忘記密碼？</button>
+        <div class="flex items-center justify-between">
+          <div class="flex gap-2">
+            <input
+              v-model="rememberMe"
+              type="checkbox"
+              name="rememberMe"
+              id="rememberMe"
+              class="custom-checkbox"
+            />
+            <label for="rememberMe">記住帳號</label>
+          </div>
+          <button type="button" class="hover:underline">忘記密碼？</button>
+        </div>
       </div>
     </div>
-  </div>
-  <!-- 登入按鈕 -->
-  <NuxtLink
-    to="/my-account"
-    class="block w-full rounded-xl p-4 text-center text-title transition"
-    :class="
-      !email || !password
-        ? 'pointer-events-none bg-neutral-40 text-neutral-60'
-        : 'bg-primary text-white hover:bg-primary-120'
-    "
-  >
-    立即登入
-  </NuxtLink>
+    <!-- 登入按鈕 -->
+    <button
+      type="submit"
+      class="block w-full rounded-xl p-4 text-center text-title transition"
+      :class="
+        !email || !password
+          ? 'pointer-events-none bg-neutral-40 text-neutral-60'
+          : 'bg-primary text-white hover:bg-primary-120'
+      "
+      :disabled="!email || !password"
+    >
+      立即登入
+    </button>
+  </form>
   <p class="space-x-2 text-neutral">
     沒有 ZOBAA 帳號嗎？
     <NuxtLink to="/register" class="font-semibold text-primary underline">

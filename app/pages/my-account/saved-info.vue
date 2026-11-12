@@ -35,7 +35,7 @@ definePageMeta({
             <div class="flex items-center gap-2 whitespace-nowrap">
               <button
                 type="button"
-                class="flex items-center justify-center gap-1 rounded-xl border border-primary bg-white px-8 py-4 text-title text-primary transition group-hover:opacity-100 hover:bg-primary hover:text-white md:opacity-0"
+                class="flex items-center justify-center gap-1 rounded-xl border border-primary bg-white px-8 py-4 text-title text-primary transition group-focus-within:opacity-100 group-hover:opacity-100 hover:bg-primary hover:text-white md:opacity-0"
               >
                 <svg
                   width="24"
@@ -44,18 +44,16 @@ definePageMeta({
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
                 >
-                  <g clip-path="url(#a)">
-                    <path
-                      d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75zM20.71 7.04a.996.996 0 0 0 0-1.41l-2.34-2.34a.996.996 0 0 0-1.41 0l-1.83 1.83 3.75 3.75z"
-                      fill="currentColor"
-                    />
-                  </g>
+                  <path
+                    d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75zM20.71 7.04a.996.996 0 0 0 0-1.41l-2.34-2.34a.996.996 0 0 0-1.41 0l-1.83 1.83 3.75 3.75z"
+                    fill="currentColor"
+                  />
                 </svg>
                 編輯資訊
               </button>
               <button
                 type="button"
-                class="flex items-center justify-center gap-1 rounded-xl border border-primary bg-white px-8 py-4 text-title text-primary transition group-hover:opacity-100 hover:bg-primary hover:text-white md:opacity-0"
+                class="flex items-center justify-center gap-1 rounded-xl border border-primary bg-white px-8 py-4 text-title text-primary transition group-focus-within:opacity-100 group-hover:opacity-100 hover:bg-primary hover:text-white md:opacity-0"
               >
                 <svg
                   width="24"
@@ -64,12 +62,10 @@ definePageMeta({
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
                 >
-                  <g clip-path="url(#a)">
-                    <path
-                      d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
-                      fill="currentColor"
-                    />
-                  </g>
+                  <path
+                    d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
+                    fill="currentColor"
+                  />
                 </svg>
                 刪除
               </button>
@@ -145,7 +141,7 @@ definePageMeta({
                       stroke-linejoin="round"
                     />
                   </svg>
-                  2001.01.30
+                  <time datetime="2001-01-30">2001.01.30</time>
                 </p>
               </div>
             </div>
@@ -153,7 +149,7 @@ definePageMeta({
             <div class="flex items-center gap-2 whitespace-nowrap">
               <button
                 type="button"
-                class="flex items-center justify-center gap-1 rounded-xl border border-primary bg-white px-8 py-4 text-title text-primary transition group-hover:opacity-100 hover:bg-primary hover:text-white md:opacity-0"
+                class="flex items-center justify-center gap-1 rounded-xl border border-primary bg-white px-8 py-4 text-title text-primary transition group-focus-within:opacity-100 group-hover:opacity-100 hover:bg-primary hover:text-white md:opacity-0"
               >
                 <svg
                   width="24"
@@ -162,18 +158,16 @@ definePageMeta({
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
                 >
-                  <g clip-path="url(#a)">
-                    <path
-                      d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75zM20.71 7.04a.996.996 0 0 0 0-1.41l-2.34-2.34a.996.996 0 0 0-1.41 0l-1.83 1.83 3.75 3.75z"
-                      fill="currentColor"
-                    />
-                  </g>
+                  <path
+                    d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75zM20.71 7.04a.996.996 0 0 0 0-1.41l-2.34-2.34a.996.996 0 0 0-1.41 0l-1.83 1.83 3.75 3.75z"
+                    fill="currentColor"
+                  />
                 </svg>
                 編輯資訊
               </button>
               <button
                 type="button"
-                class="flex items-center justify-center gap-1 rounded-xl border border-primary bg-white px-8 py-4 text-title text-primary transition group-hover:opacity-100 hover:bg-primary hover:text-white md:opacity-0"
+                class="flex items-center justify-center gap-1 rounded-xl border border-primary bg-white px-8 py-4 text-title text-primary transition group-focus-within:opacity-100 group-hover:opacity-100 hover:bg-primary hover:text-white md:opacity-0"
               >
                 <svg
                   width="24"
@@ -182,12 +176,10 @@ definePageMeta({
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
                 >
-                  <g clip-path="url(#a)">
-                    <path
-                      d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
-                      fill="currentColor"
-                    />
-                  </g>
+                  <path
+                    d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
+                    fill="currentColor"
+                  />
                 </svg>
                 刪除
               </button>

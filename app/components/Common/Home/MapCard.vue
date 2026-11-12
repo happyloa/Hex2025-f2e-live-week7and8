@@ -132,12 +132,10 @@ const { number, img, name, tags, desc, suggestion, cta } = toRefs(props);
           xmlns="http://www.w3.org/2000/svg"
         >
           <rect width="32" height="32" rx="16" fill="#fff" />
-          <g clip-path="url(#a)">
-            <path
-              d="m16 8-1.41 1.41L20.17 15H8v2h12.17l-5.58 5.59L16 24l8-8z"
-              fill="#000"
-            />
-          </g>
+          <path
+            d="m16 8-1.41 1.41L20.17 15H8v2h12.17l-5.58 5.59L16 24l8-8z"
+            fill="#000"
+          />
         </svg>
       </NuxtLink>
     </div>
