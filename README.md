@@ -11,8 +11,8 @@
 
 - Nuxt 4、Vue 3
 - Tailwind CSS 4（`@tailwindcss/vite`），設計色票與字級定義於 `tailwind.config.ts`
-- Nuxt Swiper
-- Fontsource 提供 Noto Sans TC 與 Poppins；建置時依頁面文字產生 Noto Sans TC 子集
+- Nuxt Swiper（只載入核心與 Autoplay 模組）
+- Fontsource 提供 Noto Sans TC 與 Poppins；建置時依頁面文字產生 Noto Sans TC 子集，完整字型在頁面載入後才引入，只供使用者輸入的字使用
 - Prettier + `prettier-plugin-tailwindcss` 統一格式與 class 排序
 
 實際版本以 `package.json` 與 `package-lock.json` 為準。
@@ -53,10 +53,11 @@ npm run format     # 以 Prettier 格式化（format:check 只檢查）
 - `app/pages`：頁面，依檔案路徑產生路由
 - `app/components`：共用卡片、輪播、頁首頁尾與方案詳情元件
 - `app/layouts`：登入／註冊與會員版面
-- `app/composables/useAuth.ts`：展示用的登入狀態
+- `app/composables/useAuth.ts`、`app/middleware`：展示用的登入狀態，進入會員頁面時設為已登入
+- `app/plugins`、`app/lib`：延後載入完整字型、安裝用到的 Swiper 模組
 - `app/utils/number.ts`：千分位格式化 `toThousand`
 - `app/assets/css`：Tailwind 進入點與自訂樣式
-- `build/font-subsets.ts`：建置時產生字型子集的 Nuxt 模組
+- `build/font-subsets.ts`：建置時產生字型子集的 Nuxt 模組（需要 `fontkit` 判斷字型涵蓋的字元）
 - `public`：圖片、圖示與社群分享圖
 
 ## 展示行為
