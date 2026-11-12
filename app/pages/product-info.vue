@@ -482,6 +482,8 @@ onBeforeUnmount(() => {
                 <!-- 圖片、名稱、標籤、簡介 -->
                 <div class="flex flex-col items-start gap-4 lg:flex-row">
                   <img
+                    loading="lazy"
+                    decoding="async"
                     src="/images/site/harukas-2.webp"
                     alt="海闊天空展望台門票"
                     class="max-w-[200px] rounded-2xl"
@@ -579,6 +581,8 @@ onBeforeUnmount(() => {
               <div class="flex flex-col justify-between gap-6 md:flex-row">
                 <!-- 圖片、名稱、標籤、簡介 -->
                 <div class="flex flex-col items-start gap-4 lg:flex-row">
+                    loading="lazy"
+                    decoding="async"
                   <img
                     src="/images/site/site-1.webp"
                     alt="【超值優惠】阿倍野展望台門票 HARUKAS 300 + HARUKA 關西機場→天王寺（單程票）"
@@ -660,6 +664,8 @@ onBeforeUnmount(() => {
               <div class="flex flex-col justify-between gap-6 md:flex-row">
                 <!-- 圖片、名稱、標籤、簡介 -->
                 <div class="flex flex-col items-start gap-4 lg:flex-row">
+                    loading="lazy"
+                    decoding="async"
                   <img
                     src="/images/site/site-2.webp"
                     alt="阿倍野展望台門票 HARUKAS 300｜附章魚燒兌換劵"
@@ -785,6 +791,8 @@ onBeforeUnmount(() => {
           <img
             src="/images/site/product-info.webp"
             alt="從 60 樓的觀景樓層，俯瞰 360 度充滿活力的大阪"
+            loading="lazy"
+            decoding="async"
             class="rounded-2xl"
           />
           <!-- 展開更多漸層 -->
@@ -825,6 +833,8 @@ onBeforeUnmount(() => {
                 <img
                   src="/images/site/avatar-1.webp"
                   alt="無聊工程師 Brian"
+                  loading="lazy"
+                  decoding="async"
                   class="size-[60px] rounded-full"
                 />
                 <!-- 稱呼、評價、日期、評論內容 -->
@@ -860,6 +870,8 @@ onBeforeUnmount(() => {
                 <img
                   src="/images/site/avatar-2.webp"
                   alt="愛旅遊的林阿姨"
+                  loading="lazy"
+                  decoding="async"
                   class="size-[60px] rounded-full"
                 />
                 <!-- 稱呼、評價、日期、評論內容 -->
@@ -897,6 +909,8 @@ onBeforeUnmount(() => {
                 <img
                   src="/images/site/avatar-3.webp"
                   alt="財富對折師阿哲"
+                  loading="lazy"
+                  decoding="async"
                   class="size-[60px] rounded-full"
                 />
                 <!-- 稱呼、評價、日期、評論內容 -->
@@ -934,6 +948,8 @@ onBeforeUnmount(() => {
                 <img
                   src="/images/site/avatar-4.webp"
                   alt="麗莎｜帶你玩遍全世界"
+                  loading="lazy"
+                  decoding="async"
                   class="size-[60px] rounded-full"
                 />
                 <!-- 稱呼、評價、日期、評論內容 -->

@@ -148,7 +148,7 @@ const goTo = (idx) => {
               class="justify-items-center rounded-t-2xl bg-primary-10 py-5 md:rounded-t-3xl"
             >
               <img
-                src="/images/search-result/category-1.svg"
+                src="/images/search-result/category-1.webp"
                 alt="交通優惠"
                 class="w-16 md:w-[150px]"
               />
@@ -168,7 +168,7 @@ const goTo = (idx) => {
               class="justify-items-center rounded-t-2xl bg-primary-10 py-5 md:rounded-t-3xl"
             >
               <img
-                src="/images/search-result/category-2.svg"
+                src="/images/search-result/category-2.webp"
                 alt="一日遊"
                 class="w-16 md:w-[150px]"
               />
@@ -188,7 +188,7 @@ const goTo = (idx) => {
               class="justify-items-center rounded-t-2xl bg-primary-10 py-5 md:rounded-t-3xl"
             >
               <img
-                src="/images/search-result/category-3.svg"
+                src="/images/search-result/category-3.webp"
                 alt="景點門票"
                 class="w-16 md:w-[150px]"
               />
@@ -208,7 +208,7 @@ const goTo = (idx) => {
               class="justify-items-center rounded-t-2xl bg-primary-10 py-5 md:rounded-t-3xl"
             >
               <img
-                src="/images/search-result/category-4.svg"
+                src="/images/search-result/category-4.webp"
                 alt="美食餐廳"
                 class="w-16 md:w-[150px]"
               />
@@ -315,6 +315,8 @@ const goTo = (idx) => {
           >
             <img
               src="/images/search-result/guide-1.webp"
+              loading="lazy"
+              decoding="async"
               alt="旅人攻略1"
               class="h-[232px] rounded-2xl object-cover md:h-auto md:max-w-[480px]"
             />
@@ -373,6 +375,8 @@ const goTo = (idx) => {
           <article
             class="group flex flex-col gap-4 rounded-[32px] bg-white p-4 md:flex-row md:gap-8 md:p-8"
           >
+              loading="lazy"
+              decoding="async"
             <img
               src="/images/search-result/guide-2.webp"
               alt="旅人攻略2"
@@ -431,6 +435,8 @@ const goTo = (idx) => {
         <!-- 攻略卡片3 -->
         <li>
           <article
+              loading="lazy"
+              decoding="async"
             class="group flex flex-col gap-4 rounded-[32px] bg-white p-4 md:flex-row md:gap-8 md:p-8"
           >
             <img
@@ -489,6 +495,8 @@ const goTo = (idx) => {
           </article>
         </li>
         <!-- 攻略卡片4 -->
+              loading="lazy"
+              decoding="async"
         <li>
           <article
             class="group flex flex-col gap-4 rounded-[32px] bg-white p-4 md:flex-row md:gap-8 md:p-8"
