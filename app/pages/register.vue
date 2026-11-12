@@ -124,11 +124,11 @@ function register() {
       >
         立即註冊
       </button>
-      <p class="space-x-1 text-body2 text-neutral">
+      <p class="text-body2 text-neutral">
         建立帳號即表示您同意我們的
         <NuxtLink to="#" class="underline">服務條款</NuxtLink>
         及
-        <NuxtLink to="#" class="underline">隱私權政策</NuxtLink>
+        <NuxtLink to="#" class="ml-1 underline">隱私權政策</NuxtLink>
       </p>
     </div>
   </form>
