@@ -171,7 +171,7 @@ onBeforeUnmount(() => {
           <NuxtLink
             :to="isLoggedIn ? '/cart?hasItems' : '/cart'"
             class="relative block px-3 py-2 text-neutral transition hover:text-black"
-            aria-label="購物車"
+            :aria-label="isLoggedIn ? '購物車，2 件商品' : '購物車'"
           >
             <!-- 有商品時的紅點裝飾 -->
             <div
@@ -196,7 +196,9 @@ onBeforeUnmount(() => {
           >
             <img
               src="/images/my-account/avatar-1.webp"
-              alt="Jessica"
+              width="320"
+              height="320"
+              alt=""
               class="size-8 rounded-full"
             />
             <p class="text-title">Jessica</p>
@@ -311,7 +313,9 @@ onBeforeUnmount(() => {
         <NuxtLink to="/my-account" class="flex items-center gap-2">
           <img
             src="/images/my-account/avatar-1.webp"
-            alt="Jessica"
+            width="320"
+            height="320"
+            alt=""
             class="size-8 rounded-full"
           />
           <div>

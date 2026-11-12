@@ -210,10 +210,10 @@ function onAfterLeave(el: Element) {
               >
                 六
               </button>
-              <button type="button" class="size-11" disabled>&emsp;</button>
-              <button type="button" class="size-11" disabled>&emsp;</button>
-              <button type="button" class="size-11" disabled>&emsp;</button>
-              <button type="button" class="size-11" disabled>&emsp;</button>
+              <span class="size-11" aria-hidden="true"></span>
+              <span class="size-11" aria-hidden="true"></span>
+              <span class="size-11" aria-hidden="true"></span>
+              <span class="size-11" aria-hidden="true"></span>
               <button
                 type="button"
                 class="poppins | size-11 rounded-lg line-through"
