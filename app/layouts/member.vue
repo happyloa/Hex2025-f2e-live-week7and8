@@ -1,8 +1,16 @@
 <script setup>
-// 進入會員頁面時，僅更新目前頁面的展示用登入狀態。
-const { isLoggedIn } = useAuth();
-onMounted(() => {
-  isLoggedIn.value = true;
+// 展示用登入狀態由 middleware/member-login.global.ts 在進入本版面前設定
+
+// 封面是 CSS 背景圖，瀏覽器要等 CSS 解析後才會發現，先預載以加快顯示
+useHead({
+  link: [
+    {
+      rel: "preload",
+      as: "image",
+      href: "/images/my-account/hero.webp",
+      fetchpriority: "high",
+    },
+  ],
 });
 </script>
 
@@ -11,6 +19,8 @@ onMounted(() => {
     <!-- 裝飾線條 -->
     <img
       src="/images/my-account/bg-line.svg"
+      width="1920"
+      height="819"
       alt=""
       class="absolute top-[324px] left-1/2 z-0 hidden -translate-x-1/2 md:block"
     />
@@ -44,11 +54,14 @@ onMounted(() => {
         <div class="relative mb-2">
           <img
             src="/images/my-account/avatar-1.webp"
+            width="320"
+            height="320"
             alt="Jessica"
             class="max-w-[120px] rounded-full border-2 border-primary md:max-w-40 md:border-4"
           />
           <button
             type="button"
+            aria-label="更換頭像"
             class="absolute right-0 bottom-0 rounded-full bg-primary p-2 text-white transition hover:bg-primary-40 hover:text-primary md:right-1 md:bottom-1"
           >
             <svg
@@ -61,7 +74,6 @@ onMounted(() => {
               <path
                 d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75zM20.71 7.04a.996.996 0 0 0 0-1.41l-2.34-2.34a.996.996 0 0 0-1.41 0l-1.83 1.83 3.75 3.75z"
                 fill="currentColor"
-            aria-label="更換頭像"
               />
             </svg>
           </button>

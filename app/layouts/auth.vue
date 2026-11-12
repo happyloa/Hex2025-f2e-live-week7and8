@@ -13,13 +13,28 @@
           :loop="true"
         >
           <swiper-slide>
-            <img src="/images/auth/cover-1.webp" alt="" />
+            <img
+              src="/images/auth/cover-1.webp"
+              width="728"
+              height="1000"
+              alt=""
+            />
           </swiper-slide>
           <swiper-slide>
-            <img src="/images/auth/cover-2.webp" alt="" />
+            <img
+              src="/images/auth/cover-2.webp"
+              width="728"
+              height="1000"
+              alt=""
+            />
           </swiper-slide>
           <swiper-slide>
-            <img src="/images/auth/cover-3.webp" alt="" />
+            <img
+              src="/images/auth/cover-3.webp"
+              width="728"
+              height="1000"
+              alt=""
+            />
           </swiper-slide>
         </swiper-container>
       </ClientOnly>
@@ -46,6 +61,8 @@
             >
               <img
                 src="/icons/google.svg"
+                width="24"
+                height="24"
                 alt=""
                 class="absolute top-4 left-4"
               />
@@ -59,6 +76,8 @@
             >
               <img
                 src="/icons/facebook.svg"
+                width="24"
+                height="24"
                 alt=""
                 class="absolute top-4 left-4"
               />
@@ -72,6 +91,8 @@
             >
               <img
                 src="/icons/apple.svg"
+                width="24"
+                height="24"
                 alt=""
                 class="absolute top-4 left-4"
               />

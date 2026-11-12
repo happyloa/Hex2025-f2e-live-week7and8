@@ -26,6 +26,8 @@ definePageMeta({
             <div class="flex items-center gap-2">
               <img
                 src="/images/my-account/avatar-1.webp"
+                width="320"
+                height="320"
                 alt="Jessica Yen"
                 class="size-10 rounded-full border border-primary"
               />
@@ -80,6 +82,8 @@ definePageMeta({
             <div class="flex items-center gap-2">
               <img
                 src="/images/my-account/avatar-2.webp"
+                width="80"
+                height="120"
                 alt="Jenny Lin"
                 class="size-10 rounded-full border border-primary object-cover"
               />

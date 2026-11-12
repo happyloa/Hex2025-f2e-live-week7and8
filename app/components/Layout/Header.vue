@@ -121,7 +121,13 @@ onBeforeUnmount(() => {
         <nav class="flex flex-1 items-center gap-6">
           <!-- Logo（行動搜尋時隱藏）-->
           <NuxtLink to="/" class="shrink-0">
-            <img src="/primary-logo.svg" alt="ZOBAA 首頁" class="w-[180px]" />
+            <img
+              src="/primary-logo.svg"
+              width="144"
+              height="24"
+              alt="ZOBAA 首頁"
+              class="w-[180px]"
+            />
           </NuxtLink>
           <!-- 桌機搜尋框，sm以下隱藏 -->
           <form

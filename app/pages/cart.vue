@@ -294,7 +294,7 @@ watch(showDetail, (open) => {
   <!-- 還沒有商品 -->
   <section v-else class="bg-neutral-15 px-3 py-20">
     <div class="mx-auto justify-items-center space-y-6 text-center">
-      <img src="/images/cart/empty.svg" alt="" />
+      <img src="/images/cart/empty.svg" width="240" height="240" alt="" />
       <p class="text-title text-neutral">購物車還沒有商品，立即逛逛！</p>
       <NuxtLink
         to="/product-info"

@@ -4,12 +4,13 @@ useSeoMeta({
   ogTitle: "搜尋結果 - 大阪 | 2025 切版直播班 - 旅遊網站 W7&W8",
 });
 
+// 附上原始尺寸，圖片載入前就能預留正確高度，避免版面跳動
 const slides = [
-  "/images/search-result/osaka-1.webp",
-  "/images/search-result/osaka-2.webp",
-  "/images/search-result/osaka-3.webp",
-  "/images/search-result/osaka-4.webp",
-  "/images/search-result/osaka-5.webp",
+  { src: "/images/search-result/osaka-1.webp", width: 1440, height: 1040 },
+  { src: "/images/search-result/osaka-2.webp", width: 560, height: 512 },
+  { src: "/images/search-result/osaka-3.webp", width: 560, height: 512 },
+  { src: "/images/search-result/osaka-4.webp", width: 560, height: 512 },
+  { src: "/images/search-result/osaka-5.webp", width: 560, height: 512 },
 ];
 
 const osakaImgSwiper = ref(null);
@@ -60,27 +61,38 @@ const goTo = (idx) => {
         <div class="hidden gap-2 xl:flex">
           <img
             src="/images/search-result/osaka-1.webp"
+            width="1440"
+            height="1040"
+            fetchpriority="high"
             alt="大阪圖片1"
             class="max-w-[720px] rounded-l-3xl"
           />
           <div class="grid grid-cols-2 gap-2">
             <img
               src="/images/search-result/osaka-2.webp"
+              width="560"
+              height="512"
               alt="大阪圖片2"
               class="h-full object-cover"
             />
             <img
               src="/images/search-result/osaka-3.webp"
+              width="560"
+              height="512"
               alt="大阪圖片3"
               class="h-full rounded-tr-3xl object-cover"
             />
             <img
               src="/images/search-result/osaka-4.webp"
+              width="560"
+              height="512"
               alt="大阪圖片4"
               class="h-full object-cover"
             />
             <img
               src="/images/search-result/osaka-5.webp"
+              width="560"
+              height="512"
               alt="大阪圖片5"
               class="h-full rounded-br-3xl object-cover"
             />
@@ -108,7 +120,9 @@ const goTo = (idx) => {
             >
               <swiper-slide v-for="(img, idx) in slides" :key="idx">
                 <img
-                  :src="img"
+                  :src="img.src"
+                  :width="img.width"
+                  :height="img.height"
                   :alt="`大阪圖片${idx + 1}`"
                   class="aspect-[1.458/1] rounded-2xl object-cover"
                 />
@@ -118,7 +132,7 @@ const goTo = (idx) => {
             <div class="absolute bottom-3 left-3 z-10 flex gap-1">
               <button
                 v-for="(img, i) in slides"
-                :key="img"
+                :key="img.src"
                 type="button"
                 @click="goTo(i)"
                 class="h-2 rounded-full transition-all duration-300"
@@ -128,6 +142,27 @@ const goTo = (idx) => {
               ></button>
             </div>
           </div>
+          <!-- 輪播啟動前先輸出同尺寸的圖片列（寬度同 Swiper 的計算），避免版面跳動 -->
+          <template #fallback>
+            <div class="relative block xl:hidden">
+              <div class="flex gap-2 overflow-hidden">
+                <div
+                  v-for="(img, idx) in slides"
+                  :key="img.src"
+                  class="w-full shrink-0 min-[576px]:w-[calc((100%-9.6px)/2.2)]"
+                >
+                  <img
+                    :src="img.src"
+                    :width="img.width"
+                    :height="img.height"
+                    :alt="`大阪圖片${idx + 1}`"
+                    :fetchpriority="idx === 0 ? 'high' : undefined"
+                    class="aspect-[1.458/1] rounded-2xl object-cover"
+                  />
+                </div>
+              </div>
+            </div>
+          </template>
         </ClientOnly>
       </div>
     </div>
@@ -149,6 +184,8 @@ const goTo = (idx) => {
             >
               <img
                 src="/images/search-result/category-1.webp"
+                width="300"
+                height="300"
                 alt="交通優惠"
                 class="w-16 md:w-[150px]"
               />
@@ -169,6 +206,8 @@ const goTo = (idx) => {
             >
               <img
                 src="/images/search-result/category-2.webp"
+                width="300"
+                height="300"
                 alt="一日遊"
                 class="w-16 md:w-[150px]"
               />
@@ -189,6 +228,8 @@ const goTo = (idx) => {
             >
               <img
                 src="/images/search-result/category-3.webp"
+                width="300"
+                height="300"
                 alt="景點門票"
                 class="w-16 md:w-[150px]"
               />
@@ -209,6 +250,8 @@ const goTo = (idx) => {
             >
               <img
                 src="/images/search-result/category-4.webp"
+                width="300"
+                height="300"
                 alt="美食餐廳"
                 class="w-16 md:w-[150px]"
               />
@@ -315,6 +358,8 @@ const goTo = (idx) => {
           >
             <img
               src="/images/search-result/guide-1.webp"
+              width="960"
+              height="464"
               loading="lazy"
               decoding="async"
               alt="旅人攻略1"
@@ -375,6 +420,8 @@ const goTo = (idx) => {
           >
             <img
               src="/images/search-result/guide-2.webp"
+              width="960"
+              height="464"
               loading="lazy"
               decoding="async"
               alt="旅人攻略2"
@@ -435,6 +482,8 @@ const goTo = (idx) => {
           >
             <img
               src="/images/search-result/guide-3.webp"
+              width="960"
+              height="464"
               loading="lazy"
               decoding="async"
               alt="旅人攻略3"
@@ -495,6 +544,8 @@ const goTo = (idx) => {
           >
             <img
               src="/images/search-result/guide-4.webp"
+              width="960"
+              height="464"
               loading="lazy"
               decoding="async"
               alt="旅人攻略4"

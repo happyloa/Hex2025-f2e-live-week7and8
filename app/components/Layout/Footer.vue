@@ -8,6 +8,8 @@
         <NuxtLink to="/" class="block w-fit">
           <img
             src="/white-logo.svg"
+            width="144"
+            height="24"
             alt="ZOBAA 首頁"
             class="w-[192px] lg:w-[270px]"
           />

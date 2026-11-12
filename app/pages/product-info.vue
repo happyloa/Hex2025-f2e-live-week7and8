@@ -13,10 +13,11 @@ useSeoMeta({
  * - onSlideChange：同步 activeIndex
  * - goTo(idx)：點自製圓點 → 跳到指定張
  * ===================================================================== */
+// 附上原始尺寸，圖片載入前就能預留正確高度，避免版面跳動
 const slides = [
-  "/images/site/harukas-1.webp",
-  "/images/site/harukas-2.webp",
-  "/images/site/harukas-3.webp",
+  { src: "/images/site/harukas-1.webp", width: 1800, height: 1040 },
+  { src: "/images/site/harukas-2.webp", width: 776, height: 512 },
+  { src: "/images/site/harukas-3.webp", width: 776, height: 512 },
 ];
 
 const harukas300ImgSwiper = ref(null);
@@ -197,16 +198,23 @@ onBeforeUnmount(() => {
         </button>
         <img
           src="/images/site/harukas-1.webp"
+          width="1800"
+          height="1040"
+          fetchpriority="high"
           alt="阿倍野1"
           class="col-span-2 row-span-2 h-full rounded-l-3xl"
         />
         <img
           src="/images/site/harukas-2.webp"
+          width="776"
+          height="512"
           alt="阿倍野2"
           class="rounded-tr-3xl"
         />
         <img
           src="/images/site/harukas-3.webp"
+          width="776"
+          height="512"
           alt="阿倍野3"
           class="rounded-br-3xl"
         />
@@ -233,7 +241,9 @@ onBeforeUnmount(() => {
           >
             <swiper-slide v-for="(img, idx) in slides" :key="idx">
               <img
-                :src="img"
+                :src="img.src"
+                :width="img.width"
+                :height="img.height"
                 :alt="`harukas 圖片${idx + 1}`"
                 class="aspect-[375/240] object-cover"
               />
@@ -245,7 +255,7 @@ onBeforeUnmount(() => {
           >
             <button
               v-for="(img, i) in slides"
-              :key="img"
+              :key="img.src"
               type="button"
               @click="goTo(i)"
               class="h-2 rounded-full transition-all duration-300"
@@ -255,6 +265,27 @@ onBeforeUnmount(() => {
             ></button>
           </div>
         </div>
+        <!-- 輪播啟動前先輸出同尺寸的圖片列（寬度同 Swiper 的計算），避免版面跳動 -->
+        <template #fallback>
+          <div class="relative block md:hidden">
+            <div class="flex gap-2 overflow-hidden">
+              <div
+                v-for="(img, idx) in slides"
+                :key="img.src"
+                class="w-full shrink-0 sm:w-[calc((100%-3.2px)/1.4)]"
+              >
+                <img
+                  :src="img.src"
+                  :width="img.width"
+                  :height="img.height"
+                  :alt="`harukas 圖片${idx + 1}`"
+                  :fetchpriority="idx === 0 ? 'high' : undefined"
+                  class="aspect-[375/240] object-cover"
+                />
+              </div>
+            </div>
+          </div>
+        </template>
       </ClientOnly>
       <!-- 簡介 -->
       <div class="grid grid-cols-1 gap-6 lg:grid-cols-3">
@@ -289,7 +320,7 @@ onBeforeUnmount(() => {
             <div class="flex flex-wrap items-center gap-3 text-black">
               <!-- 評價與數量 -->
               <span class="flex items-center gap-1">
-                <img src="/icons/star.svg" alt="" />
+                <img src="/icons/star.svg" width="12" height="13" alt="" />
                 <span class="text-title">4.8</span>
                 <span class="self-end text-neutral-60">(1029)</span>
               </span>
@@ -447,7 +478,12 @@ onBeforeUnmount(() => {
   <section id="plans" class="bg-primary-10 px-3 py-10 md:py-[120px]">
     <div class="mx-auto max-w-container">
       <h2 class="mb-6 flex items-center gap-2 text-h3">
-        <img src="/icons/title-hash.svg" alt="" />選擇方案
+        <img
+          src="/icons/title-hash.svg"
+          width="24"
+          height="24"
+          alt=""
+        />選擇方案
       </h2>
       <ul class="space-y-4 md:space-y-6">
         <!-- 熱門選擇 -->
@@ -481,6 +517,8 @@ onBeforeUnmount(() => {
                 <div class="flex flex-col items-start gap-4 lg:flex-row">
                   <img
                     src="/images/site/harukas-2.webp"
+                    width="776"
+                    height="512"
                     alt="海闊天空展望台門票"
                     loading="lazy"
                     decoding="async"
@@ -581,6 +619,8 @@ onBeforeUnmount(() => {
                 <div class="flex flex-col items-start gap-4 lg:flex-row">
                   <img
                     src="/images/site/site-1.webp"
+                    width="396"
+                    height="264"
                     loading="lazy"
                     decoding="async"
                     alt="【超值優惠】阿倍野展望台門票 HARUKAS 300 + HARUKA 關西機場→天王寺（單程票）"
@@ -664,6 +704,8 @@ onBeforeUnmount(() => {
                 <div class="flex flex-col items-start gap-4 lg:flex-row">
                   <img
                     src="/images/site/site-2.webp"
+                    width="400"
+                    height="264"
                     loading="lazy"
                     decoding="async"
                     alt="阿倍野展望台門票 HARUKAS 300｜附章魚燒兌換劵"
@@ -756,7 +798,12 @@ onBeforeUnmount(() => {
             id="product-info"
             class="mb-6 flex items-center gap-2 text-h3 text-primary"
           >
-            <img src="/icons/title-hash.svg" alt="" />商品說明
+            <img
+              src="/icons/title-hash.svg"
+              width="24"
+              height="24"
+              alt=""
+            />商品說明
           </h2>
           <h3>－ 景點介紹 －</h3>
           <ul class="mb-6 list-inside list-disc pl-2">
@@ -791,6 +838,8 @@ onBeforeUnmount(() => {
           <p class="mb-6">從 60 樓的觀景樓層，俯瞰 360 度充滿活力的大阪</p>
           <img
             src="/images/site/product-info.webp"
+            width="2152"
+            height="1210"
             loading="lazy"
             decoding="async"
             alt="從 60 樓的觀景樓層，俯瞰 360 度充滿活力的大阪"
@@ -813,7 +862,12 @@ onBeforeUnmount(() => {
         <!-- 如何使用 -->
         <div class="border-y border-neutral-40 py-10">
           <h2 id="how-to-use" class="mb-6 flex items-center gap-2 text-h3">
-            <img src="/icons/title-hash.svg" alt="" />如何使用
+            <img
+              src="/icons/title-hash.svg"
+              width="24"
+              height="24"
+              alt=""
+            />如何使用
           </h2>
           <h3 class="mb-2 text-title text-black">憑證使用方式</h3>
           <p class="text-body text-neutral">
@@ -824,7 +878,12 @@ onBeforeUnmount(() => {
         <!-- 旅人評論 -->
         <div>
           <h2 id="reviews" class="mb-10 flex items-center gap-2 text-h3">
-            <img src="/icons/title-hash.svg" alt="" />旅人評論
+            <img
+              src="/icons/title-hash.svg"
+              width="24"
+              height="24"
+              alt=""
+            />旅人評論
           </h2>
           <ul class="space-y-4 lg:space-y-6">
             <li>
@@ -833,6 +892,8 @@ onBeforeUnmount(() => {
               >
                 <img
                   src="/images/site/avatar-1.webp"
+                  width="120"
+                  height="120"
                   loading="lazy"
                   decoding="async"
                   alt="無聊工程師 Brian"
@@ -846,11 +907,36 @@ onBeforeUnmount(() => {
                   >
                     <!-- 星星容器 -->
                     <div class="flex gap-1" role="img" aria-label="5 顆星">
-                      <img src="/icons/review-star.svg" alt="" />
-                      <img src="/icons/review-star.svg" alt="" />
-                      <img src="/icons/review-star.svg" alt="" />
-                      <img src="/icons/review-star.svg" alt="" />
-                      <img src="/icons/review-star.svg" alt="" />
+                      <img
+                        src="/icons/review-star.svg"
+                        width="16"
+                        height="17"
+                        alt=""
+                      />
+                      <img
+                        src="/icons/review-star.svg"
+                        width="16"
+                        height="17"
+                        alt=""
+                      />
+                      <img
+                        src="/icons/review-star.svg"
+                        width="16"
+                        height="17"
+                        alt=""
+                      />
+                      <img
+                        src="/icons/review-star.svg"
+                        width="16"
+                        height="17"
+                        alt=""
+                      />
+                      <img
+                        src="/icons/review-star.svg"
+                        width="16"
+                        height="17"
+                        alt=""
+                      />
                     </div>
                     <time datetime="2025-03-24">2025-03-24</time>
                   </div>
@@ -870,6 +956,8 @@ onBeforeUnmount(() => {
               >
                 <img
                   src="/images/site/avatar-2.webp"
+                  width="120"
+                  height="120"
                   loading="lazy"
                   decoding="async"
                   alt="愛旅遊的林阿姨"
@@ -883,11 +971,36 @@ onBeforeUnmount(() => {
                   >
                     <!-- 星星容器 -->
                     <div class="flex gap-1" role="img" aria-label="5 顆星">
-                      <img src="/icons/review-star.svg" alt="" />
-                      <img src="/icons/review-star.svg" alt="" />
-                      <img src="/icons/review-star.svg" alt="" />
-                      <img src="/icons/review-star.svg" alt="" />
-                      <img src="/icons/review-star.svg" alt="" />
+                      <img
+                        src="/icons/review-star.svg"
+                        width="16"
+                        height="17"
+                        alt=""
+                      />
+                      <img
+                        src="/icons/review-star.svg"
+                        width="16"
+                        height="17"
+                        alt=""
+                      />
+                      <img
+                        src="/icons/review-star.svg"
+                        width="16"
+                        height="17"
+                        alt=""
+                      />
+                      <img
+                        src="/icons/review-star.svg"
+                        width="16"
+                        height="17"
+                        alt=""
+                      />
+                      <img
+                        src="/icons/review-star.svg"
+                        width="16"
+                        height="17"
+                        alt=""
+                      />
                     </div>
                     <time datetime="2025-01-30">2025-01-30</time>
                   </div>
@@ -909,6 +1022,8 @@ onBeforeUnmount(() => {
               >
                 <img
                   src="/images/site/avatar-3.webp"
+                  width="120"
+                  height="120"
                   loading="lazy"
                   decoding="async"
                   alt="財富對折師阿哲"
@@ -922,11 +1037,36 @@ onBeforeUnmount(() => {
                   >
                     <!-- 星星容器 -->
                     <div class="flex gap-1" role="img" aria-label="5 顆星">
-                      <img src="/icons/review-star.svg" alt="" />
-                      <img src="/icons/review-star.svg" alt="" />
-                      <img src="/icons/review-star.svg" alt="" />
-                      <img src="/icons/review-star.svg" alt="" />
-                      <img src="/icons/review-star.svg" alt="" />
+                      <img
+                        src="/icons/review-star.svg"
+                        width="16"
+                        height="17"
+                        alt=""
+                      />
+                      <img
+                        src="/icons/review-star.svg"
+                        width="16"
+                        height="17"
+                        alt=""
+                      />
+                      <img
+                        src="/icons/review-star.svg"
+                        width="16"
+                        height="17"
+                        alt=""
+                      />
+                      <img
+                        src="/icons/review-star.svg"
+                        width="16"
+                        height="17"
+                        alt=""
+                      />
+                      <img
+                        src="/icons/review-star.svg"
+                        width="16"
+                        height="17"
+                        alt=""
+                      />
                     </div>
                     <time datetime="2024-05-29">2024-05-29</time>
                   </div>
@@ -948,6 +1088,8 @@ onBeforeUnmount(() => {
               >
                 <img
                   src="/images/site/avatar-4.webp"
+                  width="120"
+                  height="120"
                   loading="lazy"
                   decoding="async"
                   alt="麗莎｜帶你玩遍全世界"
@@ -961,11 +1103,36 @@ onBeforeUnmount(() => {
                   >
                     <!-- 星星容器 -->
                     <div class="flex gap-1" role="img" aria-label="5 顆星">
-                      <img src="/icons/review-star.svg" alt="" />
-                      <img src="/icons/review-star.svg" alt="" />
-                      <img src="/icons/review-star.svg" alt="" />
-                      <img src="/icons/review-star.svg" alt="" />
-                      <img src="/icons/review-star.svg" alt="" />
+                      <img
+                        src="/icons/review-star.svg"
+                        width="16"
+                        height="17"
+                        alt=""
+                      />
+                      <img
+                        src="/icons/review-star.svg"
+                        width="16"
+                        height="17"
+                        alt=""
+                      />
+                      <img
+                        src="/icons/review-star.svg"
+                        width="16"
+                        height="17"
+                        alt=""
+                      />
+                      <img
+                        src="/icons/review-star.svg"
+                        width="16"
+                        height="17"
+                        alt=""
+                      />
+                      <img
+                        src="/icons/review-star.svg"
+                        width="16"
+                        height="17"
+                        alt=""
+                      />
                     </div>
                     <time datetime="2024-04-23">2024-04-23</time>
                   </div>

@@ -95,7 +95,7 @@ const {
         type="button"
         class="absolute top-0 right-0 rounded-tr-[20px] rounded-bl-[20px] bg-[#00000066] p-4 backdrop-blur-md"
       >
-        <img src="/icons/favorite.svg" alt="收藏景點" />
+        <img src="/icons/favorite.svg" width="24" height="24" alt="收藏景點" />
       </button>
     </div>
     <!-- 景點名稱 -->
@@ -115,7 +115,7 @@ const {
     <!-- 景點評價、訂購數量 -->
     <div class="mb-4 flex items-center gap-3 border-b border-neutral-40 pb-4">
       <span class="flex items-center gap-1 border-r border-neutral-40 pr-3">
-        <img src="/icons/star.svg" alt="" />
+        <img src="/icons/star.svg" width="12" height="13" alt="" />
         <span class="text-neutral">{{ ratingScore }}</span>
         <span class="text-neutral-60">({{ ratingCount }})</span>
       </span>

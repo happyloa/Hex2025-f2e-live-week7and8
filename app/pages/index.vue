@@ -307,6 +307,11 @@ const marqueeItems = ["# ZOBAA", "# WHERETOGO", "# TODAY"];
             ></button>
           </div>
         </div>
+        <!-- 輪播啟動前先預留同樣的高度（輪播 400px + 點點 8px），避免版面跳動 -->
+        <template #fallback>
+          <div class="mb-10 h-[400px] xl:hidden"></div>
+          <div class="h-2 xl:hidden"></div>
+        </template>
       </ClientOnly>
     </div>
   </section>
@@ -443,6 +448,8 @@ const marqueeItems = ["# ZOBAA", "# WHERETOGO", "# TODAY"];
               loading="lazy"
               decoding="async"
               src="/images/home/deco-text-1.svg"
+              width="172"
+              height="102"
               alt=""
               class="absolute -top-12 left-[133px] z-10 w-[130px] md:-right-8 md:left-auto md:w-[172px]"
             />
@@ -648,6 +655,8 @@ const marqueeItems = ["# ZOBAA", "# WHERETOGO", "# TODAY"];
           loading="lazy"
           decoding="async"
           src="/images/home/bg-pound-sign.svg"
+          width="105"
+          height="120"
           alt=""
           class="absolute -top-5 -left-2 z-0 size-[52px] md:-top-12 md:-left-12 md:size-[120px]"
         />

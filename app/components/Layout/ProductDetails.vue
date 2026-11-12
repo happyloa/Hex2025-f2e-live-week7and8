@@ -90,7 +90,12 @@ function onAfterLeave(el: Element) {
         >
           <h5 class="w-[120px] shrink-0 text-title">關於此方案</h5>
           <span class="flex gap-2 text-body"
-            ><img src="/icons/circle-dollar.svg" alt="" />免費取消！</span
+            ><img
+              src="/icons/circle-dollar.svg"
+              width="24"
+              height="24"
+              alt=""
+            />免費取消！</span
           >
         </li>
         <li
@@ -98,8 +103,12 @@ function onAfterLeave(el: Element) {
         >
           <h5 class="w-[120px] shrink-0 text-title">費用包含</h5>
           <span class="flex gap-2 text-body"
-            ><img src="/icons/green-circle-check.svg" alt="" />阿倍野展望台門票
-            HARUKAS 300</span
+            ><img
+              src="/icons/green-circle-check.svg"
+              width="24"
+              height="24"
+              alt=""
+            />阿倍野展望台門票 HARUKAS 300</span
           >
         </li>
         <li
@@ -108,10 +117,20 @@ function onAfterLeave(el: Element) {
           <h5 class="w-[120px] shrink-0 text-title">費用不包含</h5>
           <div class="flex flex-wrap gap-x-8 gap-y-2 text-body">
             <span class="flex gap-2"
-              ><img src="/icons/circle-x.svg" alt="" />個人消費
+              ><img
+                src="/icons/circle-x.svg"
+                width="24"
+                height="24"
+                alt=""
+              />個人消費
             </span>
             <span class="flex gap-2"
-              ><img src="/icons/circle-x.svg" alt="" />以上未提及消費
+              ><img
+                src="/icons/circle-x.svg"
+                width="24"
+                height="24"
+                alt=""
+              />以上未提及消費
             </span>
           </div>
         </li>
@@ -150,10 +169,20 @@ function onAfterLeave(el: Element) {
               </h5>
               <div class="flex">
                 <button type="button" class="p-2 hover:bg-neutral-10">
-                  <img src="/icons/prev-arrow.svg" alt="往前一個月" />
+                  <img
+                    src="/icons/prev-arrow.svg"
+                    width="24"
+                    height="24"
+                    alt="往前一個月"
+                  />
                 </button>
                 <button type="button" class="p-2 hover:bg-neutral-10">
-                  <img src="/icons/next-arrow.svg" alt="往後一個月" />
+                  <img
+                    src="/icons/next-arrow.svg"
+                    width="24"
+                    height="24"
+                    alt="往後一個月"
+                  />
                 </button>
               </div>
             </header>
