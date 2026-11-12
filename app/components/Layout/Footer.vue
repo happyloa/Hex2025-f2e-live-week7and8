@@ -4,7 +4,8 @@
       class="mx-auto flex max-w-[1280px] flex-col justify-between gap-10 text-body text-white lg:flex-row lg:items-center"
     >
       <nav class="space-y-10 lg:space-y-8">
-        <NuxtLink to="/">
+        <!-- block：讓 space-y 的間距作用在連結上（Tailwind v4 改用 margin-bottom） -->
+        <NuxtLink to="/" class="block w-fit">
           <img
             src="/white-logo.svg"
             alt="白色 logo"

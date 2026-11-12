@@ -284,9 +284,7 @@ onBeforeUnmount(() => {
               </button>
             </div>
             <!-- 景點評價、訂購數量、地址 -->
-            <div
-              class="flex flex-wrap items-center gap-3 text-body2 text-black"
-            >
+            <div class="flex flex-wrap items-center gap-3 text-black">
               <!-- 評價與數量 -->
               <span class="flex items-center gap-1">
                 <img src="/icons/star.svg" alt="評論星星" />

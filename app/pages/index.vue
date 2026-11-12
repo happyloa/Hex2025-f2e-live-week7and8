@@ -851,8 +851,8 @@ const marqueeItems = ["# ZOBAA", "# WHERETOGO", "# TODAY"];
       <div
         class="grid grid-cols-1 gap-6 rounded-3xl bg-[#F3EEEC80] p-6 backdrop-blur lg:grid-cols-2 lg:rounded-[32px] lg:p-8"
       >
-        <!-- 標題、敘述 -->
-        <div class="space-y-4 lg:space-y-6">
+        <!-- 標題、敘述（用 gap：手機版隱藏的按鈕不會多佔間距） -->
+        <div class="flex flex-col gap-4 lg:gap-6">
           <h2 class="text-h5 lg:text-h1">為什麼選擇 ZOBAA ?</h2>
           <p class="text-neutral">
             不只是帶你抵達目的地，更在每一次出發前，替你預想所有細節。<br />
