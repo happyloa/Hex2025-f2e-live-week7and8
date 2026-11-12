@@ -37,13 +37,14 @@ const goTo = (idx) => {
 /* =========================================================================
  * 2) 方案卡片的選取狀態 & 數量（本頁僅管理 UI 狀態）
  * ========================================================================= */
-const isObservationDeckSelected = ref(true);
+// 一次只展開一個方案：展開新方案時，其他已展開的方案會自動收合
+const selectedPlan = ref("observationDeck"); // 'observationDeck' | 'trainTicket' | 'takoyaki' | null
+function togglePlan(plan) {
+  selectedPlan.value = selectedPlan.value === plan ? null : plan;
+}
+
 const observationDeckCount = ref(2);
-
-const isTrainTicketSelected = ref(false);
 const trainTicketCount = ref(2);
-
-const isTakoyakiSelected = ref(false);
 const takoyakiCount = ref(2);
 
 /* =====================================================================
@@ -284,7 +285,7 @@ onBeforeUnmount(() => {
             </div>
             <!-- 景點評價、訂購數量、地址 -->
             <div
-              class="text-body-2 flex flex-wrap items-center gap-3 text-black"
+              class="flex flex-wrap items-center gap-3 text-body2 text-black"
             >
               <!-- 評價與數量 -->
               <span class="flex items-center gap-1">
@@ -529,18 +530,22 @@ onBeforeUnmount(() => {
                   <button
                     type="button"
                     class="rounded-xl border border-primary bg-white px-8 py-4 text-title transition hover:bg-primary hover:text-white"
-                    @click="
-                      isObservationDeckSelected = !isObservationDeckSelected
-                    "
+                    :aria-expanded="selectedPlan === 'observationDeck'"
+                    @click="togglePlan('observationDeck')"
                   >
-                    {{ isObservationDeckSelected ? "取消選擇" : "選擇方案" }}
+                    {{
+                      selectedPlan === "observationDeck"
+                        ? "取消選擇"
+                        : "選擇方案"
+                    }}
                   </button>
                 </div>
               </div>
               <!-- 選取時出現的方案詳情、選擇日期及選項、選擇數量區塊 -->
               <ClientOnly>
                 <LayoutProductDetails
-                  :open="isObservationDeckSelected"
+                  :open="selectedPlan === 'observationDeck'"
+                  :price="415"
                   v-model:count="observationDeckCount"
                 />
               </ClientOnly>
@@ -628,16 +633,20 @@ onBeforeUnmount(() => {
                   <button
                     type="button"
                     class="rounded-xl border border-primary bg-white px-8 py-4 text-title transition hover:bg-primary hover:text-white"
-                    @click="isTrainTicketSelected = !isTrainTicketSelected"
+                    :aria-expanded="selectedPlan === 'trainTicket'"
+                    @click="togglePlan('trainTicket')"
                   >
-                    {{ isTrainTicketSelected ? "取消選擇" : "選擇方案" }}
+                    {{
+                      selectedPlan === "trainTicket" ? "取消選擇" : "選擇方案"
+                    }}
                   </button>
                 </div>
               </div>
               <!-- 選取時出現的方案詳情、選擇日期及選項、選擇數量區塊 -->
               <ClientOnly>
                 <LayoutProductDetails
-                  :open="isTrainTicketSelected"
+                  :open="selectedPlan === 'trainTicket'"
+                  :price="522"
                   v-model:count="trainTicketCount"
                 />
               </ClientOnly>
@@ -706,16 +715,18 @@ onBeforeUnmount(() => {
                   <button
                     type="button"
                     class="rounded-xl border border-primary bg-white px-8 py-4 text-title transition hover:bg-primary hover:text-white"
-                    @click="isTakoyakiSelected = !isTakoyakiSelected"
+                    :aria-expanded="selectedPlan === 'takoyaki'"
+                    @click="togglePlan('takoyaki')"
                   >
-                    {{ isTakoyakiSelected ? "取消選擇" : "選擇方案" }}
+                    {{ selectedPlan === "takoyaki" ? "取消選擇" : "選擇方案" }}
                   </button>
                 </div>
               </div>
               <!-- 選取時出現的方案詳情、選擇日期及選項、選擇數量區塊 -->
               <ClientOnly>
                 <LayoutProductDetails
-                  :open="isTakoyakiSelected"
+                  :open="selectedPlan === 'takoyaki'"
+                  :price="478"
                   v-model:count="takoyakiCount"
                 />
               </ClientOnly>

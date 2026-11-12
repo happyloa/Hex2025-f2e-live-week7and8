@@ -21,11 +21,11 @@ const headerClass = computed(() => {
   // 根據狀態動態設定 header 樣式
   if (isHome.value) {
     return scrolled.value
-      ? "bg-[#FFFFFFB8] backdrop-blur-sm border-b-[0.5px] border-neutral-40"
+      ? "bg-[#FFFFFFB8] backdrop-blur-xs border-b-[0.5px] border-neutral-40"
       : "bg-transparent";
   }
   // 其他頁面一律套用白底、blur、border
-  return "bg-[#FFFFFFB8] backdrop-blur-sm border-b-[0.5px] border-neutral-40";
+  return "bg-[#FFFFFFB8] backdrop-blur-xs border-b-[0.5px] border-neutral-40";
 });
 
 // 只要 Page Nav 開著且使用者正在往下捲，就把 Header 藏起來
@@ -115,7 +115,7 @@ onBeforeUnmount(() => {
         <!-- 左：logo + 搜尋欄 -->
         <nav class="flex flex-1 items-center gap-6">
           <!-- Logo（行動搜尋時隱藏）-->
-          <NuxtLink to="/" class="shrink-0" :class="'sm:block'">
+          <NuxtLink to="/" class="shrink-0">
             <img src="/primary-logo.svg" alt="Logo" class="w-[180px]" />
           </NuxtLink>
           <!-- 桌機搜尋框，sm以下隱藏 -->
@@ -143,7 +143,7 @@ onBeforeUnmount(() => {
           </div>
         </nav>
         <!-- 右：icon 區塊 -->
-        <div class="flex flex-shrink-0 items-center md:gap-4">
+        <div class="flex shrink-0 items-center md:gap-4">
           <!-- 行動版搜尋icon，只有sm以下出現 -->
           <button
             type="button"
@@ -161,7 +161,6 @@ onBeforeUnmount(() => {
           <!-- 購物車icon、md以上登入，sm以下漢堡 -->
           <NuxtLink
             :to="isLoggedIn ? '/cart?hasItems' : '/cart'"
-            type="button"
             class="relative block px-3 py-2 text-neutral transition hover:text-black"
             aria-label="購物車"
           >
@@ -237,7 +236,7 @@ onBeforeUnmount(() => {
             </svg>
             <input
               v-model="search"
-              type="text"
+              type="search"
               autofocus
               placeholder="搜尋景點、地點或城市"
               class="w-full rounded-lg border border-neutral-40 py-2 pr-3 pl-10 placeholder:text-body placeholder:text-neutral-60 focus:outline-none"
@@ -304,7 +303,7 @@ onBeforeUnmount(() => {
           />
           <div>
             <p class="text-title">Jessica</p>
-            <p class="text-body text-neutral">jessica.yen@gamil.com</p>
+            <p class="text-body text-neutral">jessica.yen@gmail.com</p>
           </div>
         </NuxtLink>
         <!-- 選單分隔線 -->

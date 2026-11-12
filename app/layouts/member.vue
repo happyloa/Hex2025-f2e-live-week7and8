@@ -76,7 +76,7 @@ onMounted(() => {
       <nav
         class="mb-4 rounded-2xl bg-white py-4 text-title whitespace-nowrap text-black shadow-section md:mb-6 md:rounded-3xl"
       >
-        <ul class="grid grid-cols-3 divide-x border-neutral-40">
+        <ul class="grid grid-cols-3 divide-x divide-neutral-40">
           <li class="px-6 py-3">
             <NuxtLink to="/my-account" class="border-b-4 border-primary-40 pb-2"
               >我的帳號

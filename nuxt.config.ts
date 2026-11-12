@@ -1,6 +1,9 @@
 import tailwindcss from "@tailwindcss/vite";
 import fontSubsets from "./build/font-subsets";
 
+// 社群分享圖需使用絕對網址，社群平台才能正確抓取
+const siteUrl = "https://zobaa.worksbyaaron.com";
+
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   compatibilityDate: "2025-07-15",
@@ -34,14 +37,14 @@ export default defineNuxtConfig({
         },
         {
           property: "og:image",
-          content: "/ogImage.webp",
+          content: `${siteUrl}/ogImage.webp`,
         },
         { property: "og:type", content: "website" },
         { property: "og:locale", content: "zh_TW" },
         { name: "twitter:card", content: "summary_large_image" },
         {
           name: "twitter:image",
-          content: "/ogImage.webp",
+          content: `${siteUrl}/ogImage.webp`,
         },
       ],
     },

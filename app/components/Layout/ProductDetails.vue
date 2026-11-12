@@ -3,6 +3,7 @@ const props = withDefaults(
   defineProps<{
     open: boolean;
     count: number;
+    price: number; // 方案單價
     min?: number;
     max?: number;
   }>(),
@@ -24,6 +25,9 @@ const qty = computed({
     emit("update:count", clamped);
   },
 });
+
+// 總金額隨數量變動
+const total = computed(() => props.price * qty.value);
 
 // ========== Transition hooks：auto height ==========
 const DURATION = 280;
@@ -77,8 +81,7 @@ function onAfterLeave(el: Element) {
   >
     <div
       v-if="props.open"
-      class="border-t border-neutral-40 pt-6 text-black md:pt-10"
-      :class="props.open ? 'mt-6 md:mt-10' : 'mt-0'"
+      class="mt-6 border-t border-neutral-40 pt-6 text-black md:mt-10 md:pt-10"
     >
       <h4 class="mb-6 text-h6">方案詳情</h4>
       <ul class="mb-6 rounded-2xl bg-neutral-10 md:mb-10">
@@ -118,7 +121,7 @@ function onAfterLeave(el: Element) {
           class="flex flex-col gap-4 rounded-b-2xl border-b border-neutral-40 p-4 md:flex-row md:gap-20"
         >
           <h5 class="w-[120px] shrink-0 text-title">取消政策</h5>
-          <p class="mdLtext-start text-justify text-body">
+          <p class="text-justify text-body">
             由於站內商品來自全球各地，訂單取消時間將依該供應商所在時區判定。供應商需
             2-5
             個工作天進行取消流程，依照您購買的商品取消政策收取手續費，並於取消流程完成後14
@@ -433,7 +436,9 @@ function onAfterLeave(el: Element) {
             class="flex flex-col justify-between gap-4 sm:flex-row sm:items-center"
           >
             <p class="flex gap-2 text-body text-neutral">
-              每張<span class="text-h6 text-black">NT$ 415</span>
+              每張<span class="text-h6 text-black"
+                >NT$ {{ toThousand(props.price) }}</span
+              >
             </p>
             <div class="flex items-center gap-4">
               <button
@@ -477,7 +482,7 @@ function onAfterLeave(el: Element) {
           class="flex flex-row items-center justify-end gap-1 sm:flex-col sm:items-end"
         >
           <h4 class="text-body text-neutral">總金額</h4>
-          <p class="text-h5">NT$ 830</p>
+          <p class="text-h5">NT$ {{ toThousand(total) }}</p>
         </div>
         <div class="flex gap-2 whitespace-nowrap">
           <NuxtLink

@@ -11,12 +11,37 @@ useHead({
   ],
 });
 
-// 建立 ref 綁定到 swiper-container
-const mapSwiper = ref(null);
-const journeySwiper = ref(null);
-// 用 useSwiper 取得 API
-const swiper2 = useSwiper(mapSwiper);
-const swiper = useSwiper(journeySwiper);
+// 你的專屬推薦卡片（電腦版懸停卡片與手機版輪播共用）
+const recommendations = [
+  {
+    title: "峇里島渡假漫遊",
+    desc: "精選五星級海灘度假村，專屬私人管家服務，讓您徹底放鬆身心。",
+    img: "/images/home/recommend-1.webp",
+  },
+  {
+    title: "日本深度賞櫻計畫",
+    desc: "春季限定，東京、京都、大阪賞櫻之旅，體驗日本文化的精髓。",
+    img: "/images/home/recommend-2.webp",
+  },
+  {
+    title: "紐西蘭雪山探險",
+    desc: "探索南島壯麗的自然風光，體驗各種極限運動和戶外活動。",
+    img: "/images/home/recommend-3.webp",
+  },
+  {
+    title: "摩洛哥迷幻之旅",
+    desc: "漫步沙漠與古城之間，探索千年文化與色彩繽紛的市集風情。",
+    img: "/images/home/recommend-4.webp",
+  },
+];
+
+// 每個 swiper-container 各自綁定一個 ref
+const recommendSwiper = ref(null); // 你的專屬推薦（手機版）
+const mapSwiper = ref(null); // 今年旅行的靈感地圖
+const journeySwiper = ref(null); // 搜尋墨爾本嗎？
+// 用 useSwiper 取得上一張／下一張 API
+const mapSwiperApi = useSwiper(mapSwiper);
+const journeySwiperApi = useSwiper(journeySwiper);
 
 const search = ref(""); // 搜尋欄內容
 function handleSearch() {
@@ -42,12 +67,12 @@ function handleMouseLeave() {
   }, 300);
 }
 
-const journeyActiveIndex = ref(0);
+const recommendActiveIndex = ref(0);
 
 // Swiper slide 變換時同步 index
-function onJourneySlideChange(e) {
+function onRecommendSlideChange(e) {
   const [inst] = e.detail;
-  journeyActiveIndex.value = inst.realIndex;
+  recommendActiveIndex.value = inst.realIndex;
 }
 function onMapSlideChange(e) {
   const [inst] = e.detail;
@@ -55,8 +80,8 @@ function onMapSlideChange(e) {
 }
 
 // 點點點擊 → 跳到指定張
-function goToJourney(idx) {
-  journeySwiper.value?.swiper?.slideToLoop(idx);
+function goToRecommend(idx) {
+  recommendSwiper.value?.swiper?.slideToLoop(idx);
 }
 function goToMap(idx) {
   mapSwiper.value?.swiper?.slideToLoop(idx);
@@ -167,8 +192,8 @@ const marqueeItems = ["# ZOBAA", "# WHERETOGO", "# TODAY"];
       <!-- 電腦版懸停卡片 -->
       <ul class="hidden h-[600px] justify-between px-3 xl:flex">
         <li
-          v-for="(item, i) in 4"
-          :key="i"
+          v-for="(item, i) in recommendations"
+          :key="item.title"
           @mouseenter="handleMouseEnter(i)"
           @mouseleave="handleMouseLeave"
         >
@@ -176,36 +201,19 @@ const marqueeItems = ["# ZOBAA", "# WHERETOGO", "# TODAY"];
             to="/product-info"
             class="group relative block h-full content-end overflow-y-hidden rounded-[32px] bg-cover bg-center p-8 text-white transition-all duration-500"
             :class="activeIndex === i ? 'w-[416px]' : 'w-[270px]'"
-            :style="`background-image: url(/images/home/recommend-${i + 1}.webp)`"
+            :style="`background-image: url(${item.img})`"
           >
             <!-- 遮罩 -->
             <div
               class="pointer-events-none absolute inset-0 z-0 rounded-[32px] bg-gradient-to-t from-[#221F1E99] to-transparent"
             ></div>
             <div class="relative z-10">
-              <h3 class="mb-2 text-h2">
-                {{
-                  [
-                    "峇里島渡假漫遊",
-                    "日本深度賞櫻計畫",
-                    "紐西蘭雪山探險",
-                    "摩洛哥迷幻之旅",
-                  ][i]
-                }}
-              </h3>
+              <h3 class="mb-2 text-h2">{{ item.title }}</h3>
               <p :class="activeIndex === i ? 'mb-6' : 'group-hover:mb-6'">
-                {{
-                  [
-                    "精選五星級海灘度假村，專屬私人管家服務，讓您徹底放鬆身心。",
-                    "春季限定，東京、京都、大阪賞櫻之旅，體驗日本文化的精髓。",
-                    "探索南島壯麗的自然風光，體驗各種極限運動和戶外活動。",
-                    "漫步沙漠與古城之間，探索千年文化與色彩繽紛的市集風情。",
-                  ][i]
-                }}
+                {{ item.desc }}
               </p>
-              <!-- 按鈕 -->
-              <button
-                type="button"
+              <!-- 按鈕外觀（整張卡片已是連結，不可再巢狀 button） -->
+              <span
                 class="bottom-0 flex w-full items-center justify-between gap-2 rounded-full bg-white px-5 py-4 text-title text-black transition-all"
                 :class="
                   activeIndex === i
@@ -217,14 +225,12 @@ const marqueeItems = ["# ZOBAA", "# WHERETOGO", "# TODAY"];
                 <!-- 裝飾 icon -->
                 <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
                   <rect width="32" height="32" rx="16" fill="#fff" />
-                  <g clip-path="url(#a)">
-                    <path
-                      d="m16 8-1.41 1.41L20.17 15H8v2h12.17l-5.58 5.59L16 24l8-8z"
-                      fill="#000"
-                    />
-                  </g>
+                  <path
+                    d="m16 8-1.41 1.41L20.17 15H8v2h12.17l-5.58 5.59L16 24l8-8z"
+                    fill="#000"
+                  />
                 </svg>
-              </button>
+              </span>
             </div>
           </NuxtLink>
         </li>
@@ -232,7 +238,7 @@ const marqueeItems = ["# ZOBAA", "# WHERETOGO", "# TODAY"];
       <!-- 手機版卡片輪播 -->
       <ClientOnly>
         <swiper-container
-          ref="journeySwiper"
+          ref="recommendSwiper"
           class="mb-10 block h-[400px] xl:hidden"
           :breakpoints="{
             640: {
@@ -247,56 +253,39 @@ const marqueeItems = ["# ZOBAA", "# WHERETOGO", "# TODAY"];
             delay: 5000,
           }"
           :loop="true"
-          @swiperslidechange="onJourneySlideChange"
+          @swiperslidechange="onRecommendSlideChange"
         >
-          <swiper-slide v-for="(item, i) in 4" :key="i" class="pl-3">
+          <swiper-slide
+            v-for="item in recommendations"
+            :key="item.title"
+            class="pl-3"
+          >
             <NuxtLink
               to="/product-info"
               class="group relative block h-full content-end rounded-3xl bg-cover bg-center p-4 text-white"
-              :style="`background-image: url(/images/home/recommend-${i + 1}.webp)`"
+              :style="`background-image: url(${item.img})`"
             >
               <!-- 遮罩 -->
               <div
                 class="pointer-events-none absolute inset-0 z-0 rounded-3xl bg-gradient-to-t from-[#221F1E99] to-transparent"
               ></div>
               <div class="relative z-10">
-                <h3 class="mb-2 text-h4">
-                  {{
-                    [
-                      "峇里島渡假漫遊",
-                      "日本深度賞櫻計畫",
-                      "紐西蘭雪山探險",
-                      "摩洛哥迷幻之旅",
-                    ][i]
-                  }}
-                </h3>
-                <p class="mb-6 text-body2">
-                  {{
-                    [
-                      "精選五星級海灘度假村，專屬私人管家服務，讓您徹底放鬆身心。",
-                      "春季限定，東京、京都、大阪賞櫻之旅，體驗日本文化的精髓。",
-                      "探索南島壯麗的自然風光，體驗各種極限運動和戶外活動。",
-                      "漫步沙漠與古城之間，探索千年文化與色彩繽紛的市集風情。",
-                    ][i]
-                  }}
-                </p>
-                <!-- 按鈕 -->
-                <button
-                  type="button"
+                <h3 class="mb-2 text-h4">{{ item.title }}</h3>
+                <p class="mb-6 text-body2">{{ item.desc }}</p>
+                <!-- 按鈕外觀（整張卡片已是連結，不可再巢狀 button） -->
+                <span
                   class="flex w-full items-center justify-between gap-2 rounded-full bg-white px-5 py-4 text-title text-black"
                 >
                   訂購行程
                   <!-- 裝飾 icon -->
                   <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
                     <rect width="32" height="32" rx="16" fill="#fff" />
-                    <g clip-path="url(#a)">
-                      <path
-                        d="m16 8-1.41 1.41L20.17 15H8v2h12.17l-5.58 5.59L16 24l8-8z"
-                        fill="#000"
-                      />
-                    </g>
+                    <path
+                      d="m16 8-1.41 1.41L20.17 15H8v2h12.17l-5.58 5.59L16 24l8-8z"
+                      fill="#000"
+                    />
                   </svg>
-                </button>
+                </span>
               </div>
             </NuxtLink>
           </swiper-slide>
@@ -305,18 +294,18 @@ const marqueeItems = ["# ZOBAA", "# WHERETOGO", "# TODAY"];
         <div class="block xl:hidden">
           <div class="flex justify-center gap-1">
             <button
-              v-for="i in 4"
-              :key="i"
+              v-for="(item, i) in recommendations"
+              :key="item.title"
               type="button"
-              @click="goToJourney(i - 1)"
+              @click="goToRecommend(i)"
               class="h-2 rounded-full transition-all duration-300"
               :class="
-                journeyActiveIndex === i - 1
+                recommendActiveIndex === i
                   ? 'w-6 bg-primary-40'
                   : 'w-2 bg-neutral-40'
               "
-              :aria-pressed="journeyActiveIndex === i - 1"
-              :aria-label="`跳至第 ${i} 張`"
+              :aria-pressed="recommendActiveIndex === i"
+              :aria-label="`跳至第 ${i + 1} 張`"
             ></button>
           </div>
         </div>
@@ -511,7 +500,8 @@ const marqueeItems = ["# ZOBAA", "# WHERETOGO", "# TODAY"];
             <button
               type="button"
               class="rounded-xl bg-white p-4 transition hover:bg-primary hover:text-white"
-              @click="swiper2.prev()"
+              aria-label="上一張"
+              @click="mapSwiperApi.prev()"
             >
               <svg
                 width="24"
@@ -530,7 +520,8 @@ const marqueeItems = ["# ZOBAA", "# WHERETOGO", "# TODAY"];
             <button
               type="button"
               class="rounded-xl bg-white p-4 transition hover:bg-primary hover:text-white"
-              @click="swiper2.next()"
+              aria-label="下一張"
+              @click="mapSwiperApi.next()"
             >
               <svg
                 width="24"
@@ -604,7 +595,7 @@ const marqueeItems = ["# ZOBAA", "# WHERETOGO", "# TODAY"];
               name="在藝術與咖啡香中迷路"
               desc="穿梭左岸書店與畫廊，任由麵包香與建築細節擁抱你的步伐。"
               suggestion="走進瑪黑區，最容易與巴黎風格不期而遇 ☕️"
-              cta="開啟我的巴黎報險"
+              cta="開啟我的巴黎冒險"
             />
           </swiper-slide>
           <swiper-slide class="pt-10 pr-4 md:pt-20 md:pr-6">
@@ -670,7 +661,9 @@ const marqueeItems = ["# ZOBAA", "# WHERETOGO", "# TODAY"];
         <div class="relative">
           <!-- 往前一張 -->
           <button
-            @click="swiper.prev()"
+            type="button"
+            aria-label="上一張"
+            @click="journeySwiperApi.prev()"
             class="absolute top-1/2 -left-20 hidden -translate-y-1/2 rounded-xl p-4 shadow-button 2xl:block"
           >
             <svg
@@ -688,7 +681,9 @@ const marqueeItems = ["# ZOBAA", "# WHERETOGO", "# TODAY"];
           </button>
           <!-- 往後一張 -->
           <button
-            @click="swiper.next()"
+            type="button"
+            aria-label="下一張"
+            @click="journeySwiperApi.next()"
             class="absolute top-1/2 -right-20 hidden -translate-y-1/2 rounded-xl p-4 shadow-button 2xl:block"
           >
             <svg

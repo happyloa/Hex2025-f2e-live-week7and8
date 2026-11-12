@@ -71,7 +71,7 @@ const showPassword = ref(false);
           class="mb-2 w-full rounded-xl border border-neutral-40 p-4 pr-12 placeholder:text-neutral-60 focus:outline-none"
         />
         <img
-          v-if="password"
+          v-if="passwordAgain"
           :src="showPassword ? '/icons/eye-open.svg' : '/icons/eye-close.svg'"
           :alt="showPassword ? '顯示密碼' : '隱藏密碼'"
           class="absolute top-1/2 right-4 size-5 -translate-y-1/2 cursor-pointer"

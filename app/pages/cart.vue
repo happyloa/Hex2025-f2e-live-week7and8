@@ -18,7 +18,7 @@ const products = ref([
     name: "海闊天空展望台門票 HARUKAS 300",
     desc: "阿倍野展望台門票 HARUKAS 300｜附章魚燒兌換劵",
     img: "/images/cart/cart-1.webp",
-    price: 830,
+    price: 415,
     quantity: 2,
     selected: true,
   },
@@ -27,7 +27,7 @@ const products = ref([
     name: "泰式按摩過猛求生體驗",
     desc: "限量脫骨套餐｜師傅強度隨緣，靈魂有機會先離開",
     img: "/images/cart/cart-2.webp",
-    price: 1230,
+    price: 615,
     quantity: 2,
     selected: true,
   },
@@ -250,7 +250,7 @@ watch(showDetail, (open) => {
                   </button>
                 </div>
                 <h3 class="text-h5 text-black">
-                  NT$ {{ toThousand(p.price) }}
+                  NT$ {{ toThousand(p.price * p.quantity) }}
                 </h3>
               </footer>
             </article>

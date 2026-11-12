@@ -114,7 +114,7 @@ const {
     </ul>
     <!-- 景點評價、訂購數量 -->
     <div
-      class="text-body-2 mb-4 flex items-center gap-3 border-b border-neutral-40 pb-4"
+      class="mb-4 flex items-center gap-3 border-b border-neutral-40 pb-4 text-body2"
     >
       <span class="flex items-center gap-1 border-r border-neutral-40 pr-3">
         <img src="/icons/star.svg" alt="評論星星" />
