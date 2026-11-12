@@ -51,7 +51,7 @@ const showPassword = ref(false);
           v-if="password"
           :src="showPassword ? '/icons/eye-open.svg' : '/icons/eye-close.svg'"
           :alt="showPassword ? '顯示密碼' : '隱藏密碼'"
-          class="absolute right-4 top-1/2 size-5 -translate-y-1/2 cursor-pointer"
+          class="absolute top-1/2 right-4 size-5 -translate-y-1/2 cursor-pointer"
           @click="showPassword = !showPassword"
         />
       </div>
@@ -74,7 +74,7 @@ const showPassword = ref(false);
           v-if="password"
           :src="showPassword ? '/icons/eye-open.svg' : '/icons/eye-close.svg'"
           :alt="showPassword ? '顯示密碼' : '隱藏密碼'"
-          class="absolute right-4 top-1/2 size-5 -translate-y-1/2 cursor-pointer"
+          class="absolute top-1/2 right-4 size-5 -translate-y-1/2 cursor-pointer"
           @click="showPassword = !showPassword"
         />
       </div>

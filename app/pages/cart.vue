@@ -183,7 +183,7 @@ watch(showDetail, (open) => {
                 </div>
                 <!-- 商品內容、數量調整 -->
                 <div
-                  class="flex flex-1 flex-col justify-between gap-6 p-4 md:flex-row lg:items-center lg:py-8 lg:pl-0 lg:pr-8"
+                  class="flex flex-1 flex-col justify-between gap-6 p-4 md:flex-row lg:items-center lg:py-8 lg:pr-8 lg:pl-0"
                 >
                   <!-- 商品內容 -->
                   <NuxtLink
@@ -229,7 +229,7 @@ watch(showDetail, (open) => {
                 </div>
               </div>
               <footer
-                class="flex items-center justify-between gap-4 p-4 lg:pl-[72px] lg:pr-8"
+                class="flex items-center justify-between gap-4 p-4 lg:pr-8 lg:pl-[72px]"
               >
                 <!-- 兩個操作按鈕 -->
                 <div
@@ -386,7 +386,7 @@ watch(showDetail, (open) => {
     <transition name="offcanvas">
       <div
         v-if="showDetail"
-        class="fixed bottom-20 left-0 right-0 z-20 block rounded-t-xl bg-white shadow-normal lg:hidden"
+        class="fixed right-0 bottom-20 left-0 z-20 block rounded-t-xl bg-white shadow-normal lg:hidden"
         role="dialog"
         aria-modal="true"
       >

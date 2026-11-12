@@ -139,7 +139,7 @@ function onAfterLeave(el: Element) {
         <div class="flex-1">
           <h4 class="mb-6 text-h6">選擇日期及選項</h4>
           <time
-            class="block whitespace-nowrap rounded-[20px] border border-neutral-40"
+            class="block rounded-[20px] border border-neutral-40 whitespace-nowrap"
           >
             <header
               class="flex items-center justify-between border-b border-neutral-40 px-4 py-3"

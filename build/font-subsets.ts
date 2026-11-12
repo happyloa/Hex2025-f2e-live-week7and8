@@ -31,7 +31,10 @@ export default defineNuxtModule({
     const unicodeRange = [...text]
       .map((character) => `U+${character.codePointAt(0)!.toString(16)}`)
       .join(",");
-    const outputDir = join(nuxt.options.rootDir, "node_modules/.cache/font-subsets");
+    const outputDir = join(
+      nuxt.options.rootDir,
+      "node_modules/.cache/font-subsets",
+    );
     await mkdir(outputDir, { recursive: true });
 
     const faces = await Promise.all(

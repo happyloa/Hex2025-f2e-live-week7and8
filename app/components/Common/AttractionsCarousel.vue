@@ -11,7 +11,7 @@ const swiper = useSwiper(attractionSwiper);
       <!-- 往前一張 -->
       <button
         type="button"
-        class="absolute -left-20 top-1/2 hidden -translate-y-1/2 rounded-xl p-4 shadow-button 2xl:block"
+        class="absolute top-1/2 -left-20 hidden -translate-y-1/2 rounded-xl p-4 shadow-button 2xl:block"
         @click="swiper.prev()"
       >
         <svg
@@ -30,7 +30,7 @@ const swiper = useSwiper(attractionSwiper);
       <!-- 往後一張 -->
       <button
         type="button"
-        class="absolute -right-20 top-1/2 hidden -translate-y-1/2 rounded-xl p-4 shadow-button 2xl:block"
+        class="absolute top-1/2 -right-20 hidden -translate-y-1/2 rounded-xl p-4 shadow-button 2xl:block"
         @click="swiper.next()"
       >
         <svg

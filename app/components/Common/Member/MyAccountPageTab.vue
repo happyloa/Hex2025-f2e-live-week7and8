@@ -8,7 +8,7 @@
           :class="
             $route.path === '/my-account'
               ? 'text-title text-primary'
-              : 'text-neutral text-body'
+              : 'text-body text-neutral'
           "
           >個人資訊
           <hr
@@ -24,7 +24,7 @@
           :class="
             $route.path === '/my-account/saved-info'
               ? 'text-title text-primary'
-              : 'text-neutral text-body'
+              : 'text-body text-neutral'
           "
           >常用旅客
           <hr

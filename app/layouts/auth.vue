@@ -25,7 +25,7 @@
       </ClientOnly>
     </aside>
     <main
-      class="flex-1 content-center justify-items-center px-6 pb-[90px] pt-[60px] text-black xl:py-24"
+      class="flex-1 content-center justify-items-center px-6 pt-[60px] pb-[90px] text-black xl:py-24"
     >
       <div class="w-full max-w-[604px] space-y-6 md:space-y-10">
         <h1 class="text-h3 md:text-h1">
@@ -40,13 +40,13 @@
         <!-- 第三方登入 -->
         <ul class="space-y-2 md:space-y-4">
           <li
-            class="text-neutral relative cursor-pointer rounded-xl border border-neutral-40 bg-white p-4 text-center text-body transition hover:bg-neutral-40"
+            class="relative cursor-pointer rounded-xl border border-neutral-40 bg-white p-4 text-center text-body text-neutral transition hover:bg-neutral-40"
           >
             <img src="/icons/google.svg" alt="Google 登入" class="absolute" />
             使用 Google 帳號登入
           </li>
           <li
-            class="text-neutral relative cursor-pointer rounded-xl border border-neutral-40 bg-white p-4 text-center text-body transition hover:bg-neutral-40"
+            class="relative cursor-pointer rounded-xl border border-neutral-40 bg-white p-4 text-center text-body text-neutral transition hover:bg-neutral-40"
           >
             <img
               src="/icons/facebook.svg"
@@ -56,7 +56,7 @@
             使用 Facebook 帳號登入
           </li>
           <li
-            class="text-neutral relative cursor-pointer rounded-xl border border-neutral-40 bg-white p-4 text-center text-body transition hover:bg-neutral-40"
+            class="relative cursor-pointer rounded-xl border border-neutral-40 bg-white p-4 text-center text-body text-neutral transition hover:bg-neutral-40"
           >
             <img src="/icons/apple.svg" alt="Apple 登入" class="absolute" />
             使用 Apple 帳號登入

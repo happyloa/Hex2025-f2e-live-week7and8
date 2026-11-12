@@ -93,7 +93,7 @@ const {
       <!-- 收藏按鈕 -->
       <button
         type="button"
-        class="absolute right-0 top-0 rounded-bl-[20px] rounded-tr-[20px] bg-[#00000066] p-4 backdrop-blur-md"
+        class="absolute top-0 right-0 rounded-tr-[20px] rounded-bl-[20px] bg-[#00000066] p-4 backdrop-blur-md"
       >
         <img src="/icons/favorite.svg" alt="收藏景點" />
       </button>

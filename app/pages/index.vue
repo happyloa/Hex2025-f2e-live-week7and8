@@ -336,7 +336,7 @@ const marqueeItems = ["# ZOBAA", "# WHERETOGO", "# TODAY"];
         decoding="async"
         src="/images/home/deco-text.svg"
         alt="裝飾文字"
-        class="absolute -left-[232px] bottom-60 hidden xl:block"
+        class="absolute bottom-60 -left-[232px] hidden xl:block"
       />
       <!-- 圖片容器 -->
       <div class="lg:max-w-[716px]">
@@ -463,7 +463,7 @@ const marqueeItems = ["# ZOBAA", "# WHERETOGO", "# TODAY"];
           </h2>
           <!-- tab -->
           <ul
-            class="flex items-center gap-2 overflow-x-auto whitespace-nowrap text-title"
+            class="flex items-center gap-2 overflow-x-auto text-title whitespace-nowrap"
           >
             <li
               class="cursor-pointer rounded-lg bg-primary px-4 py-2 text-white"
@@ -574,7 +574,7 @@ const marqueeItems = ["# ZOBAA", "# WHERETOGO", "# TODAY"];
           :loop="true"
           @swiperslidechange="onMapSlideChange"
         >
-          <swiper-slide class="pr-4 pt-10 md:pr-6 md:pt-20">
+          <swiper-slide class="pt-10 pr-4 md:pt-20 md:pr-6">
             <CommonHomeMapCard
               number="1"
               img="/images/home/map-1.webp"
@@ -585,7 +585,7 @@ const marqueeItems = ["# ZOBAA", "# WHERETOGO", "# TODAY"];
               cta="立即探索魅力古都"
             />
           </swiper-slide>
-          <swiper-slide class="pr-4 pt-10 md:pr-6 md:pt-20">
+          <swiper-slide class="pt-10 pr-4 md:pt-20 md:pr-6">
             <CommonHomeMapCard
               number="2"
               img="/images/home/map-2.webp"
@@ -596,7 +596,7 @@ const marqueeItems = ["# ZOBAA", "# WHERETOGO", "# TODAY"];
               cta="感受韓系風格日常"
             />
           </swiper-slide>
-          <swiper-slide class="pr-4 pt-10 md:pr-6 md:pt-20">
+          <swiper-slide class="pt-10 pr-4 md:pt-20 md:pr-6">
             <CommonHomeMapCard
               number="3"
               img="/images/home/map-3.webp"
@@ -607,7 +607,7 @@ const marqueeItems = ["# ZOBAA", "# WHERETOGO", "# TODAY"];
               cta="開啟我的巴黎報險"
             />
           </swiper-slide>
-          <swiper-slide class="pr-4 pt-10 md:pr-6 md:pt-20">
+          <swiper-slide class="pt-10 pr-4 md:pt-20 md:pr-6">
             <CommonHomeMapCard
               number="4"
               img="/images/home/map-4.webp"
@@ -618,7 +618,7 @@ const marqueeItems = ["# ZOBAA", "# WHERETOGO", "# TODAY"];
               cta="現在就飛向南半球"
             />
           </swiper-slide>
-          <swiper-slide class="pr-4 pt-10 md:pr-6 md:pt-20">
+          <swiper-slide class="pt-10 pr-4 md:pt-20 md:pr-6">
             <CommonHomeMapCard
               number="5"
               img="/images/home/map-5.webp"
@@ -662,7 +662,7 @@ const marqueeItems = ["# ZOBAA", "# WHERETOGO", "# TODAY"];
           decoding="async"
           src="/images/home/bg-pound-sign.svg"
           alt="裝飾井字號"
-          class="absolute -left-2 -top-5 z-0 size-[52px] md:-left-12 md:-top-12 md:size-[120px]"
+          class="absolute -top-5 -left-2 z-0 size-[52px] md:-top-12 md:-left-12 md:size-[120px]"
         />
         <span class="relative z-10"> 搜尋墨爾本嗎？<br />來點行程參考！ </span>
       </h2>
@@ -671,7 +671,7 @@ const marqueeItems = ["# ZOBAA", "# WHERETOGO", "# TODAY"];
           <!-- 往前一張 -->
           <button
             @click="swiper.prev()"
-            class="absolute -left-20 top-1/2 hidden -translate-y-1/2 rounded-xl p-4 shadow-button 2xl:block"
+            class="absolute top-1/2 -left-20 hidden -translate-y-1/2 rounded-xl p-4 shadow-button 2xl:block"
           >
             <svg
               width="24"
@@ -689,7 +689,7 @@ const marqueeItems = ["# ZOBAA", "# WHERETOGO", "# TODAY"];
           <!-- 往後一張 -->
           <button
             @click="swiper.next()"
-            class="absolute -right-20 top-1/2 hidden -translate-y-1/2 rounded-xl p-4 shadow-button 2xl:block"
+            class="absolute top-1/2 -right-20 hidden -translate-y-1/2 rounded-xl p-4 shadow-button 2xl:block"
           >
             <svg
               width="24"
@@ -796,7 +796,7 @@ const marqueeItems = ["# ZOBAA", "# WHERETOGO", "# TODAY"];
       <div
         v-for="repeatIndex in 2"
         :key="repeatIndex"
-        class="marquee__group text-[32px] font-bold leading-[1.2] text-primary-10 md:text-[130px]"
+        class="marquee__group text-[32px] leading-[1.2] font-bold text-primary-10 md:text-[130px]"
         :aria-hidden="repeatIndex === 2 ? 'true' : null"
       >
         <span v-for="item in marqueeItems" :key="`${repeatIndex}-${item}`">{{
@@ -815,7 +815,7 @@ const marqueeItems = ["# ZOBAA", "# WHERETOGO", "# TODAY"];
       decoding="async"
       src="/images/home/bg-circle.svg"
       alt="裝飾圓圈1"
-      class="absolute -left-[240px] -top-[360px] z-20 hidden size-[800px] xl:block"
+      class="absolute -top-[360px] -left-[240px] z-20 hidden size-[800px] xl:block"
     />
     <!-- 裝飾圓圈2 -->
     <img
@@ -823,7 +823,7 @@ const marqueeItems = ["# ZOBAA", "# WHERETOGO", "# TODAY"];
       decoding="async"
       src="/images/home/bg-circle.svg"
       alt="裝飾圓圈2"
-      class="absolute -bottom-[480px] right-10 z-0 hidden xl:block"
+      class="absolute right-10 -bottom-[480px] z-0 hidden xl:block"
     />
     <!-- 裝飾線條 -->
     <img

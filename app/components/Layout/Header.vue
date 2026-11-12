@@ -126,7 +126,7 @@ onBeforeUnmount(() => {
               height="24"
               viewBox="0 0 24 24"
               fill="none"
-              class="absolute left-3 top-1/2 -translate-y-1/2"
+              class="absolute top-1/2 left-3 -translate-y-1/2"
             >
               <path
                 d="m19.6 21-6.3-6.3q-.75.6-1.725.95T9.5 16q-2.725 0-4.612-1.887T3 9.5t1.888-4.612T9.5 3t4.613 1.888T16 9.5a6.1 6.1 0 0 1-1.3 3.8l6.3 6.3zM9.5 14q1.875 0 3.188-1.312Q14 11.375 14 9.5t-1.312-3.187T9.5 5 6.313 6.313 5 9.5t1.313 3.188T9.5 14"
@@ -137,7 +137,7 @@ onBeforeUnmount(() => {
               v-model="search"
               type="search"
               placeholder="搜尋景點、地點或城市"
-              class="rounded-lg border border-neutral-40 py-2.5 pl-10 pr-3 placeholder:text-body placeholder:text-neutral-60 focus:outline-none lg:w-[400px]"
+              class="rounded-lg border border-neutral-40 py-2.5 pr-3 pl-10 placeholder:text-body placeholder:text-neutral-60 focus:outline-none lg:w-[400px]"
               @keydown.enter="search && $router.push('/search-result')"
             />
           </div>
@@ -168,7 +168,7 @@ onBeforeUnmount(() => {
             <!-- 有商品時的紅點裝飾 -->
             <div
               v-if="isLoggedIn"
-              class="absolute right-2 top-1 size-4 rounded-full bg-danger text-center text-tiny text-white"
+              class="absolute top-1 right-2 size-4 rounded-full bg-danger text-center text-tiny text-white"
             >
               2
             </div>
@@ -228,7 +228,7 @@ onBeforeUnmount(() => {
               height="24"
               viewBox="0 0 24 24"
               fill="none"
-              class="absolute left-3 top-1/2 -translate-y-1/2"
+              class="absolute top-1/2 left-3 -translate-y-1/2"
             >
               <path
                 d="m19.6 21-6.3-6.3q-.75.6-1.725.95T9.5 16q-2.725 0-4.612-1.887T3 9.5t1.888-4.612T9.5 3t4.613 1.888T16 9.5a6.1 6.1 0 0 1-1.3 3.8l6.3 6.3zM9.5 14q1.875 0 3.188-1.312Q14 11.375 14 9.5t-1.312-3.187T9.5 5 6.313 6.313 5 9.5t1.313 3.188T9.5 14"
@@ -240,7 +240,7 @@ onBeforeUnmount(() => {
               type="text"
               autofocus
               placeholder="搜尋景點、地點或城市"
-              class="w-full rounded-lg border border-neutral-40 py-2 pl-10 pr-3 placeholder:text-body placeholder:text-neutral-60 focus:outline-none"
+              class="w-full rounded-lg border border-neutral-40 py-2 pr-3 pl-10 placeholder:text-body placeholder:text-neutral-60 focus:outline-none"
               @keydown.enter="search && $router.push('/search-result')"
             />
           </div>
@@ -275,14 +275,14 @@ onBeforeUnmount(() => {
   <transition name="offcanvas">
     <nav
       v-if="showMobileNav"
-      class="fixed bottom-0 right-0 top-0 z-50 block w-5/6 bg-white px-6 pb-6 pt-16 md:hidden"
+      class="fixed top-0 right-0 bottom-0 z-50 block w-5/6 bg-white px-6 pt-16 pb-6 md:hidden"
       role="dialog"
       aria-modal="true"
     >
       <!-- 關閉 Off Canvas 按鈕 -->
       <button
         type="button"
-        class="absolute right-6 top-6"
+        class="absolute top-6 right-6"
         @click="showMobileNav = false"
         aria-label="關閉 Off Canvas"
       >

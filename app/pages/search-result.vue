@@ -52,7 +52,7 @@ const goTo = (idx) => {
         <!-- 查看更多按鈕 -->
         <button
           type="button"
-          class="absolute bottom-3 right-3 z-10 rounded-xl border border-primary bg-white px-8 py-4 text-title transition hover:bg-primary hover:text-white lg:bottom-8 lg:right-8"
+          class="absolute right-3 bottom-3 z-10 rounded-xl border border-primary bg-white px-8 py-4 text-title transition hover:bg-primary hover:text-white lg:right-8 lg:bottom-8"
         >
           查看更多
         </button>

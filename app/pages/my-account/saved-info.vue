@@ -11,7 +11,7 @@ definePageMeta({
 
 <template>
   <main
-    class="rounded-2xl bg-white px-4 pb-4 pt-8 text-black shadow-section md:rounded-3xl md:px-8 md:pb-8 md:pt-16"
+    class="rounded-2xl bg-white px-4 pt-8 pb-4 text-black shadow-section md:rounded-3xl md:px-8 md:pt-16 md:pb-8"
   >
     <h1 class="mb-10 text-h3 md:text-h1">我的帳號</h1>
     <CommonMemberMyAccountPageTab />
@@ -35,7 +35,7 @@ definePageMeta({
             <div class="flex items-center gap-2 whitespace-nowrap">
               <button
                 type="button"
-                class="flex items-center justify-center gap-1 rounded-xl border border-primary bg-white px-8 py-4 text-title text-primary transition hover:bg-primary hover:text-white group-hover:opacity-100 md:opacity-0"
+                class="flex items-center justify-center gap-1 rounded-xl border border-primary bg-white px-8 py-4 text-title text-primary transition group-hover:opacity-100 hover:bg-primary hover:text-white md:opacity-0"
               >
                 <svg
                   width="24"
@@ -55,7 +55,7 @@ definePageMeta({
               </button>
               <button
                 type="button"
-                class="flex items-center justify-center gap-1 rounded-xl border border-primary bg-white px-8 py-4 text-title text-primary transition hover:bg-primary hover:text-white group-hover:opacity-100 md:opacity-0"
+                class="flex items-center justify-center gap-1 rounded-xl border border-primary bg-white px-8 py-4 text-title text-primary transition group-hover:opacity-100 hover:bg-primary hover:text-white md:opacity-0"
               >
                 <svg
                   width="24"
@@ -153,7 +153,7 @@ definePageMeta({
             <div class="flex items-center gap-2 whitespace-nowrap">
               <button
                 type="button"
-                class="flex items-center justify-center gap-1 rounded-xl border border-primary bg-white px-8 py-4 text-title text-primary transition hover:bg-primary hover:text-white group-hover:opacity-100 md:opacity-0"
+                class="flex items-center justify-center gap-1 rounded-xl border border-primary bg-white px-8 py-4 text-title text-primary transition group-hover:opacity-100 hover:bg-primary hover:text-white md:opacity-0"
               >
                 <svg
                   width="24"
@@ -173,7 +173,7 @@ definePageMeta({
               </button>
               <button
                 type="button"
-                class="flex items-center justify-center gap-1 rounded-xl border border-primary bg-white px-8 py-4 text-title text-primary transition hover:bg-primary hover:text-white group-hover:opacity-100 md:opacity-0"
+                class="flex items-center justify-center gap-1 rounded-xl border border-primary bg-white px-8 py-4 text-title text-primary transition group-hover:opacity-100 hover:bg-primary hover:text-white md:opacity-0"
               >
                 <svg
                   width="24"

@@ -66,7 +66,7 @@ const { number, img, name, tags, desc, suggestion, cta } = toRefs(props);
   >
     <!-- 靈感地圖序數 -->
     <span
-      class="poppins | absolute -top-10 left-4 z-10 text-[100px] italic leading-[1.2] text-[#DFD2CD] md:-top-[100px] md:left-5 md:text-[200px]"
+      class="poppins | absolute -top-10 left-4 z-10 text-[100px] leading-[1.2] text-[#DFD2CD] italic md:-top-[100px] md:left-5 md:text-[200px]"
     >
       {{ number }}
     </span>
@@ -86,7 +86,7 @@ const { number, img, name, tags, desc, suggestion, cta } = toRefs(props);
     <div class="space-y-6 md:space-y-10">
       <div class="space-y-2">
         <!-- 標籤 -->
-        <ul class="flex gap-2 whitespace-nowrap text-subtitle md:text-title">
+        <ul class="flex gap-2 text-subtitle whitespace-nowrap md:text-title">
           <li
             v-for="(tag, idx) in tags"
             :key="idx"
@@ -111,7 +111,7 @@ const { number, img, name, tags, desc, suggestion, cta } = toRefs(props);
         class="flex flex-col items-start gap-2 2xl:flex-row 2xl:items-center 2xl:gap-3"
       >
         <span
-          class="whitespace-nowrap rounded-lg bg-primary-10 p-2 text-subtitle 2xl:text-title"
+          class="rounded-lg bg-primary-10 p-2 text-subtitle whitespace-nowrap 2xl:text-title"
         >
           ZOBAA 建議
         </span>

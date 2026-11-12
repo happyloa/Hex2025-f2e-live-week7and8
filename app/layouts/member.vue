@@ -12,7 +12,7 @@ onMounted(() => {
     <img
       src="/images/my-account/bg-line.svg"
       alt="裝飾線條"
-      class="absolute left-1/2 top-[324px] z-0 hidden -translate-x-1/2 md:block"
+      class="absolute top-[324px] left-1/2 z-0 hidden -translate-x-1/2 md:block"
     />
     <div class="relative z-10 mx-auto max-w-container py-10 md:py-[120px]">
       <!-- Hero -->
@@ -21,7 +21,7 @@ onMounted(() => {
       >
         <!-- 更換封面 -->
         <span
-          class="absolute bottom-8 right-8 hidden cursor-pointer items-center gap-2 text-white transition hover:text-primary-40 md:flex"
+          class="absolute right-8 bottom-8 hidden cursor-pointer items-center gap-2 text-white transition hover:text-primary-40 md:flex"
         >
           <svg
             width="24"
@@ -51,7 +51,7 @@ onMounted(() => {
           />
           <button
             type="button"
-            class="absolute bottom-0 right-0 rounded-full bg-primary p-2 text-white transition hover:bg-primary-40 hover:text-primary md:bottom-1 md:right-1"
+            class="absolute right-0 bottom-0 rounded-full bg-primary p-2 text-white transition hover:bg-primary-40 hover:text-primary md:right-1 md:bottom-1"
           >
             <svg
               width="24"
@@ -74,7 +74,7 @@ onMounted(() => {
       </div>
       <!-- 會員頁面選單 -->
       <nav
-        class="mb-4 whitespace-nowrap rounded-2xl bg-white py-4 text-title text-black shadow-section md:mb-6 md:rounded-3xl"
+        class="mb-4 rounded-2xl bg-white py-4 text-title whitespace-nowrap text-black shadow-section md:mb-6 md:rounded-3xl"
       >
         <ul class="grid grid-cols-3 divide-x border-neutral-40">
           <li class="px-6 py-3">

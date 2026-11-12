@@ -188,7 +188,7 @@ onBeforeUnmount(() => {
         <!-- 查看更多按鈕 -->
         <button
           type="button"
-          class="absolute bottom-8 right-8 z-10 rounded-xl border border-primary bg-white px-8 py-4 text-title transition hover:bg-primary hover:text-white"
+          class="absolute right-8 bottom-8 z-10 rounded-xl border border-primary bg-white px-8 py-4 text-title transition hover:bg-primary hover:text-white"
         >
           查看更多
         </button>
@@ -466,7 +466,7 @@ onBeforeUnmount(() => {
                 viewBox="0 0 72 48"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
-                class="absolute left-0 top-0"
+                class="absolute top-0 left-0"
               >
                 <path
                   d="m37.238 48 11.813-72H60.3L48.488 48zM5 30.14l1.863-11.25h56.25L61.25 30.14zM11.926 48l11.812-72h11.25L23.176 48zM9.113 5.11l1.899-11.25h56.25L65.363 5.11z"
@@ -560,7 +560,7 @@ onBeforeUnmount(() => {
                 viewBox="0 0 72 48"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
-                class="absolute left-0 top-0"
+                class="absolute top-0 left-0"
               >
                 <path
                   d="m37.238 48 11.813-72H60.3L48.488 48zM5 30.14l1.863-11.25h56.25L61.25 30.14zM11.926 48l11.812-72h11.25L23.176 48zM9.113 5.11l1.899-11.25h56.25L65.363 5.11z"
